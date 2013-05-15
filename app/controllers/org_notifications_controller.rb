@@ -1,4 +1,6 @@
 class OrgNotificationsController < ApplicationController
+  #TODO before_filter :authenticate_administrator!
+
   # GET /org_notifications
   # GET /org_notifications.json
   def index
@@ -74,6 +76,7 @@ class OrgNotificationsController < ApplicationController
   def destroy
     @org_notification = OrgNotification.find(params[:id])
     @org_notification.destroy
+    RemovedNotification.create(sequence_number: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to org_notifications_url }
