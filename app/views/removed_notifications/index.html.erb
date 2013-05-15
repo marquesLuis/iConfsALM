@@ -1,0 +1,23 @@
+<h1>Listing removed_notifications</h1>
+
+<table>
+  <tr>
+    <th>Sequence number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @removed_notifications.each do |removed_notification| %>
+  <tr>
+    <td><%= removed_notification.sequence_number %></td>
+    <td><%= link_to 'Show', removed_notification %></td>
+    <td><%= link_to 'Edit', edit_removed_notification_path(removed_notification) %></td>
+    <td><%= link_to 'Destroy', removed_notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Removed notification', new_removed_notification_path %>

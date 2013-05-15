@@ -1,0 +1,25 @@
+<%= form_for(@pending_contact) do |f| %>
+  <% if @pending_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pending_contact.errors.count, "error") %> prohibited this pending_contact from being saved:</h2>
+
+      <ul>
+      <% @pending_contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :requester_id %><br />
+    <%= f.number_field :requester_id %>
+  </div>
+  <div class="field">
+    <%= f.label :requested_id %><br />
+    <%= f.number_field :requested_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

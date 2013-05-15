@@ -1,0 +1,2 @@
+module RemovedNotificationsHelper
+end

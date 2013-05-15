@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Requester:</b>
+  <%= @pending_contact.requester_id %>
+</p>
+
+<p>
+  <b>Requested:</b>
+  <%= @pending_contact.requested_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_pending_contact_path(@pending_contact) %> |
+<%= link_to 'Back', pending_contacts_path %>

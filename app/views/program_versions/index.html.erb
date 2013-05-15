@@ -1,0 +1,23 @@
+<h1>Listing program_versions</h1>
+
+<table>
+  <tr>
+    <th>Version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @program_versions.each do |program_version| %>
+  <tr>
+    <td><%= program_version.version %></td>
+    <td><%= link_to 'Show', program_version %></td>
+    <td><%= link_to 'Edit', edit_program_version_path(program_version) %></td>
+    <td><%= link_to 'Destroy', program_version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Program version', new_program_version_path %>

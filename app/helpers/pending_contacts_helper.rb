@@ -1,0 +1,2 @@
+module PendingContactsHelper
+end

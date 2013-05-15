@@ -1,0 +1,27 @@
+<h1>Listing networkings</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Person</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @networkings.each do |networking| %>
+  <tr>
+    <td><%= networking.title %></td>
+    <td><%= networking.content %></td>
+    <td><%= networking.person_id %></td>
+    <td><%= link_to 'Show', networking %></td>
+    <td><%= link_to 'Edit', edit_networking_path(networking) %></td>
+    <td><%= link_to 'Destroy', networking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Networking', new_networking_path %>

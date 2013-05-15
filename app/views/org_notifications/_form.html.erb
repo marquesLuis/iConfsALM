@@ -1,0 +1,25 @@
+<%= form_for(@org_notification) do |f| %>
+  <% if @org_notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@org_notification.errors.count, "error") %> prohibited this org_notification from being saved:</h2>
+
+      <ul>
+      <% @org_notification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

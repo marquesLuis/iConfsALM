@@ -1,0 +1,25 @@
+<%= form_for(@removed_note) do |f| %>
+  <% if @removed_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@removed_note.errors.count, "error") %> prohibited this removed_note from being saved:</h2>
+
+      <ul>
+      <% @removed_note.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sequence_number %><br />
+    <%= f.number_field :sequence_number %>
+  </div>
+  <div class="field">
+    <%= f.label :person_id %><br />
+    <%= f.number_field :person_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

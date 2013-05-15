@@ -1,0 +1,23 @@
+<h1>Listing area_of_interests</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @area_of_interests.each do |area_of_interest| %>
+  <tr>
+    <td><%= area_of_interest.name %></td>
+    <td><%= link_to 'Show', area_of_interest %></td>
+    <td><%= link_to 'Edit', edit_area_of_interest_path(area_of_interest) %></td>
+    <td><%= link_to 'Destroy', area_of_interest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Area of interest', new_area_of_interest_path %>

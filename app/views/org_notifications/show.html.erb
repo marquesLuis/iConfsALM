@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @org_notification.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @org_notification.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_org_notification_path(@org_notification) %> |
+<%= link_to 'Back', org_notifications_path %>

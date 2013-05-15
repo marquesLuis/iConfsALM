@@ -1,0 +1,25 @@
+<h1>Listing org_notifications</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @org_notifications.each do |org_notification| %>
+  <tr>
+    <td><%= org_notification.title %></td>
+    <td><%= org_notification.content %></td>
+    <td><%= link_to 'Show', org_notification %></td>
+    <td><%= link_to 'Edit', edit_org_notification_path(org_notification) %></td>
+    <td><%= link_to 'Destroy', org_notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Org notification', new_org_notification_path %>

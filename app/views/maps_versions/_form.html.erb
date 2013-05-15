@@ -1,0 +1,21 @@
+<%= form_for(@maps_version) do |f| %>
+  <% if @maps_version.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@maps_version.errors.count, "error") %> prohibited this maps_version from being saved:</h2>
+
+      <ul>
+      <% @maps_version.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :version %><br />
+    <%= f.number_field :version %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
