@@ -1,4 +1,19 @@
 IConfs::Application.routes.draw do
+
+  resources :locations
+
+
+  namespace :registry do
+    root :to => 'x#y' #TODO
+  end
+
+
+  devise_for :registries
+
+  devise_for :administrators
+
+  #root :to => 'home#index'
+
   resources :rejected_contacts
 
 

@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'rake', '10.0.4'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -23,10 +25,10 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -36,3 +38,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+#Pagination
+gem 'will_paginate', '~> 3.0.4'
+
+#For Search
+gem 'polyamorous', '~>0.5.0'
+gem 'ransack', '~>0.7.2'
+
+gem 'devise', '2.2.4'
