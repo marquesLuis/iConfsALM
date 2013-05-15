@@ -1,5 +1,15 @@
 IConfs::Application.routes.draw do
 
+  get "admin/show"
+
+  get "admin/index"
+
+  get "admin/new"
+
+  get "admin/edit"
+
+  get "admin/_form"
+
   resources :locations
 
 
