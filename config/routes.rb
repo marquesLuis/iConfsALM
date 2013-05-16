@@ -4,9 +4,13 @@ IConfs::Application.routes.draw do
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
   post 'administrator' => 'admin#create'
   post 'administrators' => 'admin#create'
+  get "user/notifications"
+
+  get "user/program"
+
   delete 'administrator.:id' => 'admin#destroy'
   get 'administrators' => 'admin#index'
-
+  
   get 'administrator.:id' => 'admin#show'
 
   devise_for :administrators
@@ -25,8 +29,6 @@ IConfs::Application.routes.draw do
   post "singup/do"
 
   get "singup/show"
-
-  get "user/program"
 
   resources :locations
 

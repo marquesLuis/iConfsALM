@@ -1,0 +1,17 @@
+<h1>Notifications</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Date Updated</th>
+  </tr>
+
+  <% @org_notifications.each do |org_notification| %>
+      <tr>
+        <td><%= org_notification.title %></td>
+        <td><%= org_notification.content %></td>
+        <td><%= org_notification.updated_at %></td>
+      </tr>
+  <% end %>
+</table>
