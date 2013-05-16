@@ -1,2 +1,11 @@
-<h1>Admin#show</h1>
-<p>Find me in app/views/admin/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @administrator.name %>
+</p>
+
+
+
+<%= link_to 'Edit', admin_edit_path(@administrator) %> |
+<%= link_to 'Back', admin_path %>
