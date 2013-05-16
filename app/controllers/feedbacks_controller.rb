@@ -16,6 +16,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
+    @feedback.update_attributes(:read => true)
+    @feedback.save
 
     respond_to do |format|
       format.html # show.html.erb
