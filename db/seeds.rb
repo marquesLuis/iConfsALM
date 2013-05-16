@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-  Administrator.create(:email => 'marta.lidon@gmail.com', :password => 'password', :confirm_password => 'password')
-  Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!")
-  Feedback.create(content: "Aplicacao Mais ou menos :/")
-  Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/")
+  Administrator.create(:email => %{marta.lidon@gmail.com}, :password => 'password', :password_confirmation => 'password')
+  Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!");
+  Feedback.create(content: "Aplicacao Mais ou menos :/");
+  Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/");

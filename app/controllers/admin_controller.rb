@@ -41,7 +41,7 @@ class AdminController < ApplicationController
   # POST /administrators
   # POST /administrators.json
   def create
-    @administrator = Administrator.new(params[:@administrator])
+    @administrator = Administrator.new(params[:administrator])
 
     respond_to do |format|
       if @administrator.save
