@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   attr_accessible :image, :title
 
-  has_many :session_groups, :inverse_of => location
+  has_many :event_groups, :inverse_of => location
 
   validates :title, :presence => true
   validates :title, :length => { :minimum => 1 }

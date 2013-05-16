@@ -1,0 +1,13 @@
+<h1>Singup#show</h1>
+
+<%= form_tag({:controller => :singup, :action => :do}, 'data-remote' => true) do %>
+    <div class="field">
+      <%= label_tag(:signup_code, 'Code:')%><br />
+      <%= text_field_tag(:signup_code) %>
+      <%= submit_tag("Check") %>
+    </div>
+    <div id="user_data">
+
+    </div>
+<% end %>
+

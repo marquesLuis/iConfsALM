@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @event_group.date %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @event_group.duration %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_group_path(@event_group) %> |
+<%= link_to 'Back', event_groups_path %>

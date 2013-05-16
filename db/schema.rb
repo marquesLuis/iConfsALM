@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516103419) do
+ActiveRecord::Schema.define(:version => 20130516122737) do
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -56,9 +56,27 @@ ActiveRecord::Schema.define(:version => 20130516103419) do
     t.string   "title"
     t.text     "description"
     t.string   "link"
-    t.integer  "session_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "event_id"
+  end
+
+  create_table "event_groups", :force => true do |t|
+    t.datetime "date"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "type"
+    t.datetime "date"
+    t.integer  "duration"
+    t.integer  "event_group_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -138,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20130516103419) do
     t.datetime "info_modification_time"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "signup_code"
   end
 
   create_table "program_versions", :force => true do |t|
@@ -158,7 +177,6 @@ ActiveRecord::Schema.define(:version => 20130516103419) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
-    t.string   "signup_code"
     t.integer  "person_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
@@ -188,32 +206,12 @@ ActiveRecord::Schema.define(:version => 20130516103419) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "session_groups", :force => true do |t|
-    t.datetime "date"
-    t.integer  "duration"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sessions", :force => true do |t|
-    t.string   "trails"
-    t.string   "genng"
-    t.text     "description"
-    t.string   "type"
-    t.datetime "date"
-    t.integer  "duration"
-    t.string   "grourails"
-    t.integer  "genera"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "speakers", :force => true do |t|
     t.boolean  "keynote",    :default => false
     t.integer  "person_id"
-    t.integer  "session_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.integer  "event_id"
   end
 
 end
