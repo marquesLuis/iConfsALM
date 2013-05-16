@@ -1,17 +1,9 @@
 IConfs::Application.routes.draw do
 
-  get "admin/show"
-
-  get "admin/index"
-
-  get "admin/new"
-
-  get "admin/edit"
-
-  get "admin/_form"
-
   resources :locations
 
+
+  match 'devise/singup' => 'singup#do'
 
   namespace :registry do
     root :to => 'x#y' #TODO

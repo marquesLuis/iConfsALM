@@ -2,15 +2,12 @@
 
 <table>
   <tr>
+    <th>Prefix</th>
     <th>First name</th>
     <th>Last name</th>
-    <th>Prefix</th>
     <th>Affiliation</th>
     <th>Email</th>
-    <th>Photo</th>
-    <th>Biography</th>
-    <th>Calendar version</th>
-    <th>Info modification time</th>
+    <th>Singup Code</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,16 +15,12 @@
 
 <% @people.each do |person| %>
   <tr>
+    <td><%= person.prefix %></td>
     <td><%= person.first_name %></td>
     <td><%= person.last_name %></td>
-    <td><%= person.prefix %></td>
     <td><%= person.affiliation %></td>
     <td><%= person.email %></td>
-    <td><%= person.photo %></td>
-    <td><%= person.biography %></td>
-    <td><%= person.calendar_version %></td>
-    <td><%= person.info_modification_time %></td>
-    <td><%= link_to 'Show', person %></td>
+    <td><%= person.signup_code %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
