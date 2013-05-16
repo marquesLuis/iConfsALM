@@ -1,4 +1,12 @@
 IConfs::Application.routes.draw do
+  get "admin/show"
+
+  get "admin/index"
+
+  get "admin/adminhome"
+
+  get "admin/new"
+
   resources :events
 
 
