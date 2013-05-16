@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  #TODO before_filter :authenticate_administrator!
+  #TODO  before_filter :authenticate_administrator!
 
   # GET /feedbacks
   # GET /feedbacks.json
