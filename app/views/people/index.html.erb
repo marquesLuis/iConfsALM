@@ -8,6 +8,7 @@
     <th>Affiliation</th>
     <th>Email</th>
     <th>Singup Code</th>
+    <th>Registry</th>
     <th></th>
     <th></th>
     <th></th>
@@ -20,7 +21,9 @@
     <td><%= person.last_name %></td>
     <td><%= person.affiliation %></td>
     <td><%= person.email %></td>
-    <td><%= person.signup_code %></td>
+    <td><%= person.signup_code %>
+    <td><%= person.registry %>
+
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
+    @registry = Registry.where('email = ?', @person.email).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -76,6 +77,11 @@ class PeopleController < ApplicationController
   # DELETE /people/1.json
   def destroy
     @person = Person.find(params[:id])
+    @registry = @person.registry
+    if @registry
+      @registry.destroy
+      sign_out @registry
+    end
     @person.destroy
 
     respond_to do |format|
