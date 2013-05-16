@@ -1,35 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130515114733_remove_signp_code_from_registries.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130515114802_add_signup_code_to_people.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/singup/do.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mailers/person_mailer.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/person_mailer_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/person_mailer/send_code.text.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/singup/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/singup.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/singup.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/singup_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/singup_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/singup_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/singup_helper_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/singup/do.js.erb" afterPath="$PROJECT_DIR$/app/views/singup/do.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/registry.rb" afterPath="$PROJECT_DIR$/app/models/registry.rb" />
+    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="Edit Sign Up">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516121609_create_event_groups.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516121721_create_events.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516122718_remove_session_id_from_document.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516122724_add_event_id_to_document.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516122730_remove_session_id_from_speaker.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130516122737_add_event_id_to_speaker.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/event_groups/_form.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/events/_form.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/event_groups/edit.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/events/edit.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/event.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/event_group.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/event_group_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/event_groups.css.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/event_groups.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/event_groups.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/event_groups_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/event_groups_controller_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/event_groups_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/event_groups_helper_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/event_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/events.css.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/events.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/events.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/events_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/events_controller_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/events_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/events_helper_test.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/event_groups/index.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/events/index.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/event_groups/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/events/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/event_groups/show.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/events/show.html.erb" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\assets\javascripts\session_groups.js.coffee" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\assets\javascripts\sessions.js.coffee" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\assets\stylesheets\session_groups.css.scss" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\assets\stylesheets\sessions.css.scss" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\controllers\session_groups_controller.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\controllers\sessions_controller.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\helpers\session_groups_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\helpers\sessions_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\models\session.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\models\session_group.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\session_groups\_form.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\session_groups\edit.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\session_groups\index.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\session_groups\new.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\session_groups\show.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\sessions\_form.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\sessions\edit.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\sessions\index.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\sessions\new.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\sessions\show.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\db\migrate\20130515094757_create_session_groups.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\db\migrate\20130515094759_create_sessions.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\fixtures\session_groups.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\fixtures\sessions.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\functional\session_groups_controller_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\functional\sessions_controller_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\unit\helpers\session_groups_helper_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\unit\helpers\sessions_helper_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\unit\session_group_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\test\unit\session_test.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/area_of_interest.rb" afterPath="$PROJECT_DIR$/app/models/area_of_interest.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/document.rb" afterPath="$PROJECT_DIR$/app/models/document.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iConfs.iml" afterPath="$PROJECT_DIR$/.idea/iConfs.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/location.rb" afterPath="$PROJECT_DIR$/app/models/location.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/note.rb" afterPath="$PROJECT_DIR$/app/models/note.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/speaker.rb" afterPath="$PROJECT_DIR$/app/models/speaker.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368705555657" ignored="false" />
-    <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617346659" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368707437795" ignored="false" />
+    <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368707166010" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368704823281" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
-    <file path="/routes.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368703382358" ignored="false" />
+    <file path="/routes.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706358917" ignored="false" />
     <file path="/application.css" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617269943" ignored="false" />
     <file path="/_form.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617624511" ignored="false" />
     <file path="/people_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368619502842" ignored="false" />
@@ -44,6 +99,12 @@
     <file path="/new.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368703649257" ignored="false" />
     <file path="/singup_helper.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368699823165" ignored="false" />
     <file path="/registrations_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368704881485" ignored="false" />
+    <file path="/area_of_interest.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706933426" ignored="false" />
+    <file path="/speaker.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368707203195" ignored="false" />
+    <file path="/document.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706990096" ignored="false" />
+    <file path="/event_group.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706837905" ignored="false" />
+    <file path="/event.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706891684" ignored="false" />
+    <file path="/note.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368706951346" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,53 +123,7 @@
     <favorites_list name="iConfs" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="singup_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/singup_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="75" selection-start="189" selection-end="248" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="27" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registry.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/registry.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="377" selection-end="377" vertical-scroll-proportion="0.34085214">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="24" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registrations_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="35" selection-start="372" selection-end="380" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -127,22 +142,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/person_mailer/send_code.text.erb" />
-        <option value="$PROJECT_DIR$/app/mailers/person_mailer.rb" />
-        <option value="$PROJECT_DIR$/app/views/singup/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/singup.js.coffee" />
-        <option value="$PROJECT_DIR$/app/views/singup/do.js" />
-        <option value="$PROJECT_DIR$/app/views/singup/do.js.rb" />
-        <option value="$PROJECT_DIR$/app/views/singup/do.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/people_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/singup_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/singup_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/singup/do.js.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/registry.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/models/event.rb" />
+        <option value="$PROJECT_DIR$/app/models/location.rb" />
+        <option value="$PROJECT_DIR$/app/models/area_of_interest.rb" />
+        <option value="$PROJECT_DIR$/app/models/note.rb" />
+        <option value="$PROJECT_DIR$/app/models/document.rb" />
+        <option value="$PROJECT_DIR$/app/models/event_group.rb" />
+        <option value="$PROJECT_DIR$/app/models/person.rb" />
+        <option value="$PROJECT_DIR$/app/models/speaker.rb" />
       </list>
     </option>
   </component>
@@ -178,6 +193,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,19 +215,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Rails.Development: iConfs">
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
@@ -496,13 +511,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26431718" sideWeight="0.67140603" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26431718" sideWeight="0.67140603" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328594" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -584,94 +599,114 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/people/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/message.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="8" selection-start="25" selection-end="671" vertical-scroll-proportion="0.5469169" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/people_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="25" selection-start="948" selection-end="948" vertical-scroll-proportion="0.042606518" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/singup_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="134" selection-end="134" vertical-scroll-proportion="0.38345864" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/singup/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="291" selection-end="291" vertical-scroll-proportion="0.36461127" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/singup/do.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="33" selection-start="45" selection-end="45" vertical-scroll-proportion="-0.65384614" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authors/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authors/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="20" selection-start="410" selection-end="420" vertical-scroll-proportion="0.6836461" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/networking.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="27" selection-start="4788" selection-end="4799" vertical-scroll-proportion="0.8095238">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/singup_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/note.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="75" selection-start="189" selection-end="248" vertical-scroll-proportion="0.0">
+        <state line="0" column="31" selection-start="29" selection-end="31" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/pending_contact.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="27" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/person.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="35" selection-start="372" selection-end="380" vertical-scroll-proportion="0.0">
+        <state line="35" column="36" selection-start="1972" selection-end="1972" vertical-scroll-proportion="0.5290859">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/program_version.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/registry.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="377" selection-end="377" vertical-scroll-proportion="0.34085214">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/rejected_contact.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/removed_note.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/speaker.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="39" selection-start="208" selection-end="208" vertical-scroll-proportion="-4.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/org_notification.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130516122718_remove_session_id_from_document.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130516122724_add_event_id_to_document.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130516122730_remove_session_id_from_speaker.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130516122737_add_event_id_to_speaker.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="45" selection-start="113" selection-end="113" vertical-scroll-proportion="0.38345864">
           <folding />
         </state>
       </provider>

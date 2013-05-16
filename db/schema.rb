@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515114802) do
+ActiveRecord::Schema.define(:version => 20130516122737) do
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,27 +45,45 @@ ActiveRecord::Schema.define(:version => 20130515114802) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.boolean  "hasPrivate"
+    t.boolean  "hasPrivate",   :default => false
     t.integer  "requester_id"
     t.integer  "requested_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "documents", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "link"
-    t.integer  "session_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "event_id"
+  end
+
+  create_table "event_groups", :force => true do |t|
+    t.datetime "date"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "type"
+    t.datetime "date"
+    t.integer  "duration"
+    t.integer  "event_group_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
     t.text     "content"
-    t.boolean  "read"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "read",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "infos", :force => true do |t|
@@ -91,10 +109,10 @@ ActiveRecord::Schema.define(:version => 20130515114802) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
-    t.boolean  "read"
+    t.boolean  "read",       :default => false
     t.integer  "person_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "networkings", :force => true do |t|
@@ -188,32 +206,12 @@ ActiveRecord::Schema.define(:version => 20130515114802) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "session_groups", :force => true do |t|
-    t.datetime "date"
-    t.integer  "duration"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sessions", :force => true do |t|
-    t.string   "trails"
-    t.string   "genng"
-    t.text     "description"
-    t.string   "type"
-    t.datetime "date"
-    t.integer  "duration"
-    t.string   "grourails"
-    t.integer  "genera"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "speakers", :force => true do |t|
-    t.boolean  "keynote"
+    t.boolean  "keynote",    :default => false
     t.integer  "person_id"
-    t.integer  "session_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "event_id"
   end
 
 end

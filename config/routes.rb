@@ -1,5 +1,11 @@
 IConfs::Application.routes.draw do
 
+  resources :events
+
+
+  resources :event_groups
+
+
   post "/devise/singup/do"
 
   post "singup/do"
@@ -13,7 +19,7 @@ IConfs::Application.routes.draw do
   resources :locations
 
   namespace :registry do
-    root :to => 'x#y' #TODO
+    root :to => 'home#index'
   end
 
   devise_for :registries, :controllers => {:registrations => "registrations"}
@@ -22,7 +28,7 @@ IConfs::Application.routes.draw do
 
   devise_for :administrators
 
-  #root :to => 'home#index'
+  root :to => 'home#index'
 
   resources :rejected_contacts
 
@@ -48,7 +54,7 @@ IConfs::Application.routes.draw do
   resources :program_versions
 
 
-  resources :sessions
+  #resources :sessions
 
 
   resources :session_groups

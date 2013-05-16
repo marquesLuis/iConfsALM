@@ -12,10 +12,10 @@ class Person < ActiveRecord::Base
   has_many :received_requests, :class_name => 'Contact', :foreign_key => :requested_id, :inverse_of => :requested
   has_many :infos, :inverse_of => :person
   has_many :speakers, :inverse_of => :person
-  has_many :sessions, :through => :speakers
+  has_many :events, :through => :speakers
   has_many :authors, :inverse_of => :person
   has_many :documents, :through => :authors
-  has_many :session_groups
+  has_many :event_groups
   has_many :org_notifications
   has_many :read_networking, :class_name => 'Networking'
   has_many :networkings, :inverse_of => :person
@@ -33,7 +33,7 @@ class Person < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
-  validates_associated :session_groups
+  validates_associated :event_groups
   validates_associated :read_networking
   validates_associated :org_notifications
 end
