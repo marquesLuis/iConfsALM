@@ -7,6 +7,4 @@ class AreaOfInterest < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :name, :length => { :minimum => 1 }
-
-  validates_associated :people
 end

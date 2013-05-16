@@ -45,7 +45,7 @@ class AdminController < ApplicationController
 
     respond_to do |format|
       if @administrator.save
-        format.html { redirect_to @administrator, notice: 'Administrator was successfully created.' }
+        format.html { redirect_to administrators_path, notice: 'Administrator was successfully created.' }
         format.json { render json: @administrator, status: :created, location: @administrator }
       else
         format.html { render action: 'new' }
@@ -73,6 +73,8 @@ class AdminController < ApplicationController
   # DELETE /administrators/1
   # DELETE /administrators/1.json
   def destroy
+    puts('XXXXXXXXXXXXXXX')
+    puts(params[:id])
     @administrator = Administrator.find(params[:id])
     @administrator.destroy
 

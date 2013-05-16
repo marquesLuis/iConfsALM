@@ -3,21 +3,12 @@ IConfs::Application.routes.draw do
   get "user/program"
 
   get 'administrators' => 'admin#index'
-
-  post 'administrators' => 'admin#create'
-
-
-  match 'administrator' => 'admin#create'
-
+  delete 'administrator.:id' => 'admin#destroy'
+  get 'administrator.:id' => 'admin#show'
+  post 'administrator' => 'admin#create'
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
-
-  get "admin/show"
-
-  get "admin/index"
-
   get "admin/adminhome"
-
-  get "admin/new"
+  #get "admin/new"
 
   post "/devise/singup/do"
 
