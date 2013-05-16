@@ -206,6 +206,26 @@ ActiveRecord::Schema.define(:version => 20130516122737) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "session_groups", :force => true do |t|
+    t.datetime "date"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "trails"
+    t.string   "genng"
+    t.text     "description"
+    t.string   "type"
+    t.datetime "date"
+    t.integer  "duration"
+    t.string   "grourails"
+    t.integer  "genera"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "speakers", :force => true do |t|
     t.boolean  "keynote",    :default => false
     t.integer  "person_id"

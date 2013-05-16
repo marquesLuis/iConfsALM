@@ -4,6 +4,11 @@ IConfs::Application.routes.draw do
 
   resources :event_groups
 
+  match 'administrators' => 'administrator#index'
+
+  match 'administrator' => 'administrator#create'
+
+  match '/newAdmin' => 'Admin#new', :as => 'new_admin'
 
   post "/devise/singup/do"
 
