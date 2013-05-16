@@ -2,16 +2,18 @@ IConfs::Application.routes.draw do
 
   get 'administrators' => 'admin#index'
 
+
+
   post 'administrators' => 'admin#create'
 
 
-  match 'administrator' => 'admin#create'
+  delete 'administrator.:id' => 'admin#destroy'
+  post 'administrator' => 'admin#create'
 
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
 
   get "admin/show"
 
-  get "admin/index"
 
   get "admin/adminhome"
 
