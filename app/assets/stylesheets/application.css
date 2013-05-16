@@ -13,11 +13,37 @@
  */
 
 .right {
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
     margin-right: 100px;
 }
 
 .title {
+    margin-right: 25px;
+    float: left;
     font-size: 3em;
+}
+
+.Item {
+    display: inline;
+    float: left;
+    margin-right: 15px;
+}
+
+.Item-Image {
+
+}
+
+.Item-Text {
+    float: left;
+    clear: both;
+    text-align: center;
+}
+
+hr {
+    clear: both;
+}
+
+table, th, td {
+    border: 1px solid black;
 }

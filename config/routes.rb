@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user/notifications"
+
   get "user/program"
 
   get 'administrators' => 'admin#index'
