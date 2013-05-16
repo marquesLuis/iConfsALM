@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   attr_accessible :affiliation, :biography, :calendar_version, :email, :first_name, :info_modification_time, :last_name, :photo, :prefix
 
-  PREFIX_TYPES = []
+  PREFIX_TYPES = ['Dr.','Sr.']
 
   has_many :messages, :inverse_of => :person
   has_many :removed_notes, :inverse_of => :person
@@ -26,12 +26,8 @@ class Person < ActiveRecord::Base
   has_many :received_rejected_requests, :class_name => 'RejectedContact', :foreign_key => :requested_id, :inverse_of => :requested
 
   validates :email, :presence => true
-  #TODO validates :email,  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-  validates :photo, :presence => true
-  validates :photo, :format =>{
-      :with => %r{\.(gif|jpg|png)$}i,
-      :message => 'must be a URL for GIF, JPG or PNG image.'
-  }
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
+
   validates :affiliation, :presence => true
   validates :prefix, :inclusion => PREFIX_TYPES
   validates :first_name, :presence => true
