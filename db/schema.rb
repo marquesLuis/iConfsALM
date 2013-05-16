@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515102219) do
+ActiveRecord::Schema.define(:version => 20130515114802) do
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20130515102219) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "maps_versions", :force => true do |t|
     t.integer  "version"
     t.datetime "created_at", :null => false
@@ -131,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130515102219) do
     t.datetime "info_modification_time"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "signup_code"
   end
 
   create_table "program_versions", :force => true do |t|
@@ -151,7 +159,6 @@ ActiveRecord::Schema.define(:version => 20130515102219) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
-    t.string   "signup_code"
     t.integer  "person_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

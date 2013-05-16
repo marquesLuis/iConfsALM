@@ -1,14 +1,22 @@
 IConfs::Application.routes.draw do
 
+  post "/devise/singup/do"
+
+  post "singup/do"
+
+  get "singup/show"
+
+  get "admin/show"
+
+  get "admin/index"
+
   resources :locations
-
-
-  match 'devise/singup' => 'singup#do'
 
   namespace :registry do
     root :to => 'x#y' #TODO
   end
 
+  devise_for :registries, :controllers => {:registrations => "registrations"}
 
   devise_for :registries
 
