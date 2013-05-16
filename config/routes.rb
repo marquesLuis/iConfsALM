@@ -16,10 +16,6 @@ IConfs::Application.routes.draw do
 
   get "singup/show"
 
-  get "admin/show"
-
-  get "admin/index"
-
   resources :locations
 
   namespace :registry do
