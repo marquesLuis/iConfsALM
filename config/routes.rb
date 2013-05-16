@@ -24,6 +24,8 @@ IConfs::Application.routes.draw do
   get "admin/adminhome"
   #get "admin/new"
 
+
+
   post "/devise/singup/do"
 
   post "singup/do"
@@ -41,6 +43,8 @@ IConfs::Application.routes.draw do
   devise_for :registries
 
   devise_for :administrators
+
+  #root :to => 'admin#adminhome'
 
   root :to => 'user#program'
 
