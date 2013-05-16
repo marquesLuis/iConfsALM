@@ -12,7 +12,6 @@
       <tr>
         <td><%= administrator.email %></td>
         <td><%= link_to 'Show', administrator %></td>
-        <td><%= link_to 'Edit', edit_administrator_path(author) %></td>
         <td><%= link_to 'Destroy', administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
@@ -20,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New Administrator', new_administrator_path %>
+<%= link_to 'New Administrator', admin_new_path %>

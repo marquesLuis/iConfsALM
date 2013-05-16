@@ -1,4 +1,13 @@
 IConfs::Application.routes.draw do
+
+
+  get 'administrators' => 'admin#index'
+
+
+  match 'administrator' => 'admin#create'
+
+  match '/newAdmin' => 'admin#new', :as => 'new_admin'
+
   get "admin/show"
 
   get "admin/index"
@@ -12,11 +21,8 @@ IConfs::Application.routes.draw do
 
   resources :event_groups
 
-  match 'administrators' => 'administrator#index'
 
-  match 'administrator' => 'administrator#create'
 
-  match '/newAdmin' => 'Admin#new', :as => 'new_admin'
 
   post "/devise/singup/do"
 
