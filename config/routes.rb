@@ -1,20 +1,33 @@
 IConfs::Application.routes.draw do
+  resources :events
+
+
+  resources :event_groups
+
+
+  post "/devise/singup/do"
+
+  post "singup/do"
+
+  get "singup/show"
+
+  get "admin/show"
+
+  get "admin/index"
 
   resources :locations
 
-
-  match 'devise/singup' => 'singup#do'
-
   namespace :registry do
-    root :to => 'x#y' #TODO
+    root :to => 'home#index'
   end
 
+  devise_for :registries, :controllers => {:registrations => "registrations"}
 
   devise_for :registries
 
   devise_for :administrators
 
-  #root :to => 'home#index'
+  root :to => 'home#index'
 
   resources :rejected_contacts
 
@@ -40,7 +53,7 @@ IConfs::Application.routes.draw do
   resources :program_versions
 
 
-  resources :sessions
+  #resources :sessions
 
 
   resources :session_groups
@@ -132,4 +145,8 @@ IConfs::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+
+  #
+
 end
