@@ -1,6 +1,5 @@
 IConfs::Application.routes.draw do
 
-
   get 'administrators' => 'admin#index'
 
   post 'administrators' => 'admin#create'
@@ -17,14 +16,6 @@ IConfs::Application.routes.draw do
   get "admin/adminhome"
 
   get "admin/new"
-
-  resources :events
-
-
-  resources :event_groups
-
-
-
 
   post "/devise/singup/do"
 
@@ -68,13 +59,10 @@ IConfs::Application.routes.draw do
 
 
   resources :program_versions
-
-
-  #resources :sessions
-
-
-  resources :session_groups
-
+  
+  resources :event_groups do
+    resources :events
+  end
 
   resources :documents
 
