@@ -3,6 +3,8 @@ IConfs::Application.routes.draw do
   resources :locations
 
 
+  match 'devise/singup' => 'singup#do'
+
   namespace :registry do
     root :to => 'x#y' #TODO
   end
