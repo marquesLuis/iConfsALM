@@ -9,8 +9,12 @@
 </head>
 <body>
 <% if registry_signed_in? == true %>
+    <%= link_to('Sign out!', destroy_registry_session_path, :method => :delete, :class => 'right') %>
     <h1>iConfs</h1>
-    <%= link_to('Sign out!', destroy_registry_session_path, :method => :delete) %>
+    <p>Item1</p>
+    <p>Item2</p>
+    <p>Item3</p>
+    <p>Item4</p>
     <hr>
 <% end %>
 <% if administrator_signed_in? == true %>

@@ -11,3 +11,13 @@
  *= require_self
  *#= #require_tree .
  */
+
+.right {
+    float:right;
+    clear:right;
+    margin-right: 100px;
+}
+
+.title {
+    font-size: 3em;
+}

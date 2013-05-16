@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :affiliation, :biography, :calendar_version, :email, :first_name, :info_modification_time, :last_name, :photo, :prefix
+  attr_accessible :affiliation, :biography, :calendar_version, :email, :first_name, :info_modification_time, :last_name, :photo, :prefix, :registry
 
   PREFIX_TYPES = ['Dr.','Sr.']
 
@@ -33,7 +33,4 @@ class Person < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
-  validates_associated :event_groups
-  validates_associated :read_networking
-  validates_associated :org_notifications
 end
