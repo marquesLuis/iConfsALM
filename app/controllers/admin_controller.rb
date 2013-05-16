@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+  before_filter :authenticate_administrator!, :only => :token
   # GET /administrators
   # GET /administrators.json
   def index
