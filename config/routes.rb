@@ -3,6 +3,8 @@ IConfs::Application.routes.draw do
 
   get 'administrators' => 'admin#index'
 
+  post 'administrators' => 'admin#create'
+
 
   match 'administrator' => 'admin#create'
 

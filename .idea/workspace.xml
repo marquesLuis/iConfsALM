@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/index.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/new.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/new.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368710490006" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368711098015" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617346659" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
-    <file path="/routes.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368711064868" ignored="false" />
+    <file path="/routes.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368711125262" ignored="false" />
     <file path="/application.css" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617269943" ignored="false" />
     <file path="/_form.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617624511" ignored="false" />
     <file path="/people_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368619502842" ignored="false" />
@@ -93,7 +91,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="5" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0690184">
+            <state line="5" column="40" selection-start="118" selection-end="118" vertical-scroll-proportion="0.115030676">
               <folding />
             </state>
           </provider>
@@ -799,7 +797,11 @@
       <created>1368710492915</created>
       <updated>1368710492915</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="change admin new view">
+      <created>1368711100274</created>
+      <updated>1368711100274</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -868,7 +870,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="change admin index view" />
+    <option name="LAST_COMMIT_MESSAGE" value="change admin new view" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -888,6 +890,7 @@
     <MESSAGE value="create new Admin controller and views" />
     <MESSAGE value="write controller Admin" />
     <MESSAGE value="change admin index view" />
+    <MESSAGE value="change admin new view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1008,7 +1011,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="5" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0690184">
+        <state line="5" column="40" selection-start="118" selection-end="118" vertical-scroll-proportion="0.115030676">
           <folding />
         </state>
       </provider>
