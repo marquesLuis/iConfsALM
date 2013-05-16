@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user/program"
+
   get 'administrators' => 'admin#index'
 
   post 'administrators' => 'admin#create'
@@ -35,7 +37,7 @@ IConfs::Application.routes.draw do
 
   devise_for :administrators
 
-  root :to => 'home#index'
+  root :to => 'user#program'
 
   resources :rejected_contacts
 

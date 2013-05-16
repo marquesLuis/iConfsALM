@@ -8,7 +8,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if registry_signed_in? == true %>
+    <h1>iConfs</h1>
+    <%= link_to('Sign out!', destroy_registry_session_path, :method => :delete) %>
+    <hr>
+<% end %>
+<% if administrator_signed_in? == true %>
+    <p>Admin signed in!</p>
+<% end %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
