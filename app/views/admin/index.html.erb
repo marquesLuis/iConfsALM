@@ -1,2 +1,23 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Listing authors</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @administrators.each do |administrator| %>
+      <tr>
+        <td><%= administrator.email %></td>
+        <td><%= link_to 'Show', administrator %></td>
+        <td><%= link_to 'Edit', edit_administrator_path(author) %></td>
+        <td><%= link_to 'Destroy', administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Administrator', new_administrator_path %>
