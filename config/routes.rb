@@ -1,29 +1,26 @@
 IConfs::Application.routes.draw do
 
  # get "user/program"
-  match '/newAdmin' => 'admin#new', :as => 'new_admin'
+  match '/newAdmin' => 'admin#new', :as => 'new_admin'   # new administrator
   post 'administrator' => 'admin#create'
   post 'administrators' => 'admin#create'
+
+  delete 'administrator.:id' => 'admin#destroy' # destroy an administrator
+  namespace :administrator do
+    root :to => 'admin#adminhome'     # sign_in next page
+  end
+
   get "user/notifications"
 
-  get "user/program"
 
-  delete 'administrator.:id' => 'admin#destroy'
+
   get 'administrators' => 'admin#index'
   
   get 'administrator.:id' => 'admin#show'
 
   devise_for :administrators
 
-  namespace :administrator do
-    root :to => 'admin#adminhome'
-  end
-
-
-
-  get "admin/adminhome"
-  #get "admin/new"
-
+  get "user/program"
 
 
   post "/devise/singup/do"
