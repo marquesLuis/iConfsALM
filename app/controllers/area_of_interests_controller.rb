@@ -1,5 +1,5 @@
 class AreaOfInterestsController < ApplicationController
-  #TODO  before_filter :authenticate_administrator!
+  before_filter :authenticate_administrator!
 
   # GET /area_of_interests
   # GET /area_of_interests.json
