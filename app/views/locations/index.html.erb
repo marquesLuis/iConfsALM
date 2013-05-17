@@ -1,10 +1,8 @@
 <h1>Listing locations</h1>
-
 <table>
   <tr>
     <th>Title</th>
     <th>Image</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,11 +12,12 @@
     <td><%= location.title %></td>
     <td><%= location.image %></td>
     <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+
+<p>Current Maps Version: <%= @mv.version %> (internal use)</p>
 
 <br />
 

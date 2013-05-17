@@ -1,5 +1,5 @@
 class OrgNotificationsController < ApplicationController
-  #TODO before_filter :authenticate_administrator!
+  before_filter :authenticate_administrator!
 
   # GET /org_notifications
   # GET /org_notifications.json

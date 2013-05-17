@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
-
+    @mv = MapsVersion.first
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @locations }
@@ -32,16 +32,19 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1/edit
-  def edit
-    @location = Location.find(params[:id])
-  end
-
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(params[:location])
 
+    name = params[:upload].original_filename
+    directory = 'app/assets/images/'
+
+    path = File.join(directory, name)
+    File.open(path, 'wb') { |f| f.write(params[:upload].read) }
+    @location = Location.new(:title => params[:location][:title], :image => name)
+    mv = MapsVersion.first
+    mv.version = mv.version+1
+    mv.save
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
@@ -53,28 +56,15 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PUT /locations/1
-  # PUT /locations/1.json
-  def update
-    @location = Location.find(params[:id])
-
-    respond_to do |format|
-      if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
     @location = Location.find(params[:id])
+    File.delete('app/assets/images/'+@location.image)
     @location.destroy
-
+    mv = MapsVersion.first
+    mv.version = mv.version+1
+    mv.save
     respond_to do |format|
       format.html { redirect_to locations_url }
       format.json { head :no_content }

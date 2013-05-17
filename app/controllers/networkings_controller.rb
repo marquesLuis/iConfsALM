@@ -1,5 +1,5 @@
 class NetworkingsController < ApplicationController
-  #TODO before_filter :authenticate_administrator!
+  before_filter :authenticate_administrator!
 
   # GET /networkings
   # GET /networkings.json
