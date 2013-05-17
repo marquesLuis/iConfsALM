@@ -65,10 +65,6 @@ IConfs::Application.routes.draw do
 
   resources :org_notifications
 
-
-  resources :maps_versions
-
-
   resources :program_versions
   
   resources :event_groups do

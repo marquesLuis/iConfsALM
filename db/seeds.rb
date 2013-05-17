@@ -22,3 +22,5 @@
   AreaOfInterest.create(name: 'Seguranca de Sistemas de Computadores e Comunicacoes (SSCC)')
   AreaOfInterest.create(name: 'Sistemas Embebidos e de Tempo-Real (SETR)')
   AreaOfInterest.create(name: 'Sistemas Inteligentes')
+
+  MapsVersion.create(version: '1')
