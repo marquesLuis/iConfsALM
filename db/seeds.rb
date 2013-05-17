@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   Administrator.create(:email => %{marta.lidon@gmail.com}, :password => 'password', :password_confirmation => 'password')
+  Administrator.create(:email => %{lfmarques2@gmail.com}, :password => '123123123', :password_confirmation => '123123123')
   Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!")
   Feedback.create(content: "Aplicacao Mais ou menos :/")
   Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/")
