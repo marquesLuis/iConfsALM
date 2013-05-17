@@ -25,6 +25,8 @@ IConfs::Application.routes.draw do
   get "user/program"
 
 
+
+
   post "/devise/singup/do"
 
   post "singup/do"
