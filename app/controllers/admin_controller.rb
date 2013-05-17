@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
- # before_filter :authenticate_registry!
+  before_filter :authenticate_administrator!
 
   # GET /administrators
   # GET /administrators.json

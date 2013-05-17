@@ -1,2 +1,14 @@
-<h1>Admin#show</h1>
-<p>Find me in app/views/admin/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @administrator.email %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @author.password %>
+</p>
+
+
+<%= link_to 'Back', administrators_path %>
