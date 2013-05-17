@@ -7,6 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   Administrator.create(:email => %{marta.lidon@gmail.com}, :password => 'password', :password_confirmation => 'password')
-  Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!");
-  Feedback.create(content: "Aplicacao Mais ou menos :/");
-  Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/");
+  Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!")
+  Feedback.create(content: "Aplicacao Mais ou menos :/")
+  Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/")
+
+  AreaOfInterest.create(:name => "Bioinformatica")
+  AreaOfInterest.create(name: 'Ciencia e Engenharia de Software (SOFT-PT)')
+  AreaOfInterest.create(name: 'Computacao Grafica')
+  AreaOfInterest.create(name: 'Computacao Movel e Ubiqua (CMU)')
+  AreaOfInterest.create(name: 'Computacao Paralela, Distribuida e de Larga Escala (CPDLA)')
+  AreaOfInterest.create(name: 'Gestao de Dados e Conhecimento')
+  AreaOfInterest.create(name: 'Seguranca de Sistemas de Computadores e Comunicacoes (SSCC)')
+  AreaOfInterest.create(name: 'Sistemas Embebidos e de Tempo-Real (SETR)')
+  AreaOfInterest.create(name: 'Sistemas Inteligentes')

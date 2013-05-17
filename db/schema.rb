@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516122737) do
+ActiveRecord::Schema.define(:version => 20130517084626) do
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(:version => 20130516122737) do
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "type"
     t.datetime "date"
     t.integer  "duration"
     t.integer  "event_group_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "event_kind"
   end
 
   create_table "feedbacks", :force => true do |t|
