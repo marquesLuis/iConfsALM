@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user/maps"
+
  # get "user/program"
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
   post 'administrator' => 'admin#create'
