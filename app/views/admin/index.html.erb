@@ -4,14 +4,11 @@
   <tr>
     <th>Email</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
   <% @administrators.each do |administrator| %>
       <tr>
         <td><%= administrator.email %></td>
-        <td><%= link_to 'Show', administrator %></td>
         <td><%= link_to 'Destroy', administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
