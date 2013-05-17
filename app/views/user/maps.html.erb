@@ -1,2 +1,12 @@
-<h1>User#maps</h1>
-<p>Find me in app/views/user/maps.html.erb</p>
+<h1>Locations:</h1>
+
+<%= collection_select(:title, :locations_id, @locations, :id, :title, {}, {'data-remote' => true}) %>
+
+<div>
+  <div id="location_title">
+    <p><%= @location.title %></p>
+  </div>
+  <div id="location_image">
+    <p><%= image_tag(@location.image) %></p>
+  </div>
+</div>

@@ -11,4 +11,4 @@
   <%= image_tag(@location.image) %>  </p>
 
 <%= link_to 'Back', locations_path %>
-<td><%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure you want to delete this map?' } %>

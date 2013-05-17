@@ -26,6 +26,7 @@ class Person < ActiveRecord::Base
   has_many :received_rejected_requests, :class_name => 'RejectedContact', :foreign_key => :requested_id, :inverse_of => :requested
 
   validates :email, :presence => true
+  validates :email, :uniqueness => true
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
 
   validates :affiliation, :presence => true

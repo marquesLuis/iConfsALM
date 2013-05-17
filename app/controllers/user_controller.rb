@@ -1,8 +1,26 @@
 class UserController < ApplicationController
   before_filter :authenticate_registry!
 
-  def program
+  def maps
+    @locations = Location.all
+    if params[:title]
+      @location = Location.find(params[:title][:locations_id])
+    end
+    if params[:title].nil?
+      @location=Location.first
+    end
+
+    respond_to do |format|
+      format.html # maps.html.erb
+      format.js # maps.js.erb
+      format.json { render json: @locations }
+    end
   end
+
+  def program
+
+  end
+
   def notifications
     @org_notifications = OrgNotification.all
 
