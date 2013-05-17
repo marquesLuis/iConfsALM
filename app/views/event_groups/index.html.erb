@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Date</th>
-    <th>Duration</th>
+    <th>End</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @event_groups.each do |event_group| %>
   <tr>
     <td><%= event_group.date %></td>
-    <td><%= event_group.duration %></td>
+    <td><%= event_group.end %></td>
     <td><%= link_to 'Show', event_group %></td>
     <td><%= link_to 'Edit', edit_event_group_path(event_group) %></td>
     <td><%= link_to 'Destroy', event_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>

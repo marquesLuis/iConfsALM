@@ -1,4 +1,7 @@
 class EventGroupsController < ApplicationController
+
+  before_filter :authenticate_administrator!
+
   # GET /event_groups
   # GET /event_groups.json
   def index

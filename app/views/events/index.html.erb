@@ -4,9 +4,9 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th>Type</th>
-    <th>Date</th>
-    <th>Duration</th>
+    <th>Event kind</th>
+    <th>Begin</th>
+    <th>End</th>
     <th>Event group</th>
     <th></th>
     <th></th>
@@ -17,17 +17,17 @@
   <tr>
     <td><%= event.title %></td>
     <td><%= event.description %></td>
-    <td><%= event.type %></td>
-    <td><%= event.date %></td>
-    <td><%= event.duration %></td>
+    <td><%= event.event_kind %></td>
+    <td><%= event.begin %></td>
+    <td><%= event.end %></td>
     <td><%= event.event_group_id %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', event_group_event_path(@group,event) %></td>
+    <td><%= link_to 'Edit', edit_event_group_event_path(@group,event) %></td>
+    <td><%= link_to 'Destroy', event_group_event_path(@group,event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_group_event_path %>

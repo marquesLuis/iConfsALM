@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :duration, :event_group_id, :title, :type
+  attr_accessible :begin, :description, :end, :event_group_id, :event_kind, :title
 
-  EVENT_TYPES = ['Workshop', 'Paper Session', 'Keynote', 'Social Event', 'Demo', 'Tutorial']
+  SESSION_TYPES = ['Workshop', 'Paper Session', 'Keynote', 'Social Event', 'Demo', 'Tutorial']
 
   has_many :notes_about, :class_name => 'Note', :inverse_of => :about_event
   has_one :speaker, :inverse_of => :events
@@ -10,9 +10,7 @@ class Event < ActiveRecord::Base
   belongs_to :event_group, :inverse_of => :events
 
   validates :title, :presence => true
-  validates :type, :inclusion => EVENT_TYPES
-  validates :date, :presence => true
-  validates :duration, :presence => true
-  validates :duration, :numericality => { :greater_than => 0 }
-
+  validates :event_kind, :inclusion => SESSION_TYPES
+  validates :begin, :presence => true
+  validates :end, :presence => true
 end

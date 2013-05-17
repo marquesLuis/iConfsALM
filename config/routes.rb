@@ -2,6 +2,11 @@ IConfs::Application.routes.draw do
 
   get "user/maps"
 
+  resources :event_groups do
+    resources :events
+  end
+
+
  # get "user/program"
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
   post 'administrator' => 'admin#create'
@@ -67,11 +72,11 @@ IConfs::Application.routes.draw do
 
   resources :org_notifications
 
+
+  resources :maps_versions
+
+
   resources :program_versions
-  
-  resources :event_groups do
-    resources :events
-  end
 
   resources :documents
 
