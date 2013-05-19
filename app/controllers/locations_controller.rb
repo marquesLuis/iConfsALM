@@ -39,7 +39,7 @@ class LocationsController < ApplicationController
   def create
 
     name = params[:upload].original_filename
-    directory = 'app/assets/images/'
+    directory = 'public/images/'
 
     path = File.join(directory, name)
     File.open(path, 'wb') { |f| f.write(params[:upload].read) }

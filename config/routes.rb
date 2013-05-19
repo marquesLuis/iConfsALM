@@ -64,7 +64,8 @@ IConfs::Application.routes.draw do
   resources :area_of_interests
 
 
-  resources :removed_notifications
+  match '/removed_notifications' => 'removed_notifications#index'
+  get 'removed_notifications/index'
 
 
   resources :networkings
@@ -72,8 +73,8 @@ IConfs::Application.routes.draw do
 
   resources :org_notifications
 
-
-  resources :maps_versions
+  match '/maps_versions' => 'maps_versions#index'
+  get 'maps_versions/index'
 
 
   resources :program_versions
@@ -97,9 +98,6 @@ IConfs::Application.routes.draw do
 
 
   resources :notes
-
-
-  resources :removed_notes
 
 
   resources :messages

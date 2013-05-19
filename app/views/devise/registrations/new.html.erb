@@ -33,5 +33,8 @@
           <%= f.submit "Sign up" %></div>
     <% end %>
 
+    <%- if controller_name != 'sessions' %>
+        <%= link_to "Sign in", new_session_path(resource_name) %><br />
+    <% end -%>
 
 <% end %>

@@ -2,11 +2,15 @@
 
 <%= collection_select(:title, :locations_id, @locations, :id, :title, {}, {'data-remote' => true}) %>
 
-<div>
-  <div id="location_title">
-    <p><%= @location.title %></p>
-  </div>
-  <div id="location_image">
-    <p><%= image_tag(@location.image) %></p>
-  </div>
-</div>
+<% if @location %>
+    <div>
+      <div id="location_title">
+        <p><%= @location.title %></p>
+      </div>
+      <div id="location_image">
+        <p><%= image_tag(@location.image) %></p>
+      </div>
+    </div>
+
+
+<% end %>

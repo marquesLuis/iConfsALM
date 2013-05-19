@@ -1,0 +1,14 @@
+<h1>Listing maps_versions</h1>
+
+<table>
+  <tr>
+    <th>Version</th>
+  </tr>
+
+<% @maps_versions.each do |maps_version| %>
+  <tr>
+    <td><%= maps_version.version %></td>
+  </tr>
+<% end %>
+</table>
+
