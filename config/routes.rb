@@ -1,5 +1,9 @@
 IConfs::Application.routes.draw do
 
+  post "user/feedback"
+
+  get "user/organization"
+
   get "user/maps"
 
   resources :event_groups do

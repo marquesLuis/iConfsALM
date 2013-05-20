@@ -21,6 +21,20 @@ class UserController < ApplicationController
 
   end
 
+  def organization
+
+      @feedback = Feedback.new
+
+  end
+  def feedback
+
+    feedback = Feedback.new(params[:feedback])
+    feedback.read=false;
+    feedback.save
+    flash[:notice] = "Feedback has been sent!!"
+    redirect_to :controller=>'user', :action => 'organization', :notice => 'Message here'
+
+  end
   def notifications
     @org_notifications = OrgNotification.all
 
