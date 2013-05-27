@@ -1,0 +1,24 @@
+html =  "<div>"
+
+  <% if @participant.photo.nil? %>
+      html += "<img src= '/images/defaultPerson.jpg' alt='No Photo'>"
+  <% else %>
+      html += "<img src= '/images/people/<%= @participant.photo %>' alt='Photo'>"
+
+  <% end %>
+
+  html += "<p>Name: <%= @participant.prefix %> <%= @participant.first_name %>, <%= @participant.last_name %></p> "
+
+  html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
+
+  html += "<p>Email: <%= @participant.email %> </p> "
+
+  <% if @participant.biography.nil? %>
+      html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
+  <% else %>
+      html += "<p>Personal Description: <%= @participant.biography %> </p> "
+  <% end %>
+
+  html += "</div>"
+
+$("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

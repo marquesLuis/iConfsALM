@@ -1,0 +1,28 @@
+<h1>Contacts</h1>
+<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
+<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
+<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
+<table>
+  <td>
+  <table>
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+    </tr>
+
+    <% @participants.each do |person| %>
+        <tr>
+          <td>
+          <% if person.photo.nil? %>
+              <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => person.id,:remote=> true}, :class => 'Item-Image' %>
+          <% else %>
+              <td><img src= person.photo alt='<%= person.photo %>'></td>
+          <% end %>
+          </td>
+          <td><%= link_to person.prefix<<" "<<person.first_name<<" "<<person.last_name , {:controller => "user", :action => "show_participant", :id => person.id,:remote=> true}, :class => "Item-Text" %></td>
+
+        </tr>
+    <% end %>
+  </table> </td>
+  <td id='profile'></td>
+</table>

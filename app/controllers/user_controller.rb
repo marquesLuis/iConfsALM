@@ -23,24 +23,54 @@ class UserController < ApplicationController
 
   def organization
 
-      @feedback = Feedback.new
+    @feedback = Feedback.new
 
   end
+
   def feedback
 
     feedback = Feedback.new(params[:feedback])
     feedback.read=false;
     feedback.save
     flash[:notice] = "Feedback has been sent!!"
-    redirect_to :controller=>'user', :action => 'organization', :notice => 'Message here'
+    redirect_to :controller => 'user', :action => 'organization', :notice => 'Message here'
 
   end
+
   def notifications
     @org_notifications = OrgNotification.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @org_notifications }
+    end
+  end
+
+  def show_contacts
+    #TODO
+    @self = current_registry.person
+    contacts1 = @self.sent_requests
+    contacts2 = @self.received_requests
+    @contacts = contacts1+contacts2
+
+  end
+
+  def show_pending_contacts
+    @self = current_registry.person
+  end
+
+  def show_all_participants
+    @self = current_registry.person
+    @participants = Person.all
+  end
+
+
+  def show_participant
+    @participant = Person.find(params[:id]);
+
+    respond_to do |format|
+      format.js # maps.js.erb
+      format.json { render json: @locations }
     end
   end
 end

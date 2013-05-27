@@ -1,5 +1,13 @@
 IConfs::Application.routes.draw do
 
+  get "user/show_participant"
+
+  get "user/show_all_participants"
+
+  get "user/show_pending_contacts"
+
+  get "user/show_contacts"
+
   post "user/feedback"
 
   get "user/organization"
