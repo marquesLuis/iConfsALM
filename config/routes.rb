@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  post "user/organization_message"
+
   get "user/show_participant"
 
   get "user/show_all_participants"

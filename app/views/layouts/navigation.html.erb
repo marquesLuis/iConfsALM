@@ -1,4 +1,4 @@
-<%= link_to('Sign out!', destroy_registry_session_path, :method => :delete, :class => 'right') %>
+
 <h1 class='title'>iConfs</h1>
 <div class='Item'>
   <%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Schedule'), {:controller => "user", :action => "program"}, :class => 'Item-Image' %>
@@ -30,4 +30,12 @@
   <%= link_to image_tag("Organization.jpg", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'Item-Image' %>
   <%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "Item-Text" %>
 </div>
+<ul id="menu">
+  <li><%= current_registry.person.first_name %> <%= current_registry.person.last_name %> <%= image_tag("Config.jpg", :border => 0, :alt => '', :title => 'Config') %> </a>
+    <ul>
+      <li>My Profile</li>
+      <li><%= link_to('Sign out!', destroy_registry_session_path, :method => :delete) %></li>
+    </ul>
+  </li>
+</ul>
 <hr>
