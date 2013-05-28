@@ -16,9 +16,6 @@ IConfs::Application.routes.draw do
 
   get "user/show_contacts"
 
-  resources :group_areas
-
-
   post "user/feedback"
 
   get "user/organization"

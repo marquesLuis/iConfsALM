@@ -62,7 +62,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location = Location.find(params[:id])
-    File.delete('app/assets/images/'+@location.image)
+    File.delete('public/images/'+@location.image)
     @location.destroy
     mv = MapsVersion.first
     mv.version = mv.version+1

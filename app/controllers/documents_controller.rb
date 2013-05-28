@@ -40,7 +40,13 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(params[:document])
+
+    name = params[:upload].original_filename
+    directory = 'public/documents/'
+
+    path = File.join(directory, name)
+    File.open(path, 'wb') { |f| f.write(params[:upload].read) }
+    @document = Document.new(:title => params[:document][:title], :description => params[:document][:description],  :link=> name)
 
     respond_to do |format|
       if @document.save
@@ -73,6 +79,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document = Document.find(params[:id])
+    File.delete('public/documents/'+@document.link)
     @document.destroy
 
     respond_to do |format|

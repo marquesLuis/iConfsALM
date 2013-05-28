@@ -8,6 +8,6 @@ class Document < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :description, :presence => true
-  validates :links, :presence => true
+  validates :link, :presence => true
 
 end
