@@ -1,5 +1,11 @@
 IConfs::Application.routes.draw do
 
+  resources :event_documents
+
+
+  resources :documents
+
+
   post "user/organization_message"
 
   get "user/show_participant"
@@ -95,9 +101,6 @@ IConfs::Application.routes.draw do
 
 
   resources :program_versions
-
-  resources :documents
-
 
   resources :authors
 

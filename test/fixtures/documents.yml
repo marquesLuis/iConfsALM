@@ -4,10 +4,8 @@ one:
   title: MyString
   description: MyText
   link: MyString
-  session_id: 1
 
 two:
   title: MyString
   description: MyText
   link: MyString
-  session_id: 1

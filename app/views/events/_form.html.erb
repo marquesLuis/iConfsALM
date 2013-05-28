@@ -31,10 +31,13 @@
     <%= f.label :end %><br />
     <%= f.time_select :end %>
   </div>
-  <div class="field">
-    <%= f.label :event_group_id %><br />
-    <%= f.number_field :event_group_id %>
-  </div>
+    <div class="field">
+      <%= f.label 'All Docs' %><br />
+      <%= collection_select(:document, :id , @docs, :id ,:title,{:include_blank => true}, {:include_blank => true})  %>
+    </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

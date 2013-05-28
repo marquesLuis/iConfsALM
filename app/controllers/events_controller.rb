@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
   before_filter :authenticate_administrator!
   before_filter :get_group
-
+  before_filter :get_docs, :only => [:new, :edit]
 
   def get_group
     @group = EventGroup.find(params[:event_group_id])
+  end
+
+  def get_docs
+    @docs = Document.all
   end
 
   # GET /events
