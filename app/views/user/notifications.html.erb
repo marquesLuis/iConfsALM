@@ -1,5 +1,6 @@
 <h1>Notifications</h1>
 
+<% if @org_notifications.any? %>
 <table>
   <tr>
     <th>Title</th>
@@ -15,3 +16,6 @@
       </tr>
   <% end %>
 </table>
+<% else %>
+    <p>The organization has added no notifications yet!</p>
+<% end %>

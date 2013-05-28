@@ -17,16 +17,18 @@
               <tr>
                 <td>
                   <% if rejected.requester.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                     <td><img src=person.photo alt='<%= rejected.requester.photo %>'></td>
                 <% end %>
                 </td>
-                <td><%= link_to rejected.requester.prefix<<" "<<rejected.requester.first_name<<" "<<rejected.requester.last_name, {:controller => "user_contacts", :action => "show_pending_contact", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td><%= link_to rejected.requester.prefix<<" "<<rejected.requester.first_name<<" "<<rejected.requester.last_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
               </tr>
           <% end %>
         </table>
       </td>
-      <td id='profile_received'></td>
+      <td id='profile'></td>
     </table>
-<% end %>
+<% else %>
+    <p>No contact requests have been rejected!</p>
+<% end%>

@@ -91,6 +91,19 @@ class UserController < ApplicationController
   def show_participant
     @participant = Person.find(params[:id]);
 
+    @rejected = RejectedContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
+
+    @contact1 = TradedContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
+    @contact2 = TradedContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
+
+    @request_sent1 = PendingContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
+    @request_sent2 = PendingContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
+    @request_sent3 = RejectedContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
+
+    @request_accepted =  ( (@contact1.any?) or (@contact2.any?)  )
+    @request_sent =  ( (@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?) )
+    @request_rejected = @rejected.any?
+
     respond_to do |format|
       format.js # maps.js.erb
       format.json { render json: @locations }

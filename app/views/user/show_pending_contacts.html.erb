@@ -31,11 +31,13 @@
       </td>
       <td id='profile_received'></td>
     </table>
+<% else %>
+    <p>You have no incoming contact requests!</p>
 <% end %>
 
 
 
-<% if @pending.any? or @rejected.any?%>
+<% if ((@pending.any?) or (@rejected.any?))%>
     <h3>Sent requests:</h3>
     <table>
       <td>
@@ -75,4 +77,6 @@
       </td>
       <td id='profile'></td>
     </table>
+<% else %>
+    <p>You have no outgoing contact requests!</p>
 <% end %>

@@ -19,11 +19,19 @@ html =  "<div>"
   <% else %>
       html += "<p>Personal Description: <%= @participant.biography %> </p> "
   <% end %>
-
-  html += "<form name='input' id = 'send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
-  html += "<input type='submit' value='Add as contact'>"
-  html += "</form>"
-
+  <% if @request_accepted %>
+      html += "<p>Person is a contact!</p>"
+  <% else if @request_sent %>
+      html += "<p>Contact request is active!</p>"
+  <% else if @request_rejected %>
+      html += "<p>You rejected this contact!</p>"
+  <% else %>
+      html += "<form name='input' id='send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
+      html += "<input type='submit' value='Add as contact'>"
+      html += "</form> "
+          <% end %>
+      <% end %>
+  <% end %>
   html += "</div>"
 
 $("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
