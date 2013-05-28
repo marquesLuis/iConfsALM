@@ -1,8 +1,8 @@
 class EventGroupsController < ApplicationController
 
   before_filter :authenticate_administrator!
-  before_filter :get_areas, :only => [:new, :create, :update, :edit]
-  before_filter :get_locations, :only => [:new, :create, :update, :edit]
+  before_filter :get_areas, :only => [:new, :edit]
+  before_filter :get_locations, :only => [:new, :edit]
 
 
   def get_areas

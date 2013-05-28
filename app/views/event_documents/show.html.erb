@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Document:</b>
+  <%= @event_document.document_id %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%= @event_document.event_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_document_path(@event_document) %> |
+<%= link_to 'Back', event_documents_path %>
