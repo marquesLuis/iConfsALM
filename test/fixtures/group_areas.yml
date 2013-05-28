@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_group_id: 1
+  area_of_interest_id: 1
+
+two:
+  event_group_id: 1
+  area_of_interest_id: 1

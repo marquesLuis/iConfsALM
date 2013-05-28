@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event group:</b>
+  <%= @group_area.event_group_id %>
+</p>
+
+<p>
+  <b>Area of interest:</b>
+  <%= @group_area.area_of_interest_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_area_path(@group_area) %> |
+<%= link_to 'Back', group_areas_path %>

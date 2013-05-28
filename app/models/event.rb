@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   has_one :speaker, :inverse_of => :events
   has_one :person, :through => :speaker
   has_many :documents, :inverse_of => :event
-  belongs_to :event_group, :inverse_of => :events
+  belongs_to :event_group, :inverse_of => :events  , :dependent => :destroy
 
   validates :title, :presence => true
   validates :event_kind, :inclusion => SESSION_TYPES

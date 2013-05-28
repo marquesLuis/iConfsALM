@@ -18,7 +18,7 @@ class EventGroupsControllerTest < ActionController::TestCase
 
   test "should create event_group" do
     assert_difference('EventGroup.count') do
-      post :create, event_group: { date: @event_group.date, end: @event_group.end }
+      post :create, event_group: { date: @event_group.date, end: @event_group.end, location_id: @event_group.location_id }
     end
 
     assert_redirected_to event_group_path(assigns(:event_group))
@@ -35,7 +35,7 @@ class EventGroupsControllerTest < ActionController::TestCase
   end
 
   test "should update event_group" do
-    put :update, id: @event_group, event_group: { date: @event_group.date, end: @event_group.end }
+    put :update, id: @event_group, event_group: { date: @event_group.date, end: @event_group.end, location_id: @event_group.location_id }
     assert_redirected_to event_group_path(assigns(:event_group))
   end
 

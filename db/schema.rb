@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517102638) do
+ActiveRecord::Schema.define(:version => 20130527191528) do
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -64,8 +64,9 @@ ActiveRecord::Schema.define(:version => 20130517102638) do
   create_table "event_groups", :force => true do |t|
     t.datetime "date"
     t.time     "end"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -84,6 +85,13 @@ ActiveRecord::Schema.define(:version => 20130517102638) do
     t.boolean  "read",       :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "group_areas", :force => true do |t|
+    t.integer  "event_group_id"
+    t.integer  "area_of_interest_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "infos", :force => true do |t|

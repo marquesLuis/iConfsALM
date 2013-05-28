@@ -24,3 +24,5 @@
   AreaOfInterest.create(name: 'Sistemas Inteligentes')
 
   MapsVersion.create(version: '1')
+
+  Location.create(title: 'FCT', image: 'FCT.png')

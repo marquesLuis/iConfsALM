@@ -1,5 +1,8 @@
 IConfs::Application.routes.draw do
 
+  resources :event_groups
+
+
   get "user/show_participant"
 
   get "user/show_all_participants"
@@ -17,7 +20,6 @@ IConfs::Application.routes.draw do
   resources :event_groups do
     resources :events
   end
-
 
  # get "user/program"
   match '/newAdmin' => 'admin#new', :as => 'new_admin'

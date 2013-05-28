@@ -10,6 +10,20 @@
   <%= @event_group.end %>
 </p>
 
+<p>
+  <b>Location:</b>
+  <%= @event_group.location_id %>
+</p>
+
+<p>
+  <b>Areas:</b>
+</p>
+<% @event_group.area_of_interests.each do |area| %>
+    <p>
+      <%= area.name %>
+    </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_event_group_path(@event_group) %> |
 <%= link_to 'Back', event_groups_path %>

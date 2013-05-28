@@ -4,6 +4,7 @@
   <tr>
     <th>Date</th>
     <th>End</th>
+    <th>Location</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= event_group.date %></td>
     <td><%= event_group.end %></td>
+    <td><%= event_group.location_id %></td>
     <td><%= link_to 'Show', event_group %></td>
     <td><%= link_to 'Edit', edit_event_group_path(event_group) %></td>
     <td><%= link_to 'Destroy', event_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
