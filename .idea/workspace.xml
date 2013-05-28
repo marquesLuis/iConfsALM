@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/map01.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/map02.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/documents/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/documents/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
@@ -11,16 +9,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/document.rb" afterPath="$PROJECT_DIR$/app/models/document.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documents_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/documents_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/documents/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/documents/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iConfs.iml" afterPath="$PROJECT_DIR$/.idea/iConfs.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/messages/index.html.erb" afterPath="$PROJECT_DIR$/app/views/messages/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/locations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/locations_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/maps.js.erb" afterPath="$PROJECT_DIR$/app/views/user/maps.js.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/navigation.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/navigation.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/locations/show.html.erb" afterPath="$PROJECT_DIR$/app/views/locations/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/messages/show.html.erb" afterPath="$PROJECT_DIR$/app/views/messages/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_participant.erb" afterPath="$PROJECT_DIR$/app/views/user/show_participant.erb" />
@@ -29,7 +24,7 @@
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369736160828" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369737417655" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617346659" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -82,7 +77,7 @@
       <file leaf-file-name="documents_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="6" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.37842464">
+            <state line="56" column="6" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.3797251">
               <folding />
             </state>
           </provider>
@@ -545,7 +540,11 @@
       <created>1369731420090</created>
       <updated>1369731420090</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Admin - Add, remove, edit documents.">
+      <created>1369737421475</created>
+      <updated>1369737421475</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -572,6 +571,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -586,7 +586,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -634,7 +633,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Event_Group MergeBug Resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin - Add, remove, edit documents." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -660,6 +659,7 @@
     <MESSAGE value="Sessions initial" />
     <MESSAGE value="Event_Group" />
     <MESSAGE value="Event_Group MergeBug Resolved" />
+    <MESSAGE value="Admin - Add, remove, edit documents." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -780,7 +780,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="6" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.37842464">
+        <state line="56" column="6" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.3797251">
           <folding />
         </state>
       </provider>
