@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = @group.events.find(params[:id])
+    @self_docs = @event.documents
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,6 +39,8 @@ class EventsController < ApplicationController
   def new
     @event = @group.events.new
 
+    @event_docs = @event.event_documents.build
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -47,12 +50,19 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = @group.events.find(params[:id])
+    @event_docs = @event.event_documents.build
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = @group.events.new(params[:event])
+
+    params[:document][:id].each do |doc|
+      if !doc.empty?
+        @event.event_documents.build(:document_id => doc)
+      end
+    end
 
     respond_to do |format|
       if @event.save
@@ -69,6 +79,14 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = @group.events.find(params[:id])
+
+    @event.event_documents.clear
+
+    params[:document][:id].each do |doc|
+      if !doc.empty?
+        @event.event_documents.build(:document_id => doc)
+      end
+    end
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

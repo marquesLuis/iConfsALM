@@ -52,7 +52,6 @@ class EventGroupsController < ApplicationController
   # GET /event_groups/1/edit
   def edit
     @event_group = EventGroup.find(params[:id])
-    @my_areas = @event_group.area_of_interests
     @group_area = @event_group.group_areas.build
   end
 
@@ -82,8 +81,6 @@ class EventGroupsController < ApplicationController
   # PUT /event_groups/1.json
   def update
     @event_group = EventGroup.find(params[:id])
-    @my_areas = @event_group.area_of_interests
-    @group_area = @event_group.group_areas.build
 
     @event_group.group_areas.clear
 
