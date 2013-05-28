@@ -26,13 +26,9 @@
 
 
 <p>
-  <b>Areas:</b>
+  <%= link_to 'Sessions', event_group_events_path(@event_group) %>
 </p>
-<% @my_areas.each do |area| %>
-    <p>
-      <%= area.name %>
-    </p>
-<% end %>
+
 
 
 <%= link_to 'Edit', edit_event_group_path(@event_group) %> |
