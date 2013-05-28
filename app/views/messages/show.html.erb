@@ -6,15 +6,10 @@
 </p>
 
 <p>
-  <b>Read:</b>
-  <%= @message.read %>
-</p>
-
-<p>
   <b>Person:</b>
-  <%= @message.person_id %>
+  <%= @message.person.email %>
 </p>
 
+<p><%= mail_to @message.person.email, 'Send response', :subject => "Response to message"%></p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

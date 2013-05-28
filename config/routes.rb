@@ -1,7 +1,6 @@
 IConfs::Application.routes.draw do
 
-  resources :event_groups
-
+  post "user/organization_message"
 
   get "user/show_participant"
 

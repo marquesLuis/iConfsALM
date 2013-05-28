@@ -1,10 +1,9 @@
 html =  "<div>"
 
   <% if @participant.photo.nil? %>
-      html += "<img src= '/images/defaultPerson.jpg' alt='No Photo'>"
+      html += "<img src='/images/defaultPerson.jpg' alt='No Photo'>"
   <% else %>
-      html += "<img src= '/images/people/<%= @participant.photo %>' alt='Photo'>"
-
+      html += "<img src='/images/people/<%= @participant.photo %>' alt='Photo'>"
   <% end %>
 
   html += "<p>Name: <%= @participant.prefix %> <%= @participant.first_name %>, <%= @participant.last_name %></p> "
@@ -12,6 +11,8 @@ html =  "<div>"
   html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
 
   html += "<p>Email: <%= @participant.email %> </p> "
+
+  html += "<p>TODO: AREAS DE INTERESSE! FALTA UMA TABELA PROVAVELMENTE!</p>"
 
   <% if @participant.biography.nil? %>
       html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
