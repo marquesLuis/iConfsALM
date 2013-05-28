@@ -33,7 +33,7 @@
 <ul id="menu">
   <li><%= current_registry.person.first_name %> <%= current_registry.person.last_name %> <%= image_tag("Config.jpg", :border => 0, :alt => '', :title => 'Config') %> </a>
     <ul>
-      <li>My Profile</li>
+      <li><%= link_to('Profile!',{:controller => "user_profile", :action => "show"}) %></li>
       <li><%= link_to('Sign out!', destroy_registry_session_path, :method => :delete) %></li>
     </ul>
   </li>

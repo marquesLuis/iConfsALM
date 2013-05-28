@@ -20,7 +20,7 @@
                   <% if to_accept.requester.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                    <img src='/people/<%= to_accept.requester.photo %>' alt='<%= to_accept.requester.photo %>'>
                 <% end %>
                 </td>
                 <td><%= link_to to_accept.requester.prefix<<" "<<to_accept.requester.first_name<<" "<<to_accept.requester.last_name, {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => "Item-Text" %></td>
@@ -53,7 +53,7 @@
                   <% if pending.requested.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                    <img src='/people/<%= pending.requested.photo %>' alt='<%= pending.requested.photo %>'>
                 <% end %>
                 </td>
                 <td><%= link_to pending.requested.prefix<<" "<<pending.requested.first_name<<" "<<pending.requested.last_name, {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => "Item-Text" %></td>
@@ -66,7 +66,7 @@
                   <% if rejected.requested.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <td><img src=person.photo alt='<%= rejected.photo %>'></td>
+                    <img src='/people/<%= rejected.requested.photo %>' alt='<%= rejected.requested.photo %>'>
                 <% end %>
                 </td>
                 <td><%= link_to rejected.requested.prefix<<" "<<rejected.requested.first_name<<" "<<rejected.requested.last_name, {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => "Item-Text" %></td>

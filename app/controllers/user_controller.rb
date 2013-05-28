@@ -105,8 +105,7 @@ class UserController < ApplicationController
     @request_rejected = @rejected.any?
 
     respond_to do |format|
-      format.js # maps.js.erb
-      format.json { render json: @locations }
+      format.js
     end
   end
 end

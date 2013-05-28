@@ -1,5 +1,9 @@
 IConfs::Application.routes.draw do
 
+  post "user_profile/upload_photo"
+
+  get "user_profile/show"
+
   get "user/show_rejected_contacts"
 
   post "user_contacts/reject_request"

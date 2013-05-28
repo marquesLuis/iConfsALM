@@ -1,0 +1,26 @@
+<h1>Profile</h1>
+
+
+<div id="person_photo">
+  <% if @person.photo.nil? %>
+      <img src='/images/defaultPerson.jpg' alt='No Photo'>
+  <% else %>
+      <img src='/people/<%= @person.photo %>' alt='Photo'>
+  <% end %>
+
+  <%= form_tag({:controller => "user_profile", :action => "upload_photo"}, :multipart => true) do %>
+      <p><%= file_field_tag 'upload' %></p>
+      <p><%= submit_tag("Upload") %> </p>
+  <% end %>
+
+
+</div>
+
+
+<div>
+  <p>Name: <%= @person.prefix %> <%= @person.first_name %> <%= @person.last_name %></p>
+
+  <p>Affiliation: <%= @person.affiliation %></p>
+
+  <p>Public mail: <%= @person.email %></p>
+</div>

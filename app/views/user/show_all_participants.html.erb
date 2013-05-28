@@ -17,7 +17,7 @@
           <% if person.photo.nil? %>
               <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => person.id,:remote=> true}, :class => 'Item-Image' %>
           <% else %>
-              <td><img src= person.photo alt='<%= person.photo %>'></td>
+              <img src='/people/<%= person.photo %>' alt='<%= person.photo %>'>
           <% end %>
           </td>
           <td><%= link_to person.prefix<<" "<<person.first_name<<" "<<person.last_name , {:controller => "user", :action => "show_participant", :id => person.id,:remote=> true}, :class => "Item-Text" %></td>

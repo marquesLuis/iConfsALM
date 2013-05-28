@@ -78,3 +78,7 @@ hr {
 table, th, td {
     border: 1px solid black;
 }
+
+#person_photo {
+    float:right;
+}

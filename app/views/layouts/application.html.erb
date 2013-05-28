@@ -5,9 +5,11 @@
   <title>IConfs</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery", "jquery_ujs" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <% if registry_signed_in? == true %>
     <%= render :template => '/layouts/navigation' %>
 <% end %>
