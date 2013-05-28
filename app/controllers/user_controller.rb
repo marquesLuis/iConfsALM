@@ -62,21 +62,29 @@ class UserController < ApplicationController
   end
 
   def show_contacts
-    #TODO
     @self = current_registry.person
-    contacts1 = @self.sent_requests
-    contacts2 = @self.received_requests
-    @contacts = contacts1+contacts2
+    @contacts1 = @self.received_traded_contacts
+    @contacts2 = @self.sent_traded_contacts
+
 
   end
 
   def show_pending_contacts
     @self = current_registry.person
+    @to_accept = PendingContact.where('requested_id = ?', @self.id)
+    @pending = PendingContact.where('requester_id = ?', @self.id)
+    @rejected = RejectedContact.where('requester_id = ?', @self.id)
+
+  end
+
+
+  def show_rejected_contacts
+    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id)
   end
 
   def show_all_participants
     @self = current_registry.person
-    @participants = Person.all
+    @participants = Person.where("id <> ?", @self.id)
   end
 
 

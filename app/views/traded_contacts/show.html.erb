@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Requester:</b>
+  <%= @traded_contact.requester_id %>
+</p>
+
+<p>
+  <b>Requested:</b>
+  <%= @traded_contact.requested_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_traded_contact_path(@traded_contact) %> |
+<%= link_to 'Back', traded_contacts_path %>

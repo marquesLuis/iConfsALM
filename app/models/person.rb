@@ -8,8 +8,10 @@ class Person < ActiveRecord::Base
   has_many :notes, :inverse_of => :person
   has_many :notes_about, :class_name => 'Note', :inverse_of => :about_person
   has_one :registry, :inverse_of => :person
-  has_many :sent_requests, :class_name => 'Contact', :foreign_key => :requester_id, :inverse_of => :requester
-  has_many :received_requests, :class_name => 'Contact', :foreign_key => :requested_id, :inverse_of => :requested
+
+  has_many :received_traded_contacts, :class_name => 'TradedContact', :foreign_key => :requested_id, :inverse_of => :requested
+  has_many :sent_traded_contacts, :class_name => 'TradedContact', :foreign_key => :requester_id, :inverse_of => :requester
+
   has_many :infos, :inverse_of => :person
   has_many :speakers, :inverse_of => :person
   has_many :events, :through => :speakers

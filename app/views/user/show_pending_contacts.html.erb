@@ -1,9 +1,78 @@
 <h1>Contacts</h1>
-<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts'%>
-<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts'%>
-<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants'%>
+<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
+<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
+<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
+<%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
 
-<p><%= @self %></p>
-<p><%= @self.first_name %></p>
-<p><%= @contacts %></p>
+<% if @to_accept.any? %>
+    <h3>Received requests:</h3>
+    <table>
+      <td>
+        <table>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+          </tr>
 
+          <% @to_accept.each do |to_accept| %>
+              <tr>
+                <td>
+                  <% if to_accept.requester.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to to_accept.requester.prefix<<" "<<to_accept.requester.first_name<<" "<<to_accept.requester.last_name, {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => "Item-Text" %></td>
+
+              </tr>
+          <% end %>
+        </table>
+      </td>
+      <td id='profile_received'></td>
+    </table>
+<% end %>
+
+
+
+<% if @pending.any? or @rejected.any?%>
+    <h3>Sent requests:</h3>
+    <table>
+      <td>
+        <table>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+          </tr>
+
+          <% @pending.each do |pending| %>
+              <tr>
+                <td>
+                  <% if pending.requested.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to pending.requested.prefix<<" "<<pending.requested.first_name<<" "<<pending.requested.last_name, {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => "Item-Text" %></td>
+
+              </tr>
+          <% end %>
+          <% @rejected.each do |rejected| %>
+              <tr>
+                <td>
+                  <% if rejected.requested.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= rejected.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to rejected.requested.prefix<<" "<<rejected.requested.first_name<<" "<<rejected.requested.last_name, {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => "Item-Text" %></td>
+
+              </tr>
+          <% end %>
+        </table>
+      </td>
+      <td id='profile'></td>
+    </table>
+<% end %>

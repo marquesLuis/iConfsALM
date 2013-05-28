@@ -1,0 +1,32 @@
+html =  "<div>"
+
+<% if @participant.photo.nil? %>
+html += "<img src='/images/defaultPerson.jpg' alt='No Photo'>"
+<% else %>
+html += "<img src='/images/people/<%= @participant.photo %>' alt='Photo'>"
+<% end %>
+
+html += "<p>Name: <%= @participant.prefix %> <%= @participant.first_name %>, <%= @participant.last_name %></p> "
+
+html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
+
+html += "<p>Email: <%= @participant.email %> </p> "
+
+html += "<p>TODO: AREAS DE INTERESSE! FALTA UMA TABELA PROVAVELMENTE!</p>"
+
+<% if @participant.biography.nil? %>
+html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
+<% else %>
+html += "<p>Personal Description: <%= @participant.biography %> </p> "
+<% end %>
+
+html += "<form name='input' id = 'send_accept_button' action='/user_contacts/accept_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
+html += "<input type='submit' value='Accept'>"
+html += "</form>"
+
+html += "<form name='input' id = 'send_reject_button' action='/user_contacts/reject_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
+html += "<input type='submit' value='Reject'>"
+html += "</form>"
+html += "</div>"
+
+$("#profile_received").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

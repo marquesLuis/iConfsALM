@@ -1,5 +1,18 @@
 IConfs::Application.routes.draw do
 
+  resources :traded_contacts
+
+
+  get "user/show_rejected_contacts"
+
+  post "user_contacts/reject_request"
+
+  post "user_contacts/accept_request"
+
+  get "user_contacts/show_pending_contact"
+
+  post "user_contacts/send_request"
+
   resources :event_documents
 
 

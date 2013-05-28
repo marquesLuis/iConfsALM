@@ -2,8 +2,45 @@
 <%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts'%>
 <%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts'%>
 <%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants'%>
+<%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
 
-<p><%= @self %></p>
-<p><%= @self.first_name %></p>
-<p><%= @contacts %></p>
+<% if @contacts1.any? or @contacts2.any?%>
+    <h3>Contacts:</h3>
+    <table>
+      <td>
+        <table>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+          </tr>
+          <% @contacts2.each do |traded| %>
+              <tr>
+                <td>
+                  <% if traded.requested.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to traded.requested.prefix<<" "<<traded.requested.first_name<<" "<<traded.requested.last_name, {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => "Item-Text" %></td>
 
+              </tr>
+          <% end %>
+          <% @contacts1.each do |traded| %>
+              <tr>
+                <td>
+                  <% if traded.requester.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= person.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to traded.requester.prefix<<" "<<traded.requester.first_name<<" "<<traded.requester.last_name, {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => "Item-Text" %></td>
+
+              </tr>
+          <% end %>
+        </table>
+      </td>
+      <td id='profile'></td>
+    </table>
+<% end %>

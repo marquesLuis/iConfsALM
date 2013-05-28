@@ -1,0 +1,32 @@
+<h1>Rejected Contacts</h1>
+<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
+<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
+<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
+<%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+
+<% if @rejected.any? %>
+    <table>
+      <td>
+        <table>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+          </tr>
+
+          <% @rejected.each do |rejected| %>
+              <tr>
+                <td>
+                  <% if rejected.requester.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
+                  <% else %>
+                    <td><img src=person.photo alt='<%= rejected.requester.photo %>'></td>
+                <% end %>
+                </td>
+                <td><%= link_to rejected.requester.prefix<<" "<<rejected.requester.first_name<<" "<<rejected.requester.last_name, {:controller => "user_contacts", :action => "show_pending_contact", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
+              </tr>
+          <% end %>
+        </table>
+      </td>
+      <td id='profile_received'></td>
+    </table>
+<% end %>

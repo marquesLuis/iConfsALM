@@ -1,0 +1,25 @@
+<%= form_for(@traded_contact) do |f| %>
+  <% if @traded_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@traded_contact.errors.count, "error") %> prohibited this traded_contact from being saved:</h2>
+
+      <ul>
+      <% @traded_contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :requester_id %><br />
+    <%= f.number_field :requester_id %>
+  </div>
+  <div class="field">
+    <%= f.label :requested_id %><br />
+    <%= f.number_field :requested_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
