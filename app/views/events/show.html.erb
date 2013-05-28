@@ -30,6 +30,15 @@
   <%= @event.event_group_id %>
 </p>
 
+<p>
+  <b>Docs:</b>
+</p>
+<% @event.documents.each do |doc| %>
+    <p>
+      <%= doc.title %>
+    </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_event_group_event_path(@event) %> |
 <%= link_to 'Back', event_group_events_path %>

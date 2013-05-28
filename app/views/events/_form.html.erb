@@ -33,7 +33,7 @@
   </div>
     <div class="field">
       <%= f.label 'All Docs' %><br />
-      <%= collection_select(:document, :id , @docs, :id ,:title,{:include_blank => true}, {:include_blank => true})  %>
+      <%= collection_select(:document, :id , @docs, :id ,:title,{:include_blank => true}, {:multiple => true,:include_blank => true})  %>
     </div>
 
 
