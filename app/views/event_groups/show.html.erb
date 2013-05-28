@@ -25,5 +25,15 @@
 <% end %>
 
 
+<p>
+  <b>Areas:</b>
+</p>
+<% @my_areas.each do |area| %>
+    <p>
+      <%= area.name %>
+    </p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_event_group_path(@event_group) %> |
 <%= link_to 'Back', event_groups_path %>

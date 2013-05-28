@@ -10,6 +10,9 @@ IConfs::Application.routes.draw do
 
   get "user/show_contacts"
 
+  resources :group_areas
+
+
   post "user/feedback"
 
   get "user/organization"
@@ -19,6 +22,7 @@ IConfs::Application.routes.draw do
   resources :event_groups do
     resources :events
   end
+
 
  # get "user/program"
   match '/newAdmin' => 'admin#new', :as => 'new_admin'
