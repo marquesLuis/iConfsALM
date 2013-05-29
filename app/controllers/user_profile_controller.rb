@@ -1,10 +1,36 @@
 class UserProfileController < ApplicationController
   def show
     @person = current_registry.person
+    @interests = PersonInterest.where(:person_id => @person.id)
+    x=[]
+    @interests.each do |i|
+      puts i.area_of_interest_id
+      x.append(i.area_of_interest_id)
+    end
+    if x.length==0
+      @otherInterests =AreaOfInterest.all
+    else
+      @otherInterests = AreaOfInterest.where('id not in (?)', x)
+    end
+
+
   end
 
   def upload_photo
+
     @person = current_registry.person
+    @interests = PersonInterest.where(:person_id => @person.id)
+    x=[]
+    @interests.each do |i|
+      puts i.area_of_interest_id
+      x.append(i.area_of_interest_id)
+    end
+    if x.length==0
+      @otherInterests =AreaOfInterest.all
+    else
+      @otherInterests = AreaOfInterest.where('id not in (?)', x)
+    end
+
     if params[:upload]
       name = @person.email + params[:upload].original_filename
 
@@ -20,5 +46,17 @@ class UserProfileController < ApplicationController
     end
 
 
+  end
+
+  def update_interests
+    PersonInterest.where(:person_id => current_registry.person.id).destroy_all
+    params[:interests].each do |interest|
+      pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)
+      pi.save
+    end
+
+    respond_to do |format|
+      format.js # update_interests.js.erb
+    end
   end
 end

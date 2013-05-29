@@ -21,7 +21,10 @@ class Person < ActiveRecord::Base
   has_many :org_notifications
   has_many :read_networking, :class_name => 'Networking'
   has_many :networkings, :inverse_of => :person
-  has_many :area_of_interests, :inverse_of => :people
+
+  has_many :person_interests
+  has_many :area_of_interests, :through => :person_interests
+
   has_many :sent_pending_requests, :class_name => 'PendingContact', :foreign_key => :requester_id, :inverse_of => :requester
   has_many :received_pending_requests, :class_name => 'PendingContact', :foreign_key => :requested_id, :inverse_of => :requested
   has_many :sent_rejected_requests, :class_name => 'RejectedContact', :foreign_key => :requester_id, :inverse_of => :requester

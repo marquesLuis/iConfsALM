@@ -16,14 +16,17 @@ ul {
     padding: 0;
     list-style: none;
 }
+
 ul li {
     display: block;
     position: relative;
     float: left;
 }
+
 li ul {
     display: none;
 }
+
 ul li a {
     display: block;
     padding: 5px 15px 5px 15px;
@@ -35,13 +38,10 @@ li:hover ul {
     display: block;
     position: absolute;
 }
+
 li:hover li {
     float: none;
 }
-
-
-
-
 
 .right {
     float: right;
@@ -80,5 +80,9 @@ table, th, td {
 }
 
 #person_photo {
-    float:right;
+    float: right;
+}
+
+.border {
+    border: 1px solid black;
 }

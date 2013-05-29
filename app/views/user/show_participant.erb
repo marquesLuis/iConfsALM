@@ -12,7 +12,17 @@ html =  "<div>"
 
   html += "<p>Email: <%= @participant.email %> </p> "
 
-  html += "<p>TODO: AREAS DE INTERESSE! FALTA UMA TABELA PROVAVELMENTE!</p>"
+  html += "<div class='border'>"
+  html += "<p>Interests: </p>"
+  html += "<p>"
+  <% @interests.each do |interest| %>
+      html += "<%= interest.area_of_interest.name %>, "
+  <% end %>
+  html += "</p>"
+
+
+  html += "</div>"
+
 
   <% if @participant.biography.nil? %>
       html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "

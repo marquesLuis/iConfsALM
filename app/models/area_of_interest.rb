@@ -6,7 +6,8 @@ class AreaOfInterest < ActiveRecord::Base
   has_many :group_areas
   has_many :event_groups, :through => :group_areas
   has_many :networkings, :inverse_of => :area_of_interests
-  has_many :people, :inverse_of => :area_of_interests
+  has_many :person_interests
+  has_many :people, :through => :person_interests
 
   validates :name, :presence => true
   validates :name, :length => { :minimum => 1 }

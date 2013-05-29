@@ -1,5 +1,10 @@
 IConfs::Application.routes.draw do
 
+  resources :person_interests
+
+
+  post "user_profile/update_interests"
+
   post "user_profile/upload_photo"
 
   get "user_profile/show"

@@ -1,8 +1,10 @@
-<h1>Contacts</h1>
+<h1>Participants</h1>
 <%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
 <%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
 <%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
 <%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+
+<% if @participants.any? %>
 <table>
   <td>
   <table>
@@ -27,3 +29,6 @@
   </table> </td>
   <td id='profile'></td>
 </table>
+<% else %>
+    <p>No other participants!</p>
+<% end %>

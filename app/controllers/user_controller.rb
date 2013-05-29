@@ -104,6 +104,8 @@ class UserController < ApplicationController
     @request_sent =  ( (@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?) )
     @request_rejected = @rejected.any?
 
+    @interests = PersonInterest.where(:person_id => @participant.id)
+
     respond_to do |format|
       format.js
     end
