@@ -26,3 +26,5 @@
   MapsVersion.create(version: '1')
 
   Location.create(title: 'FCT', image: 'FCT.png')
+
+  Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email:'marta.lidon@gmail.com');

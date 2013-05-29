@@ -5,7 +5,7 @@ class UpdateController < ApplicationController
   def login
     @current_registry = current_registry
     respond_to do |format|
-      format.json
+      format.json { render json: @current_registry }
     end
   end
 end
