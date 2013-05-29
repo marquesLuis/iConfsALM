@@ -1,5 +1,9 @@
 IConfs::Application.routes.draw do
 
+  get "update/update"
+
+  get "update/login"
+
   post "user_profile/update_biography"
 
   post "user_profile/update_interests"
@@ -80,7 +84,7 @@ IConfs::Application.routes.draw do
   resources :locations
 
   namespace :registry do
-    root :to => 'home#index'
+    root :to => 'update#login'
   end
 
   devise_for :registries, :controllers => {:registrations => "registrations"}
@@ -88,8 +92,6 @@ IConfs::Application.routes.draw do
   devise_for :registries
 
   devise_for :administrators
-
-  #root :to => 'admin#adminhome'
 
   root :to => 'user#program'
 
