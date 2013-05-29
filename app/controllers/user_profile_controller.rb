@@ -59,4 +59,8 @@ class UserProfileController < ApplicationController
       format.js # update_interests.js.erb
     end
   end
+
+  def update_biography
+    current_registry.person.update_attribute(:biography, params[:biography])
+  end
 end

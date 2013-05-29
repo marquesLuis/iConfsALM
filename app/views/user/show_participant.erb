@@ -24,13 +24,34 @@ html =  "<div>"
   html += "</div>"
 
 
+  html += "<div class='border'>"
   <% if @participant.biography.nil? %>
       html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
   <% else %>
-      html += "<p>Personal Description: <%= @participant.biography %> </p> "
+      html += "<p>Personal Description:</p>"
+      <% @participant.biography.split(/\r\n/).each do |line| %>
+          html += "<p><%= line %></p>"
+      <% end %>
   <% end %>
   <% if @request_accepted %>
-      html += "<p>Person is a contact!</p>"
+      html += "<div class='border'>"
+      html += "<p>Person's contacts:</p>"
+
+  html += "<table>"
+  html += "<tr>"
+  html += "<th>Type</th>"
+  html += "<th>Value</th>"
+  html += "</tr>"
+
+    <% @infos.each do |info| %>
+      html += "<tr>"
+  html += "<td><%= info.info_type %></td>"
+  html += "<td><%= info.value %></td>"
+  html += "</tr>"
+    <% end %>
+  html += "</table>"
+
+      html += "</div>"
   <% else if @request_sent %>
       html += "<p>Contact request is active!</p>"
   <% else if @request_rejected %>
@@ -43,5 +64,7 @@ html =  "<div>"
       <% end %>
   <% end %>
   html += "</div>"
+
+html += "</div>"
 
 $("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

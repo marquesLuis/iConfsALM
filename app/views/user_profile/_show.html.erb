@@ -39,11 +39,47 @@
             <%= check_box_tag('interests[]', interest.id, false) %>
           </div>
       <% end %>
-
       <div class="actions">
         <%= submit_tag("Update") %>
       </div>
 
   <% end %>
+</div>
 
+
+<div class="border">
+  <%= form_tag({:controller => "user_profile", :action => "update_biography"}, :method => 'post', :remote => true) do %>
+      <div class="field">
+        <p><%= label_tag('biography', 'Biography:') %>  </p>
+        <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
+      </div>
+      <div class="actions">
+        <%= submit_tag("Update") %>
+      </div>
+
+  <% end %>
+</div>
+
+
+<div class="border">
+  <p>Private Contacts</p>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+
+    <% @person.infos.each do |info| %>
+        <tr>
+          <td><%= info.info_type %></td>
+          <td><%= info.value %></td>
+          <td><%= link_to 'Destroy', info, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+  </table>
+
+  <br/>
+
+  <%= link_to 'New Info', new_info_path %>
 </div>

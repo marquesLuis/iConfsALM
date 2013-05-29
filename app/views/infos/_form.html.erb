@@ -12,16 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :info_type %><br />
+    <%= f.text_field :info_type %>
   </div>
   <div class="field">
     <%= f.label :value %><br />
     <%= f.text_field :value %>
   </div>
   <div class="field">
-    <%= f.label :person_id %><br />
-    <%= f.number_field :person_id %>
+    <%= f.number_field :person_id, :value => current_registry.person.id, :type=>'hidden' %>
   </div>
   <div class="actions">
     <%= f.submit %>

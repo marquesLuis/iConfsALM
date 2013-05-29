@@ -106,6 +106,8 @@ class UserController < ApplicationController
 
     @interests = PersonInterest.where(:person_id => @participant.id)
 
+    @infos = @participant.infos
+
     respond_to do |format|
       format.js
     end

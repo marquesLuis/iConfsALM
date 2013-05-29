@@ -17,7 +17,10 @@ html += "<p>TODO: AREAS DE INTERESSE! FALTA UMA TABELA PROVAVELMENTE!</p>"
 <% if @participant.biography.nil? %>
 html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
 <% else %>
-html += "<p>Personal Description: <%= @participant.biography %> </p> "
+html += "<p>Personal Description:</p>"
+<% @participant.biography.split(/\r\n/).each do |line| %>
+html += "<p><%= line %></p>"
+<% end %>
 <% end %>
 
 html += "<form name='input' id = 'send_accept_button' action='/user_contacts/accept_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
