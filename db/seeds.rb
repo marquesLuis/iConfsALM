@@ -27,4 +27,4 @@
 
   Location.create(title: 'FCT', image: 'FCT.png')
 
-  Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email:'marta.lidon@gmail.com');
+  Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email:'marta.lidon@gmail.com', signup_code: '1')

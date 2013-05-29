@@ -3,9 +3,7 @@ class UpdateController < ApplicationController
   end
 
   def login
-    puts params[:id]
-    puts :id
-    @registry = Registry.find(params[:id])
+    @registry = Registry.find(1)
     respond_to do |format|
       format.json { render json: @registry }
     end

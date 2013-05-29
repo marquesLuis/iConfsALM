@@ -84,7 +84,7 @@ IConfs::Application.routes.draw do
   resources :locations
 
   namespace :registry do
-    root :to => 'update#login', :id => current_registry.id
+    root :to => 'update#login'
   end
 
   devise_for :registries, :controllers => {:registrations => "registrations"}
