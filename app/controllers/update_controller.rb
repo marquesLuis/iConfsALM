@@ -6,7 +6,7 @@ class UpdateController < ApplicationController
   end
 
   def login
-    @person = Person.find_all_by_email(params[:email]).first
+    @person = Person.find_all_by_email(params[:registry][:email]).first
 
 
 
