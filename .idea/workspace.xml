@@ -4,6 +4,7 @@
     <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/infos/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/infos/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_profile/_show.html.erb" afterPath="$PROJECT_DIR$/app/views/user_profile/_show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/area_of_interest.rb" afterPath="$PROJECT_DIR$/app/models/area_of_interest.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documents_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/documents_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iConfs.iml" afterPath="$PROJECT_DIR$/.idea/iConfs.iml" />
@@ -20,7 +21,7 @@
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369917931014" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369918737650" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617346659" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -92,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/event_document.rb" />
         <option value="$PROJECT_DIR$/app/views/events/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/event_groups_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
@@ -108,6 +108,7 @@
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/locations_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/documents_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
@@ -160,6 +161,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -563,7 +592,11 @@
       <created>1369917934622</created>
       <updated>1369917934622</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Bug squashed on uploading files.">
+      <created>1369918745650</created>
+      <updated>1369918745650</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -652,7 +685,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="User - Create networking&#10;User - View all networking done&#10;USer - View selected networking - init." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug squashed on uploading files." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -687,6 +720,7 @@
     <MESSAGE value="before_filter on user_contacts_controller" />
     <MESSAGE value="Update no IPHONE" />
     <MESSAGE value="User - Create networking&#10;User - View all networking done&#10;USer - View selected networking - init." />
+    <MESSAGE value="Bug squashed on uploading files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -694,21 +728,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/people/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/registry.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/devise.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="14" selection-start="9598" selection-end="9610" vertical-scroll-proportion="0.015806112" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/org_notifications_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="4" selection-start="739" selection-end="855" vertical-scroll-proportion="0.020021075">
@@ -770,20 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="54" selection-start="938" selection-end="938" vertical-scroll-proportion="0.38418078">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/locations_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="51" selection-start="869" selection-end="921" vertical-scroll-proportion="0.19209039">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_networking/show_selection.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -795,6 +800,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="41" selection-start="676" selection-end="676" vertical-scroll-proportion="1.3492063">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="4" selection-start="2221" selection-end="2221" vertical-scroll-proportion="0.42372882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/locations_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="42" selection-start="1680" selection-end="1805" vertical-scroll-proportion="0.2881356">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/rails">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.24011299">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="28" selection-start="194" selection-end="194" vertical-scroll-proportion="0.3361582">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="32" selection-start="746" selection-end="746" vertical-scroll-proportion="0.6638418">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

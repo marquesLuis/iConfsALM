@@ -79,7 +79,11 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document = Document.find(params[:id])
-    File.delete('public/documents/'+@document.link)
+
+    directory = Rails.root.join('public','documents');
+
+    path = File.join(directory, @document.link)
+    File.delete(path)
     @document.destroy
 
     respond_to do |format|
