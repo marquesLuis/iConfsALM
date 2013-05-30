@@ -1,4 +1,4 @@
-html =  "<div>"
+html = "<div>"
 
 html += "<p>Title: <%= @networking.title %> </p> "
 html += "<p>Content:</p>"
@@ -6,13 +6,22 @@ html += "<p>Content:</p>"
 html += "<p><%= line %></p>"
 <% end %>
 
+<% if @networking.area_of_interests.any? %>
+
+<% len = @networking.area_of_interests.length %>
+
 html += "<p>Interests: </p>"
 html += "<p>"
-<% @networking.area_of_interests.each do |interest| %>
-    html += "<%= interest.name %>, "
+<% @networking.area_of_interests.each_with_index do |interest, index| %>
+<% if index+1 == len   %>
+html += "<%= interest.name %>."
+<% else    %>
+html += "<%= interest.name %>, "
+<% end %>
 <% end %>
 html += "</p>"
+<% end %>
 
 html += "</div>"
 
-$("#networking").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+$("#networking").fadeOut("slow", function () { $(this).empty().append(html).fadeIn(); })

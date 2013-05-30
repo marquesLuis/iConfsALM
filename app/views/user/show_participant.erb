@@ -13,13 +13,24 @@ html =  "<div>"
   html += "<p>Email: <%= @participant.email %> </p> "
 
   html += "<div class='border'>"
-  html += "<p>Interests: </p>"
-  html += "<p>"
-  <% @interests.each do |interest| %>
-      html += "<%= interest.area_of_interest.name %>, "
+  <% if @interests.any? %>
+
+      <% len = @interests.length %>
+
+      html += "<p>Interests: </p>"
+      html += "<p>"
+  <% @interests.each_with_index do |interest, index| %>
+      <% if index+1 == len   %>
+          html += "<%= interest.name %>."
+      <% else    %>
+          html += "<%= interest.name %>, "
+      <% end %>
   <% end %>
   html += "</p>"
 
+  <% else %>
+      html += "<p><%= @participant.first_name %> has not added any interests yet! </p> "
+  <% end %>
 
   html += "</div>"
 
@@ -49,9 +60,10 @@ html =  "<div>"
   html += "<td><%= info.value %></td>"
   html += "</tr>"
     <% end %>
+
   html += "</table>"
 
-      html += "</div>"
+  html += "</div>"
   <% else if @request_sent %>
       html += "<p>Contact request is active!</p>"
   <% else if @request_rejected %>

@@ -104,7 +104,7 @@ class UserController < ApplicationController
     @request_sent =  ( (@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?) )
     @request_rejected = @rejected.any?
 
-    @interests = PersonInterest.where(:person_id => @participant.id)
+    @interests = @participant.area_of_interests
 
     @infos = @participant.infos
 

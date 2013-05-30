@@ -10,7 +10,6 @@ class UserNetworkingController < ApplicationController
     num = params[:selection]
     if num =='-1'
       #user preferences
-      puts "XXX"
 
       @areas = Person.find(current_registry.person_id).area_of_interests
       @rel = NetworkingInterest.where('area_of_interest_id in (?)', @areas).pluck(:networking_id)
@@ -19,7 +18,6 @@ class UserNetworkingController < ApplicationController
       puts @rel
       puts @showing
 
-      puts "YYY"
     else
       if num =='0'
         #all
@@ -46,20 +44,25 @@ class UserNetworkingController < ApplicationController
     @networking.person_id=current_registry.person_id
     @networking.title = params[:networking][:title]
     @networking.content = params[:networking][:content]
+    @areas_of_interest = AreaOfInterest.all
     if @networking.save
-
-      params[:interests].each do |interest|
-        ni = NetworkingInterest.new(:networking_id => @networking.id, :area_of_interest_id => interest)
-        ni.save
+      if params[:interests]
+        params[:interests].each do |interest|
+          ni = NetworkingInterest.new(:networking_id => @networking.id, :area_of_interest_id => interest)
+          ni.save
+        end
       end
 
       respond_to do |format|
         format.html { redirect_to '/user_networking/index/', notice: 'Networking was successfully created.' }
         format.json { render json: @networking, status: :created, location: @networking }
+
       end
     else
-      format.html { render action: 'new' }
-      format.json { render json: @networking.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { render action: 'new' }
+        format.json { render json: @networking.errors, status: :unprocessable_entity }
+      end
     end
   end
 

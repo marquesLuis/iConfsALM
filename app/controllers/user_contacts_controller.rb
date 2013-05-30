@@ -16,6 +16,7 @@ class UserContactsController < ApplicationController
 
   def show_pending_contact
     @participant = Person.find(params[:id]);
+    @interests = @participant.area_of_interests
 
     respond_to do |format|
       format.js # send_request.js.erb
