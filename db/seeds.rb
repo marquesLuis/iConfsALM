@@ -28,3 +28,4 @@
   Location.create(title: 'FCT', image: 'FCT.png')
 
   Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email:'marta.lidon@gmail.com', signup_code: '1')
+  Registry.create(email: 'marta.lidon@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '1')
