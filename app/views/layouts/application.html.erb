@@ -3,29 +3,31 @@
 
 <head>
   <title>IConfs</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery", "jquery_ujs" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class='menu'>
+  <% if registry_signed_in? == true %>
+      <%= render :template => '/layouts/navigation' %>
+  <% end %>
+  <% if administrator_signed_in? == true %>
+      <h1>iConfs - GOD MODE</h1>
+      <%= link_to('Home', "/administrator/", :method => :get) %>
+      <%= link_to('Sign out!', destroy_administrator_session_path, :method => :delete) %>
+  <% end %>
+</div>
+<div class="body">
+  <% if flash[:alert] %>
+      <p class="flash-error"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
 
-<% if registry_signed_in? == true %>
-    <%= render :template => '/layouts/navigation' %>
-<% end %>
-<% if administrator_signed_in? == true %>
-    <h1>iConfs - GOD MODE</h1>
-    <%= link_to('Home', "/administrator/", :method => :get) %>
-    <%= link_to('Sign out!', destroy_administrator_session_path, :method => :delete) %>
-<% end %>
-<% if flash[:alert] %>
-    <p class="flash-error"><%= flash[:alert] %></p>
-<% end %>
-<% if flash[:notice] %>
-    <p class="flash-notice"><%= flash[:notice] %></p>
-<% end %>
-
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>

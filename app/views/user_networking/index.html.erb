@@ -1,0 +1,48 @@
+<h1>Networking</h1>
+
+<div>
+  <div>
+    <form name='selection' action='/user_networking/show_selection' method='post' data-remote='true'>
+      <select name="selection">
+        <option value="-1">My Preferences</option>
+        <option value="0">All</option>
+        <% @areas_of_interest.each do |area| %>
+            <option value=<%= area.id %>><%= area.name %></option>
+        <% end %>
+      </select>
+      <input type='submit' value='Show'>
+    </form>
+  </div>
+  <div>
+    <%= link_to 'New', {:controller => "user_networking", :action => "new"} %></td>
+
+  </div>
+</div>
+<div id='networking_list'>
+
+  <% if @showing.any? %>
+      <table>
+        <td>
+          <table>
+            <tr>
+              <th>Creator</th>
+              <th>Title</th>
+            </tr>
+
+            <% @showing.each do |networking| %>
+                <tr>
+                  <td><%= networking.person.prefix %><%= networking.person.first_name %><%= networking.person.last_name %></td>
+                  <td><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id}, :method => 'post', :remote => true %></td>
+                  <% if networking.person_id == current_registry.person_id %>
+                      <td><%= link_to 'Delete', {:controller => "user_networking", :action => "delete", :id => networking.id}, :method => 'post' %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+          </table>
+        </td>
+        <td id='networking'></td>
+      </table>
+  <% else %>
+      <p>Nothing to show!</p>
+  <% end %>
+</div>

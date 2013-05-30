@@ -1,5 +1,17 @@
 IConfs::Application.routes.draw do
 
+  post "user_networking/show"
+
+  post "user_networking/delete"
+
+  post "user_networking/create"
+
+  get "user_networking/new"
+
+  post "user_networking/show_selection"
+
+  get "user_networking/index"
+
   get "update/update"
 
   get "update/login"

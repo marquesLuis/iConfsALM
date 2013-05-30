@@ -11,6 +11,10 @@
  *= require_self
  *#= #require_tree .
  */
+
+body {
+    background-color: #CCCCCC;
+}
 ul {
     margin: 0;
     padding: 0;
@@ -55,17 +59,15 @@ li:hover li {
     font-size: 3em;
 }
 
-.Item {
-    display: inline;
+.nav_bar {
     float: left;
-    margin-right: 15px;
 }
 
-.Item-Image {
+.nav_bar_image {
 
 }
 
-.Item-Text {
+.nav_bar_link {
     float: left;
     clear: both;
     text-align: center;
@@ -74,8 +76,21 @@ li:hover li {
 hr {
     clear: both;
 }
-
-table, th, td {
+.menu {
+    background-color: #AAAAAA;
+}
+.menu a {
+    color: #EEEEEE;
+}
+.body a {
+    color: #000000;
+}
+.body {
+    margin:0px auto;
+    width:900px;
+    background-color: #BBBBBB;
+}
+.body table, .body th, .body td {
     border: 1px solid black;
 }
 
@@ -85,4 +100,7 @@ table, th, td {
 
 .border {
     border: 1px solid black;
+}
+.control {
+    float:right;
 }

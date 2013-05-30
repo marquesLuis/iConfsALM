@@ -34,9 +34,9 @@ class UserController < ApplicationController
   def feedback
 
     feedback = Feedback.new(params[:feedback])
-    feedback.read=false;
+    feedback.read=false
     feedback.save
-    flash[:notice] = "Feedback has been sent!!"
+    flash[:notice] = 'Feedback has been sent!!'
     redirect_to :controller => 'user', :action => 'organization', :notice => 'Message here'
 
   end
@@ -44,10 +44,10 @@ class UserController < ApplicationController
   def organization_message
 
     message = Message.new(params[:message])
-    message.read=false;
-    message.person=current_registry.person;
+    message.read=false
+    message.person=current_registry.person
     message.save
-    flash[:notice] = "Feedback has been sent!!"
+    flash[:notice] = 'Feedback has been sent!!'
     redirect_to :controller => 'user', :action => 'organization', :notice => 'Message here'
 
   end
@@ -84,7 +84,7 @@ class UserController < ApplicationController
 
   def show_all_participants
     @self = current_registry.person
-    @participants = Person.where("id <> ?", @self.id)
+    @participants = Person.where('id <> ?', @self.id)
   end
 
 

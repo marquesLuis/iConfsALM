@@ -1,0 +1,32 @@
+<h1>New Topic</h1>
+<%= form_for(@networking, :url => url_for(:controller => 'user_networking', :action => 'create')) do |f| %>
+    <% if @networking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@networking.errors.count, "error") %> prohibited this info from being saved:</h2>
+
+          <ul>
+            <% @networking.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content %>
+    </div>
+    <% @areas_of_interest.each do |interest| %>
+        <div class="field">
+          <%= label_tag(interest.id, interest.name) %>
+          <%= check_box_tag('interests[]', interest.id) %>
+        </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

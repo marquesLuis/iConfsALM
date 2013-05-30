@@ -1,39 +1,32 @@
-
 <h1 class='title'>iConfs</h1>
-<div class='Item'>
-  <%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Schedule'), {:controller => "user", :action => "program"}, :class => 'Item-Image' %>
-  <%= link_to "Schedule", {:controller => "user", :action => "program"}, :class => "Item-Text" %>
-</div>
-<div class='Item'>
-  <%= link_to image_tag("Notifications.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'Item-Image' %>
-  <%= link_to "Notifications", {:controller => "user", :action => "notifications"}, :class => "Item-Text" %>
-</div>
-<div class='Item'>
-  <%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'Item-Image' %>
-  <%= link_to "Networking", {:controller => "user", :action => "notifications"}, :class => "Item-Text" %>
 
-</div>
-<div class='Item'>
-  <%= link_to image_tag("Contacts.jpg", :border => 0, :alt => '', :title => 'Contacts'), {:controller => "user", :action => "show_contacts"}, :class => 'Item-Image' %>
-  <%= link_to "Contacts", {:controller => "user", :action => "show_contacts"}, :class => "Item-Text" %>
+<table class = 'nav_bar'>
+  <tr>
+    <td><%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Schedule'), {:controller => "user", :action => "program"}, :class => 'nav_bar_image' %></td>
+    <td><%= link_to image_tag("Notifications.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'nav_bar_image' %></td>
+    <td><%= link_to image_tag("Networking.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user_networking", :action => "index"}, :class => 'nav_bar_image' %></td>
+    <td><%= link_to image_tag("Contacts.jpg", :border => 0, :alt => '', :title => 'Contacts'), {:controller => "user", :action => "show_contacts"}, :class => 'nav_bar_image' %></td>
+    <td><%= link_to image_tag("maps.jpg", :border => 0, :alt => '', :title => 'Maps'), {:controller => "user", :action => "maps"}, :class => 'Item-Image' %></td>
+    <td><%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'nav_bar_image' %></td>
+    <td><%= link_to image_tag("Organization.jpg", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'nav_bar_image' %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Schedule", {:controller => "user", :action => "program"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Notifications", {:controller => "user", :action => "notifications"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Networking", {:controller => "user_networking", :action => "index"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Contacts", {:controller => "user", :action => "show_contacts"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Maps", {:controller => "user", :action => "maps"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Notes", {:controller => "user", :action => "notifications"}, :class => "nav_bar_link" %></td>
+    <td><%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "nav_bar_link" %></td>
 
-</div>
-<div class='Item'>
-  <%= link_to image_tag("maps.jpg", :border => 0, :alt => '', :title => 'Maps'), {:controller => "user", :action => "maps"}, :class => 'Item-Image' %>
-  <%= link_to "Maps", {:controller => "user", :action => "maps"}, :class => "Item-Text" %>
-</div>
-<div class='Item'>
-  <%= link_to image_tag("50by50.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'Item-Image' %>
-  <%= link_to "Notes", {:controller => "user", :action => "notifications"}, :class => "Item-Text" %>
-</div>
-<div class='Item'>
-  <%= link_to image_tag("Organization.jpg", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'Item-Image' %>
-  <%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "Item-Text" %>
-</div>
-<ul id="menu">
+  </tr>
+
+</table>
+
+<ul class="control">
   <li><%= current_registry.person.first_name %> <%= current_registry.person.last_name %> <%= image_tag("Config.jpg", :border => 0, :alt => '', :title => 'Config') %> </a>
     <ul>
-      <li><%= link_to('Profile!',{:controller => "user_profile", :action => "show"}) %></li>
+      <li><%= link_to('Profile!', {:controller => "user_profile", :action => "show"}) %></li>
       <li><%= link_to('Sign out!', destroy_registry_session_path, :method => :delete) %></li>
     </ul>
   </li>

@@ -1,0 +1,2 @@
+module UserNetworkingHelper
+end

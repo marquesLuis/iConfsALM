@@ -1,0 +1,18 @@
+html =  "<div>"
+
+html += "<p>Title: <%= @networking.title %> </p> "
+html += "<p>Content:</p>"
+<% @networking.content.split(/\r\n/).each do |line| %>
+html += "<p><%= line %></p>"
+<% end %>
+
+html += "<p>Interests: </p>"
+html += "<p>"
+<% @networking.area_of_interests.each do |interest| %>
+    html += "<%= interest.name %>, "
+<% end %>
+html += "</p>"
+
+html += "</div>"
+
+$("#networking").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

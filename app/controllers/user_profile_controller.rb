@@ -50,14 +50,14 @@ class UserProfileController < ApplicationController
 
   def update_interests
     PersonInterest.where(:person_id => current_registry.person.id).destroy_all
-    params[:interests].each do |interest|
-      pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)
-      pi.save
-    end
+      params[:interests].each do |interest|
+        pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)
+        pi.save
+      end
 
-    respond_to do |format|
-      format.js # update_interests.js.erb
-    end
+      respond_to do |format|
+        format.js # update_interests.js.erb
+      end
   end
 
   def update_biography
