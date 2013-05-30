@@ -3,7 +3,8 @@ class UpdateController < ApplicationController
   end
 
   def login
-    @registry = Registry.find(1)
+    RegistrationsController.new.create
+    @registry = Registry.find_all_by_email(params[:registry][:email]).first
     respond_to do |format|
       format.json { render json: @registry }
     end
