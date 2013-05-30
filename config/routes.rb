@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user_contacts/export"
+
   post "user_networking/show"
 
   post "user_networking/delete"

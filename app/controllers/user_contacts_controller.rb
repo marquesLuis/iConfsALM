@@ -48,5 +48,54 @@ class UserContactsController < ApplicationController
       format.js # accept_request.js.erb
     end
   end
+
+  def export
+    # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
+    received = current_registry.person.received_traded_contacts
+    sent = current_registry.person.sent_traded_contacts
+    x=""
+    received.each do |r|
+      a = ""
+      a+= (r.requester.prefix) + " "
+      a+= (r.requester.first_name)  + " "
+      a+= (r.requester.last_name)   + " "
+      a+= (r.requester.email)
+      if r.requester.infos.any?
+        b=""
+        r.requester.infos.each do |i|
+          c= "\r\n          "
+          c+= i.info_type
+          c+=  " - "
+          c+=  i.value
+          b=b+c
+        end
+        a=a+b+"\r\n"
+
+      end
+      x+=a+"\r\n"
+    end
+    sent.each do |s|
+      a = ""
+      a+= (s.requested.prefix) + " "
+      a+= (s.requested.first_name)  + " "
+      a+= (s.requested.last_name)   + " "
+      a+= (s.requested.email)
+      if s.requested.infos.any?
+        b=""
+        s.requested.infos.each do |i|
+          c= "\r\n          "
+          c+= i.info_type
+          c+=  " - "
+          c+=  i.value
+          b=b+c
+        end
+        a=a+b+"\r\n"
+
+      end
+      x+=a+"\r\n"
+
+    end
+    send_data( x, :filename => "contacts.txt")
+  end
 end
 
