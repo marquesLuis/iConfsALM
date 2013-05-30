@@ -1,0 +1,28 @@
+html =''
+<% if @showing.any? %>
+    html +="<table>"
+    html +="<td>"
+    html +="<table>"
+    html +="<tr>"
+    html +="<th>Creator</th>"
+    html +="<th>Title</th>"
+    html +="</tr>"
+
+    <% @showing.each do |networking| %>
+        html +="<tr>"
+        html +="<td><%= networking.person.prefix %><%= networking.person.first_name %><%= networking.person.last_name %></td>"
+        html +="<td><a href='/user_networking/show?id=<%= networking.id %>' data-method='post' data-remote='true' rel='nofollow'><%= networking.title %></a></td>"
+        <% if networking.person_id == current_registry.person_id %>
+            html +="<td><a href='/user_networking/delete?id=<%= networking.id %>' data-method='post' rel='nofollow'>Delete</a></td>"
+        <% end %>
+        html +="</tr>"
+    <% end %>
+    html +="</table>"
+    html +="</td>"
+    html +="<td id='networking'></td>"
+    html +="</table>"
+<% else %>
+    html +="<p>Nothing to show!</p>"
+<% end %>
+
+$("#networking_list").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

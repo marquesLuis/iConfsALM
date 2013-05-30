@@ -7,7 +7,29 @@ class UserNetworkingController < ApplicationController
   end
 
   def show_selection
+    num = params[:selection]
+    if num =='-1'
+      #user preferences
+      puts "XXX"
 
+      @areas = Person.find(current_registry.person_id).area_of_interests
+      @rel = NetworkingInterest.where('area_of_interest_id in (?)', @areas).pluck(:networking_id)
+      @showing = Networking.where('id in (?)', @rel)
+      puts @areas
+      puts @rel
+      puts @showing
+
+      puts "YYY"
+    else
+      if num =='0'
+        #all
+        @showing = Networking.all
+      else
+        #selected area
+        @area = AreaOfInterest.find(num);
+        @showing = @area.networking
+      end
+    end
   end
 
   def new
@@ -50,6 +72,7 @@ class UserNetworkingController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def show
     @networking = Networking.find(params[:id])
 

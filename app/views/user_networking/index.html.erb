@@ -4,8 +4,8 @@
   <div>
     <form name='selection' action='/user_networking/show_selection' method='post' data-remote='true'>
       <select name="selection">
-        <option value="-1">My Preferences</option>
         <option value="0">All</option>
+        <option value="-1">My Preferences</option>
         <% @areas_of_interest.each do |area| %>
             <option value=<%= area.id %>><%= area.name %></option>
         <% end %>
@@ -43,6 +43,6 @@
         <td id='networking'></td>
       </table>
   <% else %>
-      <p>Nothing to show!</p>
+      <p>Nothing to show! Add one yourself!</p>
   <% end %>
 </div>
