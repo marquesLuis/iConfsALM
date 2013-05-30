@@ -1,15 +1,17 @@
 class UpdateController < ApplicationController
+  before_filter :allow_params_authentication!
+  before_filter :authenticate_registry!
+
   def update
   end
 
   def login
-    #RegistrationsController.new.create
-    @registry = Registry.find_all_by_email(params[:registry][:email]).first
-    puts @registry
-   sign_in @registry
+    @person = Person.find_all_by_email(params[:email]).first
+
+
 
     respond_to do |format|
-      format.json { render json: @registry }
+      format.json { render json: @person }
     end
   end
 end

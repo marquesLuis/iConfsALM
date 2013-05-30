@@ -1,6 +1,5 @@
 class UserContactsController < ApplicationController
-  before_filter :allow_params_authentication!
-  #before_filter :authenticate_registry!
+  before_filter :authenticate_registry!
 
   def send_request
     @requested = Person.find(params[:id])
