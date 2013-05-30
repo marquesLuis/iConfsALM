@@ -1,8 +1,7 @@
 class EventGroupsController < ApplicationController
-
   before_filter :authenticate_administrator!
-  before_filter :get_areas, :only => [:new, :edit]
-  before_filter :get_locations, :only => [:new, :edit]
+  before_filter :get_areas, :only => [:new, :create, :update, :edit]
+  before_filter :get_locations, :only => [:new, :create, :update, :edit]
 
 
   def get_areas
@@ -30,6 +29,7 @@ class EventGroupsController < ApplicationController
     @event_group = EventGroup.find(params[:id])
     @my_areas = @event_group.area_of_interests
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event_group }
@@ -42,6 +42,7 @@ class EventGroupsController < ApplicationController
     @event_group = EventGroup.new
 
     @group_area = @event_group.group_areas.build
+    @event_group.build_location
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,6 +53,7 @@ class EventGroupsController < ApplicationController
   # GET /event_groups/1/edit
   def edit
     @event_group = EventGroup.find(params[:id])
+    @my_areas = @event_group.area_of_interests
     @group_area = @event_group.group_areas.build
   end
 
@@ -64,6 +66,10 @@ class EventGroupsController < ApplicationController
       if !area.empty?
         @event_group.group_areas.build(:area_of_interest_id => area)
       end
+    end
+
+    if !params[:location][:id].blank?
+      @event_group.location = Location.find(params[:location][:id])
     end
 
     respond_to do |format|
@@ -88,6 +94,12 @@ class EventGroupsController < ApplicationController
       if !area.empty?
         @event_group.group_areas.build(:area_of_interest_id => area)
       end
+    end
+
+    if !params[:location][:id].blank?
+      @event_group.location = Location.find(params[:location][:id])
+    else
+      @event_group.location = nil
     end
 
     respond_to do |format|

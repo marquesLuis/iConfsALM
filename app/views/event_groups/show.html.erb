@@ -18,12 +18,11 @@
 <p>
   <b>Areas:</b>
 </p>
-<% @event_group.area_of_interests.each do |area| %>
+<% @my_areas.each do |area| %>
     <p>
       <%= area.name %>
     </p>
 <% end %>
-
 
 <p>
   <%= link_to 'Sessions', event_group_events_path(@event_group) %>
