@@ -43,6 +43,7 @@
       </td>
       <td id='profile'></td>
     </table>
+    <%= link_to 'Export', {:controller => "user_contacts", :action => 'export'} %></td>
 <% else %>
 <p>You have no contacts!</p>
 <% end %>
