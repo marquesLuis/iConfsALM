@@ -7,9 +7,9 @@
 
 <p>
   <b>Person:</b>
-  <%= @message.person.email %>
+  <%= @message.email %>
 </p>
 
-<p><%= mail_to @message.person.email, 'Send response', :subject => "Response to message"%></p>
+<p><%= mail_to @message.email, 'Send response', :subject => "Response to message"%></p>
 
 <%= link_to 'Back', messages_path %>

@@ -36,19 +36,35 @@ class UserController < ApplicationController
     feedback = Feedback.new(params[:feedback])
     feedback.read=false
     feedback.save
-    flash[:notice] = 'Feedback has been sent!!'
-    redirect_to :controller => 'user', :action => 'organization', :notice => 'Message here'
 
+
+    respond_to do |format|
+      if feedback.save
+        flash[:notice] = 'Feedback has been sent!!'
+        format.html {render :organization}
+      else
+        flash[:error] = 'Message rejected.'
+        format.html {render :organization}
+      end
+    end
   end
 
   def organization_message
 
-    message = Message.new(params[:message])
-    message.read=false
-    message.person=current_registry.person
-    message.save
-    flash[:notice] = 'Feedback has been sent!!'
-    redirect_to :controller => 'user', :action => 'organization', :notice => 'Message here'
+    @message = Message.new(params[:message])
+    @message.read=false
+
+    respond_to do |format|
+      if @message.save
+        flash[:notice] = 'Message has been sent!!'
+        format.html {render :organization}
+      else
+        flash[:error] = 'Message rejected.'
+        @message = Message.new
+        format.html {render :organization}
+      end
+    end
+
 
   end
 

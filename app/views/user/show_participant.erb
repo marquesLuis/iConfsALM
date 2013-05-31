@@ -3,7 +3,7 @@ html =  "<div>"
   <% if @participant.photo.nil? %>
       html += "<img src='/images/defaultPerson.jpg' alt='No Photo'>"
   <% else %>
-      html += "<img src='/people/<%= @participant.photo %>' alt='Photo'>"
+      html += "<img src='/people/<%= @participant.photo %>' alt='Photo' class='person_image'>"
   <% end %>
 
   html += "<p>Name: <%= @participant.prefix %> <%= @participant.first_name %>, <%= @participant.last_name %></p> "

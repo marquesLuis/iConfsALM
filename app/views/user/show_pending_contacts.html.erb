@@ -53,7 +53,7 @@
                   <% if pending.requested.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <img src='/people/<%= pending.requested.photo %>' alt='<%= pending.requested.photo %>'>
+                    <img src='/people/<%= pending.requested.photo %>' alt='<%= pending.requested.photo %>' class='person_thumbnail'>
                 <% end %>
                 </td>
                 <td><%= link_to pending.requested.prefix<<" "<<pending.requested.first_name<<" "<<pending.requested.last_name, {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => "Item-Text" %></td>

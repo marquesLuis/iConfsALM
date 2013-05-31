@@ -1,30 +1,41 @@
-<% if flash[:notice] %>
-    <p>Thank you!</p>
-    <%= link_to "Back to Schedule", {:controller => "user", :action => "program"} %>
+<% if flash[:error] %>
+    <% flash[:error]=nil %>
+    <p>There has been an error!</p>
+    <%= link_to "Try again", {:controller => "user", :action => "organization", :orgmessage => true } %>
 <% else %>
-    <h1>Message</h1>
-    <%= form_for @message, :url => {:controller => 'user', :action => 'organization_message'} do |f| %>
-        <% if @message.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@message.errors.count, "error") %> prohibited this area_of_interest from being
-                saved:</h2>
+    <% if flash[:notice] %>
+        <p>Thank you!</p>
+        <%= link_to "Back to Schedule", {:controller => "user", :action => "program"} %>
+    <% else %>
+        <h1>Message</h1>
+        <%= form_for @message, :url => {:controller => 'user', :action => 'organization_message'} do |f| %>
+            <% if @message.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@message.errors.count, "error") %> prohibited this area_of_interest from being
+                    saved:</h2>
 
-              <ul>
-                <% @message.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-              </ul>
+                  <ul>
+                    <% @message.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div class="field">
+              <%= f.label :email %>
+              <br/>
+              <%= f.text_field :email, :placeholder => "Response mail." %>
             </div>
+            <div class="field">
+              <%= f.label :content %>
+              <br/>
+              <%= f.text_area :content, :placeholder => "Write any message or request you want to send to the organization. Your account e-mail will be sent with the message so expect any response to appear in your inbox." %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+
         <% end %>
-
-        <div class="field">
-          <%= f.label :content %>
-          <br/>
-          <%= f.text_area :content , :placeholder=>"Write any message or request you want to send to the organization. Your account e-mail will be sent with the message so expect any response to appear in your inbox."%>
-        </div>
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-
     <% end %>
 <% end %>

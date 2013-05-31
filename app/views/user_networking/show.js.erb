@@ -1,5 +1,15 @@
 html = "<div>"
+html = "<div id='person_networking' class='border'>"
+<% if @networking.person.photo.nil? %>
+html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='person_image'>"
+<% else %>
+html += "<img src='/people/<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
+<% end %>
 
+html += "<p><%= @networking.person.prefix %> <%= @networking.person.first_name %>, <%= @networking.person.last_name %></p> "
+html += "<p><%= @networking.person.affiliation %> </p> "
+
+html += "</div>"
 html += "<p>Title: <%= @networking.title %> </p> "
 html += "<p>Content:</p>"
 <% @networking.content.split(/\r\n/).each do |line| %>

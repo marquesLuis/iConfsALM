@@ -1,10 +1,8 @@
 class UserProfileController < ApplicationController
   def show
-    @person = current_registry.person
-    @interests = PersonInterest.where(:person_id => @person.id)
+    @interests = PersonInterest.where(:person_id => current_registry.person_id)
     x=[]
     @interests.each do |i|
-      puts i.area_of_interest_id
       x.append(i.area_of_interest_id)
     end
     if x.length==0
@@ -22,7 +20,6 @@ class UserProfileController < ApplicationController
     @interests = PersonInterest.where(:person_id => @person.id)
     x=[]
     @interests.each do |i|
-      puts i.area_of_interest_id
       x.append(i.area_of_interest_id)
     end
     if x.length==0
@@ -40,7 +37,6 @@ class UserProfileController < ApplicationController
       File.open(path, 'wb') { |f| f.write(params[:upload].read) }
       @person.update_attribute(:photo, name)
     else
-      puts "Delete file."
       File.delete("public/people/"+@person.photo)
       @person.update_attribute(:photo, nil)
     end

@@ -19,7 +19,7 @@
                   <% if traded.requested.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <img src='/people/<%= traded.requested.photo %>' alt='<%= traded.requested.photo %>'>
+                    <img src='/people/<%= traded.requested.photo %>' alt='<%= traded.requested.photo %>' class='person_thumbnail'>
                 <% end %>
                 </td>
                 <td><%= link_to traded.requested.prefix<<" "<<traded.requested.first_name<<" "<<traded.requested.last_name, {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => "Item-Text" %></td>
