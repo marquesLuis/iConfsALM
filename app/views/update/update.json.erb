@@ -1,0 +1,10 @@
+{
+    <% if @feed_response %>
+    "feedbacks" :{
+        "size" : <%= @feed_response.length %>,
+        <% @feed_response.each do |id| %>
+        "feedback_<%= id %>": <%= id %>,
+        <% end %>
+    }
+    <% end %>
+}

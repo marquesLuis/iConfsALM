@@ -7,9 +7,20 @@ class UpdateController < ApplicationController
     @update = params[:update]
 
     @feedbacks = @update[:feedbacks]
-    @feedbacks.each do |fed|
-      Feedback.create(content: fed[:feedback][:content])
-     end
+    if @feedbacks
+      @feed_response = Array.new
+      @feedbacks.each do |fed|
+        Feedback.create(content: fed[:feedback][:content])
+        id = fed[:feedback][:iOS_Key]
+        @feed_response.push(id)
+      end
+    end
+
+
+
+    respond_to do |format|
+      format.json {render :file => 'update/update', :content_type => 'application/json'}
+    end
 
   end
 
