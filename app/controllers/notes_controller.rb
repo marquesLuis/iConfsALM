@@ -41,11 +41,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
   def edit_on_participant
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:note])
     @participant = @note.about_person.person
   end
   def edit_on_event
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:note])
     @event = @note.about_event.event
   end
 
