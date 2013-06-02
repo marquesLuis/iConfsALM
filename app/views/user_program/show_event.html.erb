@@ -1,0 +1,39 @@
+<p class='right'><%= @event.begin %></p>
+<h1><%= @event.title %></h1>
+<% if @speaker %>
+    <p>Speaker: <%= link_to @speaker.person.prefix<<" "<<@speaker.person.first_name<<" "<<@speaker.person.last_name, {:controller => "user", :action => "show_all_participants", :id => @speaker.person.id} %>
+<% end %>
+<% if @authors.any? %>
+    <p>Authors:</p>
+      <% @authors.each do |b| %>
+          <% b.each do |a| %>
+              <% if a.person %>
+                  <p><%= link_to a.person.first_name<<" "<<a.person.last_name, {:controller => "user", :action => "show_all_participants", :id => a.person.id} %>,</p>
+              <% else %>
+                <p><%= a.name %>,</p>
+              <% end %>
+          <% end %>
+      <% end %>
+    </p>
+<% end %>
+<div class='right'>
+  <% if @location %>
+      <p>Location: <%= link_to @location.title, {:controller => "user", :action => "maps", :title => {:locations_id => @location.id}} %></p>
+  <% end %>
+</div>
+<% if @event.documents.any? %>
+    <div class='right'>
+      <p>Documents:</p>
+      <% @event.documents.each do |doc| %>
+          <%= link_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id} %></p>
+      <% end %>
+    </div>
+<% end %>
+<p>Description</p>
+<p><%= @event.description %></p>
+<p>Notes, well, shit.</p>
+
+<div id='notes'>
+ <%= render(:template =>'notes/index_on_event', :event_id =>  @event.id ) %>
+ </div>
+<p>Back button should be here.</p>

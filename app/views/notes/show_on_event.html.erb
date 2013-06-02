@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<% if @event %>
+    <div class='right border'>
+      <p>About:</p>
+
+      <p><%= link_to @event.title, '/user_program/show_event?id='+@event.id.to_s %></p>
+
+    </div>
+<% end %>
+<p>
+  <b>Content:</b>
+  <%= @note.content %>
+</p>
+
+
+<%= link_to 'Edit', '/notes/edit_on_event?id='+@note.id.to_s %> |
+<%= link_to 'Back', '/user_program/show_event/?id='+@event.id.to_s %>

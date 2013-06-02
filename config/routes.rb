@@ -1,5 +1,41 @@
 IConfs::Application.routes.draw do
 
+  get "notes/edit_on_event"
+
+  post "notes/create_on_event"
+
+  get "notes/index_on_event"
+
+  post "notes/destroy_on_event"
+
+  get "notes/edit_on_event"
+
+  get "notes/show_on_event"
+
+  get "notes/new_on_event"
+
+  get "user/download_document"
+
+  get "user_program/show_event"
+
+  get "user_program/index"
+
+  post "notes/destroy_on_participant"
+
+  post "notes/update_on_participant"
+
+  post "notes/create_on_participant"
+
+  get "notes/edit_on_participant"
+
+  get "notes/show_on_participant"
+
+  get "notes/new_on_participant"
+
+  get "notes/index_on_participant"
+
+  get "user_program/show_complete"
+
   get "user_contacts/export"
 
   post "user_networking/show"
@@ -14,7 +50,7 @@ IConfs::Application.routes.draw do
 
   get "user_networking/index"
 
-  post "update/update"
+  get "update/update"
 
   get "update/login"
 

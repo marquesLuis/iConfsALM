@@ -3,8 +3,8 @@ class Event < ActiveRecord::Base
 
   EVENT_KIND = ['Workshop', 'Paper Session', 'Keynote', 'Social Event', 'Demo', 'Tutorial']
 
-  has_many :notes_about, :class_name => 'Note', :inverse_of => :about_event
-  has_one :speaker, :inverse_of => :events
+  has_many :about_events, :inverse_of => :event
+  has_one :speaker, :inverse_of => :event
   has_one :person, :through => :speaker
   has_many :event_documents
   has_many :documents, :through => :event_documents

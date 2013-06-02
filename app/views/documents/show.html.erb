@@ -14,6 +14,14 @@
   <b>Link:</b>
   <%= @document.link %>
 </p>
+<p>Authors:</p>
+<% @authors.each do |author| %>
+    <% if author.person %>
+        <p><%= author.person.prefix %> <%= author.person.first_name %> <%= author.person.last_name %></p>
+    <% else %>
+        <p><%= author.name %></p>
+    <% end %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_document_path(@document) %> |

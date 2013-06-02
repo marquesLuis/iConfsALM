@@ -44,26 +44,28 @@ html =  "<div>"
           html += "<p><%= line %></p>"
       <% end %>
   <% end %>
+
   <% if @request_accepted %>
+      <% if @infos.any? %>
       html += "<div class='border'>"
       html += "<p>Person's contacts:</p>"
 
-  html += "<table>"
-  html += "<tr>"
-  html += "<th>Type</th>"
-  html += "<th>Value</th>"
-  html += "</tr>"
-
-    <% @infos.each do |info| %>
+      html += "<table>"
       html += "<tr>"
-  html += "<td><%= info.info_type %></td>"
-  html += "<td><%= info.value %></td>"
-  html += "</tr>"
-    <% end %>
+      html += "<th>Type</th>"
+      html += "<th>Value</th>"
+      html += "</tr>"
 
-  html += "</table>"
+        <% @infos.each do |info| %>
+          html += "<tr>"
+          html += "<td><%= info.info_type %></td>"
+          html += "<td><%= info.value %></td>"
+          html += "</tr>"
+        <% end %>
 
-  html += "</div>"
+      html += "</table>"
+
+      html += "</div>" <% end %>
   <% else if @request_sent %>
       html += "<p>Contact request is active!</p>"
   <% else if @request_rejected %>
@@ -77,6 +79,11 @@ html =  "<div>"
   <% end %>
   html += "</div>"
 
+  html += "<div id='notes'>"
+  html += "<%= escape_javascript(render(:template =>'notes/index_on_participant', :participant_id =>  @participant.id )) %>"
+  html += "</div>"
+
 html += "</div>"
 
 $("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+

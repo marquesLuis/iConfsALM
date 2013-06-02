@@ -5,8 +5,9 @@ class Person < ActiveRecord::Base
 
   has_many :messages, :inverse_of => :person
   has_many :removed_notes, :inverse_of => :person
-  has_many :notes, :inverse_of => :person
-  has_many :notes_about, :class_name => 'Note', :inverse_of => :about_person
+  has_many :notes, :inverse_of => :person #notes belonging to person
+  has_many :about_persons # notes about this person.
+  has_many :notes_on_people, :class_name => 'Person', :through => :notes #people he has notes on
   has_one :registry, :inverse_of => :person
 
   has_many :received_traded_contacts, :class_name => 'TradedContact', :foreign_key => :requested_id, :inverse_of => :requested

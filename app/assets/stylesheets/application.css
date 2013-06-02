@@ -10,10 +10,39 @@
  *
  *= require_self
  *#= #require_tree .
+ *
+ *
+ *=require fullcalendar.css
+ *=require fullcalendar.print.css
+ *
  */
 
+.menu {
+    background-color: #35C0CD;
+}
 body {
-    background-color: #CCCCCC;
+    background-color: #028E9B;
+}
+.body {
+    margin: 0px auto;
+    width: 900px;
+    background-color: #33CCCC;
+}
+.menu a {
+    color: #83F03C;
+    margin: 0 auto;
+}
+.menu h1 {
+    color: #26972D;
+}
+.menu td a {
+    text-align: center;
+    margin: 0 auto;
+}
+.menu td  {
+    text-align: center;
+    width:100px;
+    border: 2px solid #043C6B;
 }
 ul {
     margin: 0;
@@ -76,20 +105,17 @@ li:hover li {
 hr {
     clear: both;
 }
-.menu {
-    background-color: #AAAAAA;
-}
-.menu a {
-    color: #EEEEEE;
-}
+
+
+
+
+
 .body a {
     color: #000000;
 }
-.body {
-    margin:0px auto;
-    width:900px;
-    background-color: #BBBBBB;
-}
+
+
+
 .body table, .body th, .body td {
     border: 1px solid black;
 }
@@ -101,12 +127,13 @@ hr {
 .border {
     border: 1px solid black;
 }
+
 .control {
-    float:right;
+    float: right;
 }
 
 #person_networking {
-    float:right;
+    float: right;
     text-align: center;
 }
 
@@ -114,8 +141,26 @@ hr {
     max-width: 300px;
     max-height: 300px;
 }
+
 .person_thumbnail {
     max-width: 100px;
     max-height: 100px;
 
+}
+
+.size_100 {
+    height: 100px;
+}
+
+/*realizing that position:relative on a particular div will allow you position:absolute any element inside that div ..." - gaga
+   */
+.event {
+    position:relative;
+    float:left;
+
+    width:100px;
+}
+.day {
+    width:410px;
+    position:relative
 }

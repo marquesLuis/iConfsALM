@@ -33,3 +33,28 @@
   Registry.create(email: 'albert.linde@gmail.com', :password => '123qweasd', :password_confirmation => '123qweasd', person_id: '2')
   Person.create(first_name: 'Luis', last_name: 'Marques', prefix: 'Dr.', affiliation: 'FCT', email:'lfmarques2@gmail.com', signup_code: '3')
   Registry.create(email: 'lfmarques2@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '3')
+
+  ##DAY 1
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 12:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>1, :title=>'Lunch and Registry', :description=> 'See title for more info.', :event_kind =>'Social Event', :begin=> DateTime.strptime("6/9/2013 12:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"));
+
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>2, :title=>'Starting Session', :description=> 'Start and the Turing session', :event_kind =>'Social Event', :begin=> DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"));
+
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>3, :title=>'A', :description=> 'A', :event_kind =>'Paper Session', :begin=> DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>4, :title=>'B', :description=> 'B', :event_kind =>'Paper Session', :begin=> DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>5, :title=>'C', :description=> 'C', :event_kind =>'Paper Session', :begin=> DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+  EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
+  Event.create(:event_group_id=>6, :title=>'D', :description=> 'D', :event_kind =>'Paper Session', :begin=> DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
+  GroupArea.create(area_of_interest_id: '5', event_group_id: '3');
+  GroupArea.create(area_of_interest_id: '7', event_group_id: '4');
+  GroupArea.create(area_of_interest_id: '6', event_group_id: '5');
+  GroupArea.create(area_of_interest_id: '4', event_group_id: '6');
+
+##DAY 2
+EventGroup.create(:end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"))
+Event.create(:event_group_id=>7, :title=>'Lorenzo Alvisi', :description=> 'UT AUSTIN.', :event_kind =>'Keynote', :begin=> DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end=> DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));

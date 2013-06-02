@@ -1,8 +1,9 @@
 class NotesController < ApplicationController
+  before_filter :authenticate_registry!
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = current_registry.person.notes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,9 @@ class NotesController < ApplicationController
   # GET /notes/1.json
   def show
     @note = Note.find(params[:id])
+    if @note.about_person
+      @person = @note.about_person.person
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,6 +39,14 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
+  end
+  def edit_on_participant
+    @note = Note.find(params[:id])
+    @participant = @note.about_person.person
+  end
+  def edit_on_event
+    @note = Note.find(params[:id])
+    @event = @note.about_event.event
   end
 
   # POST /notes
@@ -73,6 +85,12 @@ class NotesController < ApplicationController
   # DELETE /notes/1.json
   def destroy
     @note = Note.find(params[:id])
+
+    if @note.about_person
+      @aboutPerson = @note.about_person
+      @aboutPerson.destroy
+    end
+
     @note.destroy
 
     respond_to do |format|
@@ -80,4 +98,123 @@ class NotesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def index_on_participant
+    @participant = Person.find(params[:participant_id])
+    @notes = Note.all(:conditions => {:about_person => {:person_id => params[:participant_id]}, :person_id => current_registry.person_id})
+  end
+
+  def new_on_participant
+    @note = Note.new
+    @participant = Person.find(params[:participant_id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @note }
+    end
+  end
+
+  # POST /notes
+  # POST /notes.json
+  def create_on_participant
+    @note = Note.new
+    @note.content=params[:content]
+    @note.person_id=current_registry.person_id
+    respond_to do |format|
+      if @note.save
+        @aboutPerson = AboutPerson.new
+        @aboutPerson.person_id=params[:participant_id]
+        @aboutPerson.note_id=@note.id
+        @aboutPerson.save
+        format.html { redirect_to '/user/show_all_participants/?id='+params[:participant_id], notice: 'Note was successfully created.' }
+        format.json { render json: @note, status: :created, location: @note }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy_on_participant
+    @note = Note.find(params[:note])
+    @aboutPerson = @note.about_person
+    @aboutPerson.destroy
+    @note.destroy
+
+    respond_to do |format|
+      format.html { redirect_to '/user/show_all_participants/', notice: 'Note was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def show_on_participant
+    @note = Note.find(params[:note])
+    @person = @note.about_person.person
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @note }
+    end
+  end
+
+
+  def index_on_event
+    @event = Event.find(params[:event_id])
+    @notes = Note.all(:conditions => {:about_event => {:event_id => params[:event_id]}, :person_id => current_registry.person_id})
+  end
+
+  def new_on_event
+    @note = Note.new
+    @event = Event.find(params[:event_id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @note }
+    end
+  end
+
+  # POST /notes
+  # POST /notes.json
+  def create_on_event
+    @note = Note.new
+    @note.content=params[:content]
+    @note.person_id=current_registry.person_id
+    respond_to do |format|
+      if @note.save
+        @aboutEvent = AboutEvent.new
+        @aboutEvent.event_id=params[:event_id]
+        @aboutEvent.note_id=@note.id
+        @aboutEvent.save
+        format.html { redirect_to '/user_program/show_event?id='+params[:event_id], notice: 'Note was successfully created.' }
+        format.json { render json: @note, status: :created, location: @note }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy_on_event
+    @note = Note.find(params[:note])
+    @aboutEvent = @note.about_event
+    @event_id = @aboutEvent.event_id
+    @aboutEvent.destroy
+    @note.destroy
+
+    respond_to do |format|
+      format.html { redirect_to '/user_program/show_event?id=' +@event_id.to_s, notice: 'Note was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def show_on_event
+    @note = Note.find(params[:note])
+    @event = @note.about_event.event
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @note }
+    end
+  end
+
 end
