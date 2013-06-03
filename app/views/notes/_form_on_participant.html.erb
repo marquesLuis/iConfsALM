@@ -1,0 +1,12 @@
+<%= form_tag({:controller => "notes", :action => "create_on_participant"}, :method => 'post') do %>
+    <div class="field">
+      <%= text_area_tag(:content, '', :size => "24x6") %>
+    </div>
+    <div class="field">
+      <%= text_field_tag(:participant_id,{}, :value => @participant.id, :type=>'hidden' ) %>
+    </div>
+    <div class="actions">
+      <%= submit_tag("Create") %>
+    </div>
+
+<% end %>

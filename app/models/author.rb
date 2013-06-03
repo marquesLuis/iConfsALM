@@ -1,9 +1,7 @@
 class Author < ActiveRecord::Base
-  attr_accessible :document_id, :name
+  attr_accessible :document_id, :name, :person_id
 
-  belongs_to :document, :inverse_of => :author
-  has_one :person, :inverse_of => :author
+  belongs_to :document, :inverse_of => :authors
+  belongs_to :person, :inverse_of => :authors
 
-  validates_associated :document
-  validates_associated :person
 end

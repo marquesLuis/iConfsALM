@@ -16,8 +16,7 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :person_id %><br />
-    <%= f.number_field :person_id %>
+    <%= f.number_field :person_id , :value => current_registry.person_id, :type=>'hidden' %>
   </div>
   <div class="actions">
     <%= f.submit %>

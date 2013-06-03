@@ -18,7 +18,7 @@ class UserController < ApplicationController
   end
 
   def program
-
+    redirect_to :controller => :user_program, :action => :index
   end
 
   def organization
@@ -41,10 +41,10 @@ class UserController < ApplicationController
     respond_to do |format|
       if feedback.save
         flash[:notice] = 'Feedback has been sent!!'
-        format.html {render :organization}
+        format.html { render :organization }
       else
         flash[:error] = 'Message rejected.'
-        format.html {render :organization}
+        format.html { render :organization }
       end
     end
   end
@@ -57,11 +57,11 @@ class UserController < ApplicationController
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Message has been sent!!'
-        format.html {render :organization}
+        format.html { render :organization }
       else
         flash[:error] = 'Message rejected.'
         @message = Message.new
-        format.html {render :organization}
+        format.html { render :organization }
       end
     end
 
@@ -90,7 +90,6 @@ class UserController < ApplicationController
     @to_accept = PendingContact.where('requested_id = ?', @self.id)
     @pending = PendingContact.where('requester_id = ?', @self.id)
     @rejected = RejectedContact.where('requester_id = ?', @self.id)
-
   end
 
 
@@ -105,27 +104,43 @@ class UserController < ApplicationController
 
 
   def show_participant
+    @person =current_registry.person
     @participant = Person.find(params[:id]);
 
-    @rejected = RejectedContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
+    @rejected = RejectedContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
 
-    @contact1 = TradedContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
-    @contact2 = TradedContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
+    @contact1 = TradedContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
+    @contact2 = TradedContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
 
-    @request_sent1 = PendingContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
-    @request_sent2 = PendingContact.where('requester_id = ? AND requested_id = ?', @participant.id, current_registry.person.id)
-    @request_sent3 = RejectedContact.where('requested_id = ? AND requester_id = ?', @participant.id, current_registry.person.id)
+    @request_sent1 = PendingContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
+    @request_sent2 = PendingContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
+    @request_sent3 = RejectedContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
 
-    @request_accepted =  ( (@contact1.any?) or (@contact2.any?)  )
-    @request_sent =  ( (@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?) )
+    @request_accepted = ((@contact1.any?) or (@contact2.any?))
+    @request_sent = ((@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?))
     @request_rejected = @rejected.any?
 
     @interests = @participant.area_of_interests
 
     @infos = @participant.infos
 
+    @notes =[]
+    @about = @participant.about_persons
+    if (@about.nil?)
+    else
+      @about.each do |a|
+        if a.note.person_id == @person.id
+          @notes <<a.note
+        end
+      end
+    end
     respond_to do |format|
       format.js
     end
+  end
+
+  def download_document
+    @document = Document.find(params[:document_id])
+    send_file(Rails.root.join('public', 'documents', @document.link.to_s), :filename => @document.link.to_s)
   end
 end

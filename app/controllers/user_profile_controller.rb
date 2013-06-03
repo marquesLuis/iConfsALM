@@ -1,5 +1,7 @@
 class UserProfileController < ApplicationController
+  before_filter :authenticate_registry!
   def show
+    @person=current_registry.person
     @interests = PersonInterest.where(:person_id => current_registry.person_id)
     x=[]
     @interests.each do |i|

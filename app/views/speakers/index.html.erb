@@ -4,7 +4,7 @@
   <tr>
     <th>Keynote</th>
     <th>Person</th>
-    <th>Session</th>
+    <th>Event ID</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= speaker.keynote %></td>
     <td><%= speaker.person_id %></td>
-    <td><%= speaker.session_id %></td>
+    <td><%= speaker.event_id %></td>
     <td><%= link_to 'Show', speaker %></td>
     <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
     <td><%= link_to 'Destroy', speaker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
