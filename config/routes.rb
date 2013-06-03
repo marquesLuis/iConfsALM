@@ -56,7 +56,7 @@ IConfs::Application.routes.draw do
 
   get "user_networking/index"
 
-  get "update/update"
+  post "update/update"
 
   get "update/login"
 
