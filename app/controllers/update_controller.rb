@@ -16,6 +16,25 @@ class UpdateController < ApplicationController
       end
     end
 
+    @messages = @update[:messages]
+    if @messages
+      @mess_response = Array.new
+      @messages.each do |fed|
+        Message.create(content: fed[:message][:content], email: fed[:message][:email])
+        id = fed[:message][:iOS_Key]
+        @mess_response.push(id)
+      end
+    end
+
+    @notifications = @update[:notifications]
+    if @notifications
+      @last_id = @notifications[:last_id]
+      @last_update = DateTime.strptime(@notifications[:last_update],'%Y-%m-%d %H:%M:%S %Z')
+      @new_notif = OrgNotification.where('id > ?',@last_id)
+      @updated_notif = OrgNotification.where('updated_at != ?',@last_update ).where('id <= ? AND ? < updated_at',@last_id,@last_update )
+      @del_notif = RemovedNotification.where('id > ?',@notifications[:last_removed_id])
+    end
+
 
 
     respond_to do |format|

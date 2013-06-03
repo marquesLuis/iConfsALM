@@ -5,6 +5,52 @@
         <% @feed_response.each do |id| %>
         "feedback_<%= id %>": <%= id %>,
         <% end %>
-    }
+    },
+    <% end %>
+    <% if @mess_response %>
+    "messages" :{
+        "size" : <%= @mess_response.length %>,
+        <% @mess_response.each do |id| %>
+        "message_<%= id %>": <%= id %>,
+        <% end %>
+    },
+    <% end %>
+    <% if @updated_notif || @new_notif %>
+    "notifications" :{
+        <% if @new_notif && @new_notif.length>0 %>
+        "news":{
+            "size" : <%= @new_notif.length %>,
+            <% @new_notif.each do |notif| %>
+            "notification_<%= notif.id %>": {
+                "id": <%= notif.id %>,
+                "title": <%= notif.title %>,
+                "content": <%= notif.content %>,
+                "updated_at":<%= notif.updated_at.to_s %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_notif && @updated_notif.length>0 %>
+        "updated":{
+            "size" : <%= @updated_notif.length %>,
+            <% @updated_notif.each do |notif| %>
+            "notification_<%= notif.id %>": {
+                "id": <%= notif.id %>,
+                "title": <%= notif.title %>,
+                "content": <%= notif.content %>,
+                "updated_at": <%= notif.updated_at %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_notif && @del_notif.length>0 %>
+        "deleted":{
+            "size" : <%= @del_notif.length %>,
+            <% @del_notif.each do |notif| %>
+            "notification_<%= notif.id %>": <%= notif.sequence_number %>,
+            <% end %>
+        }
+        <% end %>
+    },
     <% end %>
 }
