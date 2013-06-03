@@ -18,7 +18,10 @@ class Person < ActiveRecord::Base
   has_many :events, :through => :speakers
   has_many :authors, :inverse_of => :person
   has_many :documents, :through => :authors
-  has_many :event_groups
+
+  has_many :attending_events
+  has_many :attending_events, :class_name => 'Event', :through => :attending_events
+
   has_many :org_notifications
   has_many :read_networking, :class_name => 'Networking'
   has_many :networkings, :inverse_of => :person

@@ -1,0 +1,60 @@
+<%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"} %>
+<%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"} %>
+<h1>Complete Calendar</h1>
+
+<div id='calendar'></div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        $('#calendar').empty().fullCalendar({
+
+            defaultView: 'agendaWeek',
+            editable: false,
+            allDaySlot: false,
+            minTime: <%= @min_hour %>,
+            maxTime: <%= @max_hour %>,
+            year: <%= @begin_year %>,
+            month: <%= @begin_month %>,
+            date: <%= @begin_day %>,
+            firstDay: <%= @begin_weekday %>,
+
+            eventMouseover: function (event, jsEvent, view) {
+                html = '<form action="/user_program/add_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="+"></div></form>'
+                html += '<form action="/user_program/remove_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
+
+                $('.fc-event-inner', this).append('<div id="' + event.id + 'hov" class="hover-end">' + html + '</div>');
+            },
+
+            eventMouseout: function (event, jsEvent, view) {
+                $('#' + event.id + 'hov').remove();
+            },
+
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'agendaWeek,agendaDay'
+            },
+            events: [
+                <% @events.each do |event| %>
+                <% group = event.event_group %>
+                {
+                    id: '<%= event.id%>',
+                    title: '<%= event.title %>',
+                    <% if event.speaker %>
+                    <% if event.speaker.keynote %>
+                    color: 'blue',
+                    <% end %>
+                    <% end %>
+                    start: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.begin.hour %>, <%= event.begin.min %>),
+                    end: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.end.hour %>, <%= event.end.min %>),
+                    allDay: false,
+                    url: '/user_program/show_event/?id=<%= event.id %>'
+
+                },
+                <% end %>
+            ]
+        });
+
+    };
+</script>
