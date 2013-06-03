@@ -10,7 +10,8 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//
 //#= #require jquery     ADDED BY GEM! DONT TAKE THE COMENT AWAY!!
 //#= #require jquery_ujs ADDED BY GEM! DONT TAKE THE COMENT AWAY!!
-//=require_tree
+//#= #require_tree
 

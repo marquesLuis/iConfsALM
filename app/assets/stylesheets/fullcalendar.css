@@ -493,7 +493,7 @@ table.fc-border-separate {
 	}
 	
 .fc-agenda-slots td div {
-	height: 20px;
+	height: 50px;
 	}
 	
 .fc-agenda-slots tr.fc-slot0 th,
@@ -516,17 +516,17 @@ table.fc-border-separate {
 ------------------------------------------------------------------------*/
 
 .fc-event-vert {
-	border-width: 0 1px;
+	border-width: 0 3px;
 	}
 
 .fc-event-vert.fc-event-start {
-	border-top-width: 1px;
+	border-top-width: 3px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 	}
 
 .fc-event-vert.fc-event-end {
-	border-bottom-width: 1px;
+	border-bottom-width: 3px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	}

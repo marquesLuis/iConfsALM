@@ -100,6 +100,11 @@ class UserController < ApplicationController
   def show_all_participants
     @self = current_registry.person
     @participants = Person.where('id <> ?', @self.id)
+    if params[:id]
+    @participant = Person.find(params[:id]);
+    end
+
+
   end
 
 

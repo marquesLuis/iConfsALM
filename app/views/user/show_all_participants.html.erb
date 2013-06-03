@@ -27,7 +27,17 @@
         </tr>
     <% end %>
   </table> </td>
-  <td id='profile'></td>
+  <td id='profile'>
+    <% if @participant %>
+        <script type="text/javascript">
+            window.onload = function () {
+                $.ajax("/user/show_participant/?id=<%= @participant.id%>");
+            };
+        </script>
+    <% else %>
+    <p>Select a participant on the left.</p>
+<% end %>
+  </td>
 </table>
 <% else %>
     <p>No other participants!</p>

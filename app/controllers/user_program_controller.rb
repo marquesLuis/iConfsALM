@@ -1,5 +1,6 @@
 class UserProgramController < ApplicationController
   before_filter :authenticate_registry!
+
   def show_complete
     @event_groups = EventGroup.all
     @first_day = EventGroup.first_day
@@ -8,25 +9,49 @@ class UserProgramController < ApplicationController
     @min_hour =8;
     @max_hour =20;
     @begin_year = @first_day.year;
-    @begin_month = (@first_day.month) -1 ;
+    @begin_month = (@first_day.month) -1;
     @begin_day = @first_day.day;
-    @begin_weekday =@first_day.wday;
+    @begin_weekday = @first_day.wday;
 
-    @grouped_by_day = []
-    for date in (@first_day.to_date)..(@last_day.to_date)
-      x=[]
-      x += EventGroup.where("date > ? AND date < ?", date, (date+1.day))
-      @grouped_by_day.append(x)
-    end
+
     @events = Event.all
+    #@grouped_by_day = []    wtf was this
+    #for date in (@first_day.to_date)..(@last_day.to_date)
+    #  x=[]
+    #  x += EventGroup.where("date > ? AND date < ?", date, (date+1.day))
+    #  @grouped_by_day.append(x)
+    #end
+
+
   end
 
   def index
+    @event_groups = EventGroup.all
+    @first_day = EventGroup.first_day
+    @last_day = EventGroup.last_day
+
+    @min_hour =8;
+    @max_hour =20;
+    @begin_year = @first_day.year;
+    @begin_month = (@first_day.month) -1;
+    @begin_day = @first_day.day;
+    @begin_weekday =@first_day.wday;
+
+    attending_events = AtendingEvent.where('person_id = ?', current_registry.person_id).pluck(:event_id)
+    puts attending_events
+    puts (attending_events)
+    puts ([attending_events])
+    if attending_events.any?
+      @events = Event.where('id IN (?)', (attending_events))
+    else
+      @events=[]
+    end
 
   end
 
   def show_event
     @event = Event.find(params[:id])
+    @event_group = @event.event_group
     @location = @event.event_group.location
     @speaker = @event.speaker
     @authors = []
@@ -49,5 +74,38 @@ class UserProgramController < ApplicationController
       end
     end
 
+  end
+
+  def add_event
+
+    @atending_event = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, params[:id])
+    if @atending_event.any?
+      @already_added=true
+    else
+      @atending_event = AtendingEvent.new(:person_id => current_registry.person_id, :event_id => params[:id])
+      @atending_event.save
+
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def remove_event
+    @atending_event = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, params[:id]).first
+    if params[:rfc]
+      @remove_from_calendar=true
+      @event_id = @atending_event.event_id
+    end
+    if @atending_event
+      @atending_event.destroy
+    else
+      @not_existing=true
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 end
