@@ -1,20 +1,25 @@
 <p>Notes</p>
-<table>
-  <tr>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-  <% @notes.each do |note| %>
+<% if @notes.any? %>
+    <table>
       <tr>
-        <td><%= note.content %></td>
-        <td><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => note} %></td>
-        <td><%= link_to "Edit", {:controller => "notes", :action => "edit_on_event", :note => note} %></td>
-        <td><%= link_to "Destroy", {:controller => "notes", :action => "destroy_on_event", :note => note}, :method => 'post' %></td>
+        <th>Note</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-  <% end %>
+
+      <% @notes.each do |note| %>
+          <tr>
+            <td><%= note.content %></td>
+            <td><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => note} %></td>
+            <td><%= link_to "Edit", {:controller => "notes", :action => "edit_on_event", :note => note} %></td>
+            <td><%= link_to "Destroy", {:controller => "notes", :action => "destroy_on_event", :note => note}, :method => 'post' %></td>
+          </tr>
+      <% end %>
+<% else %>
+    <p>No notes yet!</p>
+<% end %>
 
 </table>
 <p><%= link_to "New Note", {:controller => "notes", :action => "new_on_event", :event_id => @event.id} %></p>

@@ -40,10 +40,12 @@ class NotesController < ApplicationController
   def edit
     @note = Note.find(params[:id])
   end
+
   def edit_on_participant
     @note = Note.find(params[:note])
     @participant = @note.about_person.person
   end
+
   def edit_on_event
     @note = Note.find(params[:note])
     @event = @note.about_event.event
@@ -89,6 +91,11 @@ class NotesController < ApplicationController
     if @note.about_person
       @aboutPerson = @note.about_person
       @aboutPerson.destroy
+    end
+
+    if @note.about_event
+      @about_event = @note.about_event
+      @about_event.destroy
     end
 
     @note.destroy

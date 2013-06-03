@@ -27,6 +27,7 @@ class UserProgramController < ApplicationController
 
   def show_event
     @event = Event.find(params[:id])
+    @event_group = @event.event_group
     @location = @event.event_group.location
     @speaker = @event.speaker
     @authors = []
