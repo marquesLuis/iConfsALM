@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "notes/export"
+
   get "notes/edit_on_event"
 
   post "notes/create_on_event"

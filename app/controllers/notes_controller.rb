@@ -224,4 +224,39 @@ class NotesController < ApplicationController
     end
   end
 
+  def export
+    # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
+    @person = current_registry.person
+    @notes = @person.notes
+
+    x=""
+
+    @notes.each do |note|
+      a=''
+      if note.about_person
+        a+= "Person: "
+        a+= note.about_person.person.prefix+ " "
+        a+= note.about_person.person.first_name + " "
+        a+= note.about_person.person.last_name + "\r\n"
+      else
+        if note.about_event
+          a+= "Event: "
+          a+= note.about_event.event.title + " on "
+          a+= note.about_event.event.event_group.date.to_date.to_s + " at "
+          a+= note.about_event.event.begin.strftime("%I:%M:%S %Z") + "\r\n"
+        else
+          a+= "Note\r\n"
+        end
+      end
+      a+= "        "
+      a+= "Created on: " + note.created_at.to_date.to_s + " at " + note.created_at.strftime("%I:%M:%S %Z") + "\r\n"
+
+      a+= "        "
+      a+= note.content
+      x+= a+"\r\n";
+    end
+
+    send_data(x, :filename => "notes.txt")
+  end
 end
+

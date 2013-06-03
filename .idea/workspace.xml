@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/index.html.erb" afterPath="$PROJECT_DIR$/app/views/user_program/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/navigation.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/navigation.html.erb" />
+    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="User  - Can now view the full calendar and it's events.&#10;User - Bug squashed when removing notes the normal way destroys associated events.&#10;User - Can download documents associated with events.">
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\app\views\user_contacts\export.html.erb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/notes_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/notes_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/show_complete.js.erb" afterPath="$PROJECT_DIR$/app/views/user_program/show_complete.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" afterPath="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_program_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_program_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370253574752" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370253706471" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370196605168" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -82,7 +76,7 @@
     <file path="/_form_on_event.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370198435136" ignored="false" />
     <file path="/new_on_event.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370198500440" ignored="false" />
     <file path="/show_on_event.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370208539114" ignored="false" />
-    <file path="/notes_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370250395182" ignored="false" />
+    <file path="/notes_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370254701626" ignored="false" />
     <file path="/edit_on_participant.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370200835121" ignored="false" />
     <file path="/show_on_participant.html.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370207486742" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -126,18 +120,18 @@
         <option value="$PROJECT_DIR$/app/views/notes/edit_on_event.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/notes/show_on_participant.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/notes/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/notes/show_on_event.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/user_program_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" />
         <option value="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" />
         <option value="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/notes_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_program/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/navigation.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_program/show_complete.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/notes/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/notes_controller.rb" />
       </list>
     </option>
   </component>
@@ -622,7 +616,11 @@
       <created>1370209241596</created>
       <updated>1370209241596</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="User  - Can now view the full calendar and it's events.&#10;User - Bug squashed when removing notes the normal way destroys associated events.&#10;User - Can download documents associated with events.">
+      <created>1370253694186</created>
+      <updated>1370253694186</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -649,21 +647,21 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26439393" sideWeight="0.6147541" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26439393" sideWeight="0.6134868" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29069766" sideWeight="0.287703" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3852459" sideWeight="0.9840881" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38651314" sideWeight="0.9840881" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946634" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -711,7 +709,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="User  - Notes. Bug squashed." />
+    <option name="LAST_COMMIT_MESSAGE" value="User  - Can now view the full calendar and it's events.&#10;User - Bug squashed when removing notes the normal way destroys associated events.&#10;User - Can download documents associated with events." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -725,7 +723,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Memer Create" />
     <MESSAGE value="FeedBack Admin" />
     <MESSAGE value="FeedBack Admin (Default)" />
     <MESSAGE value="Routes Updated" />
@@ -750,6 +747,7 @@
     <MESSAGE value="Minor bugs." />
     <MESSAGE value="User  - Notes.&#10;User - Starting view on program.&#10;Admin - Adding authors to documents and speakers to sessions." />
     <MESSAGE value="User  - Notes. Bug squashed." />
+    <MESSAGE value="User  - Can now view the full calendar and it's events.&#10;User - Bug squashed when removing notes the normal way destroys associated events.&#10;User - Can download documents associated with events." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -764,30 +762,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/user_profile_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="347" selection-end="347" vertical-scroll-proportion="-1.9651163" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="17" selection-start="3556" selection-end="3556" vertical-scroll-proportion="0.011627907" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/user_networking_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="601" selection-end="601" vertical-scroll-proportion="0.5895954">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/user_program_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="16" selection-start="724" selection-end="736" vertical-scroll-proportion="0.4383954">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user/show_all_participants.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -808,13 +782,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/notes/index_on_event.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="23" selection-start="13" selection-end="34" vertical-scroll-proportion="0.05483871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/notes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="11" selection-start="2161" selection-end="2161" vertical-scroll-proportion="0.96130955">
           <folding />
         </state>
       </provider>
@@ -866,6 +833,34 @@
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/user_contacts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="2" selection-start="1461" selection-end="2625" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_contacts.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="87" selection-start="2374" selection-end="2462" vertical-scroll-proportion="0.39285713">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/notes_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="249" column="24" selection-start="6603" selection-end="6603" vertical-scroll-proportion="0.5928144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/notes/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="40" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.5032467">
           <folding />
         </state>
       </provider>
