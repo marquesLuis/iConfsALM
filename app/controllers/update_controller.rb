@@ -29,10 +29,19 @@ class UpdateController < ApplicationController
     @notifications = @update[:notifications]
     if @notifications
       @last_id = @notifications[:last_id]
-      @last_update = DateTime.strptime(@notifications[:last_update],'%Y-%m-%d %H:%M:%S %Z')
-      @new_notif = OrgNotification.where('id > ?',@last_id)
-      @updated_notif = OrgNotification.where('updated_at != ?',@last_update ).where('id <= ? AND ? < updated_at',@last_id,@last_update )
-      @del_notif = RemovedNotification.where('id > ?',@notifications[:last_removed_id])
+      @last_update = @notifications[:last_update]
+      @new_last_id = 0
+      if OrgNotification.last
+        @new_last_id = OrgNotification.last.id
+      end
+      @new_notif = OrgNotification.where('id > ? AND id <= ?',@last_id, @new_last_id)
+      @new_last_update = OrgNotification.maximum(:updated_at)
+      @updated_notif = OrgNotification.where('id <= ? AND ? < updated_at',@last_id,@last_update )
+      @new_last_removed_id = 0
+      if RemovedNotification.last
+        @new_last_removed_id = RemovedNotification.last.id
+      end
+      @del_notif = RemovedNotification.where('id > ? AND id <= ?',@notifications[:last_removed_id], @new_last_removed_id)
     end
 
 

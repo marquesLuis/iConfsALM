@@ -15,30 +15,31 @@
         <% end %>
     },
     <% end %>
-    <% if @updated_notif || @new_notif %>
+    <% if @new_last_id && @new_last_update && @new_last_removed_id %>
     "notifications" :{
+        "last_id": "<%= @new_last_id %>",
+        "last_update": "<%= @new_last_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_removed": "<%= @new_last_removed_id %>",
         <% if @new_notif && @new_notif.length>0 %>
-        "news":{
-            "size" : <%= @new_notif.length %>,
+        "news" :{
             <% @new_notif.each do |notif| %>
-            "notification_<%= notif.id %>": {
-                "id": <%= notif.id %>,
-                "title": <%= notif.title %>,
-                "content": <%= notif.content %>,
-                "updated_at":<%= notif.updated_at.to_s %>
+            "notif_<%= notif.id %>": {
+              "id": "<%= notif.id %>",
+              "title" : "<%= notif.title %>",
+              "content" : "<%= notif.content %>",
+              "updated_at" : "<%= notif.updated_at.strftime('%Y-%m-%d %H:%M') %>"
             },
             <% end %>
         },
         <% end %>
         <% if @updated_notif && @updated_notif.length>0 %>
-        "updated":{
-            "size" : <%= @updated_notif.length %>,
+        "updated" :{
             <% @updated_notif.each do |notif| %>
-            "notification_<%= notif.id %>": {
-                "id": <%= notif.id %>,
-                "title": <%= notif.title %>,
-                "content": <%= notif.content %>,
-                "updated_at": <%= notif.updated_at %>
+            "notif_<%= notif.id %>": {
+                "id": "<%= notif.id %>",
+                "title" : "<%= notif.title %>",
+                "content" : "<%= notif.content %>",
+                "updated_at" : "<%= notif.updated_at.strftime('%Y-%m-%d %H:%M') %>"
             },
             <% end %>
         },
