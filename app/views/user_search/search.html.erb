@@ -1,0 +1,37 @@
+<% if @search %>
+    <h2>Search for: <%= @search %></h2>
+    <% if @found %>
+        <table>
+          <tr>
+            <% if @people.any? %>
+                <th><%= link_to "People ("<<@people.size.to_s<<")", {:controller => "user_search", :action => "people_search", :q => @search}, :remote => true %></th>
+            <% else %>
+                <th><p>No people found.</p></th>
+            <% end %>
+            <% if @events.any? %>
+                <th><%= link_to "Events ("<<@events.size.to_s<<")", {:controller => "user_search", :action => "events_search", :q => @search}, :remote => true %></th>
+            <% else %>
+                <th><p>No events found.</p></th>
+            <% end %>
+            <% if @networking.any? %>
+                <th><%= link_to "Networking ("<<@networking.size.to_s<<")", {:controller => "user_search", :action => "networking_search", :q => @search}, :remote => true %></th>
+            <% else %>
+                <th><p>No networking found.</p></th>
+            <% end %>
+            <% if @notes.any? %>
+                <th><%= link_to "Notes ("<<@notes.size.to_s<<")", {:controller => "user_search", :action => "notes_search", :q => @search}, :remote => true %></th>
+            <% else %>
+                <th><p>No notes found.</p></th>
+            <% end %>
+
+          </tr>
+          <tr>
+            <td id='search_results' colspan="42">Click any of the links above for results.</td>
+          </tr>
+        </table>
+    <% else %>
+        <p>Search returned no results! Better luck next time.</p>
+    <% end %>
+<% else %>
+    <h2>Please input a search query. Minimum length is 3 characters.</h2>
+<% end %>

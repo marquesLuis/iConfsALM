@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_filter :authenticate_administrator!
   # GET /authors
   # GET /authors.json
   def index

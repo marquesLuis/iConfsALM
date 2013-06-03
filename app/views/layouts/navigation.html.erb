@@ -1,28 +1,33 @@
 <h1 class='title'>iConfs</h1>
+<div class='nav_bar'>
+  <table>
+    <tr>
+      <td><%= link_to image_tag("Schedule.jpg", :border => 0, :alt => '', :title => 'Schedule'), {:controller => "user", :action => "program"}, :class => 'nav_bar_image' %></td>
+      <td><%= link_to image_tag("Notifications.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'nav_bar_image' %></td>
+      <td><%= link_to image_tag("Networking.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user_networking", :action => "index"}, :class => 'nav_bar_image' %></td>
+      <td><%= link_to image_tag("Contacts.jpg", :border => 0, :alt => '', :title => 'Contacts'), {:controller => "user", :action => "show_contacts"}, :class => 'nav_bar_image' %></td>
+      <td><%= link_to image_tag("maps.jpg", :border => 0, :alt => '', :title => 'Maps'), {:controller => "user", :action => "maps"}, :class => 'Item-Image' %></td>
+      <td><%= link_to image_tag("Notes.jpg", :border => 0, :alt => '', :title => 'Notes'), {:controller => "notes", :action => "index"}, :class => 'nav_bar_image' %></td>
+      <td><%= link_to image_tag("Organization.jpg", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'nav_bar_image' %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "Schedule", {:controller => "user", :action => "program"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Notifications", {:controller => "user", :action => "notifications"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Networking", {:controller => "user_networking", :action => "index"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Contacts", {:controller => "user", :action => "show_contacts"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Maps", {:controller => "user", :action => "maps"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Notes", {:controller => "notes", :action => "index"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "nav_bar_link" %></td>
 
-<table class = 'nav_bar'>
-  <tr>
-    <td><%= link_to image_tag("Schedule.jpg", :border => 0, :alt => '', :title => 'Schedule'), {:controller => "user", :action => "program"}, :class => 'nav_bar_image' %></td>
-    <td><%= link_to image_tag("Notifications.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user", :action => "notifications"}, :class => 'nav_bar_image' %></td>
-    <td><%= link_to image_tag("Networking.jpg", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user_networking", :action => "index"}, :class => 'nav_bar_image' %></td>
-    <td><%= link_to image_tag("Contacts.jpg", :border => 0, :alt => '', :title => 'Contacts'), {:controller => "user", :action => "show_contacts"}, :class => 'nav_bar_image' %></td>
-    <td><%= link_to image_tag("maps.jpg", :border => 0, :alt => '', :title => 'Maps'), {:controller => "user", :action => "maps"}, :class => 'Item-Image' %></td>
-    <td><%= link_to image_tag("Notes.jpg", :border => 0, :alt => '', :title => 'Notes'), {:controller => "notes", :action => "index"}, :class => 'nav_bar_image' %></td>
-    <td><%= link_to image_tag("Organization.jpg", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'nav_bar_image' %></td>
-  </tr>
-  <tr>
-    <td><%= link_to "Schedule", {:controller => "user", :action => "program"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Notifications", {:controller => "user", :action => "notifications"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Networking", {:controller => "user_networking", :action => "index"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Contacts", {:controller => "user", :action => "show_contacts"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Maps", {:controller => "user", :action => "maps"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Notes", {:controller => "notes", :action => "index"}, :class => "nav_bar_link" %></td>
-    <td><%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "nav_bar_link" %></td>
+    </tr>
 
-  </tr>
-
-</table>
-
+  </table>
+  <%= form_tag("/user_search/search", :method => "get", class: 'search') do %>
+      <%= label_tag(:q, "Search for:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+  <% end %>
+</div>
 <ul class="control">
   <li><%= current_registry.person.first_name %> <%= current_registry.person.last_name %> <%= image_tag("Config.jpg", :border => 0, :alt => '', :title => 'Config') %> </a>
     <ul>

@@ -1,2 +1,2 @@
-$("#location_title").fadeOut("slow", function() { $(this).empty().append("<p><%= @location.title %></p>").fadeIn(); })
+$("#location_title").fadeOut("slow", function() { $(this).empty().append("<h2><%= @location.title %></h2>").fadeIn(); })
 $("#location_image").fadeOut("slow", function() { $(this).empty().append("<p><img src='/images/<%= @location.image %>' alt='<%= @location.title %>'></p>").fadeIn(); })

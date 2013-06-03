@@ -1,5 +1,15 @@
 IConfs::Application.routes.draw do
 
+  get "user_search/notes_search"
+
+  get "user_search/networking_search"
+
+  get "user_search/events_search"
+
+  get "user_search/people_search"
+
+  get "user_search/search"
+
   post "user_program/remove_event"
 
   post "user_program/add_event"

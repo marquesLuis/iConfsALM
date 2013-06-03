@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(:version => 20130603120700) do
     t.integer  "person_id"
   end
 
-  create_table "contacts", :force => true do |t|
-    t.boolean  "hasPrivate",   :default => false
-    t.integer  "requester_id"
-    t.integer  "requested_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
   create_table "documents", :force => true do |t|
     t.string   "title"
     t.text     "description"

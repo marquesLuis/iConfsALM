@@ -106,10 +106,6 @@ hr {
     clear: both;
 }
 
-
-
-
-
 .body a {
     color: #000000;
 }
@@ -118,6 +114,12 @@ hr {
 
 .body table, .body th, .body td {
     border: 1px solid black;
+}
+
+#profile img {
+    border: 1px solid black;
+    float: right;
+
 }
 
 #person_photo {
@@ -167,4 +169,7 @@ hr {
 #location_image img {
     max-height: 1000px;
     max-width: 900px;
+}
+.search {
+    float:right;
 }
