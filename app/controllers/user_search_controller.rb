@@ -5,7 +5,7 @@ class UserSearchController < ApplicationController
       @search=nil
     else
       @like = '%'+params[:q]+'%'
-      @people = Person.where("first_name like ?", @like)
+      @people = Person.where("first_name like ? OR last_name like ?", @like, @like)
 
       @events = Event.where("title like ?", @like)
 
@@ -19,7 +19,7 @@ class UserSearchController < ApplicationController
 
   def people_search
     @like = '%'+params[:q]+'%'
-    @people = Person.where("first_name like ?", @like)
+    @people = Person.where("first_name like ? OR last_name like ?", @like, @like)
 
   end
 

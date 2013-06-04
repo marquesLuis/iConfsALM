@@ -23,12 +23,12 @@
             <% end %>
 
             <div class="field">
-              <%= f.label :content %>
+              <%= f.label 'Content:'  %>
               <br/>
-              <%= f.text_area :content, :placeholder => "Write any message you wish the organization knew, from liking the coffee break or wishing something was diferent, all will do." %>
+              <%= f.text_area :content , :placeholder => "Write any message you wish the organization knew, from liking the coffee break or wishing something was diferent, all will do." %>
             </div>
             <div class="actions">
-              <%= f.submit %>
+              <%= f.submit 'Send feedback'%>
             </div>
 
         <% end %>

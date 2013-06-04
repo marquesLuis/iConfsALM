@@ -1,20 +1,13 @@
-html = '<div>'
-html += '<table>'
-
-html += '<tr>'
-
-html += '<th colspan="42"><p>Name</p></th>'
-
-html += '</tr>'
+html = ""
 <% @people.each do |person| %>
 html += '<tr>'
 
-html += '<th><p><%= person.prefix %> <%= person.first_name %> <%= person.last_name %></p></th>'
+html += "<td colspan='3'> <%= person.prefix %> <%= person.first_name %> <%= person.last_name %> </td>"
 
 html += '</tr>'
 <% end %>
 
 
-html += '</table>'
-html += '</div>'
-$("#search_results").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+$("#search_results tr").eq(1).fadeOut("slow", function () {
+    $(this).empty().append(html).fadeIn();
+})

@@ -173,3 +173,7 @@ hr {
 .search {
     float:right;
 }
+.centralized {
+    text-align: center;
+
+}

@@ -1,10 +1,11 @@
-<p><%= link_to 'Feedback', { :controller => 'user', :action => 'organization' }   %>
-<%= link_to 'Message', { :controller => 'user', :action => 'organization', :orgmessage => true }   %>  </p>
+<div class='centralized'>
+  <p><%= link_to 'Feedback', {:controller => 'user', :action => 'organization'} %>
+    <%= link_to 'Message', {:controller => 'user', :action => 'organization', :orgmessage => true} %>  </p>
 
-<% if @orgmessage %>
-    <%= render 'organization_message' %>
-<% else %>
-    <%= render 'feedback' %>
+  <% if @orgmessage %>
+      <%= render 'organization_message' %>
+  <% else %>
+      <%= render 'feedback' %>
+  <% end %>
 
-<% end %>
-
+</div>

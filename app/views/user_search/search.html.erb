@@ -1,7 +1,7 @@
 <% if @search %>
     <h2>Search for: <%= @search %></h2>
     <% if @found %>
-        <table>
+        <table id='search_results'>
           <tr>
             <% if @people.any? %>
                 <th><%= link_to "People ("<<@people.size.to_s<<")", {:controller => "user_search", :action => "people_search", :q => @search}, :remote => true %></th>
@@ -23,11 +23,11 @@
             <% else %>
                 <th><p>No notes found.</p></th>
             <% end %>
+          </tr>
 
-          </tr>
-          <tr>
-            <td id='search_results' colspan="42">Click any of the links above for results.</td>
-          </tr>
+          <tr> </tr>
+
+
         </table>
     <% else %>
         <p>Search returned no results! Better luck next time.</p>
