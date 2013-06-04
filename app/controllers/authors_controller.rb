@@ -75,6 +75,7 @@ class AuthorsController < ApplicationController
   def destroy
     @author = Author.find(params[:id])
     @author.destroy
+    RemovedAuthors.create(author_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to authors_url }

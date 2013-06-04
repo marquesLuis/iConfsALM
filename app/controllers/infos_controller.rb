@@ -33,6 +33,7 @@ class InfosController < ApplicationController
   def destroy
     @info = Info.find(params[:id])
     @info.destroy
+    RemovedInfo.create(info_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to '/user_profile/show/', notice: 'Info was successfully destroyed.'  }

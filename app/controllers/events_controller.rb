@@ -104,6 +104,7 @@ class EventsController < ApplicationController
   def destroy
     @event = @group.events.find(params[:id])
     @event.destroy
+    RemovedEvent.create(event_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to event_group_events_url(@group) }

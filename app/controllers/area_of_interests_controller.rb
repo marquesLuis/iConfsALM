@@ -76,6 +76,7 @@ class AreaOfInterestsController < ApplicationController
   def destroy
     @area_of_interest = AreaOfInterest.find(params[:id])
     @area_of_interest.destroy
+    RemovedAreas.create(area_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to area_of_interests_url }

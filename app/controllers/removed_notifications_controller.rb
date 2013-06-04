@@ -1,5 +1,5 @@
 class RemovedNotificationsController < ApplicationController
-  #TODO before_filter :authenticate_administrator!
+  before_filter :authenticate_administrator!
 
   # GET /removed_notifications
   # GET /removed_notifications.json

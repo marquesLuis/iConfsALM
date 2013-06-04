@@ -104,6 +104,10 @@ class EventGroupsController < ApplicationController
 
     respond_to do |format|
       if @event_group.update_attributes(params[:event_group])
+        @event_group.events.each do |event|
+          event.touch
+        end
+
         format.html { redirect_to @event_group, notice: 'Event group was successfully updated.' }
         format.json { head :no_content }
       else

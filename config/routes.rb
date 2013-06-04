@@ -170,10 +170,6 @@ IConfs::Application.routes.draw do
   resources :area_of_interests
 
 
-  match '/removed_notifications' => 'removed_notifications#index'
-  get 'removed_notifications/index'
-
-
   resources :networkings
 
 

@@ -28,6 +28,7 @@ class NetworkingsController < ApplicationController
   def destroy
     @networking = Networking.find(params[:id])
     @networking.destroy
+    RemovedNetworkings.create(net_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to networkings_url }
