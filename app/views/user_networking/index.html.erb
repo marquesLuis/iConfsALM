@@ -31,8 +31,9 @@
 
             <% @showing.each do |networking| %>
                 <tr>
-                  <td><%= networking.person.prefix %><%= networking.person.first_name %><%= networking.person.last_name %></td>
-                  <td><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id}, :method => 'post', :remote => true %></td>
+                  <% person = networking.person %>
+                  <td><%= link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name, {:controller => "user", :action => "show_all_participants", :id => person.id} %></td>
+                  <td><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id},  :remote => true %></td>
                   <% if networking.person_id == current_registry.person_id %>
                       <td><%= link_to 'Delete', {:controller => "user_networking", :action => "delete", :id => networking.id}, :method => 'post' %></td>
                   <% end %>
@@ -40,7 +41,18 @@
             <% end %>
           </table>
         </td>
-        <td id='networking'></td>
+        <td id='networking'>
+          <% if @networking %>
+              <script type="text/javascript">
+                  window.onload = function () {
+                      $.ajax("/user_networking/show/?id=<%= @networking.id%>");
+                  };
+              </script>
+          <% else %>
+              <p>Select a topic on the left.</p>
+          <% end %>
+
+        </td>
       </table>
   <% else %>
       <p>Nothing to show! Add one yourself!</p>

@@ -2,6 +2,11 @@ class UserNetworkingController < ApplicationController
   before_filter :authenticate_registry!
 
   def index
+    if params[:id]
+      @networking = Networking.find(params[:id])
+    else
+      @networking=nil
+    end
     @areas_of_interest = AreaOfInterest.all
     @showing = Networking.all
   end

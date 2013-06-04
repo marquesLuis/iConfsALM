@@ -139,6 +139,8 @@ class UserController < ApplicationController
         end
       end
     end
+
+    @networking = @participant.networkings
     respond_to do |format|
       format.js
     end
