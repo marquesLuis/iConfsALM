@@ -1,2 +1,26 @@
-html='<p>HI</p>'
-$("#search_results").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+html = ""
+<% @events.each do |event| %>
+html += "<tr class='result'>"
+html += '<td  colspan="2">'
+html += "<p><%= escape_javascript(link_to event.title,  {:controller => "user_program", :action => "show_event", :id => event.id}) %></p>"
+
+html += '</td>'
+html += '<td colspan="42">'
+html += "<p>Date: <%= event.event_group.date.to_date.to_s %></p> "
+html += "<p>Begin: <%= event.begin.strftime("%I:%M:%S") %></p> "
+html += "<p>End: <%= event.end.strftime("%I:%M:%S") %></p> "
+html += '</td>'
+html += '</tr>'
+<% end %>
+
+$(".result").fadeOut("slow", function () {
+    $(this).empty();
+    $(this).remove();
+});
+$("#search_results").append(html).children.each(function () {
+    $(this).fadeIn()
+});
+
+
+
+

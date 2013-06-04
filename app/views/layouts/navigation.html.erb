@@ -22,7 +22,7 @@
     </tr>
 
   </table>
-  <%= form_tag("/user_search/search", :method => "get", class: 'search') do %>
+  <%= form_tag("/user_search/search", :method => "get", :class => 'search') do %>
       <%= label_tag(:q, "Search for:") %>
       <%= text_field_tag(:q) %>
       <%= submit_tag("Search") %>

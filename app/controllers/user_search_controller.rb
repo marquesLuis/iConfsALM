@@ -1,7 +1,7 @@
 class UserSearchController < ApplicationController
   def search
     @search = params[:q]
-    if @search.length < 3
+    if @search.length < 1
       @search=nil
     else
       @like = '%'+params[:q]+'%'

@@ -1,13 +1,36 @@
 html = ""
 <% @people.each do |person| %>
-html += '<tr>'
+html += "<tr class='result'>"
+html += '<td colspan="42" class="border">'
 
-html += "<td colspan='3'> <%= person.prefix %> <%= person.first_name %> <%= person.last_name %> </td>"
 
+html += '<div>'
+<% if person.photo.nil? %>
+html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='right'>"
+<% else %>
+html += "<img src='/people/<%= person.photo %>' alt='Photo' class='right'>"
+<% end %>
+html += '</div>'
+
+html += "<p><%= escape_javascript(link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></p>"
+
+html += "<p>Affiliation: <%= person.affiliation %> </p> "
+
+html += "<p>Email: <%= person.email %> </p> "
+
+
+html += '</td>'
 html += '</tr>'
 <% end %>
 
+$(".result").fadeOut("slow", function () {
+    $(this).empty();
+    $(this).remove();
+});
+$("#search_results").append(html).children.each(function () {
+    $(this).fadeIn()
+});
 
-$("#search_results tr").eq(1).fadeOut("slow", function () {
-    $(this).empty().append(html).fadeIn();
-})
+
+
+

@@ -98,6 +98,10 @@ class NotesController < ApplicationController
       @about_event.destroy
     end
 
+
+    @rn = RemovedNote.new(:sequence_number => @note.id, :person_id => @note.person_id)
+    @rn.save
+
     @note.destroy
 
     respond_to do |format|
@@ -146,6 +150,10 @@ class NotesController < ApplicationController
     @note = Note.find(params[:note])
     @aboutPerson = @note.about_person
     @aboutPerson.destroy
+
+    @rn = RemovedNote.new(:sequence_number => @note.id, :person_id => @note.person_id)
+    @rn.save
+
     @note.destroy
 
     respond_to do |format|
@@ -206,6 +214,10 @@ class NotesController < ApplicationController
     @aboutEvent = @note.about_event
     @event_id = @aboutEvent.event_id
     @aboutEvent.destroy
+
+    @rn = RemovedNote.new(:sequence_number => @note.id, :person_id => @note.person_id)
+    @rn.save
+
     @note.destroy
 
     respond_to do |format|
