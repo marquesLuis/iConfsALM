@@ -10,8 +10,9 @@ html =''
 
     <% @showing.each do |networking| %>
         html +="<tr>"
-        html +="<td><%= networking.person.prefix %><%= networking.person.first_name %><%= networking.person.last_name %></td>"
-        html +="<td><a href='/user_networking/show?id=<%= networking.id %>' data-method='post' data-remote='true' rel='nofollow'><%= networking.title %></a></td>"
+        <% person =  networking.person %>
+        html +="<td><%= escape_javascript(link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></td>"
+        html +="<td><a href='/user_networking/show?id=<%= networking.id %>' data-remote='true' rel='nofollow'><%= networking.title %></a></td>"
         <% if networking.person_id == current_registry.person_id %>
             html +="<td><a href='/user_networking/delete?id=<%= networking.id %>' data-method='post' rel='nofollow'>Delete</a></td>"
         <% end %>

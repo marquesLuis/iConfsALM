@@ -1,2 +1,29 @@
-html='<p>HI</p>'
-$("#search_results").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+html = ""
+<% @networking.each do |networking| %>
+html += "<tr class='result'>"
+    html += '<td  colspan="2">'
+        html += "<p><%= escape_javascript(link_to networking.title,  {:controller => "user_networking", :action => "index", :id => networking.id}) %></p>"
+
+    html += '</td>'
+    html += '<td colspan="42">'
+    html += "<p>Content:</p>"
+    <% networking.content.split(/\r\n/).each do |line| %>
+        html += "<p><%= line %></p>"
+    <% end %>
+
+
+    html += '</td>'
+html += '</tr>'
+<% end %>
+
+$(".result").fadeOut("slow", function () {
+    $(this).empty();
+    $(this).remove();
+});
+$("#search_results").append(html).children.each(function () {
+    $(this).fadeIn()
+});
+
+
+
+

@@ -5,8 +5,9 @@ html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='person_image
 <% else %>
 html += "<img src='/people/<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
 <% end %>
+<% person = @networking.person %>
 
-html += "<p><%= @networking.person.prefix %> <%= @networking.person.first_name %>, <%= @networking.person.last_name %></p> "
+html += "<p><%= escape_javascript(link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></p> "
 html += "<p><%= @networking.person.affiliation %> </p> "
 
 html += "</div>"
@@ -34,4 +35,6 @@ html += "</p>"
 
 html += "</div>"
 
-$("#networking").fadeOut("slow", function () { $(this).empty().append(html).fadeIn(); })
+$("#networking").fadeOut("slow", function () {
+    $(this).empty().append(html).fadeIn();
+})

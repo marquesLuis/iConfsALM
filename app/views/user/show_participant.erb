@@ -83,6 +83,18 @@ html =  "<div>"
   html += "<%= escape_javascript(render(:template =>'notes/index_on_participant', :participant_id =>  @participant.id )) %>"
   html += "</div>"
 
+  html += "<div class='border'>"
+  <% if @networking.any? %>
+      html += "<p>Networking topics:</p>"
+      <%  @networking.each do |networking| %>
+          html += "<p><%= escape_javascript(link_to networking.title,  {:controller => "user_networking", :action => "index", :id => networking.id}) %></p>"
+
+      <% end %>
+  <% else %>
+      html += "<p><%= @participant.first_name %> has not added any networking topics yet! </p> "
+  <% end %>
+html += "</div>"
+
 html += "</div>"
 
 $("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
