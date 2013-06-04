@@ -1,13 +1,26 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <b>Participant:</b>
+<% if @author.person_id %>
+   <%= @author.person.prefix<<' '<<@author.person.first_name<<' '<<@author.person.last_name %>
 
+<% else %>
+    Has no participant.
+<% end %>
+</p>
 <p>
   <b>Name:</b>
   <%= @author.name %>
 </p>
 
 <p>
-  <b>Document:</b>
-  <%= @author.document_id %>
+  <b>Document title:</b>
+  <%= @author.document.title %>
+</p>
+
+<p>
+  <b>Document description:</b>
+  <%= @author.document.description %>
 </p>
 
 

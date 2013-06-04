@@ -1,25 +1,35 @@
-<%= form_for(@event_document) do |f| %>
-  <% if @event_document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event_document.errors.count, "error") %> prohibited this event_document from being saved:</h2>
+<% if ((@documents.any?) and(@events.any?)) %>
+    <%= form_for(@event_document) do |f| %>
+        <% if @event_document.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@event_document.errors.count, "error") %> prohibited this event_document from being
+                saved:</h2>
 
-      <ul>
-      <% @event_document.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% @event_document.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :document_id %><br />
-    <%= f.number_field :document_id %>
-  </div>
-  <div class="field">
-    <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+        <div class="field">
+          <%= f.label :document_id %>
+          <br/>
+          <% documents = @documents.map { |document| [document.title, document.id] } %>
+          <%= f.select(:document_id, documents) %>
+        </div>
+        <div class="field">
+          <%= f.label :event_id %>
+          <br/>
+          <% events = @events.map { |event| [event.title, event.id] } %>
+          <%= f.select(:event_id, events) %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
+<% else %>
+    <p>No documents or events exist!</p>
 <% end %>
+

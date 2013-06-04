@@ -49,7 +49,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         PersonMailer.send_code(@person).deliver
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: 'Person was successfully created. Email has been sent.' }
         format.json { render json: @person, status: :created, location: @person }
       else
         format.html { render action: 'new' }

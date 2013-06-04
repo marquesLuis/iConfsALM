@@ -1,31 +1,40 @@
+<% if @documents.any? %>
 <%= form_for(@author) do |f| %>
-  <% if @author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
+    <% if @author.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
 
-      <ul>
-      <% @author.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @author.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
     <div class="field">
-      <%= f.label :person_id %><br />
+      <%= f.label :person_id %>
+      <br/>
       <% people = Person.all.map { |person| [person.prefix<<' '<<person.first_name<<' '<<person.last_name, person.id] } %>
       <% people<<[] %>
-      <%= f.select(:person_id, people )%>
+      <%= f.select(:person_id, people) %>
     </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :document_id %><br />
-    <%= f.number_field :document_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :document_id %>
+      <br/>
+      <% documents = @documents.map { |document| [document.title, document.id] } %>
+      <%= f.select(:document_id, documents) %>
+
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+<% else %>
+<p>No documents exist!</p>
 <% end %>

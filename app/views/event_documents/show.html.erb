@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Document:</b>
-  <%= @event_document.document_id %>
+  <b>Document title:</b>
+  <%= @event_document.document.title %>
 </p>
 
 <p>
-  <b>Event:</b>
-  <%= @event_document.event_id %>
+  <b>Event title:</b>
+  <%= @event_document.event.title %>
+</p>
+
+<p>
+  <b>Document description:</b>
+  <%= @event_document.document.description %>
 </p>
 
 

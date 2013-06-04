@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Person Name</th>
-    <th>Name</th>
-    <th>Document</th>
+    <th>Name to show if person is null.</th>
+    <th>Document title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,7 +19,7 @@
             <td>Has no participant.</td>
         <% end %>
         <td><%= author.name %></td>
-        <td><%= author.document_id %></td>
+        <td><%= author.document.title %></td>
         <td><%= link_to 'Show', author %></td>
         <td><%= link_to 'Edit', edit_author_path(author) %></td>
         <td><%= link_to 'Destroy', author, method: :delete, data: {confirm: 'Are you sure?'} %></td>

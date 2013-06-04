@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Document</th>
-    <th>Event</th>
+    <th>Document Title</th>
+    <th>Event Title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +11,8 @@
 
 <% @event_documents.each do |event_document| %>
   <tr>
-    <td><%= event_document.document_id %></td>
-    <td><%= event_document.event_id %></td>
+    <td><%= event_document.document.title %></td>
+    <td><%= event_document.event.title %></td>
     <td><%= link_to 'Show', event_document %></td>
     <td><%= link_to 'Edit', edit_event_document_path(event_document) %></td>
     <td><%= link_to 'Destroy', event_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>

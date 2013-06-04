@@ -26,6 +26,7 @@ class AuthorsController < ApplicationController
   # GET /authors/new.json
   def new
     @author = Author.new
+    @documents = Document.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,7 @@ class AuthorsController < ApplicationController
   # GET /authors/1/edit
   def edit
     @author = Author.find(params[:id])
+    @documents = Document.all
   end
 
   # POST /authors

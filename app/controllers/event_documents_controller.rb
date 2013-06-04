@@ -25,6 +25,8 @@ class EventDocumentsController < ApplicationController
   # GET /event_documents/new.json
   def new
     @event_document = EventDocument.new
+    @documents = Document.all
+    @events = Event.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class EventDocumentsController < ApplicationController
   # GET /event_documents/1/edit
   def edit
     @event_document = EventDocument.find(params[:id])
+    @documents = Document.all
+    @events = Event.all
   end
 
   # POST /event_documents

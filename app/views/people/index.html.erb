@@ -7,31 +7,39 @@
     <th>Last name</th>
     <th>Affiliation</th>
     <th>Email</th>
-    <th>Singup Code</th>
-    <th>Photo</th>
-    <th>Registry</th>
+    <th>Email sent for sign up</th>
+    <th>Photo link</th>
+    <th>Signed up</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @people.each do |person| %>
-  <tr>
-    <td><%= person.prefix %></td>
-    <td><%= person.first_name %></td>
-    <td><%= person.last_name %></td>
-    <td><%= person.affiliation %></td>
-    <td><%= person.email %></td>
-    <td><%= person.signup_code %>
-    <td><%= person.photo %>
-    <td><%= person.registry %>
+  <% @people.each do |person| %>
+      <tr>
+        <td><%= person.prefix %></td>
+        <td><%= person.first_name %></td>
+        <td><%= person.last_name %></td>
+        <td><%= person.affiliation %></td>
+        <td><%= person.email %></td>
+        <% if person.signup_code %>
+            <td>Yes</td>
+        <% else %>
+            <td>No</td>
+        <% end %>
+        <td><%= person.photo %>
+          <% if person.registry %>
+            <td>Yes</td>
+        <% else %>
+            <td>No</td>
+        <% end %>
 
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: {confirm: 'Are you sure? The person will not be able to use the sent signup code or login.'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Person', new_person_path %>
