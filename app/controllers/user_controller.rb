@@ -69,7 +69,7 @@ class UserController < ApplicationController
   end
 
   def notifications
-    @org_notifications = OrgNotification.all
+    @org_notifications = OrgNotification.order('updated_at DESC').all
 
     respond_to do |format|
       format.html # index.html.erb

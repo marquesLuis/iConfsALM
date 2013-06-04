@@ -1,3 +1,10 @@
-PersonMailer#send_code
+Hello <%= @person.prefix %><%= @person.first_name %> <%= @person.last_name %>,
 
-Hello <%= @person.first_name %>, code: <%= @person.signup_code %>
+You have been invited to use the application belonging to the conference you are attending.
+To sign up to this app please click the following link and input the code, along with you e-mail.
+
+Sign up Code: <%= @person.signup_code %>
+Sign up Link: http://193.136.122.134:3000/registries/sign_up
+
+Regards,
+The Organization

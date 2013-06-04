@@ -60,5 +60,6 @@ module IConfs
     config.assets.version = '1.0'
 
     config.assets.initialize_od_precompile = false
+
   end
 end

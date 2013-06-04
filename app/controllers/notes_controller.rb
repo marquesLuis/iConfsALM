@@ -1,5 +1,22 @@
 class NotesController < ApplicationController
   before_filter :authenticate_registry!
+  before_filter :require_owned_note, :only => [:show, :edit, :update, :show_on_participant, :destroy, :show_on_event, :edit_on_participant, :destroy_on_event, :edit_on_event, :destroy_on_participant]
+
+  def require_owned_note
+    if params[:id]
+      @note = Note.find(params[:id])
+    else
+      @note = Note.find(params[:note])
+    end
+    if @note.person_id == current_registry.person_id
+      true
+    else
+      flash[:notice] = "You can only acces you own notes!"
+      redirect_to '/notes'
+    end
+  end
+
+
   # GET /notes
   # GET /notes.json
   def index
@@ -14,9 +31,11 @@ class NotesController < ApplicationController
   # GET /notes/1
   # GET /notes/1.json
   def show
-    @note = Note.find(params[:id])
     if @note.about_person
       @person = @note.about_person.person
+    end
+    if @note.about_event
+      @event = @note.about_event.event
     end
 
     respond_to do |format|
@@ -38,16 +57,14 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
-    @note = Note.find(params[:id])
+
   end
 
   def edit_on_participant
-    @note = Note.find(params[:note])
     @participant = @note.about_person.person
   end
 
   def edit_on_event
-    @note = Note.find(params[:note])
     @event = @note.about_event.event
   end
 
@@ -70,7 +87,6 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.json
   def update
-    @note = Note.find(params[:id])
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
@@ -86,7 +102,6 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note = Note.find(params[:id])
 
     if @note.about_person
       @aboutPerson = @note.about_person
@@ -147,7 +162,6 @@ class NotesController < ApplicationController
   end
 
   def destroy_on_participant
-    @note = Note.find(params[:note])
     @aboutPerson = @note.about_person
     @aboutPerson.destroy
 
@@ -163,7 +177,6 @@ class NotesController < ApplicationController
   end
 
   def show_on_participant
-    @note = Note.find(params[:note])
     @person = @note.about_person.person
 
     respond_to do |format|
@@ -210,7 +223,6 @@ class NotesController < ApplicationController
   end
 
   def destroy_on_event
-    @note = Note.find(params[:note])
     @aboutEvent = @note.about_event
     @event_id = @aboutEvent.event_id
     @aboutEvent.destroy
@@ -227,7 +239,6 @@ class NotesController < ApplicationController
   end
 
   def show_on_event
-    @note = Note.find(params[:note])
     @event = @note.about_event.event
 
     respond_to do |format|
@@ -246,18 +257,18 @@ class NotesController < ApplicationController
     @notes.each do |note|
       a=''
       if note.about_person
-        a+= "Person: "
+        a+= "\r\nPerson: "
         a+= note.about_person.person.prefix+ " "
         a+= note.about_person.person.first_name + " "
         a+= note.about_person.person.last_name + "\r\n"
       else
         if note.about_event
-          a+= "Event: "
+          a+= "\r\nEvent: "
           a+= note.about_event.event.title + " on "
           a+= note.about_event.event.event_group.date.to_date.to_s + " at "
           a+= note.about_event.event.begin.strftime("%I:%M:%S %Z") + "\r\n"
         else
-          a+= "Note\r\n"
+          a+= "\r\nNote\r\n"
         end
       end
       a+= "        "

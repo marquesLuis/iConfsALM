@@ -197,5 +197,18 @@ hr {
 }
 
 #search_results {
-    width:1100px;
+    width: 1100px;
+}
+
+#limited_content_listed {
+    max-width: 700px;
+}
+
+.limited_content {
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 900px;
+    height: 3em;
+    max-height: 3em;
+    text-overflow: ellipsis;
 }

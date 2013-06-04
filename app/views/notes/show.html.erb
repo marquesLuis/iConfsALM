@@ -15,6 +15,16 @@
       <p>Email: <%= @person.email %> </p>
     </div>
 <% end %>
+<% if @event %>
+    <div class='right border'>
+      <p>About:</p>
+
+      <p><%= link_to @event.title, '/user_program/show_event?id='+@event.id.to_s %></p>
+      <p>Date: <%= @event.event_group.date.to_date.to_s %></p>
+      <p>Begin: <%= @event.begin.strftime("%I:%M:%S") %></p>
+      <p>End: <%= @event.end.strftime("%I:%M:%S") %></p>
+    </div>
+<% end %>
 <p>
   <b>Content:</b>
   <%= @note.content %>

@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  post "user_contacts/cancel_rejection"
+
   get "user_search/notes_search"
 
   get "user_search/networking_search"

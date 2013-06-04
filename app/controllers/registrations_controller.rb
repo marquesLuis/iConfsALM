@@ -11,24 +11,21 @@ class RegistrationsController < Devise::RegistrationsController
       build_resource(params[:registry])
       resource.person=@person
 
-    end
-    if resource.save
-      if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_navigational_format?
-        sign_up(resource_name, resource)
-        redirect_to :back
-      else
-        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
-        expire_session_data_after_sign_in!
-        redirect_to :back
+      if resource.save
+        if resource.active_for_authentication?
+          set_flash_message :notice, :signed_up if is_navigational_format?
+          sign_up(resource_name, resource)
+          redirect_to :back
+        else
+          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+          expire_session_data_after_sign_in!
+          redirect_to :back
+        end
       end
     else
-      puts("Z")
       clean_up_passwords resource
-      redirect_to :back
+      redirect_to :back, :notice => "Wrong input! Please confirm code and email. Email MUST be the same as the one you received the code."
     end
-
-    puts("END")
 
   end
 

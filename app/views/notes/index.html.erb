@@ -1,5 +1,5 @@
-<h1>Listing notes</h1>
-
+<h1>Notes</h1>
+<% if @notes.any? %>
 <table>
   <tr>
     <th>About</th>
@@ -21,15 +21,17 @@
                 <td>Nothing</td>
             <% end %>
         <% end %>
-        <td><%= note.content %></td>
+        <td class="limited_content"><%= note.content %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
       </tr>
   <% end %>
 </table>
-<%= link_to 'Export', {:controller => "notes", :action => 'export'} %></td>
+<p><%= link_to 'Export', {:controller => "notes", :action => 'export'} %>  </p>
 
-<br/>
+<% else %>
+    <p>No notes yet!</p>
+<% end %>
 
-<%= link_to 'New Note', new_note_path %>
+<p><%= link_to 'New Note', new_note_path %> </p>

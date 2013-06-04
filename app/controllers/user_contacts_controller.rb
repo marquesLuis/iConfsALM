@@ -5,7 +5,7 @@ class UserContactsController < ApplicationController
     @requested = Person.find(params[:id])
     @requester = current_registry.person
 
-    @pending_contact = PendingContact.new(:requester_id => @requester.id, :requested_id=>@requested.id);
+    @pending_contact = PendingContact.new(:requester_id => @requester.id, :requested_id => @requested.id);
     @pending_contact.save
 
     respond_to do |format|
@@ -29,7 +29,7 @@ class UserContactsController < ApplicationController
     @pending = PendingContact.where(:requester_id => @participant.id, :requested_id => current_registry.person.id).first;
     @pending.destroy
 
-    @rejected =  RejectedContact.new(:requester_id => @participant.id, :requested_id=>current_registry.person.id);
+    @rejected = RejectedContact.new(:requester_id => @participant.id, :requested_id => current_registry.person.id);
     @rejected.save
 
     respond_to do |format|
@@ -43,7 +43,7 @@ class UserContactsController < ApplicationController
     @pending = PendingContact.where(:requester_id => @participant.id, :requested_id => current_registry.person.id).first;
     @pending.destroy
 
-    @traded = TradedContact.new(:requester_id => @participant.id, :requested_id=>current_registry.person.id);
+    @traded = TradedContact.new(:requester_id => @participant.id, :requested_id => current_registry.person.id);
     @traded.save
     respond_to do |format|
       format.js # accept_request.js.erb
@@ -58,16 +58,16 @@ class UserContactsController < ApplicationController
     received.each do |r|
       a = ""
       a+= (r.requester.prefix) + " "
-      a+= (r.requester.first_name)  + " "
-      a+= (r.requester.last_name)   + " "
+      a+= (r.requester.first_name) + " "
+      a+= (r.requester.last_name) + " "
       a+= (r.requester.email)
       if r.requester.infos.any?
         b=""
         r.requester.infos.each do |i|
           c= "\r\n          "
           c+= i.info_type
-          c+=  " - "
-          c+=  i.value
+          c+= " - "
+          c+= i.value
           b=b+c
         end
         a=a+b+"\r\n"
@@ -78,16 +78,16 @@ class UserContactsController < ApplicationController
     sent.each do |s|
       a = ""
       a+= (s.requested.prefix) + " "
-      a+= (s.requested.first_name)  + " "
-      a+= (s.requested.last_name)   + " "
+      a+= (s.requested.first_name) + " "
+      a+= (s.requested.last_name) + " "
       a+= (s.requested.email)
       if s.requested.infos.any?
         b=""
         s.requested.infos.each do |i|
           c= "\r\n          "
           c+= i.info_type
-          c+=  " - "
-          c+=  i.value
+          c+= " - "
+          c+= i.value
           b=b+c
         end
         a=a+b+"\r\n"
@@ -96,7 +96,22 @@ class UserContactsController < ApplicationController
       x+=a+"\r\n"
 
     end
-    send_data( x, :filename => "contacts.txt")
+    send_data(x, :filename => "contacts.txt")
+  end
+
+  def cancel_rejection
+    @rejected = RejectedContact.where(:requester_id => params[:id], :requested_id => current_registry.person_id).first;
+    if @rejected
+      @traded = TradedContact.new(:requester_id => params[:id], :requested_id => current_registry.person_id);
+      @traded.save
+      @rejected.destroy
+      @done=true
+    else
+      @done=false
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 end
 
