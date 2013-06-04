@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
   attr_accessible :affiliation, :biography, :calendar_version, :email, :first_name, :info_modification_time, :last_name, :photo, :prefix, :registry, :signup_code
 
+
   PREFIX_TYPES = ['Dr.','Sr.']
 
   has_many :messages, :inverse_of => :person
@@ -43,4 +44,7 @@ class Person < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
+  def self.get_types
+    return PREFIX_TYPES
+  end
 end

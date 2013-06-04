@@ -10,18 +10,20 @@
     <th></th>
   </tr>
 
-<% @speakers.each do |speaker| %>
-  <tr>
-    <td><%= speaker.keynote %></td>
-    <td><%= speaker.person_id %></td>
-    <td><%= speaker.event_id %></td>
-    <td><%= link_to 'Show', speaker %></td>
-    <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
-    <td><%= link_to 'Destroy', speaker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @speakers.each do |speaker| %>
+      <tr>
+        <td><%= speaker.keynote %></td>
+
+        <% person = speaker.person %>
+        <td><%= person.prefix<<' '<<person.first_name<<' '<<person.last_name %></td>
+        <td><%= speaker.event.title %></td>
+        <td><%= link_to 'Show', speaker %></td>
+        <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
+        <td><%= link_to 'Destroy', speaker, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Speaker', new_speaker_path %>

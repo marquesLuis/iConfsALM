@@ -12,7 +12,9 @@
   <% end %>
     <div class="field">
       <%= f.label :person_id %><br />
-      <%= f.number_field :person_id %>
+      <% people = Person.all.map { |person| [person.prefix<<' '<<person.first_name<<' '<<person.last_name, person.id] } %>
+      <% people<<[] %>
+      <%= f.select(:person_id, people )%>
     </div>
 
   <div class="field">

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :prefix %><br />
-    <%= f.text_field :prefix %>
+    <%= f.select(:prefix, options_for_select(Person.get_types())) %>
   </div>
   <div class="field">
     <%= f.label :affiliation %><br />

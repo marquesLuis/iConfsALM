@@ -20,8 +20,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+
     <%= f.label :event_kind %><br />
-    <%= f.text_field :event_kind %>
+    <%= f.select(:event_kind, options_for_select(Event.get_types())) %>
+
   </div>
   <div class="field">
     <%= f.label :begin %><br />

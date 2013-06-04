@@ -18,4 +18,7 @@ class Event < ActiveRecord::Base
   def event_kind_all
     EVENT_KIND
   end
+  def self.get_types
+    return EVENT_KIND
+  end
 end

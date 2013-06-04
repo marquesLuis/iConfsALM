@@ -7,12 +7,13 @@
 
 <p>
   <b>Person:</b>
-  <%= @speaker.person_id %>
+  <% person=@speaker.person %>
+  <%= person.prefix<<' '<<person.first_name<<' '<<person.last_name %>
 </p>
 
 <p>
   <b>Session:</b>
-  <%= @speaker.event_id %>
+  <%= @speaker.event.title %>
 </p>
 
 
