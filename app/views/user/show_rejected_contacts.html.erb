@@ -17,7 +17,7 @@
               <tr>
                 <td>
                   <% if rejected.requester.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
+                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                     <img src='/people/<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
                 <% end %>

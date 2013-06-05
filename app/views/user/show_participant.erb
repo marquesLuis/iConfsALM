@@ -1,7 +1,7 @@
 html =  "<div>"
 
   <% if @participant.photo.nil? %>
-      html += "<img src='/images/defaultPerson.jpg' alt='No Photo'>"
+      html += "<img src='/images/defaultPerson150.jpg' alt='No Photo'>"
   <% else %>
       html += "<img src='/people/<%= @participant.photo %>' alt='Photo' class='person_image'>"
   <% end %>

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="Admin - Páginas onde ha restrição de input (Dr., etc..) usa agora lista de opções. (people e events)&#10;Admin - Melhor adição de speakers.&#10;Admin - Melhor visualização de speakers.">
+    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/defaultPerson100.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/defaultPerson150.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/documents/h.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/people/h.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/documents/w.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/people/w.jpg" />
+      <change type="DELETED" beforePath="D:\PI\iConfsALM\public\images\defaultPerson.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/authors/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/authors/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/event_documents/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/event_documents/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/people/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/people/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_profile/_show.html.erb" afterPath="$PROJECT_DIR$/app/views/user_profile/_show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/add_event.js.erb" afterPath="$PROJECT_DIR$/app/views/user_program/add_event.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/devise.rb" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/event_documents_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/event_documents_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/iConfs.iml" afterPath="$PROJECT_DIR$/.idea/iConfs.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/authors/index.html.erb" afterPath="$PROJECT_DIR$/app/views/authors/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/event_documents/index.html.erb" afterPath="$PROJECT_DIR$/app/views/event_documents/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index.html.erb" />
@@ -21,34 +24,28 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/index.html.erb" afterPath="$PROJECT_DIR$/app/views/user_program/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/people/new.html.erb" afterPath="$PROJECT_DIR$/app/views/people/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_networking/new.html.erb" afterPath="$PROJECT_DIR$/app/views/user_networking/new.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/notifications.html.erb" afterPath="$PROJECT_DIR$/app/views/user/notifications.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/person_mailer/send_code.text.erb" afterPath="$PROJECT_DIR$/app/views/person_mailer/send_code.text.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/authors/show.html.erb" afterPath="$PROJECT_DIR$/app/views/authors/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/event_documents/show.html.erb" afterPath="$PROJECT_DIR$/app/views/event_documents/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/show.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_networking/show.js.erb" afterPath="$PROJECT_DIR$/app/views/user_networking/show.js.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_all_participants.html.erb" afterPath="$PROJECT_DIR$/app/views/user/show_all_participants.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/show_complete.html.erb" afterPath="$PROJECT_DIR$/app/views/user_program/show_complete.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_contacts.html.erb" afterPath="$PROJECT_DIR$/app/views/user/show_contacts.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" afterPath="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/show_on_event.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/show_on_event.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/notes/show_on_participant.html.erb" afterPath="$PROJECT_DIR$/app/views/notes/show_on_participant.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_participant.erb" afterPath="$PROJECT_DIR$/app/views/user/show_participant.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_pending_contacts.html.erb" afterPath="$PROJECT_DIR$/app/views/user/show_pending_contacts.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/show_rejected_contacts.html.erb" afterPath="$PROJECT_DIR$/app/views/user/show_rejected_contacts.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_networking/show_selection.js.erb" afterPath="$PROJECT_DIR$/app/views/user_networking/show_selection.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_program_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_program_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370424494789" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370427303430" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370368748568" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -157,10 +154,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_program_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/user_program_controller.rb">
+      <file leaf-file-name="user_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="37" selection-start="407" selection-end="407" vertical-scroll-proportion="0.3870403">
+            <state line="90" column="2" selection-start="2122" selection-end="2122" vertical-scroll-proportion="0.5377856">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notifications.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user/notifications.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="40" selection-start="455" selection-end="455" vertical-scroll-proportion="-11.769231">
               <folding />
             </state>
           </provider>
@@ -185,8 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/user_networking/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/notes/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb" />
         <option value="$PROJECT_DIR$/app/views/notes/index_on_event.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_program/show_event.html.erb" />
@@ -195,12 +199,14 @@
         <option value="$PROJECT_DIR$/app/views/user_program/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_networking/show.js.erb" />
         <option value="$PROJECT_DIR$/app/views/user_networking/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/user_program_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/user/show_all_participants.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user/show_contacts.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user/show_participant.erb" />
         <option value="$PROJECT_DIR$/app/views/user/show_pending_contacts.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user/show_rejected_contacts.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/user_program_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/user/notifications.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/user_controller.rb" />
       </list>
     </option>
   </component>
@@ -251,6 +257,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iConfsALM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -746,7 +792,11 @@
       <created>1370370234796</created>
       <updated>1370370234796</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="User - Melhor página de eventos.&#10;User - Melhor página de show de notas o ABOUT.&#10;Bug de criar nomes gigantes numa pessoa se é listada varias vezes resolvido.&#10;User  - Layout geral melhorado.">
+      <created>1370427308616</created>
+      <updated>1370427308616</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -773,6 +823,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -787,7 +838,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -835,7 +885,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin - Páginas onde ha restrição de input (Dr., etc..) usa agora lista de opções. (people e events)&#10;Admin - Melhor adição de speakers.&#10;Admin - Melhor visualização de speakers." />
+    <option name="LAST_COMMIT_MESSAGE" value="User - Melhor página de eventos.&#10;User - Melhor página de show de notas o ABOUT.&#10;Bug de criar nomes gigantes numa pessoa se é listada varias vezes resolvido.&#10;User  - Layout geral melhorado." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -849,7 +899,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="TODO REMOVED" />
     <MESSAGE value="Sessions initial" />
     <MESSAGE value="Event_Group" />
     <MESSAGE value="Event_Group MergeBug Resolved" />
@@ -874,6 +923,7 @@
     <MESSAGE value="Update on search. &#10;Removed notes now exist.&#10;Minor layout changes." />
     <MESSAGE value="User - já não pode ver e mexer nas notas de outros.&#10;User - aceitar contacto rejeiteado anteriormente.&#10;User - notificações legivel.&#10;User - exportação de notas em grande quantidade legivel.&#10;User - melhoramento a listar grandes notas.&#10;User - bug de sign_up a falha redireccionar para random page resolvido.&#10;" />
     <MESSAGE value="Admin - Páginas onde ha restrição de input (Dr., etc..) usa agora lista de opções. (people e events)&#10;Admin - Melhor adição de speakers.&#10;Admin - Melhor visualização de speakers." />
+    <MESSAGE value="User - Melhor página de eventos.&#10;User - Melhor página de show de notas o ABOUT.&#10;Bug de criar nomes gigantes numa pessoa se é listada varias vezes resolvido.&#10;User  - Layout geral melhorado." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,27 +938,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/notes/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="38" selection-start="762" selection-end="762" vertical-scroll-proportion="0.43669724">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/notes/index_on_participant.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="263" selection-end="263" vertical-scroll-proportion="-7.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/notes/show_on_event.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="28" selection-start="477" selection-end="477" vertical-scroll-proportion="0.51792115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/notes/index_on_event.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="40" selection-start="653" selection-end="653" vertical-scroll-proportion="0.49908257">
@@ -963,44 +992,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/show_all_participants.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/event_group.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="33" selection-start="957" selection-end="957" vertical-scroll-proportion="-3.3076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/show_participant.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="44" selection-start="1064" selection-end="1064" vertical-scroll-proportion="1.2165138">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/show_contacts.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="45" selection-start="1825" selection-end="1825" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/show_pending_contacts.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="60" selection-start="3223" selection-end="3223" vertical-scroll-proportion="-46.423077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/show_rejected_contacts.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="50" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.74862385">
+        <state line="19" column="41" selection-start="502" selection-end="502" vertical-scroll-proportion="0.55498284">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/user_program_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="37" selection-start="407" selection-end="407" vertical-scroll-proportion="0.3870403">
+        <state line="7" column="41" selection-start="222" selection-end="222" vertical-scroll-proportion="0.20913884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_all_participants.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="49" selection-start="885" selection-end="885" vertical-scroll-proportion="-3.9230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_contacts.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="69" selection-start="753" selection-end="753" vertical-scroll-proportion="1.3076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_participant.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="49" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.9615384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_pending_contacts.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="23" selection-start="3407" selection-end="3407" vertical-scroll-proportion="-15.038462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/show_rejected_contacts.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="69" selection-start="727" selection-end="727" vertical-scroll-proportion="0.59484345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/notifications.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="40" selection-start="455" selection-end="455" vertical-scroll-proportion="-11.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="2" selection-start="2122" selection-end="2122" vertical-scroll-proportion="0.5377856">
           <folding />
         </state>
       </provider>

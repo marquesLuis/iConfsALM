@@ -18,7 +18,7 @@
               <tr>
                 <td>
                   <% if to_accept.requester.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => 'Item-Image' %>
+                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                     <img src='/people/<%= to_accept.requester.photo %>' alt='<%= to_accept.requester.photo %>'>
                 <% end %>
@@ -51,7 +51,7 @@
               <tr>
                 <td>
                   <% if pending.requested.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => 'Item-Image' %>
+                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => pending.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                     <img src='/people/<%= pending.requested.photo %>' alt='<%= pending.requested.photo %>' class='person_thumbnail'>
                 <% end %>
@@ -64,7 +64,7 @@
               <tr>
                 <td>
                   <% if rejected.requested.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => 'Item-Image' %>
+                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requested.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                     <img src='/people/<%= rejected.requested.photo %>' alt='<%= rejected.requested.photo %>'>
                 <% end %>

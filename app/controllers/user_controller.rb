@@ -69,7 +69,7 @@ class UserController < ApplicationController
   end
 
   def notifications
-    @org_notifications = OrgNotification.order('updated_at DESC').all
+    @org_notifications = OrgNotification.order('updated_at DESC').paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,8 +79,8 @@ class UserController < ApplicationController
 
   def show_contacts
     @self = current_registry.person
-    @contacts1 = @self.received_traded_contacts
-    @contacts2 = @self.sent_traded_contacts
+    @contacts1 = @self.received_traded_contacts.paginate(:page => params[:page], :per_page => 6)
+    @contacts2 = @self.sent_traded_contacts.paginate(:page => params[:page], :per_page => 6)
 
 
   end
@@ -90,16 +90,18 @@ class UserController < ApplicationController
     @to_accept = PendingContact.where('requested_id = ?', @self.id)
     @pending = PendingContact.where('requester_id = ?', @self.id)
     @rejected = RejectedContact.where('requester_id = ?', @self.id)
+
+
   end
 
 
   def show_rejected_contacts
-    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id)
+    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show_all_participants
     @self = current_registry.person
-    @participants = Person.where('id <> ?', @self.id)
+    @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6)
     if params[:id]
     @participant = Person.find(params[:id]);
     end

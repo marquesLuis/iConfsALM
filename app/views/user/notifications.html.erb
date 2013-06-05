@@ -16,6 +16,8 @@
       </tr>
   <% end %>
 </table>
+    <%= will_paginate @org_notifications %>
+
 <% else %>
     <p>The organization has added no notifications yet!</p>
 <% end %>
