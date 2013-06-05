@@ -121,6 +121,10 @@ class EventGroupsController < ApplicationController
   # DELETE /event_groups/1.json
   def destroy
     @event_group = EventGroup.find(params[:id])
+    @event_group.events.each do |event|
+      RemovedEvent.create(event_identifier: event.id)
+      Event.destroy(event)
+    end
     @event_group.destroy
 
     respond_to do |format|

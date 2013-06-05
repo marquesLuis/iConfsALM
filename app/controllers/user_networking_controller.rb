@@ -74,6 +74,7 @@ class UserNetworkingController < ApplicationController
   def delete
     @networking = Networking.find(params[:id])
     @networking.destroy
+    RemovedNetworkings.create(net_identifier: Integer(params[:id]))
 
     respond_to do |format|
       format.html { redirect_to '/user_networking/index/', notice: 'Networking was successfully deleted.' }

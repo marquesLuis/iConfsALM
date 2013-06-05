@@ -24,10 +24,10 @@
         "news" :{
             <% @new_notif.each do |notif| %>
             "notif_<%= notif.id %>": {
-              "id": "<%= notif.id %>",
-              "title" : "<%= notif.title %>",
-              "content" : "<%= notif.content %>",
-              "updated_at" : "<%= notif.updated_at.strftime('%Y-%m-%d %H:%M') %>"
+                "id": "<%= notif.id %>",
+                "title" : "<%= notif.title %>",
+                "content" : "<%= notif.content %>",
+                "updated_at" : "<%= notif.updated_at.strftime('%Y-%m-%d %H:%M') %>"
             },
             <% end %>
         },
@@ -51,6 +51,103 @@
             "notification_<%= notif.id %>": <%= notif.sequence_number %>,
             <% end %>
         }
+        <% end %>
+    },
+    <% end %>
+    <% if @new_last_event_id && @new_last_event_update && @new_last_removed_event_id %>
+    "events" :{
+        "last_id": "<%= @new_last_event_id %>",
+        "last_update": "<%= @new_last_event_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_removed": "<%= @new_last_removed_event_id %>",
+        <% if @new_events && @new_events.length>0 %>
+        "news" :{
+            <% @new_events.each do |event| %>
+            "event_<%= event.id %>": {
+                "id": "<%= event.id %>",
+                "title": "<%= event.title%>",
+                "description": "<%= event.description %>",
+                "kind": "<%= event.event_kind %>",
+                "begin": "<%= event.begin.strftime(' %H:%M') %>",
+                "end": "<%= event.end.strftime(' %H:%M') %>",
+                "date": "<%= event.event_group.date.strftime('%Y-%m-%d') %>",
+                <% if event.speaker %>
+                "speaker_id": "<%= event.speaker.person_id%>",
+                "keynote": "<%= event.speaker.keynote %>",
+                <% end %>
+                "local_id": "<%= event.event_group.location_id %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_events && @updated_events.length>0 %>
+        "updated" :{
+            <% @updated_events.each do |event| %>
+            "event_<%= event.id %>": {
+                "id": "<%= event.id %>",
+                "title": "<%= event.title%>",
+                "description": "<%= event.description %>",
+                "kind": "<%= event.event_kind %>",
+                "begin": "<%= event.begin.strftime(' %H:%M') %>",
+                "end": "<%= event.end.strftime(' %H:%M') %>",
+                "date": "<%= event.event_group.date.strftime('%Y-%m-%d') %>",
+                <% if event.speaker %>
+                "speaker_id": "<%= event.speaker.person_id%>",
+                "keynote": "<%= event.speaker.keynote %>",
+                <% end %>
+                "local_id": "<%= event.event_group.location_id %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_events && @del_events.length>0 %>
+        "deleted":{
+            "size" : <%= @del_events.length %>,
+            <% @del_events.each do |event| %>
+            "notification_<%= event.id %>": "<%= event.event_identifier %>",
+            <% end %>
+        }
+        <% end %>
+    },
+    <% end %>
+    <% if @new_network_last_id && @new_last_network_update && @new_last_removed_network_id %>
+    "networkings" :{
+        "last_id": "<%= @new_network_last_id %>",
+        "last_update": "<%= @new_last_network_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_removed": "<%= @new_last_removed_network_id %>",
+        <% if @new_networks && @new_networks.length>0 %>
+        "news" :{
+            <% @new_networks.each do |net| %>
+            "net_<%= net.id %>": {
+                "title" : "<%= net.title %>",
+                "content" : "<%= net.content %>",
+                "date" : "<%= net.updated_at.strftime('%Y-%m-%d %H:%M') %>",
+                "person_id": "<%= net.person_id %>",
+                "server_id": "<%= net.id %>",
+                <% if net.area_of_interests && net.area_of_interests.length>0 %>
+                "areas" : [<% net.area_of_interests.each do |area| %>"<%= area.id%>",<% end %>]
+                <% end %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_network && @updated_network.length>0 %>
+        "updated" :{
+            <% @updated_network.each do |net| %>
+            "net_<%= net.id %>": {
+                "title" : "<%= net.title %>",
+                "content" : "<%= net.content %>",
+                "date" : "<%= net.updated_at.strftime('%Y-%m-%d %H:%M') %>",
+                "person_id": "<%= net.person_id %>",
+                "server_id": "<%= net.id %>",
+                <% if net.area_of_interests && net.area_of_interests.length>0 %>
+                "areas" : [<% net.area_of_interests.each do |area| %>"<%= area.id%>",<% end %>]
+                <% end %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_networks && @del_networks.length>0 %>
+        "deleted":[<% @del_networks.each do |net| %>"<%= net.net_identifier%>",<% end %>]
         <% end %>
     },
     <% end %>

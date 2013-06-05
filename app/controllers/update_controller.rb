@@ -31,17 +31,59 @@ class UpdateController < ApplicationController
       @last_id = @notifications[:last_id]
       @last_update = @notifications[:last_update]
       @new_last_id = 0
-      if OrgNotification.last
-        @new_last_id = OrgNotification.last.id
+      @notif_temp = OrgNotification.last
+      if @notif_temp
+        @new_last_id = @notif_temp.id
       end
       @new_notif = OrgNotification.where('id > ? AND id <= ?',@last_id, @new_last_id)
       @new_last_update = OrgNotification.maximum(:updated_at)
       @updated_notif = OrgNotification.where('id <= ? AND ? < updated_at',@last_id,@last_update )
       @new_last_removed_id = 0
-      if RemovedNotification.last
-        @new_last_removed_id = RemovedNotification.last.id
+      @last_notif =  RemovedNotification.last
+      if @last_notif
+        @new_last_removed_id = @last_notif.id
       end
       @del_notif = RemovedNotification.where('id > ? AND id <= ?',@notifications[:last_removed_id], @new_last_removed_id)
+    end
+
+    @events = @update[:events]
+    if @events
+      @last_event_id = @events[:last_id]
+      @last_event_update = @events[:last_update]
+      @new_last_event_id = 0
+      @event_temp = Event.last
+      if @event_temp
+        @new_last_event_id = @event_temp.id
+      end
+      @new_events = Event.where('id > ? AND id <= ?', @last_event_id, @new_last_event_id).includes(:event_group).includes(:speaker)
+      @new_last_event_update = Event.maximum(:updated_at)
+      @updated_events = Event.where('id <= ? AND ? < updated_at', @last_event_id, @last_event_update)
+      @new_last_removed_event_id = 0
+      @last_event = RemovedEvent.last
+      if @last_event
+        @new_last_removed_event_id = @last_event.id
+      end
+      @del_events = RemovedEvent.where('id > ? AND id <= ?',@events[:last_removed_id], @new_last_removed_event_id)
+    end
+
+    @networkings = @update[:networkings]
+    if @networkings
+      @last_network_id = @networkings[:last_id]
+      @last_network_update = @networkings[:last_update]
+      @new_network_last_id = 0
+      @network_temp = Networking.last
+      if @network_temp
+        @new_network_last_id = @network_temp.id
+      end
+      @new_networks = Networking.where('id > ? AND id <= ?', @last_network_id, @new_network_last_id).includes(:area_of_interests)
+      @new_last_network_update = Networking.maximum(:updated_at)
+      @updated_network = Networking.where('id <= ? AND ? < updated_at', @last_network_id, @last_network_update).includes(:area_of_interests)
+      @new_last_removed_network_id = 0
+      @last_network = RemovedNetworkings.last
+      if @last_network
+        @new_last_removed_network_id = @last_network.id
+      end
+      @del_networks = RemovedNetworkings.where('id > ? AND id <= ?',@networkings[:last_removed_id], @new_last_removed_network_id)
     end
 
 
