@@ -25,7 +25,7 @@ Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/")
 puts "Adding Notifications"
 # NOTIFICATIONS (1-2)
 OrgNotification.create(title: "L. Alvisi is sick.", content: "And thus the session may or not be. At the worst we will provide playing cards.")
-OrgNotification.create(title: "Bus schedule (Ibis Hotel)", content: "The bus departs from the entrance of the hotel at 08.00. Return trip will be at 19.00 sharp, check the location at the maps page under 'bus location'")
+OrgNotification.create(title: "Bus schedule (Ibis Hotel)", content: "The bus departs from the entrance of the hotel at 08.00. Return trip will be at 19.00 sharp, check the location at the maps page under bus location")
 
 puts "Adding Areas of Interest"
 # AREAS OF INTEREST (1-9)
@@ -71,6 +71,16 @@ Event.create(:event_group_id => 2, :title => 'Starting Session', :description =>
 #3 3
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
+Person.create(first_name: 'Ricardo', last_name: 'Mendes', prefix: 'Dr.', affiliation: 'FCT', email: 'R.Mendes@gmail.com',:biography => 'Ricardo Cavalcante Mendes or simply Ricardinho (born September 4, 1989 in Sao Paulo) is a Brazilian football player who currently plays for Lechia Gdansk.', signup_code: '4')
+Registry.create(email: 'R.Mendes@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '4')
+
+PersonInterest.create(:person_id => 4, :area_of_interest_id => 2)
+PersonInterest.create(:person_id => 4, :area_of_interest_id => 4)
+
+Speaker.create(:keynote => false, :person_id => 4, :event_id => 3);
+
+
 #4 4
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 4, :title => 'SSCC', :description => 'DIVERSYS: DIVErse Rejuvenation SYStem-Miguel Garcia, Nuno Neves, Alysson Bessani O vigia dos vigias: um serviço RADIUS resiliente-Oleksandr Malichevskyy, Diego Kreutz, Marcelo Pasin, Alysson Bessani Trusted Civitas: Client Trust in CIVITAS Electronic Voting Protocol-Pedro Adão, João Mendes Minimização de Perda de Pacotes em Sistemas de Deteção de Intrusões-Tiago Picado, Paolo Romano, Carlos Ribeiro Gestão e Pesquisa de Dados Privados em Nuvens de Armazenamento-Bernardo Ferreira, Henrique Domingos', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
@@ -190,4 +200,8 @@ end
 # FOR WS 3!!!
 AtendingEvent.create(:event_id=> 1,  :person_id=>3);
 AtendingEvent.create(:event_id=> 2,  :person_id=>3);
+
+Networking.create(:title => 'Scalable Bloom Filters', :content => 'Scalable Bloom Filters Description.', :person_id => '2');
+Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds.', :person_id => '4');
+
 
