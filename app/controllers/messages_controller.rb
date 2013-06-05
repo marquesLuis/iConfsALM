@@ -3,7 +3,16 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    if params[:read].nil?
+      @messages = Message.all
+    else
+      if params[:read]=='false'
+        @messages = Message.where('read <> ?', true)
+      else
+        @messages = Message.where('read = ?', true)
+
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb

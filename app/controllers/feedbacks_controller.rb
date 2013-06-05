@@ -4,7 +4,15 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    if params[:read].nil?
+      @feedbacks = Feedback.all
+    else
+      if params[:read]=='false'
+        @feedbacks = Feedback.where('read <> ?', true)
+      else
+        @feedbacks = Feedback.where('read = ?', true)
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb

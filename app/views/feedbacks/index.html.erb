@@ -1,4 +1,7 @@
 <h1>Listing feedbacks</h1>
+<%= link_to "All", {:controller => "feedbacks", :action => "index"} %>
+<%= link_to "To Read Only", {:controller => "feedbacks", :action => "index", :read=>'false'} %>
+<%= link_to "Read Only", {:controller => "feedbacks", :action => "index", :read=>'true'} %></p>
 
 <table>
   <tr>

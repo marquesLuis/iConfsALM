@@ -1,31 +1,71 @@
-<h1>Welcome administrator!</h1>
+<h1 class="centralized">Welcome!</h1>
+<table>
+  <tr>
+    <th>Link</th>
+    <th>Description</th>
+  </tr>
 
-<%= link_to 'Administrators', administrators_path %>
-<br />
-<%= link_to 'New Area of interest', area_of_interests_path %>
-<br />
-<%= link_to 'Authors', authors_path %>
-<br />
-<%= link_to 'Documents', documents_path %>
-<br />
-<%= link_to 'EventDocuments', event_documents_path %>
-<br />
-<%= link_to 'Event groups', event_groups_path %>
-<br />
-<%= link_to 'Feedback', feedbacks_path %>
-<br />
-<%= link_to 'Locations', locations_path %>
-<br />
-<%= link_to 'Messages', messages_path %>
-<br />
-<%= link_to 'Organization notifications', org_notifications_path %>
-<br />
-<%= link_to 'People', people_path %>
-<br />
-<%= link_to 'Speakers', speakers_path %>
+  <tr>
+    <td class="limited_content"><%= link_to 'Administrators', administrators_path %></td>
+    <td> Here you can add new administrators.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'New Area of interest', area_of_interests_path %></td>
+    <td>Here you can add areas of interest. They are used by Events and Networking.</td>
+  </tr>
 
 
+  <tr>
+    <td class="limited_content"><%= link_to 'Documents', documents_path %></td>
+    <td>Here you can add documents.</td>
+  </tr>
 
+  <tr>
+    <td class="limited_content"><%= link_to 'Authors', authors_path %></td>
+    <td>Here you can add authors to documents.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'EventDocuments', event_documents_path %></td>
+    <td>Here you can link the documents to events.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Event groups', event_groups_path %></td>
+    <td> Here you can create the program, as in add events.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Feedback', feedbacks_path %></td>
+    <td> here you can see received feedback.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Locations', locations_path %></td>
+    <td>Here you can add images.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Messages', messages_path %></td>
+    <td>Here you view messages sent by participants.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Organization notifications', org_notifications_path %></td>
+    <td>Here you can add notifications</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'People', people_path %></td>
+    <td>Here you can add people to use the aplication.</td>
+  </tr>
+
+  <tr>
+    <td class="limited_content"><%= link_to 'Speakers', speakers_path %></td>
+    <td>Here you can add speakers to sessions.</td>
+  </tr>
+</table>
 
 
 

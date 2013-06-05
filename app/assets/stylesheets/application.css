@@ -28,6 +28,13 @@
     opacity: .8
 }
 
+#title a{
+    color: #26972D;
+    margin: 15px;
+    float: left;
+    font-size: 4em;
+}
+
 .menu a {
     color: #83F03C;
     margin: 0 auto;
@@ -107,12 +114,6 @@ li:hover li {
     float: right;
     clear: right;
     text-align: right;
-}
-
-.title {
-    margin-right: 25px;
-    float: left;
-    font-size: 3em;
 }
 
 .nav_bar {

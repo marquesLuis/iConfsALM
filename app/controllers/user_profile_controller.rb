@@ -3,6 +3,8 @@ class UserProfileController < ApplicationController
   def show
     @person=current_registry.person
     @interests = PersonInterest.where(:person_id => current_registry.person_id)
+
+    #seguinte é necessario para por checkboxes a true.
     x=[]
     @interests.each do |i|
       x.append(i.area_of_interest_id)

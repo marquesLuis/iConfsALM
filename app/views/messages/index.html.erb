@@ -1,5 +1,7 @@
 <h1>Listing messages</h1>
-
+<p><%= link_to "All", {:controller => "messages", :action => "index"} %>
+<%= link_to "To Read Only", {:controller => "messages", :action => "index", :read=>'false'} %>
+<%= link_to "Read Only", {:controller => "messages", :action => "index", :read=>'true'} %> </p>
 <table>
   <tr>
     <th>Content</th>
