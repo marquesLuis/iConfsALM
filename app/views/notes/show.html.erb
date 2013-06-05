@@ -3,7 +3,7 @@
     <div class='right border'>
       <p><b>About:</b></p>
       <% if @person.photo.nil? %>
-          <img src='/images/defaultPerson.jpg' alt='No Photo'>
+          <img src='/images/defaultPerson150.jpg' alt='No Photo'>
       <% else %>
           <img src='/people/<%= @person.photo %>' alt='Photo' class='person_image'>
       <% end %>

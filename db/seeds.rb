@@ -1,3 +1,5 @@
+# encoding: utf-8
+#
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,6 +7,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
 
 puts "Adding Administrators"
 # ADMINISTRATORS (1-3)
@@ -66,20 +70,19 @@ Event.create(:event_group_id => 2, :title => 'Starting Session', :description =>
 
 #3 3
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
-#C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga
+Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
 #4 4
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 4, :title => 'SSCC', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
-#DIVERSYS: DIVErse Rejuvenation SYStem-Miguel Garcia, Nuno Neves, Alysson Bessani O vigia dos vigias: um serviço RADIUS resiliente-Oleksandr Malichevskyy, Diego Kreutz, Marcelo Pasin, Alysson Bessani Trusted Civitas: Client Trust in CIVITAS Electronic Voting Protocol-Pedro Adão, João Mendes Minimização de Perda de Pacotes em Sistemas de Deteção de Intrusões-Tiago Picado, Paolo Romano, Carlos Ribeiro Gestão e Pesquisa de Dados Privados em Nuvens de Armazenamento-Bernardo Ferreira, Henrique Domingos
+Event.create(:event_group_id => 4, :title => 'SSCC', :description => 'DIVERSYS: DIVErse Rejuvenation SYStem-Miguel Garcia, Nuno Neves, Alysson Bessani O vigia dos vigias: um serviço RADIUS resiliente-Oleksandr Malichevskyy, Diego Kreutz, Marcelo Pasin, Alysson Bessani Trusted Civitas: Client Trust in CIVITAS Electronic Voting Protocol-Pedro Adão, João Mendes Minimização de Perda de Pacotes em Sistemas de Deteção de Intrusões-Tiago Picado, Paolo Romano, Carlos Ribeiro Gestão e Pesquisa de Dados Privados em Nuvens de Armazenamento-Bernardo Ferreira, Henrique Domingos', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
 #5 5
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 5, :title => 'GDC1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
-#Semantic Enrichment of Places for the Portuguese Language-Jorge Oliveira Santos, Ana Oliveira Alves, Francisco Câmara Pereira, Pedro Henriques Abreu Extração de Relações em Títulos de Notícias Desportivas-António Paulo Santos, Carlos Ramos, Nuno C. Marques Natural Language Understanding as a classification process: report of initial experiments and results-Pedro Mota, Luísa Coheur Medicine.Ask: An intelligent search system for medicine information-Helena Galhardas, Vasco Mendes, Luísa Coheur
+Event.create(:event_group_id => 5, :title => 'GDC1', :description => 'Semantic Enrichment of Places for the Portuguese Language-Jorge Oliveira Santos, Ana Oliveira Alves, Francisco Câmara Pereira, Pedro Henriques Abreu Extração de Relações em Títulos de Notícias Desportivas-António Paulo Santos, Carlos Ramos, Nuno C. Marques Natural Language Understanding as a classification process: report of initial experiments and results-Pedro Mota, Luísa Coheur Medicine.Ask: An intelligent search system for medicine information-Helena Galhardas, Vasco Mendes, Luísa Coheur', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
 #6 6
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 6, :title => 'CMU1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
-#Comparação de Mecanismos de Cancelamento de Difusão-Rui Lima, Carlos Baquero, Hugo Miranda Filtros de precedência: agregação anónima de dados de trânsito bluetooth-Nelson Gonçalves, Carlos Baquero, Rui José, Miguel Borges Geo Ties -- Localização em Conversas Móveis-Tiago Antunes, Luís Duarte, Luis Carriço Puzzles: Explorando Designs Multimodais-Jaime Carvalho, Luís Duarte, Diogo Marques, Luis Carriço
+Event.create(:event_group_id => 6, :title => 'CMU1', :description => 'Comparação de Mecanismos de Cancelamento de Difusão-Rui Lima, Carlos Baquero, Hugo Miranda Filtros de precedência: agregação anónima de dados de trânsito bluetooth-Nelson Gonçalves, Carlos Baquero, Rui José, Miguel Borges Geo Ties -- Localização em Conversas Móveis-Tiago Antunes, Luís Duarte, Luis Carriço Puzzles: Explorando Designs Multimodais-Jaime Carvalho, Luís Duarte, Diogo Marques, Luis Carriço', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
 GroupArea.create(area_of_interest_id: '5', event_group_id: '3');
 GroupArea.create(area_of_interest_id: '7', event_group_id: '4');
 GroupArea.create(area_of_interest_id: '6', event_group_id: '5');
