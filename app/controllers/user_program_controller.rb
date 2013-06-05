@@ -54,13 +54,10 @@ class UserProgramController < ApplicationController
     @event_group = @event.event_group
     @location = @event.event_group.location
     @speaker = @event.speaker
-    @authors = []
+    @documents = @event.documents
+    @docs = @documents.pluck(:id)
 
-    @event.documents.each do |doc|
-      if doc.authors.any?
-        @authors.append(doc.authors)
-      end
-    end
+    @authors = Author.where('document_id in (?)', @docs).uniq(:id)
 
     self_id = current_registry.person_id
     @notes =[]

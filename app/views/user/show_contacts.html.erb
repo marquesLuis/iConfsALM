@@ -22,7 +22,7 @@
                     <img src='/people/<%= traded.requested.photo %>' alt='<%= traded.requested.photo %>' class='person_thumbnail'>
                 <% end %>
                 </td>
-                <td><%= link_to traded.requested.prefix<<" "<<traded.requested.first_name<<" "<<traded.requested.last_name, {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => "Item-Text" %></td>
+                <td><%= link_to traded.full_name, {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => "Item-Text" %></td>
 
               </tr>
           <% end %>
@@ -35,7 +35,7 @@
                     <img src='/people/<%= traded.requester.photo %>' alt='<%= traded.requester.photo %>'>
                 <% end %>
                 </td>
-                <td><%= link_to traded.requester.prefix<<" "<<traded.requester.first_name<<" "<<traded.requester.last_name, {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td><%= link_to traded.full_name, {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => "Item-Text" %></td>
 
               </tr>
           <% end %>

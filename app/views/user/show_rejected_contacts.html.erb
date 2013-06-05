@@ -22,7 +22,7 @@
                     <img src='/people/<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
                 <% end %>
                 </td>
-                <td><%= link_to rejected.requester.prefix<<" "<<rejected.requester.first_name<<" "<<rejected.requester.last_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td><%= link_to rejected.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
               </tr>
           <% end %>
         </table>

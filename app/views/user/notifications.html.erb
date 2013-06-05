@@ -5,14 +5,14 @@
   <tr>
     <th>Title</th>
     <th>Message</th>
-    <th>Date Updated</th>
+    <th>Updated At</th>
   </tr>
 
   <% @org_notifications.each do |org_notification| %>
       <tr>
         <td><%= org_notification.title %></td>
         <td><%= org_notification.content %></td>
-        <td><%= org_notification.updated_at %></td>
+        <td><%= org_notification.updated_at.strftime("%D %H:%M:%S") %></td>
       </tr>
   <% end %>
 </table>

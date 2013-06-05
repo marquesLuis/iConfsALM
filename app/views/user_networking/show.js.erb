@@ -1,18 +1,18 @@
 html = "<div>"
-html = "<div id='person_networking' class='border'>"
+html = "<div id='person_networking' class='right'>"
 <% if @networking.person.photo.nil? %>
-html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='person_image'>"
-<% else %>
-html += "<img src='/people/<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
+    html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='person_image'>"
+    <% else %>
+    html += "<img src='/people/<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
 <% end %>
 <% person = @networking.person %>
 
-html += "<p><%= escape_javascript(link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></p> "
+html += "<p><%= escape_javascript(link_to person.full_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></p> "
 html += "<p><%= @networking.person.affiliation %> </p> "
 
 html += "</div>"
-html += "<p>Title: <%= @networking.title %> </p> "
-html += "<p>Content:</p>"
+html += "<p><b>Title:</b> <%= @networking.title %> </p> "
+html += "<p><b>Content:</b></p>"
 <% @networking.content.split(/\r\n/).each do |line| %>
 html += "<p><%= line %></p>"
 <% end %>
@@ -21,7 +21,7 @@ html += "<p><%= line %></p>"
 
 <% len = @networking.area_of_interests.length %>
 
-html += "<p>Interests: </p>"
+html += "<p><b>Interests: </b></p>"
 html += "<p>"
 <% @networking.area_of_interests.each_with_index do |interest, index| %>
 <% if index+1 == len   %>

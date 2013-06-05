@@ -47,4 +47,8 @@ class Person < ActiveRecord::Base
   def self.get_types
     return PREFIX_TYPES
   end
+
+  def full_name
+    return "#{prefix} #{first_name} #{last_name}"
+  end
 end

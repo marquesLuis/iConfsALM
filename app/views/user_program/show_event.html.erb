@@ -1,52 +1,61 @@
-<p class='right border'><%= @event.begin %></p>
+<div class='right'>
+  <p><b>Date:</b> <%= @event_group.date.to_date.to_s %></p>
+
+  <p><b>Begin time:</b> <%= @event.begin.strftime("%I:%M:%S") %></p>
+
+  <p><b>End time:</b> <%= @event.end.strftime("%I:%M:%S") %></p>
+</div>
+
 <h1><%= @event.title %></h1>
 <% if @speaker %>
-    <div class='border'>
-      <p>Speaker: <%= link_to @speaker.person.prefix<<" "<<@speaker.person.first_name<<" "<<@speaker.person.last_name, {:controller => "user", :action => "show_all_participants", :id => @speaker.person.id} %></p>
+    <div>
+      <p>
+        <b>Speaker: </b><%= link_to @speaker.person.full_name, {:controller => "user", :action => "show_all_participants", :id => @speaker.person.id} %>
+      </p>
     </div>
 <% end %>
-<div class='border'>
-  <% if @authors.any? %>
-      <p>Authors:</p>
-      <% @authors.each do |b| %>
-          <% b.each do |a| %>
-              <% if a.person %>
-                  <p><%= link_to a.person.first_name<<" "<<a.person.last_name, {:controller => "user", :action => "show_all_participants", :id => a.person.id} %>
-                    ,</p>
-              <% else %>
-                  <p><%= a.name %>,</p>
-              <% end %>
-          <% end %>
-      <% end %>
-  <% end %>
-</div>
+<% len = @authors.length %>
+<% if @authors.any? %>
+    <div>
+      <p><b>Authors: </b>
+        <% @authors.each_with_index do |a, index| %>
+            <% if a.person %>
+                <%= link_to a.person.full_name, {:controller => "user", :action => "show_all_participants", :id => a.person.id} %>
+            <% else %>
+                <%= a.name %>
+            <% end %>
+            <% if index+1 == len %>.
+            <% else %>,
+            <% end %>
+        <% end %>
+      </p>
+    </div>
+<% end %>
 
-<div class='right border'>
-  <% if @location %>
-      <p>Location: <%= link_to @location.title, {:controller => "user", :action => "maps", :title => {:locations_id => @location.id}} %></p>
-  <% end %>
-</div>
+<% if @location %>
+    <div class='right'>
+      <p>
+        <b>Location:</b> <%= link_to @location.title, {:controller => "user", :action => "maps", :title => {:locations_id => @location.id}} %>
+      </p>
+    </div>
+<% end %>
 
-<% if @event.documents.any? %>
-    <div class='right border'>
-      <p>Documents:</p>
+<% if @documents.any? %>
+    <div class='right'>
+      <p><b>Documents:</b></p>
       <% @event.documents.each do |doc| %>
           <%= link_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id} %></p>
       <% end %>
     </div>
 <% end %>
 
-<div class='border'>
-  <p>Description</p>
-
-  <p><%= @event.description %></p>
+<div>
+  <p><b>Description:</b> <%= @event.description %></p>
 </div>
 
-
-
-<% if @event_group.area_of_interests.any? %>
-    <% len = @event_group.area_of_interests.length %>
-    <div class='border'>
+<div>
+  <% if @event_group.area_of_interests.any? %>
+      <% len = @event_group.area_of_interests.length %>
       <p>Areas of interest:
         <% @event_group.area_of_interests.each_with_index do |area, index| %>
             <% if index+1 == len %>
@@ -56,14 +65,21 @@
             <% end %>
         <% end %>
       </p>
-    </div>
-<% end %>
-
-<div id='notes' class='border'>
+  <% else %>
+      <p>There are no areas of interest associated with this event.</p>
+  <% end %>
+</div>
+<hr>
+<div id='notes' class='centralized'>
   <%= render(:template => 'notes/index_on_event', :event_id => @event.id) %>
 </div>
-<p><%= button_to 'Add to personal', {:controller => "user_program", :action => "add_event" , :id => @event.id} , :remote=>true %></p>
-<p><%= button_to 'Remove from personal', {:controller => "user_program", :action => "remove_event" , :id => @event.id} , :remote=>true %></p>
-
+<hr>
+<div class='inline centralized'>
+  <%= button_to 'Add to personal calendar', {:controller => "user_program", :action => "add_event", :id => @event.id}, :remote => true %>
+<%= button_to 'Remove from personal calendar', {:controller => "user_program", :action => "remove_event", :id => @event.id }, :remote => true%>
+</div>
+<hr>
+<div class='centralized'>
 <p><%= link_to "Back to personal program", '/user_program/index/' %></p>
 <p><%= link_to "Back to complete program", '/user_program/show_complete/' %></p>
+</div>

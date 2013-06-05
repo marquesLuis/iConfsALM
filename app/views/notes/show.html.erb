@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% if @person %>
     <div class='right border'>
-      <p>About:</p>
+      <p><b>About:</b></p>
       <% if @person.photo.nil? %>
           <img src='/images/defaultPerson.jpg' alt='No Photo'>
       <% else %>
@@ -17,12 +17,12 @@
 <% end %>
 <% if @event %>
     <div class='right border'>
-      <p>About:</p>
+      <p><b>About event:</b></p>
 
       <p><%= link_to @event.title, '/user_program/show_event?id='+@event.id.to_s %></p>
-      <p>Date: <%= @event.event_group.date.to_date.to_s %></p>
-      <p>Begin: <%= @event.begin.strftime("%I:%M:%S") %></p>
-      <p>End: <%= @event.end.strftime("%I:%M:%S") %></p>
+      <p><b>Date: </b><%= @event.event_group.date.to_date.to_s %></p>
+      <p><b>Begin: </b><%= @event.begin.strftime("%I:%M:%S") %></p>
+      <p><b>End: </b><%= @event.end.strftime("%I:%M:%S") %></p>
     </div>
 <% end %>
 <p>
@@ -33,3 +33,5 @@
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
+
+<hr style='opacity: 0'>

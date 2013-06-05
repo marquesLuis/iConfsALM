@@ -13,19 +13,25 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :title %><br />
+      <%= f.label :title %>
+      <br/>
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label :content %><br />
+      <%= f.label :content %>
+      <br/>
       <%= f.text_area :content %>
     </div>
-    <% @areas_of_interest.each do |interest| %>
-        <div class="field">
-          <%= label_tag(interest.id, interest.name) %>
-          <%= check_box_tag('interests[]', interest.id) %>
-        </div>
-    <% end %>
+    <table>
+      <% @areas_of_interest.each do |interest| %>
+          <tr>
+            <div class="field">
+              <td><%= label_tag(interest.id, interest.name) %>  </td>
+              <td><%= check_box_tag('interests[]', interest.id) %>  </td>
+            </div>
+          </tr>
+      <% end %>
+    </table>
     <div class="actions">
       <%= f.submit %>
     </div>

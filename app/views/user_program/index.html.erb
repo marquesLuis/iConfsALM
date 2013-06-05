@@ -1,6 +1,8 @@
-<%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"} %>
-<%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"} %>
+<div class='centralized'>
+  <%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"} %>
+  <%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"} %>
 <h1>Personalized Calendar</h1>
+</div>
 <% if @events.any? %>
     <div id='calendar'></div>
     <script type="text/javascript">

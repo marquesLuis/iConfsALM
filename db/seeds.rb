@@ -31,13 +31,14 @@ AreaOfInterest.create(name: 'Seguranca de Sistemas de Computadores e Comunicacoe
 AreaOfInterest.create(name: 'Sistemas Embebidos e de Tempo-Real (SETR)')
 AreaOfInterest.create(name: 'Sistemas Inteligentes')
 
-MapsVersion.create(version: '1')
-
+# LOCATIONS (1-4)
 Location.create(title: 'Hotel Ibis Departure', image: 'bus.jpg')
 Location.create(title: 'Campus', image: 'mapacampus.jpg')
 Location.create(title: 'Conference Location', image: 'conflocation.jpg')
 Location.create(title: 'Getting to FCT', image: 'localizacaofct.gif')
+MapsVersion.create(version: '1')
 
+#PEOPLE & REGISTRY (1-3)
 Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email: 'marta.lidon@gmail.com', signup_code: '1')
 Registry.create(email: 'marta.lidon@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '1')
 Person.create(first_name: 'Albert', last_name: 'Linde', prefix: 'Dr.', affiliation: 'FCT', email: 'albert.linde@gmail.com', signup_code: '2')
@@ -45,7 +46,7 @@ Registry.create(email: 'albert.linde@gmail.com', :password => '123qweasd', :pass
 Person.create(first_name: 'Luis', last_name: 'Marques', prefix: 'Dr.', affiliation: 'FCT', email: 'lfmarques2@gmail.com', signup_code: '3')
 Registry.create(email: 'lfmarques2@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '3')
 
-##DAY 1
+#DAY 1 -> EVENT GROUP (1-6) EVENT (1-6) GROUP AREA (1-4)
 EventGroup.create(:end => DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 12:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 1, :title => 'Lunch and Registry', :description => 'See title for more info.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 12:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"));
 
@@ -66,6 +67,13 @@ GroupArea.create(area_of_interest_id: '7', event_group_id: '4');
 GroupArea.create(area_of_interest_id: '6', event_group_id: '5');
 GroupArea.create(area_of_interest_id: '4', event_group_id: '6');
 
-##DAY 2
+##DAY 2 EVENT GROUP (7) EVENT (7)
 EventGroup.create(:end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 7, :title => 'Lorenzo Alvisi', :description => 'UT AUSTIN.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));
+
+
+1.upto(100) do |i|
+  a =Person.create(first_name: "User #{i}", last_name: "X#{i}", prefix: 'Dr.', affiliation: 'FCT', email: "marta#{i}lidon@gmail.com", signup_code: "User #{i}")
+
+  Registry.create(email: "marta#{i}lidon@gmail.com", :password => '123123123', :password_confirmation => '123123123', person_id: a.id)
+end

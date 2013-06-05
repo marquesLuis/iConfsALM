@@ -26,23 +26,27 @@
 <div class="border">
   <p>Interesses:</p>
   <%= form_tag({:controller => "user_profile", :action => "update_interests"}, :method => 'post', :remote => true) do %>
-
-      <% @interests.each do |interest| %>
-          <div class="field">
-            <%= label_tag(interest.area_of_interest.id, interest.area_of_interest.name) %>
-            <%= check_box_tag('interests[]', interest.area_of_interest.id, true) %>
-          </div>
-      <% end %>
-      <% @otherInterests.each do |interest| %>
-          <div class="field">
-            <%= label_tag(interest.id, interest.name) %>
-            <%= check_box_tag('interests[]', interest.id, false) %>
-          </div>
-      <% end %>
-      <div class="actions">
-        <%= submit_tag("Update") %>
-      </div>
-
+      <table>
+        <% @interests.each do |interest| %>
+            <tr>
+              <div class="field">
+                <td><%= label_tag(interest.area_of_interest.id, interest.area_of_interest.name) %></td>
+                <td><%= check_box_tag('interests[]', interest.area_of_interest.id, true) %></td>
+              </div>
+            </tr>
+        <% end %>
+        <% @otherInterests.each do |interest| %>
+            <tr>
+              <div class="field">
+                <td><%= label_tag(interest.id, interest.name) %></td>
+                <td><%= check_box_tag('interests[]', interest.id, false) %></td>
+              </div>
+            </tr>
+        <% end %>
+        <div class="actions">
+          <%= submit_tag("Update") %>
+        </div>
+      </table>
   <% end %>
 </div>
 

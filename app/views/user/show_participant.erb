@@ -6,7 +6,7 @@ html =  "<div>"
       html += "<img src='/people/<%= @participant.photo %>' alt='Photo' class='person_image'>"
   <% end %>
 
-  html += "<p>Name: <%= @participant.prefix %> <%= @participant.first_name %>, <%= @participant.last_name %></p> "
+  html += "<p>Name: <%= @participant.full_name %></p> "
 
   html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
 
@@ -29,7 +29,7 @@ html =  "<div>"
   html += "</p>"
 
   <% else %>
-      html += "<p><%= @participant.first_name %> has not added any interests yet! </p> "
+      html += "<p><%= @participant.full_name %> has not added any interests yet! </p> "
   <% end %>
 
   html += "</div>"
@@ -37,7 +37,7 @@ html =  "<div>"
 
   html += "<div class='border'>"
   <% if @participant.biography.nil? %>
-      html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
+      html += "<p><%= @participant.full_name %> has not added a personal description yet! </p> "
   <% else %>
       html += "<p>Personal Description:</p>"
       <% @participant.biography.split(/\r\n/).each do |line| %>

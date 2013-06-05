@@ -1,5 +1,5 @@
 <% if @notes.any? %>
-    <table>
+    <table class='limited_content_listed'>
       <tr>
         <th>Note</th>
         <th></th>
@@ -9,7 +9,7 @@
 
       <% @notes.each do |note| %>
           <tr>
-            <td class="limited_content" id="limited_content_listed" ><%= note.content %></td>
+            <td class="limited_content max_width_600"><%= note.content %></td>
             <td><%= link_to "Show", {:controller => "notes", :action => "show_on_participant", :note => note} %></td>
             <td><%= link_to "Edit", {:controller => "notes", :action => "edit_on_participant", :note => note} %></td>
             <td><%= link_to "Destroy", {:controller => "notes", :action => "destroy_on_participant", :note => note}, :method => 'post' %></td>

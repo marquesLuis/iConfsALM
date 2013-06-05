@@ -1,6 +1,6 @@
 <h1>Notes</h1>
 <% if @notes.any? %>
-<table>
+<table >
   <tr>
     <th>About</th>
     <th>Content</th>
@@ -10,7 +10,7 @@
   </tr>
 
   <% @notes.each do |note| %>
-      <tr>
+      <tr >
         <% if note.about_person %>
             <td><%= link_to note.about_person.person.prefix<<" "<<note.about_person.person.first_name<<" "<<note.about_person.person.last_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s %></td>
         <% else
@@ -21,7 +21,7 @@
                 <td>Nothing</td>
             <% end %>
         <% end %>
-        <td class="limited_content"><%= note.content %></td>
+        <td class="limited_content max_width_900"><%= note.content %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>

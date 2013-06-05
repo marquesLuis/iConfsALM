@@ -40,6 +40,11 @@ body {
     margin: 0px auto;
     width: 1100px;
     background-color: #33CCCC;
+    padding: 5px 15px 5px 5px;
+}
+
+.body h1 {
+    margin-top: 2px;
 }
 
 .menu a {
@@ -97,7 +102,7 @@ li:hover li {
 .right {
     float: right;
     clear: right;
-    margin-right: 100px;
+    text-align: right;
 }
 
 .title {
@@ -161,25 +166,10 @@ hr {
 .person_thumbnail {
     max-width: 100px;
     max-height: 100px;
-
 }
 
 .size_100 {
     height: 100px;
-}
-
-/*realizing that position:relative on a particular div will allow you position:absolute any element inside that div ..." - gaga
-   */
-.event {
-    position: relative;
-    float: left;
-
-    width: 100px;
-}
-
-.day {
-    width: 410px;
-    position: relative
 }
 
 #location_image img {
@@ -193,22 +183,36 @@ hr {
 
 .centralized {
     text-align: center;
-
+}
+.centralized table {
+    margin: auto;
 }
 
 #search_results {
     width: 1100px;
 }
 
-#limited_content_listed {
-    max-width: 700px;
+.limited_content_listed {
+    max-width: 800px;
+    min-width: 800px;
 }
 
 .limited_content {
     overflow: hidden;
     white-space: nowrap;
-    max-width: 900px;
     height: 3em;
     max-height: 3em;
     text-overflow: ellipsis;
+}
+
+.inline > * {
+    display: inline-block;
+}
+
+.max_width_900 {
+    max-width: 900px;
+}
+
+.max_width_600 {
+    max-width: 600px;
 }
