@@ -86,7 +86,20 @@ class UpdateController < ApplicationController
       @del_networks = RemovedNetworkings.where('id > ? AND id <= ?',@networkings[:last_removed_id], @new_last_removed_network_id)
     end
 
-
+    @people = @update[:people]
+    if @people
+      @last_person_id = @people[:last_id]
+      @last_person_update = @people[:last_update]
+      @new_last_person_id = 0
+      @person_tmp = Person.last
+      if @person_tmp
+        @new_last_person_id = @person_tmp.id
+      end
+      @new_people = Person.where('id > ? AND id <= ?', @last_person_id, @new_last_person_id)
+      @new_last_person_update = Person.maximum(:updated_at)
+      @updated_people = Person.where('id <= ? AND ? < updated_at', @last_person_id, @last_person_update)
+      @new_last_people_removed_id = 1;
+    end
 
     respond_to do |format|
       format.json {render :file => 'update/update', :content_type => 'application/json'}
@@ -96,11 +109,12 @@ class UpdateController < ApplicationController
 
   def login
     @person = Person.find_all_by_email(params[:registry][:email]).first
-
+    @first_day = EventGroup.first_day
+    @last_day = EventGroup.last_day
 
 
     respond_to do |format|
-      format.json { render json: @person }
+      format.json {render :file => 'update/login', :content_type => 'application/json'}
     end
   end
 end

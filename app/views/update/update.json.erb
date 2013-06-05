@@ -151,4 +151,45 @@
         <% end %>
     },
     <% end %>
+    <% if @new_last_person_id && @new_last_person_update && @new_last_people_removed_id %>
+    "people" :{
+        "last_id": "<%= @new_last_person_id %>",
+        "last_update": "<%= @new_last_person_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_removed": "<%= @new_last_people_removed_id %>",
+        <% if @new_people && @new_people.length>0 %>
+        "news" :{
+            <% @new_people.each do |person| %>
+            "person_<%= person.id %>": {
+               "first": "<%= person.first_name %>",
+                "last": "<%= person.last_name %>",
+                "pre": "<%= person.prefix %>",
+                "affiliation" : "<%= person.affiliation %>",
+                "email": "<%= person.email %>",
+                "photo": "<%= person.photo %>",
+                "bio": "<%= person.biography %>",
+                "server_id": "<%= person.id %>",
+                "last_date": "<%= person.updated_at %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_people && @updated_people.length>0 %>
+        "updated" :{
+            <% @updated_people.each do |person| %>
+            "person_<%= person.id %>": {
+                "first": "<%= person.first_name %>",
+                "last": "<%= person.last_name %>",
+                "pre": "<%= person.prefix %>",
+                "affiliation" : "<%= person.affiliation %>",
+                "email": "<%= person.email %>",
+                "photo": "<%= person.photo %>",
+                "bio": "<%= person.biography %>",
+                "server_id": "<%= person.id %>",
+                "last_date": "<%= person.updated_at %>"
+            },
+            <% end %>
+        },
+        <% end %>
+    },
+    <% end %>
 }
