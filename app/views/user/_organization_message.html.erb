@@ -4,6 +4,7 @@
     <%= link_to "Try again", {:controller => "user", :action => "organization", :orgmessage => true } %>
 <% else %>
     <% if flash[:notice] %>
+        <% flash[:notice]=nil %>
         <p>Thank you!</p>
         <%= link_to "Back to Schedule", {:controller => "user", :action => "program"} %>
     <% else %>

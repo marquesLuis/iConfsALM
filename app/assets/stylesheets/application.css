@@ -138,6 +138,9 @@ hr {
 .border {
     border: 1px solid black;
 }
+.bottom_border {
+    border-bottom: 1px solid goldenrod;
+}
 
 .control {
     float: right;

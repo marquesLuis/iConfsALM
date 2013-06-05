@@ -1,18 +1,18 @@
 <h1 class="centralized">Notifications</h1>
 
 <% if @org_notifications.any? %>
-<table>
+<table >
   <tr>
-    <th>Title</th>
-    <th>Message</th>
-    <th>Updated At</th>
+    <th class="bottom_border">Title</th>
+    <th class="bottom_border">Message</th>
+    <th class="bottom_border">Updated At</th>
   </tr>
 
   <% @org_notifications.each do |org_notification| %>
-      <tr>
-        <td><%= org_notification.title %></td>
-        <td><%= org_notification.content %></td>
-        <td><%= org_notification.updated_at.strftime("%D %H:%M:%S") %></td>
+      <tr >
+        <td class="bottom_border centralized"><%= org_notification.title %></td>
+        <td class="bottom_border"><%= org_notification.content %></td>
+        <td class="bottom_border centralized"><%= org_notification.updated_at.strftime("%D %H:%M:%S") %></td>
       </tr>
   <% end %>
 </table>
