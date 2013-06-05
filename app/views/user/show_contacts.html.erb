@@ -1,10 +1,12 @@
-<h1>Contacts</h1>
-<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts'%>
-<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts'%>
-<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants'%>
-<%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+<div class="centralized">
+  <h1>Contacts</h1>
+  <%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
+  <%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
+  <%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
+  <%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+</div>
 
-<% if @contacts1.any? or @contacts2.any?%>
+<% if @contacts.any? %>
     <h3>Contacts:</h3>
     <table>
       <td>
@@ -13,29 +15,16 @@
             <th>Photo</th>
             <th>Name</th>
           </tr>
-          <% @contacts2.each do |traded| %>
+          <% @contacts.each do |contact| %>
               <tr>
                 <td>
-                  <% if traded.requested.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => 'Item-Image' %>
+                  <% if contact.photo.nil? %>
+                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => contact.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <img src='/people/<%= traded.requested.photo %>' alt='<%= traded.requested.photo %>' class='person_thumbnail'>
-                <% end %>
+                      <img src='/people/<%= contact.photo %>' alt='<%= contact.photo %>' class='person_thumbnail'>
+                  <% end %>
                 </td>
-                <td><%= link_to traded.full_name, {:controller => "user", :action => "show_participant", :id => traded.requested.id, :remote => true}, :class => "Item-Text" %></td>
-
-              </tr>
-          <% end %>
-          <% @contacts1.each do |traded| %>
-              <tr>
-                <td>
-                  <% if traded.requester.photo.nil? %>
-                      <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => 'Item-Image' %>
-                  <% else %>
-                    <img src='/people/<%= traded.requester.photo %>' alt='<%= traded.requester.photo %>'>
-                <% end %>
-                </td>
-                <td><%= link_to traded.full_name, {:controller => "user", :action => 'show_participant', :id => traded.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td><%= link_to contact.full_name, {:controller => "user", :action => "show_participant", :id => contact.id, :remote => true}, :class => "Item-Text" %></td>
 
               </tr>
           <% end %>
@@ -43,7 +32,8 @@
       </td>
       <td id='profile'></td>
     </table>
+    <%= will_paginate @contacts %>
     <%= link_to 'Export', {:controller => "user_contacts", :action => 'export'} %></td>
 <% else %>
-<p>You have no contacts!</p>
+    <p>You have no contacts!</p>
 <% end %>

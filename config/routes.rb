@@ -64,7 +64,7 @@ IConfs::Application.routes.draw do
 
   get "user_networking/new"
 
-  post "user_networking/show_selection"
+  get "user_networking/show_selection"
 
   get "user_networking/index"
 

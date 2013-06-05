@@ -1,29 +1,7 @@
-html =''
-<% if @showing.any? %>
-    html +="<table>"
-    html +="<td>"
-    html +="<table>"
-    html +="<tr>"
-    html +="<th>Creator</th>"
-    html +="<th>Title</th>"
-    html +="</tr>"
+html = "<%= escape_javascript( render 'list' ) %>"
 
-    <% @showing.each do |networking| %>
-        html +="<tr>"
-        <% person =  networking.person %>
-        html +="<td><%= escape_javascript(link_to person.prefix<<' '<<person.first_name<<' '<<person.last_name,  {:controller => "user", :action => "show_all_participants", :id => person.id}) %></td>"
-        html +="<td><a href='/user_networking/show?id=<%= networking.id %>' data-remote='true' rel='nofollow'><%= networking.title %></a></td>"
-        <% if networking.person_id == current_registry.person_id %>
-            html +="<td><a href='/user_networking/delete?id=<%= networking.id %>' data-method='post' rel='nofollow'>Delete</a></td>"
-        <% end %>
-        html +="</tr>"
-    <% end %>
-    html +="</table>"
-    html +="</td>"
-    html +="<td id='networking'></td>"
-    html +="</table>"
-<% else %>
-    html +="<p>Nothing to show!</p>"
-<% end %>
+$("#networking_list").fadeOut("slow", function() {
+    $(this).empty().append(html).fadeIn();
+    $(".pagination a").attr( 'data-remote', 'true' );
+})
 
-$("#networking_list").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

@@ -1,8 +1,10 @@
-<h1>Rejected Contacts</h1>
-<%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
-<%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
-<%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
-<%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+<div class="centralized">
+  <h1>Rejected Contacts</h1>
+  <%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
+  <%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
+  <%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
+  <%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+</div>
 
 <% if @rejected.any? %>
     <table>
@@ -19,8 +21,8 @@
                   <% if rejected.requester.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                    <img src='/people/<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
-                <% end %>
+                      <img src='/people/<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
+                  <% end %>
                 </td>
                 <td><%= link_to rejected.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
               </tr>
@@ -29,6 +31,8 @@
       </td>
       <td id='profile'></td>
     </table>
+
+    <%= will_paginate @rejected %>
 <% else %>
     <p>No contact requests have been rejected!</p>
-<% end%>
+<% end %>

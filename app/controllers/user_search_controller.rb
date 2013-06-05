@@ -1,4 +1,5 @@
 class UserSearchController < ApplicationController
+  before_filter :authenticate_registry!
   def search
     @search = params[:q]
     if @search.length < 3

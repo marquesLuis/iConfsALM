@@ -1,4 +1,5 @@
 class EventDocumentsController < ApplicationController
+  before_filter :authenticate_administrator!
   # GET /event_documents
   # GET /event_documents.json
   def index

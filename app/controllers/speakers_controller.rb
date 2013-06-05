@@ -1,4 +1,5 @@
 class SpeakersController < ApplicationController
+  before_filter :authenticate_administrator!
   # GET /speakers
   # GET /speakers.json
   def index

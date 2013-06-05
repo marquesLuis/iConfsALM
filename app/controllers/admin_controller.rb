@@ -74,8 +74,6 @@ class AdminController < ApplicationController
   # DELETE /administrators/1
   # DELETE /administrators/1.json
   def destroy
-    puts('XXXXXXXXXXXXXXX')
-    puts(params[:id])
     @administrator = Administrator.find(params[:id])
     @administrator.destroy
 

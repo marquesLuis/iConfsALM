@@ -1,4 +1,5 @@
 class GroupAreasController < ApplicationController
+  before_filter :authenticate_administrator!
   # GET /group_areas
   # GET /group_areas.json
   def index

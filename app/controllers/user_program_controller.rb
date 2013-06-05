@@ -38,9 +38,6 @@ class UserProgramController < ApplicationController
     @begin_weekday =@first_day.wday;
 
     attending_events = AtendingEvent.where('person_id = ?', current_registry.person_id).pluck(:event_id)
-    puts attending_events
-    puts (attending_events)
-    puts ([attending_events])
     if attending_events.any?
       @events = Event.where('id IN (?)', (attending_events))
     else

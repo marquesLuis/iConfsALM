@@ -45,9 +45,9 @@ class PeopleController < ApplicationController
     @person = Person.new(params[:person])
     @person.signup_code = SecureRandom.hex(6)
 
-
     respond_to do |format|
       if @person.save
+        @person.update_attributes(:info_modification_time => @person.created_at)
         PersonMailer.send_code(@person).deliver
         format.html { redirect_to @person, notice: 'Person was successfully created. Email has been sent.' }
         format.json { render json: @person, status: :created, location: @person }

@@ -28,15 +28,12 @@ class UserController < ApplicationController
     else
       @feedback = Feedback.new
     end
-
   end
 
   def feedback
-
     feedback = Feedback.new(params[:feedback])
     feedback.read=false
     feedback.save
-
 
     respond_to do |format|
       if feedback.save
@@ -64,8 +61,6 @@ class UserController < ApplicationController
         format.html { render :organization }
       end
     end
-
-
   end
 
   def notifications
@@ -79,21 +74,19 @@ class UserController < ApplicationController
 
   def show_contacts
     @self = current_registry.person
-    @contacts1 = @self.received_traded_contacts.paginate(:page => params[:page], :per_page => 6)
-    @contacts2 = @self.sent_traded_contacts.paginate(:page => params[:page], :per_page => 6)
+    contacts1 = @self.received_traded_contacts.pluck(:requester_id)
+    contacts2 = @self.sent_traded_contacts.pluck(:requested_id)
 
-
+    @contacts = Person.where('id in (?) OR id in (?)', contacts1, contacts2).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show_pending_contacts
     @self = current_registry.person
-    @to_accept = PendingContact.where('requested_id = ?', @self.id)
-    @pending = PendingContact.where('requester_id = ?', @self.id)
-    @rejected = RejectedContact.where('requester_id = ?', @self.id)
-
-
+    @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6)
+    pending = PendingContact.where('requester_id = ?', @self.id).pluck(:requested_id)
+    rejected = RejectedContact.where('requester_id = ?', @self.id).pluck(:requested_id)
+    @sent = Person.where('id in (?) OR id in (?)', pending, rejected).paginate(:page => params[:sent_page], :per_page => 6)
   end
-
 
   def show_rejected_contacts
     @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6)
@@ -103,12 +96,9 @@ class UserController < ApplicationController
     @self = current_registry.person
     @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6)
     if params[:id]
-    @participant = Person.find(params[:id]);
+      @participant = Person.find(params[:id]);
     end
-
-
   end
-
 
   def show_participant
     @person =current_registry.person
@@ -142,7 +132,8 @@ class UserController < ApplicationController
       end
     end
 
-    @networking = @participant.networkings
+    @networking = @participant.networkings.paginate(:page => params[:page], :per_page => 6)
+
     respond_to do |format|
       format.js
     end

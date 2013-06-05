@@ -6,7 +6,7 @@ html += '<td colspan="42" class="border">'
 
 html += '<div>'
 <% if person.photo.nil? %>
-html += "<img src='/images/defaultPerson.jpg' alt='No Photo' class='right'>"
+html += "<img src='/images/defaultPerson100.jpg' alt='No Photo' class='right'>"
 <% else %>
 html += "<img src='/people/<%= person.photo %>' alt='Photo' class='right'>"
 <% end %>

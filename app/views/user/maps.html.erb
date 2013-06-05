@@ -1,16 +1,14 @@
-<h1>Locations:</h1>
+<div class="centralized"><h1>Locations:</h1>
 
-<%= collection_select(:title, :locations_id, @locations, :id, :title, {}, {'data-remote' => true}) %>
-
-<% if @location %>
-    <div>
-      <div id="location_title">
-        <h2><%= @location.title %></h2>
+  <%= collection_select(:title, :locations_id, @locations, :id, :title, {}, {'data-remote' => true}) %>
+  <% if @location %>
+      <div>
+        <div id="location_title">
+          <h2><%= @location.title %></h2>
+        </div>
+        <div id="location_image">
+          <p><img src='/images/<%= @location.image %>' alt='<%= @location.title %>'></p>
+        </div>
       </div>
-      <div id="location_image">
-        <p><img src='/images/<%= @location.image %>' alt='<%= @location.title %>'></p>
-      </div>
-    </div>
-
-
-<% end %>
+  <% end %>
+</div>

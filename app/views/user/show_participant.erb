@@ -12,7 +12,8 @@ html =  "<div>"
 
   html += "<p>Email: <%= @participant.email %> </p> "
 
-  html += "<div class='border'>"
+  html += "<div>"
+  html += "<hr>"
   <% if @interests.any? %>
 
       <% len = @interests.length %>
@@ -35,7 +36,7 @@ html =  "<div>"
   html += "</div>"
 
 
-  html += "<div class='border'>"
+  html += "<div>"
   <% if @participant.biography.nil? %>
       html += "<p><%= @participant.full_name %> has not added a personal description yet! </p> "
   <% else %>
@@ -45,9 +46,10 @@ html =  "<div>"
       <% end %>
   <% end %>
 
+  html += "<hr>"
   <% if @request_accepted %>
       <% if @infos.any? %>
-      html += "<div class='border'>"
+      html += "<div>"
       html += "<p>Person's contacts:</p>"
 
       html += "<table>"
@@ -83,23 +85,30 @@ html =  "<div>"
   <% end %>
   html += "</div>"
 
+  html += "<hr>"
+
   html += "<div id='notes'>"
   html += "<%= escape_javascript(render(:template =>'notes/index_on_participant', :participant_id =>  @participant.id )) %>"
   html += "</div>"
+  html += "<hr>"
 
-  html += "<div class='border'>"
+  html += "<div>"
   <% if @networking.any? %>
       html += "<p>Networking topics:</p>"
       <%  @networking.each do |networking| %>
           html += "<p><%= escape_javascript(link_to networking.title,  {:controller => "user_networking", :action => "index", :id => networking.id}) %></p>"
-
       <% end %>
-  <% else %>
+      html += "<p><%= escape_javascript( will_paginate @networking )%></p>"
+
+<% else %>
       html += "<p><%= @participant.first_name %> has not added any networking topics yet! </p> "
   <% end %>
 html += "</div>"
 
 html += "</div>"
 
-$("#profile").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })
+$("#profile").fadeOut("slow", function() {
+    $(this).empty().append(html).fadeIn();
+    $(".pagination a").attr( 'data-remote', 'true' )
+;})
 

@@ -1,0 +1,41 @@
+<div id='networking_list'>
+
+  <% if @showing.any? %>
+      <table>
+        <td>
+          <table>
+            <tr>
+              <th>Title</th>
+              <th>Creator</th>
+            </tr>
+
+            <% @showing.each do |networking| %>
+                <tr>
+                  <% person = networking.person %>
+                  <td class='limited_content width_125 centralized'><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id},  :remote => true %></td>
+                  <td class='limited_content width_125 centralized'><%= link_to person.full_name, {:controller => "user", :action => "show_all_participants", :id => person.id} %></td>
+                  <% if networking.person_id == current_registry.person_id %>
+                      <td><%= link_to 'Delete', {:controller => "user_networking", :action => "delete", :id => networking.id}, :method => 'post' %></td>
+                  <% end %>
+                </tr>
+            <% end %>
+          </table>
+        </td>
+        <td id='networking' class='limited_content_listed'>
+          <% if @networking %>
+              <script type="text/javascript">
+                  window.onload = function () {
+                      $.ajax("/user_networking/show/?id=<%= @networking.id%>");
+                  };
+              </script>
+          <% else %>
+              <p>Select a topic on the left.</p>
+          <% end %>
+
+        </td>
+      </table>
+      <%= will_paginate @showing %>
+  <% else %>
+      <p>Nothing to show! Add one yourself!</p>
+  <% end %>
+</div>

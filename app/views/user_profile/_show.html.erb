@@ -1,30 +1,32 @@
-<h1>Profile</h1>
+<h1 class="centralized">Your Profile</h1>
 
 
-<div id="person_photo" class="border">
+<div class="right centralized">
   <% if @person.photo.nil? %>
-      <img src='/images/defaultPerson.jpg' alt='No Photo' class='person_image'>
+      <img src='/images/defaultPerson150.jpg' alt='No Photo' class='person_image'>
   <% else %>
       <img src='/people/<%= @person.photo %>' alt='Photo' class='person_image'>
   <% end %>
   <%= form_tag({:controller => "user_profile", :action => "upload_photo"}, :multipart => true) do %>
       <p><%= file_field_tag 'upload' %></p>
-
       <p><%= submit_tag("Upload") %> </p>
+      <p class='width_125'>Click upload with no file for default.</p>
+
   <% end %>
 </div>
 
 
-<div class="border">
-  <p>Name: <%= @person.prefix %> <%= @person.first_name %> <%= @person.last_name %></p>
+<div>
+  <p><b>Name:</b> <%= @person.prefix %> <%= @person.first_name %> <%= @person.last_name %></p>
 
-  <p>Affiliation: <%= @person.affiliation %></p>
+  <p><b>Affiliation:</b> <%= @person.affiliation %></p>
 
-  <p>Public mail: <%= @person.email %></p>
+  <p><b>Public mail:</b> <%= @person.email %></p>
 </div>
 
-<div class="border">
-  <p>Interesses:</p>
+<hr>
+<div>
+  <p><b>Interesses:</b></p>
   <%= form_tag({:controller => "user_profile", :action => "update_interests"}, :method => 'post', :remote => true) do %>
       <table>
         <% @interests.each do |interest| %>
@@ -43,18 +45,21 @@
               </div>
             </tr>
         <% end %>
-        <div class="actions">
-          <%= submit_tag("Update") %>
-        </div>
+        <td>
+          <div class="actions">
+            <%= submit_tag("Update") %>
+          </div>
+        </td>
       </table>
   <% end %>
 </div>
 
 
-<div class="border">
+<hr>
+<div>
   <%= form_tag({:controller => "user_profile", :action => "update_biography"}, :method => 'post', :remote => true) do %>
       <div class="field">
-        <p><%= label_tag('biography', 'Biography:') %>  </p>
+        <p><b><%= label_tag('biography', 'Biography:') %></b></p>
         <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
       </div>
       <div class="actions">
@@ -64,9 +69,10 @@
   <% end %>
 </div>
 
-
-<div class="border">
-  <p>Private Contacts</p>
+<hr>
+<div>
+  <p><b>Private Contacts</b></p>
+  <% if @person.infos.any? %>
   <table>
     <tr>
       <th>Type</th>
@@ -82,8 +88,9 @@
         </tr>
     <% end %>
   </table>
-
-  <br/>
+  <% else %>
+  <p>You have not added any private contacts!</p>
+  <% end %>
 
   <%= link_to 'New Info', new_info_path %>
 </div>

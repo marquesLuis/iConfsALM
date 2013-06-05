@@ -1,28 +1,30 @@
 <%= form_for(@info) do |f| %>
-  <% if @info.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@info.errors.count, "error") %> prohibited this info from being saved:</h2>
+    <% if @info.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@info.errors.count, "error") %> prohibited this info from being saved:</h2>
 
-      <ul>
-      <% @info.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @info.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :info_type %>
+      <br/>
+      <%= f.text_field :info_type, :placeholder => 'ex: email, website, phone...' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :info_type %><br />
-    <%= f.text_field :info_type %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.number_field :person_id, :value => current_registry.person.id, :type=>'hidden' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :value %>
+      <br/>
+      <%= f.text_field :value, :placeholder => 'ex: your@mail.com, +31 331 234 444...' %>
+    </div>
+    <div class="field">
+      <%= f.number_field :person_id, :value => current_registry.person.id, :type => 'hidden' %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
