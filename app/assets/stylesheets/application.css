@@ -30,7 +30,7 @@
     margin: 15px;
 }
 #title a {
-    color: #26972D;
+    color: #A65A00;
 }
 
 #title {
@@ -39,33 +39,33 @@
 }
 
 .menu a {
-    color: #83F03C;
+    color: #A65A00;
     margin: 0 auto;
 }
 
 .menu h1 {
-    color: #26972D;
+    color: #A65A00;
 }
 
 .menu {
-    background-color: #35C0CD;
+    background-color: #FFA840;
 }
 
 body {
-    background-color: #028E9B;
+    background-color: #CCCCCC;
 }
 
 .body {
     margin: 0px auto;
     width: 1100px;
-    background-color: #33CCCC;
+    background-color: #ffffff;
     padding: 5px 15px 5px 5px;
 }
 
 .menu td {
     text-align: center;
     width: 100px;
-    border: 2px solid #043C6B;
+    border: 1px solid #cccccc;
 }
 
 .body a {

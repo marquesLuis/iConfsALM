@@ -41,10 +41,10 @@
                 <% group = event.event_group %>
                 {
                     id: '<%= event.id%>',
-                    title: '<%= event.title %>',
+                    title: '<%= event.event_kind %> - <%= event.title %>',
                     <% if event.speaker %>
                     <% if event.speaker.keynote %>
-                    color: 'blue',
+                    color: '#A65A00',
                     <% end %>
                     <% end %>
                     start: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.begin.hour %>, <%= event.begin.min %>),
