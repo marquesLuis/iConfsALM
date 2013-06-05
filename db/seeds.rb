@@ -204,4 +204,6 @@ AtendingEvent.create(:event_id=> 2,  :person_id=>3);
 Networking.create(:title => 'Scalable Bloom Filters', :content => 'Scalable Bloom Filters Description.', :person_id => '2');
 Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds.', :person_id => '4');
 
-
+Note.create(:content => 'Must not forget to bring my IPhone.' ,:person_id=>3);
+Note.create(:content => 'Talked to him in the coffee break' ,:person_id=>3);
+AboutPerson.create(:person_id => 4, :note_id => 2)
