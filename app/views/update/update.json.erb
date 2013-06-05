@@ -192,4 +192,24 @@
         <% end %>
     },
     <% end %>
+    <% if @new_last_attending_id && @new_last_attending_update && @new_last_removed_attending_id %>
+    "attendings" :{
+        "last_id": "<%= @new_last_attending_id %>",
+        "last_update": "<%= @new_last_attending_update %>",
+        "last_removed": "<%= @new_last_removed_attending_id %>",
+        <% if @new_attendings && @new_attendings.length>0 %>
+        "news" :{
+            <% @new_attendings.each do |att| %>
+            "att_<%= att.id %>": {
+                "server_id": "<%= att.id %>",
+                "event_id": "<%= att.event_id %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_attendings && @del_attendings.length>0 %>
+        "deleted":[<% @del_attendings.each do |net| %>"<%= net.removed_event%>",<% end %>]
+        <% end %>
+    },
+    <% end %>
 }
