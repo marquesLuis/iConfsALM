@@ -2,7 +2,7 @@
 <p>
   <b>Participant:</b>
 <% if @author.person_id %>
-   <%= @author.person.prefix<<' '<<@author.person.first_name<<' '<<@author.person.last_name %>
+   <%= @author.person.full_name %>
 
 <% else %>
     Has no participant.

@@ -182,3 +182,12 @@ puts "Adding 100 random people"
       :person_id => a.id)
 end
 
+
+
+
+
+
+# FOR WS 3!!!
+AtendingEvent.create(:event_id=> 1,  :person_id=>3);
+AtendingEvent.create(:event_id=> 2,  :person_id=>3);
+

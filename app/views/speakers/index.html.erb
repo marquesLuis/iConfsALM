@@ -15,7 +15,7 @@
         <td><%= speaker.keynote %></td>
 
         <% person = speaker.person %>
-        <td><%= person.prefix<<' '<<person.first_name<<' '<<person.last_name %></td>
+        <td><%= person.full_name %></td>
         <td><%= speaker.event.title %></td>
         <td><%= link_to 'Show', speaker %></td>
         <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>

@@ -3,7 +3,7 @@ html = ""
 html += "<tr class='result'>"
     html += "<td>"
         <% if note.about_person %>
-        html += "<p><%= escape_javascript(link_to note.about_person.person.prefix<<" "<<note.about_person.person.first_name<<" "<<note.about_person.person.last_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s ) %></p>"
+        html += "<p><%= escape_javascript(link_to note.about_person.person.full_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s ) %></p>"
         <% else
              if note.about_event %>
         html += "<p><%= escape_javascript(link_to note.about_event.event.title, '/user_program/show_event/?id='+note.about_event.event_id.to_s) %></p>"

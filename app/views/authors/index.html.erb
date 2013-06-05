@@ -13,7 +13,7 @@
   <% @authors.each do |author| %>
       <tr>
         <% if author.person_id %>
-            <td><%= author.person.prefix<<' '<<author.person.first_name<<' '<<author.person.last_name %></td>
+            <td><%= author.person.full_name %></td>
 
         <% else %>
             <td>Has no participant.</td>

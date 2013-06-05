@@ -57,9 +57,7 @@ class UserContactsController < ApplicationController
     x=""
     received.each do |r|
       a = ""
-      a+= (r.requester.prefix) + " "
-      a+= (r.requester.first_name) + " "
-      a+= (r.requester.last_name) + " "
+      a+= (r.requester.full_name) + " "
       a+= (r.requester.email)
       if r.requester.infos.any?
         b=""
@@ -77,9 +75,7 @@ class UserContactsController < ApplicationController
     end
     sent.each do |s|
       a = ""
-      a+= (s.requested.prefix) + " "
-      a+= (s.requested.first_name) + " "
-      a+= (s.requested.last_name) + " "
+      a+= (s.requested.full_name) + " "
       a+= (s.requested.email)
       if s.requested.infos.any?
         b=""

@@ -258,9 +258,7 @@ class NotesController < ApplicationController
       a=''
       if note.about_person
         a+= "\r\nPerson: "
-        a+= note.about_person.person.prefix+ " "
-        a+= note.about_person.person.first_name + " "
-        a+= note.about_person.person.last_name + "\r\n"
+        a+= note.about_person.person.full_name + "\r\n"
       else
         if note.about_event
           a+= "\r\nEvent: "

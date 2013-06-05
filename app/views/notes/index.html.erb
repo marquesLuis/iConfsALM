@@ -12,7 +12,7 @@
   <% @notes.each do |note| %>
       <tr >
         <% if note.about_person %>
-            <td><%= link_to note.about_person.person.prefix<<" "<<note.about_person.person.first_name<<" "<<note.about_person.person.last_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s %></td>
+            <td><%= link_to note.about_person.full_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s %></td>
         <% else
              if note.about_event %>
                 <td><%= link_to note.about_event.event.title, '/user_program/show_event/?id='+note.about_event.event_id.to_s %> </td>

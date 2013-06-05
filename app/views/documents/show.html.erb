@@ -17,7 +17,7 @@
 <p>Authors:</p>
 <% @authors.each do |author| %>
     <% if author.person %>
-        <p><%= author.person.prefix %> <%= author.person.first_name %> <%= author.person.last_name %></p>
+        <p><%= author.person.full_name %></p>
     <% else %>
         <p><%= author.name %></p>
     <% end %>
