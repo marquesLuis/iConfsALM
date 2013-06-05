@@ -66,38 +66,52 @@ Event.create(:event_group_id => 2, :title => 'Starting Session', :description =>
 
 #3 3
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'A', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+#C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga
 #4 4
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 4, :title => 'SSCC', :description => 'B', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 4, :title => 'SSCC', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+#DIVERSYS: DIVErse Rejuvenation SYStem-Miguel Garcia, Nuno Neves, Alysson Bessani O vigia dos vigias: um serviço RADIUS resiliente-Oleksandr Malichevskyy, Diego Kreutz, Marcelo Pasin, Alysson Bessani Trusted Civitas: Client Trust in CIVITAS Electronic Voting Protocol-Pedro Adão, João Mendes Minimização de Perda de Pacotes em Sistemas de Deteção de Intrusões-Tiago Picado, Paolo Romano, Carlos Ribeiro Gestão e Pesquisa de Dados Privados em Nuvens de Armazenamento-Bernardo Ferreira, Henrique Domingos
 #5 5
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 5, :title => 'GDC1', :description => 'C', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 5, :title => 'GDC1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+#Semantic Enrichment of Places for the Portuguese Language-Jorge Oliveira Santos, Ana Oliveira Alves, Francisco Câmara Pereira, Pedro Henriques Abreu Extração de Relações em Títulos de Notícias Desportivas-António Paulo Santos, Carlos Ramos, Nuno C. Marques Natural Language Understanding as a classification process: report of initial experiments and results-Pedro Mota, Luísa Coheur Medicine.Ask: An intelligent search system for medicine information-Helena Galhardas, Vasco Mendes, Luísa Coheur
 #6 6
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 6, :title => 'CMU1', :description => 'D', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
-
+Event.create(:event_group_id => 6, :title => 'CMU1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+#Comparação de Mecanismos de Cancelamento de Difusão-Rui Lima, Carlos Baquero, Hugo Miranda Filtros de precedência: agregação anónima de dados de trânsito bluetooth-Nelson Gonçalves, Carlos Baquero, Rui José, Miguel Borges Geo Ties -- Localização em Conversas Móveis-Tiago Antunes, Luís Duarte, Luis Carriço Puzzles: Explorando Designs Multimodais-Jaime Carvalho, Luís Duarte, Diogo Marques, Luis Carriço
 GroupArea.create(area_of_interest_id: '5', event_group_id: '3');
 GroupArea.create(area_of_interest_id: '7', event_group_id: '4');
 GroupArea.create(area_of_interest_id: '6', event_group_id: '5');
 GroupArea.create(area_of_interest_id: '4', event_group_id: '6');
 
 #7 7
-EventGroup.create( :date => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"))
+EventGroup.create(:date => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 7, :title => 'Coffee break', :description => 'See title for more info.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"));
 
 #8,9,10
-EventGroup.create( :date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
-EventGroup.create( :date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
-EventGroup.create( :date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
+EventGroup.create(:date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
+EventGroup.create(:date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
+EventGroup.create(:date => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"))
 #8,9,10
-#Event.create(:event_group_id => 8, :title => 'CPDLA2', :description => 'D', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 8, :title => 'CPDLA2', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 9, :title => 'SETR1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 10, :title => 'SOFTPT1', :description => '', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"));
+#11 11
+EventGroup.create(:date => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"))
+Event.create(:event_group_id => 11, :title => 'Reunion', :description => 'Some detail should go here.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"));
+#12 12
+EventGroup.create(:date => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"))
+Event.create(:event_group_id => 12, :title => 'Leaving for dinner', :description => 'Some detail should go here. Location maybe.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"));
+#13 13
+EventGroup.create(:date => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 23:50", "%d/%m/%Y %H:%M"))
+Event.create(:event_group_id => 13, :title => 'Dinner', :description => 'Solar dos Zagalos', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 23:50", "%d/%m/%Y %H:%M"));
+
 
 puts "Adding Day 2"
-##DAY 2 EVENT GROUP (7) EVENT (7)
+##DAY 2 EVENT GROUP () EVENT ()
 EventGroup.create(:end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 8, :title => 'Lorenzo Alvisi', :description => 'UT AUSTIN.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));
-
+Event.create(:event_group_id => 14, :title => 'Lorenzo Alvisi', :description => 'UT AUSTIN.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));
 
 
 prefixes = ["Dr.", "Sr."]
@@ -142,7 +156,6 @@ last_names = ["Babineau",
               "Haver",
               "Witte"]
 affiliations = ["fct", "unl", 'ist', 'random entity']
-
 
 
 puts "Adding 100 random people"

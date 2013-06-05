@@ -7,7 +7,7 @@ class UserProgramController < ApplicationController
     @last_day = EventGroup.last_day
 
     @min_hour =8;
-    @max_hour =20;
+    @max_hour =23;
     @begin_year = @first_day.year;
     @begin_month = (@first_day.month) -1;
     @begin_day = @first_day.day;
@@ -31,7 +31,7 @@ class UserProgramController < ApplicationController
     @last_day = EventGroup.last_day
 
     @min_hour =8;
-    @max_hour =20;
+    @max_hour =23;
     @begin_year = @first_day.year;
     @begin_month = (@first_day.month) -1;
     @begin_day = @first_day.day;
