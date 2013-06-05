@@ -12,13 +12,18 @@ html += "<p>End: <%= event.end.strftime("%I:%M:%S") %></p> "
 html += '</td>'
 html += '</tr>'
 <% end %>
+html += '<tr class="result"><td>'
+html += '<%= escape_javascript(will_paginate @events )%>'
+html += '</td></tr>'
 
 $(".result").fadeOut("slow", function () {
     $(this).empty();
     $(this).remove();
+    $(".pagination a").attr( 'data-remote', 'true' );
 });
 $("#search_results").append(html).children.each(function () {
     $(this).fadeIn()
+    $(".pagination a").attr( 'data-remote', 'true' );
 });
 
 

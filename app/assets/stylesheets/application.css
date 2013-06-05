@@ -25,14 +25,17 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    opacity: .8
+}
+#title {
+    margin: 15px;
+}
+#title a {
+    color: #26972D;
 }
 
-#title a{
-    color: #26972D;
-    margin: 15px;
-    float: left;
+#title {
     font-size: 4em;
+    float: left;
 }
 
 .menu a {
@@ -43,6 +46,7 @@
 .menu h1 {
     color: #26972D;
 }
+
 .menu {
     background-color: #35C0CD;
 }
@@ -76,7 +80,6 @@ body {
     text-align: center;
     margin: 0 auto;
 }
-
 
 ul {
     margin: 0;
@@ -171,6 +174,7 @@ hr {
 .centralized {
     text-align: center;
 }
+
 .centralized table {
     margin: auto;
 }
