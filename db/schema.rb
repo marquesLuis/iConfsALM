@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604144322) do
+ActiveRecord::Schema.define(:version => 20130605141129) do
 
   create_table "about_events", :force => true do |t|
     t.integer  "note_id"
@@ -239,6 +239,13 @@ ActiveRecord::Schema.define(:version => 20130604144322) do
     t.integer  "area_identifier"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "removed_attending_events", :force => true do |t|
+    t.integer  "removed_event"
+    t.integer  "person_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "removed_authors", :force => true do |t|

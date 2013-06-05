@@ -5,6 +5,7 @@ class UpdateController < ApplicationController
   def update
 
     @update = params[:update]
+    @person = current_registry.person_id
 
     @feedbacks = @update[:feedbacks]
     if @feedbacks
@@ -99,6 +100,31 @@ class UpdateController < ApplicationController
       @new_last_person_update = Person.maximum(:updated_at)
       @updated_people = Person.where('id <= ? AND ? < updated_at', @last_person_id, @last_person_update)
       @new_last_people_removed_id = 1;
+    end
+
+    @attending = @update[:attending]
+    if @attending
+      @last_attending_id = @attending[:last_id]
+      @new_last_attending_id = 0
+      @all_attending = AtendingEvent.find_all_by_person_id(@person)
+      if @all_attending
+        @attending_temp = @all_attending.last
+        if @attending_temp
+          @new_last_attending_id = @attending_temp.id
+          @new_attendings =AtendingEvent.where('person_id = ? AND id > ? AND id <= ?',@person, @last_attending_id, @new_last_attending_id)
+        end
+      end
+      @new_last_attending_update = ""
+      @new_last_removed_attending_id = 0
+      @all_attending_removed = RemovedAttendingEvent.find_all_by_person_id(@person)
+      if @all_attending_removed
+        @last_attending = @all_attending_removed.last
+        if @last_attending
+          @new_last_removed_attending_id = @last_attending.id
+          @del_attendings = RemovedAttendingEvent.where('person_id = ? AND id > ? AND id <= ?',@person, @attending[:last_removed_id], @new_last_removed_attending_id)
+        end
+      end
+
     end
 
     respond_to do |format|

@@ -93,7 +93,9 @@ class UserProgramController < ApplicationController
       @event_id = @atending_event.event_id
     end
     if @atending_event
+      RemovedAttendingEvent.create(removed_event: @atending_event.id, person_id: @atending_event.person_id)
       @atending_event.destroy
+
     else
       @not_existing=true
     end
