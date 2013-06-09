@@ -78,7 +78,6 @@ class UserProgramController < ApplicationController
     else
       @atending_event = AtendingEvent.new(:person_id => current_registry.person_id, :event_id => params[:id])
       @atending_event.save
-
     end
 
     respond_to do |format|
@@ -95,7 +94,6 @@ class UserProgramController < ApplicationController
     if @atending_event
       RemovedAttendingEvent.create(removed_event: @atending_event.id, person_id: @atending_event.person_id)
       @atending_event.destroy
-
     else
       @not_existing=true
     end

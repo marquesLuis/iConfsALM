@@ -4050,8 +4050,9 @@ function AgendaEventRenderer() {
 		}else{
 			html += "div";
 		}
+        html += "id = 'e_"+ event._id+"' "
 		html +=
-			" id = '"+ event._id+"' " + "class='" + classes.join(' ') + "'" +
+			"class='" + classes.join(' ') + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'" +
 			">" +
 			"<div class='fc-event-inner'>" +

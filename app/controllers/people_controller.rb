@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.includes(:registry).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,6 +89,23 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to people_url }
       format.json { head :no_content }
+    end
+  end
+
+  def send_sign_up_mail
+    @person = Person.find(params[:id])
+    @registry = @person.registry
+    if @registry
+      @sent=false
+    else
+      @person.signup_code = SecureRandom.hex(6)
+      @person.save
+      PersonMailer.send_code(@person).deliver
+      @sent=true
+    end
+    respond_to do |format|
+      @people = Person.includes(:registry).all
+      format.html { render action: 'index' }
     end
   end
 end

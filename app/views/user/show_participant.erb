@@ -114,6 +114,6 @@ html += "</div>"
 
 $("#profile").fadeOut("slow", function() {
     $(this).empty().append(html).fadeIn();
-    $(".pagination a").attr( 'data-remote', 'true' )
+    $("#profile .pagination a").attr( 'data-remote', 'true' )
 ;})
 

@@ -14,8 +14,6 @@ class UserProfileController < ApplicationController
     else
       @otherInterests = AreaOfInterest.where('id not in (?)', x)
     end
-
-
   end
 
   def upload_photo
@@ -66,5 +64,9 @@ class UserProfileController < ApplicationController
 
   def update_theme
     current_registry.person.update_attribute(:theme, params[:theme])
+
+    respond_to do |format|
+      format.html { redirect_to action: "show" }
+    end
   end
 end

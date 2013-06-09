@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "people/send_sign_up_mail"
+
   post "user_profile/update_theme"
 
   post "user_contacts/cancel_rejection"

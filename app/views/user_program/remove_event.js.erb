@@ -4,5 +4,5 @@ alert("Event wasn't part of your personal program.")
 alert("Event removed from personal program.")
 <% end %>
  <% if @remove_from_calendar %>
-    $('#<%= @event_id %>hov').parent().parent().remove()
+    $('#e_<%= @event_id %>').remove()
 <% end %>

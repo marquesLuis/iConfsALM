@@ -98,6 +98,10 @@ class UserController < ApplicationController
     if params[:id]
       @participant = Person.find(params[:id]);
     end
+
+    respond_to do |format|
+      format.html # maps.html.erb
+    end
   end
 
   def show_participant
