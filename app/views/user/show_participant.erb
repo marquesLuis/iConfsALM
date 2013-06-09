@@ -6,11 +6,11 @@ html =  "<div>"
       html += "<img src='/people/<%= @participant.photo %>' alt='Photo' class='person_image'>"
   <% end %>
 
-  html += "<p>Name: <%= @participant.full_name %></p> "
+  html += "<p><b>Name:</b> <%= @participant.full_name %></p> "
 
-  html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
+  html += "<p><b>Affiliation:</b> <%= @participant.affiliation %> </p> "
 
-  html += "<p>Email: <%= @participant.email %> </p> "
+  html += "<p><b>Email:</b> <%= @participant.email %> </p> "
 
   html += "<div>"
   html += "<hr>"
@@ -18,7 +18,7 @@ html =  "<div>"
 
       <% len = @interests.length %>
 
-      html += "<p>Interests: </p>"
+      html += "<p><b>Interests: </b></p>"
       html += "<p>"
   <% @interests.each_with_index do |interest, index| %>
       <% if index+1 == len   %>
@@ -40,7 +40,7 @@ html =  "<div>"
   <% if @participant.biography.nil? %>
       html += "<p><%= @participant.full_name %> has not added a personal description yet! </p> "
   <% else %>
-      html += "<p>Personal Description:</p>"
+      html += "<p><b>Personal Description:</b></p>"
       <% @participant.biography.split(/\r\n/).each do |line| %>
           html += "<p><%= line %></p>"
       <% end %>
@@ -77,20 +77,25 @@ html =  "<div>"
       html += "</form> "
 
   <% else %>
+
+              <% if @participant.id != current_registry.person_id %>
       html += "<form name='input' id='send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
       html += "<input type='submit' value='Add as contact'>"
       html += "</form> "
           <% end %>
       <% end %>
-  <% end %>
+      <% end %>
+         <% end %>
   html += "</div>"
 
   html += "<hr>"
 
+  <% if @participant.id != current_registry.person_id %>
   html += "<div id='notes'>"
   html += "<%= escape_javascript(render(:template =>'notes/index_on_participant', :participant_id =>  @participant.id )) %>"
   html += "</div>"
   html += "<hr>"
+      <% end %>
 
   html += "<div>"
   <% if @networking.any? %>

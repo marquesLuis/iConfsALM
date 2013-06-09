@@ -9,7 +9,9 @@
   <% end %>
   <%= form_tag({:controller => "user_profile", :action => "upload_photo"}, :multipart => true) do %>
       <p><%= file_field_tag 'upload' %></p>
+
       <p><%= submit_tag("Upload") %> </p>
+
       <p class='width_125'>Click upload with no file for default.</p>
 
   <% end %>
@@ -22,6 +24,19 @@
   <p><b>Affiliation:</b> <%= @person.affiliation %></p>
 
   <p><b>Public mail:</b> <%= @person.email %></p>
+
+  <div>
+    <p>Theme:</p>
+    <%= form_tag({:controller => "user_profile", :action => "update_theme"}, :remote => true) do %>
+        <%= label_tag(:theme, "default") %>
+        <%= radio_button_tag(:theme, 1, :default=>true) %>
+        <%= label_tag(:theme, "green") %>
+        <%= radio_button_tag(:theme, 2) %>
+        <%= label_tag(:theme, "blue") %>
+        <%= radio_button_tag(:theme, 3) %>
+        <%= submit_tag("Update") %>
+    <% end %>
+  </div>
 </div>
 
 <hr>
@@ -73,23 +88,23 @@
 <div>
   <p><b>Private Contacts</b></p>
   <% if @person.infos.any? %>
-  <table>
-    <tr>
-      <th>Type</th>
-      <th>Value</th>
-      <th></th>
-    </tr>
-
-    <% @person.infos.each do |info| %>
+      <table>
         <tr>
-          <td><%= info.info_type %></td>
-          <td><%= info.value %></td>
-          <td><%= link_to 'Destroy', info, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <th>Type</th>
+          <th>Value</th>
+          <th></th>
         </tr>
-    <% end %>
-  </table>
+
+        <% @person.infos.each do |info| %>
+            <tr>
+              <td><%= info.info_type %></td>
+              <td><%= info.value %></td>
+              <td><%= link_to 'Destroy', info, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+        <% end %>
+      </table>
   <% else %>
-  <p>You have not added any private contacts!</p>
+      <p>You have not added any private contacts!</p>
   <% end %>
 
   <%= link_to 'New Info', new_info_path %>

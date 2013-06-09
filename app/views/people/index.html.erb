@@ -10,6 +10,7 @@
     <th>Email sent for sign up</th>
     <th>Photo link</th>
     <th>Signed up</th>
+    <th>Chosen theme</th>
     <th></th>
     <th></th>
     <th></th>
@@ -33,6 +34,8 @@
         <% else %>
             <td>No</td>
         <% end %>
+
+        <td><%= person.theme %></td>
 
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: {confirm: 'Are you sure? The person will not be able to use the sent signup code or login.'} %></td>

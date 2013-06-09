@@ -3,6 +3,17 @@
 
 <head>
   <title>IConfs</title>
+  <% if @theme==1 %>
+      <%= stylesheet_link_tag "default_theme" %>
+  <% else
+       if @theme==2 %>
+          <%= stylesheet_link_tag "theme_green" %>
+      <% else
+           if @theme==3 %>
+              <%= stylesheet_link_tag "theme_blue" %>
+          <% end %>
+      <% end %>
+  <% end %>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery", "jquery_ujs" %>

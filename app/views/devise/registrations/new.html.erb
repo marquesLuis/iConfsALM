@@ -15,23 +15,28 @@
           <div>
             <%= label_tag(:signup_code, 'Code:') %>
             <br/>
-            <%= text_field_tag(:signup_code) %>
+            <%= text_field_tag(:signup_code, @code) %>
           </div>
           <div><%= f.label :email %>
             <br/>
-            <%= f.email_field :email %></div>
-          <div>
-            <%= f.label :password %>
-            <br/>
-            <%= f.password_field :password %>
-          </div>
-          <div>
-            <%= f.label :password_confirmation %>
-            <br/>
-            <%= f.password_field :password_confirmation %>
-          </div>
-          <div>
-            <%= f.submit "Sign up" %></div>
+            <% if @mail %>
+                <%= f.email_field(:email, :value => @mail, :readonly => "readonly") %></div>
+            <% else %>
+                <%= f.email_field :email %></div>
+
+            <% end %>
+            <div>
+              <%= f.label :password %>
+              <br/>
+              <%= f.password_field :password %>
+            </div>
+            <div>
+              <%= f.label :password_confirmation %>
+              <br/>
+              <%= f.password_field :password_confirmation %>
+            </div>
+            <div>
+              <%= f.submit "Sign up" %></div>
       <% end %>
 
       <%- if controller_name != 'sessions' %>
@@ -40,4 +45,4 @@
       <% end -%>
 
   <% end %>
-</div>
+  </div>

@@ -63,4 +63,8 @@ class UserProfileController < ApplicationController
   def update_biography
     current_registry.person.update_attribute(:biography, params[:biography])
   end
+
+  def update_theme
+    current_registry.person.update_attribute(:theme, params[:theme])
+  end
 end

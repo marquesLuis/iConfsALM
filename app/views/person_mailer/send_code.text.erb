@@ -1,10 +1,10 @@
 Hello <%= @person.full_name %>,
 
 You have been invited to use the application belonging to the conference you are attending.
-To sign up to this app please click the following link and input the code, along with you e-mail.
+To sign up to this app please click the following link and input the code, along with your e-mail.
 
 Sign up Code: <%= @person.signup_code %>
-Sign up Link: http://193.136.122.134:3000/registries/sign_up
+Sign up Link: http://193.136.122.134:3000/registries/sign_up?code=<%= @person.signup_code%>
 
 Regards,
 The Organization

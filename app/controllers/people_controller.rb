@@ -82,6 +82,7 @@ class PeopleController < ApplicationController
     if @registry
       @registry.destroy
       sign_out @registry
+
     end
     @person.destroy
 
