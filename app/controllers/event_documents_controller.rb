@@ -49,6 +49,7 @@ class EventDocumentsController < ApplicationController
 
     respond_to do |format|
       if @event_document.save
+        @event_document.event.touch
         format.html { redirect_to @event_document, notice: 'Event document was successfully created.' }
         format.json { render json: @event_document, status: :created, location: @event_document }
       else
@@ -65,6 +66,7 @@ class EventDocumentsController < ApplicationController
 
     respond_to do |format|
       if @event_document.update_attributes(params[:event_document])
+        @event_document.event.touch
         format.html { redirect_to @event_document, notice: 'Event document was successfully updated.' }
         format.json { head :no_content }
       else
@@ -78,6 +80,7 @@ class EventDocumentsController < ApplicationController
   # DELETE /event_documents/1.json
   def destroy
     @event_document = EventDocument.find(params[:id])
+    @event_document.event.touch
     @event_document.destroy
 
     respond_to do |format|

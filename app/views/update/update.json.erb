@@ -74,7 +74,14 @@
                 "speaker_id": "<%= event.speaker.person_id%>",
                 "keynote": "<%= event.speaker.keynote %>",
                 <% end %>
-                "local_id": "<%= event.event_group.location_id %>"
+                "local_id": "<%= event.event_group.location_id %>",
+                <% if event.authors && event.authors.length>0 %>
+                "authors" : {
+                    <% event.authors.each do |auth| %>
+                    "auth_<%= auth.id%>" : ["<%= auth.id%>","<%= event.id %>","<%= auth.name %>", "<%= auth.person_id%>"],
+                    <% end %>
+                }
+                <% end %>
             },
             <% end %>
         },
@@ -94,7 +101,15 @@
                 "speaker_id": "<%= event.speaker.person_id%>",
                 "keynote": "<%= event.speaker.keynote %>",
                 <% end %>
-                "local_id": "<%= event.event_group.location_id %>"
+                "local_id": "<%= event.event_group.location_id %>",
+                <% if event.authors && event.authors.length>0 %>
+                "authors" : {
+                    <% event.authors.each do |auth| %>
+                    "auth_<%= auth.id%>" : ["<%= auth.id%>","<%= event.id %>","<%= auth.name %>", "<%= auth.person_id%>"],
+                    <% end %>
+                }
+                <% end %>
+
             },
             <% end %>
         },

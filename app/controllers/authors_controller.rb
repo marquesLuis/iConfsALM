@@ -43,10 +43,14 @@ class AuthorsController < ApplicationController
   # POST /authors
   # POST /authors.json
   def create
-    @author = Author.new(params[:author])
+   @author = Author.new(params[:author])
 
     respond_to do |format|
       if @author.save
+        @events = Document.find(params[:author][:document_id]).events
+        @events.each do |event|
+         event.touch
+        end
         format.html { redirect_to @author, notice: 'Author was successfully created.' }
         format.json { render json: @author, status: :created, location: @author }
       else
@@ -59,10 +63,15 @@ class AuthorsController < ApplicationController
   # PUT /authors/1
   # PUT /authors/1.json
   def update
+
     @author = Author.find(params[:id])
 
     respond_to do |format|
       if @author.update_attributes(params[:author])
+        @events = Document.find(params[:author][:document_id]).events
+        @events.each do |event|
+          event.touch
+        end
         format.html { redirect_to @author, notice: 'Author was successfully updated.' }
         format.json { head :no_content }
       else
@@ -75,9 +84,15 @@ class AuthorsController < ApplicationController
   # DELETE /authors/1
   # DELETE /authors/1.json
   def destroy
+
     @author = Author.find(params[:id])
+    @author.events.each do |event|
+      event.touch
+    end
     @author.destroy
     RemovedAuthors.create(author_identifier: Integer(params[:id]))
+
+
 
     respond_to do |format|
       format.html { redirect_to authors_url }

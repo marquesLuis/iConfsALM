@@ -56,9 +56,13 @@ class UpdateController < ApplicationController
       if @event_temp
         @new_last_event_id = @event_temp.id
       end
-      @new_events = Event.where('id > ? AND id <= ?', @last_event_id, @new_last_event_id).includes(:event_group).includes(:speaker)
+      @new_events = Event.where('id > ? AND id <= ?', @last_event_id, @new_last_event_id).includes(:event_group)
+      @new_events = @new_events.includes(:speaker)
+      @new_events = @new_events.includes(:authors)
       @new_last_event_update = Event.maximum(:updated_at)
-      @updated_events = Event.where('id <= ? AND ? < updated_at', @last_event_id, @last_event_update)
+      @updated_events = Event.where('id <= ? AND ? < updated_at', @last_event_id, @last_event_update).includes(:event_group)
+      @updated_events = @updated_events.includes(:speaker)
+      @updated_events = @updated_events.includes(:authors)
       @new_last_removed_event_id = 0
       @last_event = RemovedEvent.last
       if @last_event
@@ -124,7 +128,6 @@ class UpdateController < ApplicationController
           @del_attendings = RemovedAttendingEvent.where('person_id = ? AND id > ? AND id <= ?',@person, @attending[:last_removed_id], @new_last_removed_attending_id)
         end
       end
-
     end
 
     respond_to do |format|

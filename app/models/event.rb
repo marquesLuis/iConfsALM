@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_one :person, :through => :speaker
   has_many :event_documents
   has_many :documents, :through => :event_documents
+  has_many :authors, :through => :documents
   belongs_to :event_group, :inverse_of => :events
 
   validates :title, :presence => true
