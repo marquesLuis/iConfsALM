@@ -147,4 +147,9 @@ class UserController < ApplicationController
     @document = Document.find(params[:document_id])
     send_file(Rails.root.join('public', 'documents', @document.link.to_s), :filename => @document.link.to_s)
   end
+
+  def documents
+    @documents = Document.paginate(:page => params[:page], :per_page => 15)
+  end
+
 end
