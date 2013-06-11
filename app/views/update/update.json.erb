@@ -183,7 +183,22 @@
                 "photo": "<%= person.photo %>",
                 "bio": "<%= person.biography %>",
                 "server_id": "<%= person.id %>",
-                "last_date": "<%= person.updated_at %>"
+                "last_date": "<%= person.updated_at %>",
+                <%if person.infos && person.infos.length>0%>
+                "infos" : {
+                    <% person.infos.each do |info|%>
+                    "info_<%= info.id %>" : {
+                      "server_id": "<%= info.id %>",
+                      "type": "<%= info.info_type %>",
+                      "value": "<%= info.value %>",
+                      "person_id": "<%=person.id%>"
+                    },
+                    <%end%>
+                },
+                <%end%>
+                <% if person.area_of_interests && person.area_of_interests.length>0 %>
+                "areas" : [<% person.area_of_interests.each do |area| %>"<%= area.id%>",<% end %>]
+                <% end %>
             },
             <% end %>
         },
@@ -200,7 +215,22 @@
                 "photo": "<%= person.photo %>",
                 "bio": "<%= person.biography %>",
                 "server_id": "<%= person.id %>",
-                "last_date": "<%= person.updated_at %>"
+                "last_date": "<%= person.updated_at %>",
+                <%if person.infos && person.infos.length>0%>
+                "infos" : {
+                    <% person.infos.each do |info|%>
+                    "info_<%= info.id %>" : {
+                        "server_id": "<%= info.id %>",
+                        "type": "<%= info.info_type %>",
+                        "value": "<%= info.value %>",
+                        "person_id": "<%=person.id%>"
+                    },
+                    <%end%>
+                },
+                <%end%>
+                <% if person.area_of_interests && person.area_of_interests.length>0 %>
+                "areas" : [<% person.area_of_interests.each do |area| %>"<%= area.id%>",<% end %>]
+                <% end %>
             },
             <% end %>
         },

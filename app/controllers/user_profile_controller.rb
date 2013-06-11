@@ -47,6 +47,7 @@ class UserProfileController < ApplicationController
   end
 
   def update_interests
+    current_registry.person.touch
     PersonInterest.where(:person_id => current_registry.person.id).destroy_all
       params[:interests].each do |interest|
         pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)

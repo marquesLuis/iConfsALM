@@ -100,9 +100,11 @@ class UpdateController < ApplicationController
       if @person_tmp
         @new_last_person_id = @person_tmp.id
       end
-      @new_people = Person.where('id > ? AND id <= ?', @last_person_id, @new_last_person_id)
+      @new_people = Person.where('id > ? AND id <= ?', @last_person_id, @new_last_person_id).includes(:infos)
+      @new_people = @new_people.includes(:area_of_interests)
       @new_last_person_update = Person.maximum(:updated_at)
-      @updated_people = Person.where('id <= ? AND ? < updated_at', @last_person_id, @last_person_update)
+      @updated_people = Person.where('id <= ? AND ? < updated_at', @last_person_id, @last_person_update).includes(:infos)
+      @updated_people = @updated_people.includes(:area_of_interests)
       @new_last_people_removed_id = 1;
     end
 
@@ -153,6 +155,11 @@ class UpdateController < ApplicationController
 
     respond_to do |format|
       format.json {render :file => 'update/update', :content_type => 'application/json'}
+    end
+
+    @locations = @update[:locations]
+    if @locations
+
     end
 
   end

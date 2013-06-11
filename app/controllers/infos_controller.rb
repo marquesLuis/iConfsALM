@@ -19,6 +19,7 @@ class InfosController < ApplicationController
 
     respond_to do |format|
       if @info.save
+        @info.person.touch
         format.html { redirect_to '/user_profile/show/', notice: 'Info was successfully created.' }
         format.json { render json: @info, status: :created, location: @info }
       else
@@ -32,6 +33,7 @@ class InfosController < ApplicationController
   # DELETE /infos/1.json
   def destroy
     @info = Info.find(params[:id])
+    @info.person.touch
     @info.destroy
     RemovedInfo.create(info_identifier: Integer(params[:id]))
 
