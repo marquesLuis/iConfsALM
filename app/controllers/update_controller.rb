@@ -130,6 +130,27 @@ class UpdateController < ApplicationController
       end
     end
 
+
+    @areas = @update[:areas]
+    if @areas
+      @last_areas_id = @areas[:last_id]
+      @last_areas_update = @areas[:last_update]
+      @new_last_areas_id = 0
+      @areas_temp = AreaOfInterest.last
+      if @areas_temp
+        @new_last_areas_id = @areas_temp.id
+      end
+      @new_areas = AreaOfInterest.where('id > ? AND id <= ?',@last_areas_id, @new_last_areas_id)
+      @new_last_areas_update = AreaOfInterest.maximum(:updated_at)
+      @updated_areas = AreaOfInterest.where('id <= ? AND ? < updated_at',@last_areas_id,@last_areas_update )
+      @new_last_removed_areas_id = 0
+      @last_area =  RemovedAreas.last
+      if @last_area
+        @new_last_removed_areas_id = @last_area.id
+      end
+      @del_areas = RemovedAreas.where('id > ? AND id <= ?',@areas[:last_removed_id], @new_last_removed_areas_id)
+    end
+
     respond_to do |format|
       format.json {render :file => 'update/update', :content_type => 'application/json'}
     end

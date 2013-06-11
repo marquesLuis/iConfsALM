@@ -227,4 +227,34 @@
         <% end %>
     },
     <% end %>
+    <% if @new_last_areas_id && @new_last_areas_update && @new_last_removed_areas_id %>
+    "areas" :{
+        "last_id": "<%= @new_last_areas_id %>",
+        "last_update": "<%= @new_last_areas_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_removed": "<%= @new_last_removed_areas_id %>",
+        <% if @new_areas && @new_areas.length>0 %>
+        "news" :{
+            <% @new_areas.each do |area| %>
+            "area_<%= area.id %>": {
+               "server_id":"<%= area.id %>",
+                "name":"<%= area.name %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_areas && @updated_areas.length>0 %>
+        "updated" :{
+            <% @updated_areas.each do |area| %>
+            "area_<%= area.id %>": {
+                "server_id":"<%= area.id %>",
+                "name":"<%= area.name %>"
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_areas && @del_areas.length>0 %>
+        "deleted":[<% @del_areas.each do |net| %>"<%= net.area_identifier%>",<% end %>]
+        <% end %>
+    },
+    <% end %>
 }
