@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
+    <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="Update Step Authors">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370966646624" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370966725003" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368617346659" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -71,28 +71,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.49788672">
       <split-first>
         <leaf>
-          <file leaf-file-name="update.json.erb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="update.json.erb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/update/update.json.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="80" column="117" selection-start="3286" selection-end="3299" vertical-scroll-proportion="0.45604396">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="event_documents_controller.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/event_documents_controller.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="82" column="31" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="event_document.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/event_document.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="19" selection-start="154" selection-end="159" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -102,19 +84,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="update_controller.rb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="update_controller.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/update_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="75" column="16" selection-start="2746" selection-end="2746" vertical-scroll-proportion="0.43361884">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="event.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/event.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="43" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -780,7 +753,11 @@
       <created>1370966648461</created>
       <updated>1370966648461</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Update Step Authors">
+      <created>1370966704002</created>
+      <updated>1370966704002</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -939,13 +916,6 @@
         <state line="13" column="18" selection-start="483" selection-end="484" vertical-scroll-proportion="0.24014778" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/update_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="16" selection-start="2746" selection-end="2746" vertical-scroll-proportion="0.43361884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/event.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="43" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
@@ -1019,6 +989,13 @@
     <entry file="file://$PROJECT_DIR$/app/views/update/update.json.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="117" selection-start="3286" selection-end="3299" vertical-scroll-proportion="0.45604396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/update_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="16" selection-start="2746" selection-end="2746" vertical-scroll-proportion="0.43361884">
           <folding />
         </state>
       </provider>
