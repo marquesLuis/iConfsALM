@@ -26,19 +26,16 @@
                 eventMouseout: function (event, jsEvent, view) {
                     $('#' + event.id + 'hov').remove();
                 },
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'agendaWeek,agendaDay'
-                },
+                header: false,
                 events: [
                     <% @events.each do |event| %>
                     <% group = event.event_group %>
                     {
                         id: '<%= event.id %>',
                         title: '<%= event.event_kind %> - <%= event.title %>',
-                        <% if event.speaker %>
-                        <% if event.speaker.keynote %>
+                        <% if event.event_kind=='Keynote' %>
+                        color: '#A65A00',
+                        <% else if event.event_kind=='Social Event' %>
                         color: '#A65A00',
                         <% end %>
                         <% end %>
@@ -54,4 +51,5 @@
     </script>
 <% else %>
     <p class="centralized">You have not added any events! Try viewing the complete program and add some.</p>
+    <p class="centralized">You can also get started <%= link_to "by clicking here.", {:controller => 'user_program', :action => 'create_suggested'} %></p>
 <% end %>

@@ -1,9 +1,9 @@
 <div class='right'>
   <p><b>Date:</b> <%= @event_group.date.to_date.to_s %></p>
 
-  <p><b>Begin time:</b> <%= @event.begin.strftime("%I:%M:%S") %></p>
+  <p><b>Begin time:</b> <%= @event.begin.strftime("%I:%M") %></p>
 
-  <p><b>End time:</b> <%= @event.end.strftime("%I:%M:%S") %></p>
+  <p><b>End time:</b> <%= @event.end.strftime("%I:%M") %></p>
 </div>
 
 <h1><%= @event.event_kind %> - <%= @event.title %></h1>

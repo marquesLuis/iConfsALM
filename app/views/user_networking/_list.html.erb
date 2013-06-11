@@ -2,7 +2,7 @@
 
   <% if @showing.any? %>
       <table>
-        <td>
+        <td class="right_border">
           <table>
             <tr>
               <th>Title</th>
@@ -12,10 +12,10 @@
             <% @showing.each do |networking| %>
                 <tr>
                   <% person = networking.person %>
-                  <td class='limited_content width_125 centralized'><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id},  :remote => true %></td>
-                  <td class='limited_content width_125 centralized'><%= link_to person.full_name, {:controller => "user", :action => "show_all_participants", :id => person.id} %></td>
+                  <td class='limited_content width_125 centralized bottom_border'><%= link_to networking.title, {:controller => "user_networking", :action => "show", :id => networking.id},  :remote => true %></td>
+                  <td class='limited_content width_125 centralized bottom_border'><%= link_to person.full_name, {:controller => "user", :action => "show_all_participants", :id => person.id} %></td>
                   <% if networking.person_id == current_registry.person_id %>
-                      <td><%= link_to 'Delete', {:controller => "user_networking", :action => "delete", :id => networking.id}, :method => 'post' %></td>
+                      <td class="bottom_border"><%= link_to 'Delete', {:controller => "user_networking", :action => "delete", :id => networking.id}, :method => 'post' %></td>
                   <% end %>
                 </tr>
             <% end %>

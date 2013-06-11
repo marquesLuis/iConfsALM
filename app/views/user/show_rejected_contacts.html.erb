@@ -8,7 +8,7 @@
 
 <% if @rejected.any? %>
     <table>
-      <td>
+      <td class="right_border">
         <table>
           <tr>
             <th>Photo</th>
@@ -17,14 +17,14 @@
 
           <% @rejected.each do |rejected| %>
               <tr>
-                <td>
+                <td class="bottom_border">
                   <% if rejected.requester.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                       <img src='/people/<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
                   <% end %>
                 </td>
-                <td><%= link_to rejected.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td class="bottom_border"><%= link_to rejected.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
               </tr>
           <% end %>
         </table>
@@ -34,5 +34,5 @@
 
     <%= will_paginate @rejected %>
 <% else %>
-    <p>No contact requests have been rejected!</p>
+    <p class="centralized">You haven't rejected any contact request!</p>
 <% end %>

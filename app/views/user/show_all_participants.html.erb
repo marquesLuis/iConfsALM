@@ -7,7 +7,7 @@
 </div>
 <% if @participants.any? %>
     <table>
-      <td>
+      <td class="right_border">
         <table>
           <tr>
             <th>Photo</th>
@@ -16,14 +16,14 @@
 
           <% @participants.each do |person| %>
               <tr>
-                <td>
+                <td class="bottom_border">
                   <% if person.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => person.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
                       <img src='/people/<%= person.photo %>' alt='<%= person.photo %>' class='person_thumbnail'>
                   <% end %>
                 </td>
-                <td><%= link_to person.full_name, {:controller => "user", :action => "show_participant", :id => person.id, :remote => true}, :class => "Item-Text" %></td>
+                <td class="bottom_border"><%= link_to person.full_name, {:controller => "user", :action => "show_participant", :id => person.id, :remote => true}, :class => "Item-Text" %></td>
 
               </tr>
           <% end %>
@@ -43,5 +43,5 @@
     </table>
     <%= will_paginate @participants %>
 <% else %>
-    <p>No other participants!</p>
+    <p class="centralized">No other participants!</p>
 <% end %>

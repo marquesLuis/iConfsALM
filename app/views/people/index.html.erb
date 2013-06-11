@@ -48,7 +48,7 @@
         <td><%= person.theme %></td>
 
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: {confirm: 'Are you sure? The person will not be able to use the sent signup code or login.'} %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: {confirm: 'Are you sure? The person will not be able to use the sent signup code.'} %></td>
       </tr>
   <% end %>
 </table>

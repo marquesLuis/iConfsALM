@@ -117,7 +117,7 @@ Event.create(:event_group_id => 11, :title => 'Reunion', :description => 'Some d
 EventGroup.create(:date => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 12, :title => 'Leaving for dinner', :description => 'Some detail should go here. Location maybe.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"));
 #13 13
-EventGroup.create(:date => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 23:50", "%d/%m/%Y %H:%M"))
+EventGroup.create(:date => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 22:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 13, :title => 'Dinner', :description => 'Solar dos Zagalos', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 23:50", "%d/%m/%Y %H:%M"));
 
 

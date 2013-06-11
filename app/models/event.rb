@@ -18,7 +18,16 @@ class Event < ActiveRecord::Base
   def event_kind_all
     EVENT_KIND
   end
+
   def self.get_types
     return EVENT_KIND
+  end
+
+  def self.min_hour
+    return 8# Event.order(:begin).first.begin.hour
+  end
+
+  def self.max_hour
+    return 22# Event.all(:order => 'end ASC').last.end.hour+1
   end
 end

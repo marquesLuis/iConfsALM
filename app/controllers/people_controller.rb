@@ -78,18 +78,28 @@ class PeopleController < ApplicationController
   # DELETE /people/1.json
   def destroy
     @person = Person.find(params[:id])
+
+    #Has logged once:
     @registry = @person.registry
-    if @registry
-      @registry.destroy
-      sign_out @registry
 
-    end
-    @person.destroy
+    #Requests or data on the person:
+    @notes_about = AboutPerson.where(:person_id => @person.id)
+    @speaker = Speaker.where(:person_id => @person.id)
+    @author = Author.where(:person_id => @person.id)
+    @pending = PendingContact.where(:requested_id => @person.id)
 
-    respond_to do |format|
-      format.html { redirect_to people_url }
-      format.json { head :no_content }
+    if ((@registry) || (@notes_about.any?) || (@speaker.any?) || (@author.any?) || (@pending.any?))
+      respond_to do |format|
+        format.html { redirect_to @person, :notice => "Error: person has been used." }
+      end
+    else
+      @person.destroy
+      respond_to do |format|
+        format.html { redirect_to people_url, :notice => "Person deleted with success!" }
+        format.json { head :no_content }
+      end
     end
+
   end
 
   def send_sign_up_mail

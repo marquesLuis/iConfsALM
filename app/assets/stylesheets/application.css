@@ -16,7 +16,10 @@
  *=require fullcalendar.print.css
  *
  */
-
+*
+{
+    font-family:"Georgia",Georgia,Serif;
+}
 .hover-end {
     padding: 1;
     margin: 1;

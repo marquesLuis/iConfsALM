@@ -67,3 +67,7 @@ body {
 .bottom_border {
     border-bottom: 1px solid goldenrod;
 }
+
+.right_border {
+    border-right: 1px solid goldenrod;
+}

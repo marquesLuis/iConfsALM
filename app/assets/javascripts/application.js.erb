@@ -15,3 +15,7 @@
 //#= #require jquery_ujs ADDED BY GEM! DONT TAKE THE COMENT AWAY!!
 //#= #require_tree
 
+//USED BY FULL CALENDAR!
+function days_conference_lasts() {
+    return <%= EventGroup.last_day.to_date.day - EventGroup.first_day.to_date.day + 1 %>;
+}

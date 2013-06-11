@@ -6,8 +6,8 @@ class UserProgramController < ApplicationController
     @first_day = EventGroup.first_day
     @last_day = EventGroup.last_day
 
-    @min_hour =8;
-    @max_hour =23;
+    @min_hour = Event.min_hour;
+    @max_hour =Event.max_hour;
     @begin_year = @first_day.year;
     @begin_month = (@first_day.month) -1;
     @begin_day = @first_day.day;
@@ -100,6 +100,23 @@ class UserProgramController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+  end
+
+
+  def create_suggested
+
+    socials = Event.where(:event_kind => 'Social Event')
+    keynotes = Event.where(:event_kind => 'Keynote')
+    socials.each do |event|
+      AtendingEvent.create(:event_id => event.id, :person_id => current_registry.person_id)
+    end
+    keynotes.each do |event|
+      AtendingEvent.create(:event_id => event.id, :person_id => current_registry.person_id)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to action: "index" }
     end
   end
 end

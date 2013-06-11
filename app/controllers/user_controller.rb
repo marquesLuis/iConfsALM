@@ -77,24 +77,24 @@ class UserController < ApplicationController
     contacts1 = @self.received_traded_contacts.pluck(:requester_id)
     contacts2 = @self.sent_traded_contacts.pluck(:requested_id)
 
-    @contacts = Person.where('id in (?) OR id in (?)', contacts1, contacts2).paginate(:page => params[:page], :per_page => 6)
+    @contacts = Person.where('id in (?) OR id in (?)', contacts1, contacts2).paginate(:page => params[:page], :per_page => 6).order(:last_name)
   end
 
   def show_pending_contacts
     @self = current_registry.person
-    @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6)
+    @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
     pending = PendingContact.where('requester_id = ?', @self.id).pluck(:requested_id)
     rejected = RejectedContact.where('requester_id = ?', @self.id).pluck(:requested_id)
-    @sent = Person.where('id in (?) OR id in (?)', pending, rejected).paginate(:page => params[:sent_page], :per_page => 6)
+    @sent = Person.where('id in (?) OR id in (?)', pending, rejected).paginate(:page => params[:sent_page], :per_page => 6).order(:last_name)
   end
 
   def show_rejected_contacts
-    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6)
+    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
   end
 
   def show_all_participants
     @self = current_registry.person
-    @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6)
+    @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
     if params[:id]
       @participant = Person.find(params[:id]);
     end

@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user_program/create_suggested"
+
   get "people/send_sign_up_mail"
 
   post "user_profile/update_theme"
