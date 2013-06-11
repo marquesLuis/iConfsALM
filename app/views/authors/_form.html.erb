@@ -15,7 +15,7 @@
       <%= f.label :person_id %>
       <br/>
       <% people = Person.all.map { |person| [person.full_name, person.id] } %>
-      <% people<<[] %>
+      <% people.insert(0, []) %>
       <%= f.select(:person_id, people) %>
     </div>
 

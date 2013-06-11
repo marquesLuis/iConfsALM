@@ -1,0 +1,29 @@
+<h1 class="centralized">Documents</h1>
+
+<table class="centralized">
+  <tr>
+    <th class="bottom_border">
+      Document title
+    </th>
+    <th class="bottom_border">
+      Description
+    </th>
+    <th class="bottom_border">
+      Download link
+    </th>
+  </tr>
+  <% @documents.each do |document| %>
+      <tr>
+        <td class="bottom_border ">
+          <%= document.title %>
+        </td>
+        <td class="bottom_border ">
+          <%= document.description %>
+        </td>
+        <td class="bottom_border">
+          <%= link_to document.title, {:controller => "user", :action => "download_document", :document_id => document.id} %></p>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<p class="centralized"><%= will_paginate @documents %> </p>

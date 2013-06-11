@@ -7,6 +7,7 @@
       <td><%= link_to image_tag("Networking.png", :border => 0, :alt => '', :title => 'Notifications'), {:controller => "user_networking", :action => "index"}, :class => 'nav_bar_image' %></td>
       <td><%= link_to image_tag("Contacts.png", :border => 0, :alt => '', :title => 'Contacts'), {:controller => "user", :action => "show_contacts"}, :class => 'nav_bar_image' %></td>
       <td><%= link_to image_tag("maps.png", :border => 0, :alt => '', :title => 'Maps'), {:controller => "user", :action => "maps"}, :class => 'Item-Image' %></td>
+      <td><%= link_to image_tag("Documents.png", :border => 0, :alt => '', :title => 'Documents'), {:controller => "user", :action => "documents"}, :class => 'Item-Image' %></td>
       <td><%= link_to image_tag("Notes.png", :border => 0, :alt => '', :title => 'Notes'), {:controller => "notes", :action => "index"}, :class => 'nav_bar_image' %></td>
       <td><%= link_to image_tag("Organization.png", :border => 0, :alt => '', :title => 'Organization'), {:controller => "user", :action => "organization"}, :class => 'nav_bar_image' %></td>
     </tr>
@@ -16,6 +17,7 @@
       <td><%= link_to "Networking", {:controller => "user_networking", :action => "index"}, :class => "nav_bar_link" %></td>
       <td><%= link_to "Contacts", {:controller => "user", :action => "show_contacts"}, :class => "nav_bar_link" %></td>
       <td><%= link_to "Maps", {:controller => "user", :action => "maps"}, :class => "nav_bar_link" %></td>
+      <td><%= link_to "Documents", {:controller => "user", :action => "documents"}, :class => "nav_bar_link" %></td>
       <td><%= link_to "Notes", {:controller => "notes", :action => "index"}, :class => "nav_bar_link" %></td>
       <td><%= link_to "Organization", {:controller => "user", :action => "organization"}, :class => "nav_bar_link" %></td>
 
