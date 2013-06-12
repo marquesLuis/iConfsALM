@@ -30,21 +30,30 @@ class UpdateController < ApplicationController
     @notifications = @update[:notifications]
     if @notifications
       @last_id = @notifications[:last_id]
-      @last_update = @notifications[:last_update]
-      @new_last_id = 0
+      @new_last_id = '0'
       @notif_temp = OrgNotification.last
       if @notif_temp
-        @new_last_id = @notif_temp.id
+        @new_last_id = @notif_temp.id.to_s
       end
-      @new_notif = OrgNotification.where('id > ? AND id <= ?',@last_id, @new_last_id)
-      @new_last_update = OrgNotification.maximum(:updated_at)
-      @updated_notif = OrgNotification.where('id <= ? AND ? < updated_at',@last_id,@last_update )
-      @new_last_removed_id = 0
+      if @last_id != @new_last_id
+        @new_notif = OrgNotification.where('id > ? AND id <= ?',@last_id, @new_last_id)
+      end
+
+      @last_update = @notifications[:last_update]
+      @new_last_update = OrgNotification.maximum(:updated_at).strftime('%Y-%m-%d %H:%M:%S.%N')
+      if @new_last_update != @last_update
+        @updated_notif = OrgNotification.where('id <= ? AND ? < updated_at',@last_id,@last_update )
+      end
+
+      @new_last_removed_id = '0'
+      @last_notif_removed = @notifications[:last_removed_id]
       @last_notif =  RemovedNotification.last
       if @last_notif
-        @new_last_removed_id = @last_notif.id
+        @new_last_removed_id = @last_notif.id.to_s
       end
-      @del_notif = RemovedNotification.where('id > ? AND id <= ?',@notifications[:last_removed_id], @new_last_removed_id)
+      if @last_notif_removed != @new_last_removed_id
+        @del_notif = RemovedNotification.where('id > ? AND id <= ?',@last_notif_removed, @new_last_removed_id)
+      end
     end
 
     @events = @update[:events]
@@ -153,15 +162,24 @@ class UpdateController < ApplicationController
       @del_areas = RemovedAreas.where('id > ? AND id <= ?',@areas[:last_removed_id], @new_last_removed_areas_id)
     end
 
-    respond_to do |format|
-      format.json {render :file => 'update/update', :content_type => 'application/json'}
-    end
-
     @locations = @update[:locations]
     if @locations
-
+      @last_local_id = @locations[:last_id]
+      @last_local_update = @locations[:last_update]
+      @new_last_local_id = 0
+      @local_temp = Location.last
+      if @local_temp
+        @new_last_local_id = @local_temp.id
+      end
+      @new_locals = Location.where('id > ? AND id <= ?',@last_local_id, @new_last_local_id)
+      @new_last_locals_update = Location.maximum(:updated_at)
+      @updated_locals = Location.where('id <= ? AND ? < updated_at',@last_local_id,@last_local_update )
+      @new_last_removed_local_id = 0
     end
 
+    respond_to do |format|
+      format.json {render :file => 'update/update', :content_type => 'application/json'}
+      end
   end
 
   def login

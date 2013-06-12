@@ -15,12 +15,12 @@
         <% end %>
     },
     <% end %>
-    <% if @new_last_id && @new_last_update && @new_last_removed_id %>
+    <% if @new_notif || @updated_notif || @del_notif %>
     "notifications" :{
         "last_id": "<%= @new_last_id %>",
-        "last_update": "<%= @new_last_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_update": "<%= @new_last_update %>",
         "last_removed": "<%= @new_last_removed_id %>",
-        <% if @new_notif && @new_notif.length>0 %>
+        <% if @new_notif%>
         "news" :{
             <% @new_notif.each do |notif| %>
             "notif_<%= notif.id %>": {
@@ -32,7 +32,7 @@
             <% end %>
         },
         <% end %>
-        <% if @updated_notif && @updated_notif.length>0 %>
+        <% if @updated_notif%>
         "updated" :{
             <% @updated_notif.each do |notif| %>
             "notif_<%= notif.id %>": {
@@ -44,13 +44,8 @@
             <% end %>
         },
         <% end %>
-        <% if @del_notif && @del_notif.length>0 %>
-        "deleted":{
-            "size" : <%= @del_notif.length %>,
-            <% @del_notif.each do |notif| %>
-            "notification_<%= notif.id %>": <%= notif.sequence_number %>,
-            <% end %>
-        }
+        <% if @del_notif%>
+        "deleted": [<% @del_notif.each do |notif| %><%= notif.sequence_number %>,<% end %>]
         <% end %>
     },
     <% end %>
@@ -180,7 +175,9 @@
                 "pre": "<%= person.prefix %>",
                 "affiliation" : "<%= person.affiliation %>",
                 "email": "<%= person.email %>",
-                "photo": "<%= person.photo %>",
+                <%if person.photo%>
+                "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
+                <% end %>
                 "bio": "<%= person.biography %>",
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
@@ -212,7 +209,9 @@
                 "pre": "<%= person.prefix %>",
                 "affiliation" : "<%= person.affiliation %>",
                 "email": "<%= person.email %>",
-                "photo": "<%= person.photo %>",
+                <%if person.photo%>
+                "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
+                <% end %>
                 "bio": "<%= person.biography %>",
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
@@ -287,4 +286,5 @@
         <% end %>
     },
     <% end %>
+    "local" : "<%= request.protocol + request.host_with_port + '/images/' + @local_temp.image %>"
 }
