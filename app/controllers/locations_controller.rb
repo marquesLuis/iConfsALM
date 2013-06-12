@@ -39,7 +39,7 @@ class LocationsController < ApplicationController
   def create
 
     name = params[:upload].original_filename
-    directory = Rails.root.join('public','images');
+    directory = Rails.root.join('app','assets','locations');
 
     path = File.join(directory, name)
     File.open(path, 'wb') { |f| f.write(params[:upload].read) }
@@ -63,7 +63,7 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
 
-    directory = Rails.root.join('public','images');
+    directory = Rails.root.join('app','assets','locations');
 
     path = File.join(directory, @location.image)
     File.delete(path)
@@ -75,5 +75,9 @@ class LocationsController < ApplicationController
       format.html { redirect_to locations_url }
       format.json { head :no_content }
     end
+  end
+
+  def get_location_image
+    send_file(Rails.root.join('app','assets','locations', params[:name]))
   end
 end

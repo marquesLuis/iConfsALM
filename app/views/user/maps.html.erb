@@ -7,7 +7,7 @@
           <h2><%= @location.title %></h2>
         </div>
         <div id="location_image">
-          <p><img src='/images/<%= @location.image %>' alt='<%= @location.title %>'></p>
+          <p><img src='/user/get_location_image?name=<%= @location.image %>' alt='<%= @location.title %>'></p>
         </div>
       </div>
   <% end %>

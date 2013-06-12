@@ -23,7 +23,7 @@
                   <% if to_accept.requester.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                      <img src='/people/<%= to_accept.requester.photo %>' alt='<%= to_accept.requester.photo %>'>
+                      <img src='/user/get_profile_image?name=<%= to_accept.requester.photo %>' alt='<%= to_accept.requester.photo %>'>
                   <% end %>
                 </td>
                 <td><%= link_to to_accept.requester.full_name, {:controller => "user_contacts", :action => "show_pending_contact", :id => to_accept.requester.id, :remote => true}, :class => "Item-Text" %></td>
@@ -57,7 +57,7 @@
                   <% if person.photo.nil? %>
                       <%= link_to image_tag("/images/defaultPerson100.jpg", :border => 0, :alt => '', :title => 'No Photo'), {:controller => "user", :action => "show_participant", :id => person.id, :remote => true}, :class => 'Item-Image' %>
                   <% else %>
-                      <img src='/people/<%= person.photo %>' alt='<%= pending.requested.photo %>' class='person_thumbnail'>
+                      <img src='/user/get_profile_image?name=<%= person.photo %>' alt='<%= pending.requested.photo %>' class='person_thumbnail'>
                   <% end %>
                 </td>
                 <td class="bottom_border"><%= link_to person.full_name, {:controller => "user", :action => "show_participant", :id => person.id, :remote => true}, :class => "Item-Text" %></td>

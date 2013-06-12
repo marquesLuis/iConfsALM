@@ -1,5 +1,9 @@
 IConfs::Application.routes.draw do
 
+  get "locations/get_location_image"
+
+  get "user/get_location_image"
+
   get "user/get_profile_image"
 
   get "user/documents"

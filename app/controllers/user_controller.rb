@@ -155,4 +155,7 @@ class UserController < ApplicationController
     send_file(Rails.root.join('app','assets','people', params[:name]))
   end
 
+  def get_location_image
+    send_file(Rails.root.join('app','assets','locations', params[:name]))
+  end
 end

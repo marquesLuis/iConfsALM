@@ -3,7 +3,7 @@ html = "<div id='person_networking' class='right'>"
 <% if @networking.person.photo.nil? %>
     html += "<img src='/images/defaultPerson150.jpg' alt='No Photo' class='person_image'>"
     <% else %>
-    html += "<img src='/people/<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
+    html += "<img src='/user/get_profile_image?name=<%= @networking.person.photo %>' alt='Photo' class='person_image'>"
 <% end %>
 <% person = @networking.person %>
 
