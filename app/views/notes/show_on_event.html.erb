@@ -5,7 +5,7 @@
       <% if @person.photo.nil? %>
           <img src='/images/defaultPerson150.jpg' alt='No Photo'>
       <% else %>
-          <img src='/people/<%= @person.photo %>' alt='Photo' class='person_image'>
+          <img src='/user/get_profile_image?name=<%= @person.photo %>' alt='Photo' class='person_image'>
       <% end %>
 
       <p><%= link_to @person.full_name, '/user/show_all_participants?id='+@person.id.to_s %></p>

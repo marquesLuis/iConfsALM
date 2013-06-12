@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user/get_profile_image"
+
   get "user/documents"
 
   get "user_program/create_suggested"

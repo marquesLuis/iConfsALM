@@ -45,7 +45,7 @@ class DocumentsController < ApplicationController
   def create
 
     name = params[:upload].original_filename
-    directory = Rails.root.join('public','documents');
+    directory = Rails.root.join('app','assets','documents');
 
     path = File.join(directory, name)
     File.open(path, 'wb') { |f| f.write(params[:upload].read) }
@@ -83,7 +83,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document = Document.find(params[:id])
 
-    directory = Rails.root.join('public','documents');
+    directory = Rails.root.join('app','assets','documents');
 
     path = File.join(directory, @document.link)
     File.delete(path)

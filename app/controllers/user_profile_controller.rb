@@ -33,13 +33,15 @@ class UserProfileController < ApplicationController
     if params[:upload]
       name = @person.email + params[:upload].original_filename
 
-      directory = 'public/people/'
+      directory = Rails.root.join('app','assets','people');
       path = File.join(directory, name)
 
       File.open(path, 'wb') { |f| f.write(params[:upload].read) }
       @person.update_attribute(:photo, name)
     else
-      File.delete("public/people/"+@person.photo)
+      directory = Rails.root.join('app','assets','documents');
+      path = File.join(directory, @person.photo)
+      File.delete(path)
       @person.update_attribute(:photo, nil)
     end
 
@@ -70,4 +72,5 @@ class UserProfileController < ApplicationController
       format.html { redirect_to action: "show" }
     end
   end
+
 end
