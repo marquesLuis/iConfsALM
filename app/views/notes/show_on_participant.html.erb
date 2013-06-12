@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% if @person %>
-    <div class='right'>
-      <p><b>About:</b></p>
+    <div class='right border'>
+      <p><b>About person:</b></p>
       <% if @person.photo.nil? %>
           <img src='/images/defaultPerson150.jpg' alt='No Photo'>
       <% else %>
@@ -13,6 +13,16 @@
       <p>Affiliation: <%= @person.affiliation %> </p>
 
       <p>Email: <%= @person.email %> </p>
+    </div>
+<% end %>
+<% if @event %>
+    <div class='right border'>
+      <p><b>About event:</b></p>
+
+      <p><%= link_to @event.title, '/user_program/show_event?id='+@event.id.to_s %></p>
+      <p><b>Date: </b><%= @event.event_group.date.to_date.to_s %></p>
+      <p><b>Begin: </b><%= @event.begin.strftime("%I:%M:%S") %></p>
+      <p><b>End: </b><%= @event.end.strftime("%I:%M:%S") %></p>
     </div>
 <% end %>
 <p>

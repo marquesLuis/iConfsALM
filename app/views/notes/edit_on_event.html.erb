@@ -1,6 +1,6 @@
-<h1>Editing note</h1>
+<h1 class="centralized">Editing note</h1>
 
 <%= render 'form_on_event' %>
 
-<td><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => @note} %></td>
-<%= link_to 'Back', '/user_program/show_event/?id='+@event.id.to_s %>
+<p class="centralized"><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => @note} %>
+  <%= link_to 'Back', '/user_program/show_event/?id='+@event.id.to_s %></p>

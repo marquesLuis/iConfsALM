@@ -1,37 +1,46 @@
-<h1>Notes</h1>
+<h1 class="centralized">Notes</h1>
 <% if @notes.any? %>
-<table >
-  <tr>
-    <th>About</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @notes.each do |note| %>
-      <tr >
-        <% if note.about_person %>
-            <td><%= link_to note.about_person.person.full_name,  '/user/show_all_participants/?id='+note.about_person.person_id.to_s %></td>
-        <% else
-             if note.about_event %>
-                <td><%= link_to note.about_event.event.title, '/user_program/show_event/?id='+note.about_event.event_id.to_s %> </td>
-
-            <% else %>
-                <td>Nothing</td>
-            <% end %>
-        <% end %>
-        <td class="limited_content max_width_900"><%= note.content %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+    <table>
+      <tr>
+        <th class="bottom_border">About</th>
+        <th class="bottom_border">Content</th>
+        <th class="bottom_border"></th>
+        <th class="bottom_border"></th>
+        <th class="bottom_border"></th>
       </tr>
-  <% end %>
-</table>
-<p><%= link_to 'Export', {:controller => "notes", :action => 'export'} %>  </p>
+
+      <% @notes.each do |note| %>
+          <tr>
+            <td class="right_border bottom_border">
+              <% found = (note.about_person || note.about_event) %>
+              <% found2 = (note.about_person && note.about_event) %>
+              <% if note.about_person %>
+                  <%= link_to note.about_person.person.full_name, '/user/show_all_participants/?id='+note.about_person.person_id.to_s %>
+
+              <% end %>
+              <% if found2 %>
+                  &
+              <% end %>
+              <% if note.about_event %>
+                  <%= link_to note.about_event.event.title, '/user_program/show_event/?id='+note.about_event.event_id.to_s %>
+
+              <% end %>
+
+              <% if !found %>
+                  Nothing.
+              <% end %>
+            </td>
+            <td class="limited_content limited_content_listed bottom_border right_border"><%= note.content %></td>
+            <td class="bottom_border"><%= link_to 'Show', note %></td>
+            <td class="bottom_border"><%= link_to 'Edit', edit_note_path(note) %></td>
+            <td class="bottom_border"><%= link_to 'Destroy', note, :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+    </table>
+    <p class="centralized"><%= link_to 'Export', {:controller => "notes", :action => 'export'} %>  </p>
 
 <% else %>
-    <p>No notes yet!</p>
+    <p class="centralized">No notes yet!</p>
 <% end %>
 
-<p><%= link_to 'New Note', new_note_path %> </p>
+<p class="centralized"><%= link_to 'New Note', new_note_path %> </p>

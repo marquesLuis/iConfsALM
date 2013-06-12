@@ -2,7 +2,7 @@ class Person < ActiveRecord::Base
   attr_accessible :affiliation, :biography, :calendar_version, :email, :first_name, :info_modification_time, :last_name, :photo, :prefix, :registry, :signup_code
 
 
-  PREFIX_TYPES = ['Dr.','Sr.']
+  PREFIX_TYPES = ['', 'Dr.','Sr.']
 
   has_many :messages, :inverse_of => :person
   has_many :removed_notes, :inverse_of => :person

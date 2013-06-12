@@ -11,7 +11,7 @@ class NotesController < ApplicationController
     if @note.person_id == current_registry.person_id
       true
     else
-      flash[:notice] = "You can only acces you own notes!"
+      flash[:notice] = "You can only access your own notes!"
       redirect_to '/notes'
     end
   end
@@ -57,6 +57,13 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    if @note.about_person
+      @person = @note.about_person.person
+    end
+    if                      @note.about_event
+      @event = @note.about_event.event
+    end
+
 
   end
 
@@ -72,9 +79,24 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
+    @note.person_id=current_registry.person_id
 
     respond_to do |format|
       if @note.save
+        id = @note.id
+        if (Integer(params[:event][:id]) rescue nil)
+          @aboutEvent = AboutEvent.new
+          @aboutEvent.event_id=params[:event][:id]
+          @aboutEvent.note_id = id
+          @aboutEvent.save
+        end
+
+        if (Integer(params[:person][:id]) rescue nil)
+          @aboutPerson = AboutPerson.new
+          @aboutPerson.person_id=params[:person][:id]
+          @aboutPerson.note_id = id
+          @aboutPerson.save
+        end
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
@@ -87,6 +109,56 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.json
   def update
+    @aboutEvent = AboutEvent.where(:note_id => params[:id]).first
+    @aboutPerson = AboutPerson.where(:note_id => params[:id]).first
+
+    if (Integer(params[:event][:id]) rescue nil)
+      if @aboutEvent
+        if @aboutEvent.event_id == params[:event][:id]
+          #No changes.
+        else
+          @aboutEvent.destroy
+          @aboutEvent = AboutEvent.new
+          @aboutEvent.event_id=params[:event][:id]
+          @aboutEvent.note_id=params[:id]
+          @aboutEvent.save
+        end
+      else
+        @aboutEvent = AboutEvent.new
+        @aboutEvent.event_id=params[:event][:id]
+        @aboutEvent.note_id=params[:id]
+        @aboutEvent.save
+      end
+    else
+      if @aboutEvent
+        @aboutEvent.destroy
+      end
+    end
+
+
+    if (Integer(params[:person][:id]) rescue nil)
+      if @aboutPerson
+        if @aboutPerson.person_id == params[:person][:id]
+          #No changes.
+        else
+          @aboutPerson.destroy
+          @aboutPerson = AboutPerson.new
+          @aboutPerson.person_id=params[:person][:id]
+          @aboutPerson.note_id=params[:id]
+          @aboutPerson.save
+        end
+      else
+        @aboutPerson = AboutPerson.new
+        @aboutPerson.person_id=params[:person][:id]
+        @aboutPerson.note_id=params[:id]
+        @aboutPerson.save
+      end
+    else
+      if @aboutPerson
+        @aboutPerson.destroy
+      end
+    end
+
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
@@ -177,7 +249,12 @@ class NotesController < ApplicationController
   end
 
   def show_on_participant
+
+
     @person = @note.about_person.person
+    if @note.about_event
+      @event = @note.about_event.event
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -239,6 +316,9 @@ class NotesController < ApplicationController
   end
 
   def show_on_event
+    if @note.about_person
+      @person = @note.about_person.person
+    end
     @event = @note.about_event.event
 
     respond_to do |format|
@@ -255,22 +335,34 @@ class NotesController < ApplicationController
     x=""
 
     @notes.each do |note|
-      a=''
+      found = (note.about_person || note.about_event)
+      found2 = (note.about_person && note.about_event)
+
+
+      a="\r\n"
       if note.about_person
-        a+= "\r\nPerson: "
+        a+= "Person: "
         a+= note.about_person.person.full_name + "\r\n"
+      end
+      if !found2
+        a+= "\r\n"
       else
-        if note.about_event
-          a+= "\r\nEvent: "
-          a+= note.about_event.event.title + " on "
-          a+= note.about_event.event.event_group.date.to_date.to_s + " at "
-          a+= note.about_event.event.begin.strftime("%I:%M:%S %Z") + "\r\n"
-        else
-          a+= "\r\nNote\r\n"
-        end
+        a+= " & "
+
+      end
+
+      if note.about_event
+        a+= "Event: "
+        a+= note.about_event.event.title + " on "
+        a+= note.about_event.event.event_group.date.to_date.to_s + " at "
+        a+= note.about_event.event.begin.strftime("%I:%M %Z") + "\r\n"
+      end
+
+      if !found
+        a+= "\r\nNote\r\n"
       end
       a+= "        "
-      a+= "Created on: " + note.created_at.to_date.to_s + " at " + note.created_at.strftime("%I:%M:%S %Z") + "\r\n"
+      a+= "Created on: " + note.created_at.to_date.to_s + " at " + note.created_at.strftime("%I:%M %Z") + "\r\n"
 
       a+= "        "
       a+= note.content

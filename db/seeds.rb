@@ -127,7 +127,7 @@ EventGroup.create(:end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"),
 Event.create(:event_group_id => 14, :title => 'Lorenzo Alvisi', :description => 'UT AUSTIN.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));
 
 
-prefixes = ["Dr.", "Sr."]
+prefixes = ["", "Dr.", "Sr."]
 first_names = ["Bev",
                "Lowell",
                "Britta",

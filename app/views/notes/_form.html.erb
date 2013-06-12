@@ -1,24 +1,47 @@
 <%= form_for(@note) do |f| %>
-  <% if @note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
+    <% if @note.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
 
-      <ul>
-      <% @note.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @note.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :content %>
+      <br/>
+      <%= f.text_area :content %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.number_field :person_id , :value => current_registry.person_id, :type=>'hidden' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :person_id %>
+      <br/>
+      <% people = Person.all.map { |person| [person.full_name, person.id] } %>
+      <% people.insert(0, []) %>
+      <% if @person %>
+          <%= select("person", "id", options_for_select(people, @person.id)) %>
+      <% else %>
+          <%= select("person", "id", options_for_select(people, 0)) %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :event_id %>
+      <br/>
+      <% events = Event.all.map { |event| [event.title, event.id] } %>
+      <% events.insert(0, []) %>
+      <% if @event %>
+          <%= select("event", "id", options_for_select(events, @event.id)) %>
+      <% else %>
+          <%= select("event", "id", options_for_select(events, 0)) %>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

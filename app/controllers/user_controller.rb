@@ -105,7 +105,7 @@ class UserController < ApplicationController
   end
 
   def show_participant
-    @person =current_registry.person
+    @person = current_registry.person
     @participant = Person.find(params[:id]);
 
     @rejected = RejectedContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
@@ -127,12 +127,9 @@ class UserController < ApplicationController
 
     @notes =[]
     @about = @participant.about_persons
-    if (@about.nil?)
-    else
-      @about.each do |a|
-        if a.note.person_id == @person.id
-          @notes <<a.note
-        end
+    @about.each do |a|
+      if a.note.person_id == @person.id
+        @notes <<a.note
       end
     end
 
