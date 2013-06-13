@@ -298,6 +298,7 @@
                 "server_id": "<%= note.id %>",
                 "content": "<%= note.content %>",
                 "person_id": "<%= note.person_id %>",
+                "updated_at": "<%= note.updated_at %>",
                 <% if note.about_person %>
                 "about_person": "<%= note.about_person.person_id %>",
                 <% end %>
@@ -315,7 +316,7 @@
                 "server_id": "<%= note.id %>",
                 "content": "<%= note.content %>",
                 "person_id": "<%= note.person_id %>",
-                "updated_at": "<%= note.updated_at %>"
+                "updated_at": "<%= note.updated_at %>",
                 <% if note.about_person %>
                 "about_person": "<%= note.about_person.person_id %>",
                 <% end %>
