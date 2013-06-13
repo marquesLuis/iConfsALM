@@ -118,4 +118,19 @@ class PeopleController < ApplicationController
       format.html { render action: 'index' }
     end
   end
+
+  def renounce_access
+    @person = Person.find(params[:id])
+    @registry = @person.registry
+    sign_out @registry
+    @registry.destroy
+
+    @person.signup_code = SecureRandom.hex(6)
+    @person.save
+
+    respond_to do |format|
+       @people = Person.includes(:registry).all
+       format.html { render action: 'index' }
+     end
+  end
 end

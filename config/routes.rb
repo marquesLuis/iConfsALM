@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "people/renounce_access"
+
   get "locations/get_location_image"
 
   get "user/get_location_image"

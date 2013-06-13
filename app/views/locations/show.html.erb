@@ -7,7 +7,9 @@
   <b>Internal image name:</b>
   <%= @location.image %>
 </p>
-<p><b>Image: </b><img src='/locations/get_location_image?name=<%= @location.image %>' alt='<%= @location.title %>'></p>
-
+<div id="location_image">
+  <p><b>Image: </b><img src='/locations/get_location_image?name=<%= @location.image %>' alt='<%= @location.title %>'>
+  </p>
+</div>
 <%= link_to 'Back', locations_path %>
-<%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure you want to delete this map?' } %>
+<%= link_to 'Destroy', @location, method: :delete, data: {confirm: 'Are you sure you want to delete this map?'} %>

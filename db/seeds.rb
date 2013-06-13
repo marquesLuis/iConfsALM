@@ -42,9 +42,8 @@ AreaOfInterest.create(name: 'Sistemas Inteligentes')
 puts "Adding Locations"
 # LOCATIONS (1-4)
 Location.create(title: 'Hotel Ibis Departure', image: 'bus.jpg')
-Location.create(title: 'Campus', image: 'mapacampus.jpg')
 Location.create(title: 'Conference Location', image: 'conflocation.jpg')
-Location.create(title: 'Getting to FCT', image: 'localizacaofct.gif')
+Location.create(title: 'Getting to FCT', image: 'localizacaofct.jpg')
 MapsVersion.create(version: '1')
 
 puts "Adding people: marta, albert, luis"
