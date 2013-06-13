@@ -49,12 +49,12 @@
         <% end %>
     },
     <% end %>
-    <% if @new_last_event_id && @new_last_event_update && @new_last_removed_event_id %>
+    <% if @new_events || @updated_events || @del_events %>
     "events" :{
         "last_id": "<%= @new_last_event_id %>",
-        "last_update": "<%= @new_last_event_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_update": "<%= @new_last_event_update %>",
         "last_removed": "<%= @new_last_removed_event_id %>",
-        <% if @new_events && @new_events.length>0 %>
+        <% if @new_events%>
         "news" :{
             <% @new_events.each do |event| %>
             "event_<%= event.id %>": {
@@ -81,7 +81,7 @@
             <% end %>
         },
         <% end %>
-        <% if @updated_events && @updated_events.length>0 %>
+        <% if @updated_events%>
         "updated" :{
             <% @updated_events.each do |event| %>
             "event_<%= event.id %>": {
@@ -109,22 +109,17 @@
             <% end %>
         },
         <% end %>
-        <% if @del_events && @del_events.length>0 %>
-        "deleted":{
-            "size" : <%= @del_events.length %>,
-            <% @del_events.each do |event| %>
-            "notification_<%= event.id %>": "<%= event.event_identifier %>",
-            <% end %>
-        }
+        <% if @del_events%>
+        "deleted":[<% @del_events.each do |del| %><%= del.event_identifier %>,<% end %>]
         <% end %>
     },
     <% end %>
-    <% if @new_network_last_id && @new_last_network_update && @new_last_removed_network_id %>
+    <% if @new_networks || @updated_network || @del_networks %>
     "networkings" :{
         "last_id": "<%= @new_network_last_id %>",
-        "last_update": "<%= @new_last_network_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_update": "<%= @new_last_network_update %>",
         "last_removed": "<%= @new_last_removed_network_id %>",
-        <% if @new_networks && @new_networks.length>0 %>
+        <% if @new_networks%>
         "news" :{
             <% @new_networks.each do |net| %>
             "net_<%= net.id %>": {
@@ -140,7 +135,7 @@
             <% end %>
         },
         <% end %>
-        <% if @updated_network && @updated_network.length>0 %>
+        <% if @updated_network%>
         "updated" :{
             <% @updated_network.each do |net| %>
             "net_<%= net.id %>": {
@@ -156,21 +151,21 @@
             <% end %>
         },
         <% end %>
-        <% if @del_networks && @del_networks.length>0 %>
+        <% if @del_networks%>
         "deleted":[<% @del_networks.each do |net| %>"<%= net.net_identifier%>",<% end %>]
         <% end %>
     },
     <% end %>
-    <% if @new_last_person_id && @new_last_person_update && @new_last_people_removed_id %>
+    <% if @new_people || @updated_people %>
     "people" :{
         "last_id": "<%= @new_last_person_id %>",
-        "last_update": "<%= @new_last_person_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
-        "last_removed": "<%= @new_last_people_removed_id %>",
-        <% if @new_people && @new_people.length>0 %>
+        "last_update": "<%= @new_last_person_update %>",
+        "last_removed": "",
+        <% if @new_people%>
         "news" :{
             <% @new_people.each do |person| %>
             "person_<%= person.id %>": {
-               "first": "<%= person.first_name %>",
+                "first": "<%= person.first_name %>",
                 "last": "<%= person.last_name %>",
                 "pre": "<%= person.prefix %>",
                 "affiliation" : "<%= person.affiliation %>",
@@ -185,10 +180,10 @@
                 "infos" : {
                     <% person.infos.each do |info|%>
                     "info_<%= info.id %>" : {
-                      "server_id": "<%= info.id %>",
-                      "type": "<%= info.info_type %>",
-                      "value": "<%= info.value %>",
-                      "person_id": "<%=person.id%>"
+                        "server_id": "<%= info.id %>",
+                        "type": "<%= info.info_type %>",
+                        "value": "<%= info.value %>",
+                        "person_id": "<%=person.id%>"
                     },
                     <%end%>
                 },
@@ -200,7 +195,7 @@
             <% end %>
         },
         <% end %>
-        <% if @updated_people && @updated_people.length>0 %>
+        <% if @updated_people%>
         "updated" :{
             <% @updated_people.each do |person| %>
             "person_<%= person.id %>": {
@@ -236,12 +231,12 @@
         <% end %>
     },
     <% end %>
-    <% if @new_last_attending_id && @new_last_attending_update && @new_last_removed_attending_id %>
+    <% if @new_attendings || @del_attendings %>
     "attendings" :{
         "last_id": "<%= @new_last_attending_id %>",
-        "last_update": "<%= @new_last_attending_update %>",
+        "last_update": "",
         "last_removed": "<%= @new_last_removed_attending_id %>",
-        <% if @new_attendings && @new_attendings.length>0 %>
+        <% if @new_attendings%>
         "news" :{
             <% @new_attendings.each do |att| %>
             "att_<%= att.id %>": {
@@ -251,27 +246,27 @@
             <% end %>
         },
         <% end %>
-        <% if @del_attendings && @del_attendings.length>0 %>
+        <% if @del_attendings%>
         "deleted":[<% @del_attendings.each do |net| %>"<%= net.removed_event%>",<% end %>]
         <% end %>
     },
     <% end %>
-    <% if @new_last_areas_id && @new_last_areas_update && @new_last_removed_areas_id %>
+    <% if @new_areas || @updated_areas || @del_areas %>
     "areas" :{
         "last_id": "<%= @new_last_areas_id %>",
-        "last_update": "<%= @new_last_areas_update.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
+        "last_update": "<%= @new_last_areas_update %>",
         "last_removed": "<%= @new_last_removed_areas_id %>",
-        <% if @new_areas && @new_areas.length>0 %>
+        <% if @new_areas%>
         "news" :{
             <% @new_areas.each do |area| %>
             "area_<%= area.id %>": {
-               "server_id":"<%= area.id %>",
+                "server_id":"<%= area.id %>",
                 "name":"<%= area.name %>"
             },
             <% end %>
         },
         <% end %>
-        <% if @updated_areas && @updated_areas.length>0 %>
+        <% if @updated_areas%>
         "updated" :{
             <% @updated_areas.each do |area| %>
             "area_<%= area.id %>": {
@@ -281,10 +276,30 @@
             <% end %>
         },
         <% end %>
-        <% if @del_areas && @del_areas.length>0 %>
+        <% if @del_areas%>
         "deleted":[<% @del_areas.each do |net| %>"<%= net.area_identifier%>",<% end %>]
         <% end %>
     },
     <% end %>
-    "local" : "<%= request.protocol + request.host_with_port + '/images/' + @local_temp.image %>"
+    <% if @new_locals || @del_locals %>
+    "locals": {
+        "last_id": "<%= @new_last_local_id %>",
+        "last_update": "",
+        "last_removed": "<%= @new_last_local_removed_id %>",
+        <% if @new_locals%>
+        "news" :{
+            <% @new_locals.each do |local| %>
+            "local_<%=local.id%>":{
+                "server_id" : "<%=local.id%>",
+                "title" : "<%= local.title %>",
+                "image" : "<%=request.protocol + request.host_with_port + '/user/get_location_image?name=' + local.image %>"
+            },
+            <% end %>
+        },
+        <%end%>
+        <% if @del_locals %>
+        "deleted" : [<% @del_locals.each do |net| %>"<%= net.server_id%>",<% end %>]
+        <% end %>
+    }
+    <% end %>
 }

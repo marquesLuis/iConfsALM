@@ -42,9 +42,9 @@ class SpeakersController < ApplicationController
   # POST /speakers.json
   def create
     @speaker = Speaker.new(params[:speaker])
-
     respond_to do |format|
       if @speaker.save
+        @speaker.event.touch
         format.html { redirect_to @speaker, notice: 'Speaker was successfully created.' }
         format.json { render json: @speaker, status: :created, location: @speaker }
       else
@@ -61,6 +61,7 @@ class SpeakersController < ApplicationController
 
     respond_to do |format|
       if @speaker.update_attributes(params[:speaker])
+        @speaker.event.touch
         format.html { redirect_to @speaker, notice: 'Speaker was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,6 +75,7 @@ class SpeakersController < ApplicationController
   # DELETE /speakers/1.json
   def destroy
     @speaker = Speaker.find(params[:id])
+    @speaker.event.touch
     @speaker.destroy
 
     respond_to do |format|

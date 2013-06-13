@@ -62,7 +62,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location = Location.find(params[:id])
-
+    RemovedLocation.create(server_id: Integer(params[:id]))
     directory = Rails.root.join('app','assets','locations');
 
     path = File.join(directory, @location.image)

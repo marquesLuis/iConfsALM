@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609134822) do
+ActiveRecord::Schema.define(:version => 20130613114140) do
 
   create_table "about_events", :force => true do |t|
     t.integer  "note_id"
@@ -51,12 +51,16 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "area_of_interests", ["updated_at"], :name => "index_area_of_interests_on_updated_at"
+
   create_table "atending_events", :force => true do |t|
     t.integer  "event_id"
     t.integer  "person_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "atending_events", ["person_id"], :name => "index_atending_events_on_person_id"
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -99,6 +103,8 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "events", ["updated_at"], :name => "index_events_on_updated_at"
 
   create_table "feedbacks", :force => true do |t|
     t.text     "content"
@@ -158,6 +164,8 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "networkings", ["updated_at"], :name => "index_networkings_on_updated_at"
+
   create_table "notes", :force => true do |t|
     t.text     "content"
     t.integer  "person_id"
@@ -171,6 +179,8 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "org_notifications", ["updated_at"], :name => "index_org_notifications_on_updated_at"
 
   create_table "pending_contacts", :force => true do |t|
     t.integer  "requester_id"
@@ -194,6 +204,8 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.string   "signup_code"
     t.integer  "theme",                  :default => 1
   end
+
+  add_index "people", ["updated_at"], :name => "index_people_on_updated_at"
 
   create_table "person_interests", :force => true do |t|
     t.integer  "person_id"
@@ -249,6 +261,8 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "removed_attending_events", ["person_id"], :name => "index_removed_attending_events_on_person_id"
+
   create_table "removed_authors", :force => true do |t|
     t.integer  "author_identifier"
     t.datetime "created_at",        :null => false
@@ -265,6 +279,12 @@ ActiveRecord::Schema.define(:version => 20130609134822) do
     t.integer  "info_identifier"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "removed_locations", :force => true do |t|
+    t.integer  "server_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "removed_networkings", :force => true do |t|
