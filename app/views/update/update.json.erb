@@ -114,30 +114,14 @@
         <% end %>
     },
     <% end %>
-    <% if @new_networks || @updated_network || @del_networks %>
+    <% if @new_networks || @del_networks %>
     "networkings" :{
         "last_id": "<%= @new_network_last_id %>",
-        "last_update": "<%= @new_last_network_update %>",
+        "last_update": "",
         "last_removed": "<%= @new_last_removed_network_id %>",
         <% if @new_networks%>
         "news" :{
             <% @new_networks.each do |net| %>
-            "net_<%= net.id %>": {
-                "title" : "<%= net.title %>",
-                "content" : "<%= net.content %>",
-                "date" : "<%= net.updated_at.strftime('%Y-%m-%d %H:%M') %>",
-                "person_id": "<%= net.person_id %>",
-                "server_id": "<%= net.id %>",
-                <% if net.area_of_interests && net.area_of_interests.length>0 %>
-                "areas" : [<% net.area_of_interests.each do |area| %>"<%= area.id%>",<% end %>]
-                <% end %>
-            },
-            <% end %>
-        },
-        <% end %>
-        <% if @updated_network%>
-        "updated" :{
-            <% @updated_network.each do |net| %>
             "net_<%= net.id %>": {
                 "title" : "<%= net.title %>",
                 "content" : "<%= net.content %>",

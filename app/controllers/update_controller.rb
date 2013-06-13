@@ -113,17 +113,6 @@ class UpdateController < ApplicationController
         @new_networks = Networking.where('id > ? AND id <= ?', @last_network_id, @new_network_last_id).includes(:area_of_interests)
       end
 
-      @last_network_update = @networkings[:last_update]
-      @new_last_network_update = Networking.maximum(:updated_at)
-      if @new_last_network_update
-        @new_last_network_update = @new_last_network_update.strftime('%Y-%m-%d %H:%M:%S.%N')
-        if @last_network_update != @new_last_network_update
-          @updated_network = Networking.where('id <= ? AND ? < updated_at', @last_network_id, @last_network_update).includes(:area_of_interests)
-        end
-      else
-        @new_last_network_update = @last_network_update
-      end
-
       @old_last_removed_network_id = @networkings[:last_removed_id]
       @new_last_removed_network_id = '0'
       @last_network = RemovedNetworkings.last
