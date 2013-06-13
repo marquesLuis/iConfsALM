@@ -284,6 +284,51 @@
         <% if @del_locals %>
         "deleted" : [<% @del_locals.each do |net| %>"<%= net.server_id%>",<% end %>]
         <% end %>
+    },
+    <% end %>
+    <%if @new_notes || @updated_notes || @del_notes%>
+    "notes":{
+        "last_id": "<%= @new_last_note_id %>",
+        "last_update": "<%= @new_last_note_update %>",
+        "last_removed": "<%=  @new_last_note_removed_id %>",
+        <% if @new_notes %>
+        "news": {
+            <% @new_notes.each do |note| %>
+            "note_<%= note.id%>":{
+                "server_id": "<%= note.id %>",
+                "content": "<%= note.content %>",
+                "person_id": "<%= note.person_id %>",
+                <% if note.about_person %>
+                "about_person": "<%= note.about_person.person_id %>",
+                <% end %>
+                <% if note.about_event %>
+                "about_event": "<%= note.about_event.event_id %>"
+                <% end %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @updated_notes%>
+        "updated": {
+            <% @updated_notes.each do |note| %>
+            "note_<%= note.id%>":{
+                "server_id": "<%= note.id %>",
+                "content": "<%= note.content %>",
+                "person_id": "<%= note.person_id %>",
+                "updated_at": "<%= note.updated_at %>"
+                <% if note.about_person %>
+                "about_person": "<%= note.about_person.person_id %>",
+                <% end %>
+                <% if note.about_event %>
+                "about_event": "<%= note.about_event.event_id %>"
+                <% end %>
+            },
+            <% end %>
+        },
+        <% end %>
+        <% if @del_notes %>
+        "deleted": [<% @del_notes.each do |net| %>"<%= net.sequence_number%>",<% end %>]
+        <% end %>
     }
     <% end %>
 }

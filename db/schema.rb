@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
   end
 
   add_index "notes", ["person_id"], :name => "index_notes_on_person_id"
+  add_index "notes", ["updated_at"], :name => "index_notes_on_updated_at"
 
   create_table "org_notifications", :force => true do |t|
     t.string   "title"

@@ -22,6 +22,7 @@ class AddIndex < ActiveRecord::Migration
     add_index :person_interests, :area_of_interest_id
     add_index :person_interests, :person_id
     add_index :notes, :person_id
+    add_index :notes, :updated_at
     add_index :pending_contacts, :requested_id
     add_index :pending_contacts, :requester_id
     add_index :networking_interests, :area_of_interest_id

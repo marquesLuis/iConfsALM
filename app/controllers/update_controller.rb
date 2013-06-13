@@ -236,6 +236,58 @@ class UpdateController < ApplicationController
       if @last_local_removed != @new_last_local_removed_id
         @del_locals = RemovedLocation.where('id > ? AND id <= ?',@last_local_removed, @new_last_local_removed_id)
       end
+    end
+
+
+    @notes = @update[:notes]
+    if @notes
+      @last_note_id = @notes[:last_id]
+      @all_notes = Note.find_all_by_person_id(@person)
+      if @all_notes
+        @new_last_note_id = '0'
+        @note_tmp = @all_notes.last
+        if @note_tmp
+          @new_last_note_id = @note_tmp.id.to_s
+        end
+        if @new_last_note_id != @last_note_id
+          @new_notes = Note.where('person_id = ? AND id > ? AND id <= ?',@person,@last_note_id, @new_last_note_id)
+          @new_notes = @new_notes.includes(:about_person)
+          @new_notes = @new_notes.includes(:about_event)
+        end
+
+        @last_note_update = @notes[:last_update]
+        @last_note_tmp =Note.where('person_id = ?',@person).last
+        if @last_note_tmp
+          @new_last_note_update =@last_note_tmp.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N')
+          if @new_last_note_update
+            if @last_note_update != @new_last_note_update
+              @updated_notes = Note.where('person_id = ?',@person).where('id <= ? AND ? < updated_at',@last_note_id,@last_note_update )
+              @updated_notes = @updated_notes.includes(:about_person)
+              @updated_notes = @updated_notes.includes(:about_event)
+            end
+          else
+            @new_last_note_update = @last_note_update
+          end
+        end
+
+      end
+
+
+
+
+      @new_last_note_removed_id = '0'
+      @last_note_removed = @notes[:last_removed_id]
+      @all_notes_removed = RemovedNote.find_all_by_person_id(@person)
+      if @all_notes_removed
+        @last_note =  @all_notes_removed.last
+        if @last_note
+          @new_last_note_removed_id = @last_note.id.to_s
+        end
+        if @last_note_removed != @new_last_note_removed_id
+          @del_notes = RemovedNote.where('person_id = ? AND id > ? AND id <= ?',@person,@last_note_removed, @new_last_note_removed_id)
+        end
+      end
+
 
     end
 
