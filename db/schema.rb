@@ -20,12 +20,18 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "about_events", ["event_id"], :name => "index_about_events_on_event_id"
+  add_index "about_events", ["note_id"], :name => "index_about_events_on_note_id"
+
   create_table "about_people", :force => true do |t|
     t.integer  "person_id"
     t.integer  "note_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "about_people", ["note_id"], :name => "index_about_people_on_note_id"
+  add_index "about_people", ["person_id"], :name => "index_about_people_on_person_id"
 
   create_table "administrators", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -60,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "atending_events", ["event_id"], :name => "index_atending_events_on_event_id"
   add_index "atending_events", ["person_id"], :name => "index_atending_events_on_person_id"
 
   create_table "authors", :force => true do |t|
@@ -69,6 +76,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",  :null => false
     t.integer  "person_id"
   end
+
+  add_index "authors", ["document_id"], :name => "index_authors_on_document_id"
+  add_index "authors", ["person_id"], :name => "index_authors_on_person_id"
 
   create_table "documents", :force => true do |t|
     t.string   "title"
@@ -85,6 +95,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "event_documents", ["document_id"], :name => "index_event_documents_on_document_id"
+  add_index "event_documents", ["event_id"], :name => "index_event_documents_on_event_id"
+
   create_table "event_groups", :force => true do |t|
     t.datetime "date"
     t.time     "end"
@@ -92,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "event_groups", ["location_id"], :name => "index_event_groups_on_location_id"
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -104,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "events", ["event_group_id"], :name => "index_events_on_event_group_id"
   add_index "events", ["updated_at"], :name => "index_events_on_updated_at"
 
   create_table "feedbacks", :force => true do |t|
@@ -120,6 +136,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",          :null => false
   end
 
+  add_index "group_areas", ["area_of_interest_id"], :name => "index_group_areas_on_area_of_interest_id"
+  add_index "group_areas", ["event_group_id"], :name => "index_group_areas_on_event_group_id"
+
   create_table "infos", :force => true do |t|
     t.string   "value"
     t.integer  "person_id"
@@ -127,6 +146,8 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at", :null => false
     t.string   "info_type"
   end
+
+  add_index "infos", ["person_id"], :name => "index_infos_on_person_id"
 
   create_table "locations", :force => true do |t|
     t.string   "title"
@@ -156,6 +177,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",          :null => false
   end
 
+  add_index "networking_interests", ["area_of_interest_id"], :name => "index_networking_interests_on_area_of_interest_id"
+  add_index "networking_interests", ["networking_id"], :name => "index_networking_interests_on_networking_id"
+
   create_table "networkings", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -164,6 +188,7 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "networkings", ["person_id"], :name => "index_networkings_on_person_id"
   add_index "networkings", ["updated_at"], :name => "index_networkings_on_updated_at"
 
   create_table "notes", :force => true do |t|
@@ -172,6 +197,8 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "notes", ["person_id"], :name => "index_notes_on_person_id"
 
   create_table "org_notifications", :force => true do |t|
     t.string   "title"
@@ -188,6 +215,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "pending_contacts", ["requested_id"], :name => "index_pending_contacts_on_requested_id"
+  add_index "pending_contacts", ["requester_id"], :name => "index_pending_contacts_on_requester_id"
 
   create_table "people", :force => true do |t|
     t.string   "first_name"
@@ -213,6 +243,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "person_interests", ["area_of_interest_id"], :name => "index_person_interests_on_area_of_interest_id"
+  add_index "person_interests", ["person_id"], :name => "index_person_interests_on_person_id"
 
   create_table "program_versions", :force => true do |t|
     t.integer  "version"
@@ -247,6 +280,9 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "rejected_contacts", ["requested_id"], :name => "index_rejected_contacts_on_requested_id"
+  add_index "rejected_contacts", ["requester_id"], :name => "index_rejected_contacts_on_requester_id"
 
   create_table "removed_areas", :force => true do |t|
     t.integer  "area_identifier"
@@ -300,6 +336,8 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "removed_notes", ["person_id"], :name => "index_removed_notes_on_person_id"
+
   create_table "removed_notifications", :force => true do |t|
     t.integer  "sequence_number"
     t.datetime "created_at",      :null => false
@@ -314,11 +352,17 @@ ActiveRecord::Schema.define(:version => 20130613114140) do
     t.integer  "event_id"
   end
 
+  add_index "speakers", ["event_id"], :name => "index_speakers_on_event_id"
+  add_index "speakers", ["person_id"], :name => "index_speakers_on_person_id"
+
   create_table "traded_contacts", :force => true do |t|
     t.integer  "requester_id"
     t.integer  "requested_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "traded_contacts", ["requested_id"], :name => "index_traded_contacts_on_requested_id"
+  add_index "traded_contacts", ["requester_id"], :name => "index_traded_contacts_on_requester_id"
 
 end
