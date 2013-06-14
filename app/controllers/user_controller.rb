@@ -143,19 +143,25 @@ class UserController < ApplicationController
 
   def download_document
     @document = Document.find(params[:document_id])
-    send_file(Rails.root.join('app','assets', 'documents', @document.link.to_s), :filename => @document.link.to_s)
+    send_file(Rails.root.join('app', 'assets', 'documents', @document.link.to_s), :filename => @document.link.to_s)
   end
 
   def documents
-    @documents = Document.paginate(:page => params[:page], :per_page => 15)
+    @areas_of_interest = AreaOfInterest.all
+
+    @per_area = []
+    @areas_of_interest.each do |area|
+      @per_area.append(area.get_documents)
+    end
+
   end
 
 
   def get_profile_image
-    send_file(Rails.root.join('app','assets','people', params[:name]))
+    send_file(Rails.root.join('app', 'assets', 'people', params[:name]))
   end
 
   def get_location_image
-    send_file(Rails.root.join('app','assets','locations', params[:name]))
+    send_file(Rails.root.join('app', 'assets', 'locations', params[:name]))
   end
 end

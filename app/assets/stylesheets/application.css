@@ -48,35 +48,35 @@
     margin: 0 auto;
 }
 
-ul {
+.menu ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-ul li {
+.menu ul li {
     display: block;
     position: relative;
     float: left;
 }
 
-li ul {
+.menu li ul {
     display: none;
 }
 
-ul li a {
+.menu ul li a {
     display: block;
     padding: 5px 15px 5px 15px;
     margin-left: 1px;
     white-space: nowrap;
 }
 
-li:hover ul {
+.menu li:hover ul {
     display: block;
     position: absolute;
 }
 
-li:hover li {
+.menu li:hover li {
     float: none;
 }
 
