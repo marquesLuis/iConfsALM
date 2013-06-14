@@ -28,12 +28,12 @@
   <div>
     <p>Theme:</p>
     <%= form_tag({:controller => "user_profile", :action => "update_theme"}) do %>
-        <%= label_tag(:theme, "default") %>
         <%= radio_button_tag(:theme, 1, :default=>true) %>
-        <%= label_tag(:theme, "green") %>
+        <%= label_tag(:theme, "default") %>
         <%= radio_button_tag(:theme, 2) %>
-        <%= label_tag(:theme, "blue") %>
+        <%= label_tag(:theme, "green") %>
         <%= radio_button_tag(:theme, 3) %>
+        <%= label_tag(:theme, "blue") %>
         <%= submit_tag("Update") %>
     <% end %>
   </div>

@@ -6,6 +6,21 @@
 <% if @events.any? %>
     <div id='calendar'></div>
     <script type="text/javascript">
+        <% if @theme==1 %>
+        c1 = '#A65A00'
+        c2 = 'goldenrod'
+        <% else
+             if @theme==2 %>
+        c1 = 'darkgreen'
+        c2 = 'limegreen'
+        <% else
+             if @theme==3 %>
+        c1 = 'darkblue'
+        c2 = 'cornflowerblue'
+        <%end %>
+        <%end %>
+        <%end %>
+
         window.onload = function () {
             $('#calendar').empty().fullCalendar({
                 defaultView: 'agendaWeek',
@@ -19,6 +34,7 @@
                 firstDay: <%= @begin_weekday %>,
 
                 eventMouseover: function (event, jsEvent, view) {
+
                     html = '<form action="/user_program/remove_event?id=' + event.id + '&rfc=true" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
 
                     $('.fc-event-inner', this).append('<div id="' + event.id + 'hov" class="hover-end">' + html + '</div>');
@@ -31,12 +47,15 @@
                     <% @events.each do |event| %>
                     <% group = event.event_group %>
                     {
+
                         id: '<%= event.id %>',
                         title: '<%= event.event_kind %> - <%= event.title %>',
                         <% if event.event_kind=='Keynote' %>
-                        color: '#A65A00',
+                        color: c1,
                         <% else if event.event_kind=='Social Event' %>
-                        color: '#A65A00',
+                        color: c1,
+                        <% else %>
+                        color: c2,
                         <% end %>
                         <% end %>
                         start: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.begin.hour %>, <%= event.begin.min %>),

@@ -1,29 +1,22 @@
 <h1 class="centralized">Documents</h1>
 
-<table class="centralized">
-  <tr>
-    <th class="bottom_border">
-      Document title
-    </th>
-    <th class="bottom_border">
-      Description
-    </th>
-    <th class="bottom_border">
-      Download link
-    </th>
-  </tr>
-  <% @documents.each do |document| %>
-      <tr>
-        <td class="bottom_border ">
-          <%= document.title %>
-        </td>
-        <td class="bottom_border ">
-          <%= document.description %>
-        </td>
-        <td class="bottom_border">
-          <%= link_to document.title, {:controller => "user", :action => "download_document", :document_id => document.id} %></p>
-        </td>
-      </tr>
+
+
+
+<ul>
+  <% @per_area.each_with_index do |var, i| %>
+      <li>
+        <p><%= @areas_of_interest[i].name %></p>
+
+        <% if var.any? %>
+            <ul>
+        <% end %>
+        <% var.each_with_index do |doc, j| %>
+            <li><b>Download:</b> <%= link_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id} %></li>
+        <% end %>
+        <% if var.any? %>
+            </ul>
+        <% end %>
+      </li>
   <% end %>
-</table>
-<p class="centralized"><%= will_paginate @documents %> </p>
+</ul>
