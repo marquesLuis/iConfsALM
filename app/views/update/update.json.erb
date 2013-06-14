@@ -298,7 +298,7 @@
                 "server_id": "<%= note.id %>",
                 "content": "<%= note.content %>",
                 "person_id": "<%= note.person_id %>",
-                "updated_at": "<%= note.updated_at %>",
+                "updated_at": "<%= note.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
                 <% if note.about_person %>
                 "about_person": "<%= note.about_person.person_id %>",
                 <% end %>
@@ -316,7 +316,7 @@
                 "server_id": "<%= note.id %>",
                 "content": "<%= note.content %>",
                 "person_id": "<%= note.person_id %>",
-                "updated_at": "<%= note.updated_at %>",
+                "updated_at": "<%= note.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
                 <% if note.about_person %>
                 "about_person": "<%= note.about_person.person_id %>",
                 <% end %>
@@ -328,7 +328,13 @@
         },
         <% end %>
         <% if @del_notes %>
-        "deleted": [<% @del_notes.each do |net| %>"<%= net.sequence_number%>",<% end %>]
+        "deleted": [<% @del_notes.each do |net| %>"<%= net.sequence_number%>",<% end %>],
+        <% end %>
+        <% if @notes_created %>
+        "news_added":[<% @notes_created.each do |net| %><%= net %>,<% end %>],
+        <% end %>
+        <% if @notes_deleted %>
+        "deleted_local":[<% @notes_deleted.each do |net| %><%= net %>,<% end %>],
         <% end %>
     }
     <% end %>

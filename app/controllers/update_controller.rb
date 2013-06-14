@@ -241,6 +241,70 @@ class UpdateController < ApplicationController
 
     @notes = @update[:notes]
     if @notes
+
+      new_notes_from_devise = @notes[:news]
+      if new_notes_from_devise
+        @notes_created = Array.new
+        new_notes_from_devise.each do |note|
+          note_server_id = note[:note][:server_id]
+          if note_server_id == '0'
+            created_note = Note.create(content: note[:note][:content], person_id: @person)
+          else
+            this_note = Note.find(note_server_id)
+            if this_note.updated_at == note[:note][:updated]
+              this_note.update_attributes(content: note[:note][:content])
+              created_note = this_note
+              if created_note.about_event
+                created_note.about_event.destroy
+              end
+              if created_note.about_person
+                created_note.about_person.destroy
+              end
+            else
+              created_note = Note.create(content: '(Conflict Copy_From Mobile)'+note[:note][:content], person_id: @person)
+            end
+          end
+          if note[:note][:about_session] != '0'
+            @aboutEvent = AboutEvent.new
+            @aboutEvent.event_id=Integer(note[:note][:about_session])
+            @aboutEvent.note_id = created_note.id
+            @aboutEvent.save
+          end
+
+          if note[:note][:about_person] != '0'
+            @aboutPerson = AboutPerson.new
+            @aboutPerson.person_id=Integer(note[:note][:about_person])
+            @aboutPerson.note_id = created_note.id
+            @aboutPerson.save
+          end
+          @notes_created.push(note[:note][:local_id])
+        end
+      end
+
+      removed_notes_from_devise = @notes[:deleted]
+      if removed_notes_from_devise
+        @notes_deleted = Array.new
+        removed_notes_from_devise.each_with_index do |cod, index|
+          puts 'HERE'
+          puts index
+          puts index % 2
+          if (index % 2)==0
+            @notes_deleted.push(cod)
+          else
+            old_note = Note.find(cod)
+            if old_note
+              if old_note.about_event
+                old_note.about_event.destroy
+              end
+              if old_note.about_person
+                old_note.about_person.destroy
+              end
+              old_note.destroy
+            end
+          end
+        end
+      end
+
       @last_note_id = @notes[:last_id]
       @all_notes = Note.find_all_by_person_id(@person)
       if @all_notes
