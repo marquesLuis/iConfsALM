@@ -13,17 +13,12 @@ class UserProgramController < ApplicationController
     @begin_day = @first_day.day;
     @begin_weekday = @first_day.wday;
 
-
-    @events = Event.all
-    #@grouped_by_day = []    wtf was this
-    #for date in (@first_day.to_date)..(@last_day.to_date)
-    #  x=[]
-    #  x += EventGroup.where("date > ? AND date < ?", date, (date+1.day))
-    #  @grouped_by_day.append(x)
-    #end
-
-
+    @attending = current_registry.person.attending_events
+    attending_ids = current_registry.person.attending_events.pluck(:id)
+    attending_ids<<0;
+    @events = Event.where("id NOT IN (?)", attending_ids)
   end
+
 
   def index
     @event_groups = EventGroup.all
@@ -37,9 +32,9 @@ class UserProgramController < ApplicationController
     @begin_day = @first_day.day;
     @begin_weekday =@first_day.wday;
 
-    attending_events = AtendingEvent.where('person_id = ?', current_registry.person_id).pluck(:event_id)
-    if attending_events.any?
-      @events = Event.where('id IN (?)', (attending_events))
+    attending = current_registry.person.attending_events.pluck(:id)
+    if attending.any?
+      @events = Event.where('id IN (?)', attending)
     else
       @events=[]
     end
@@ -68,18 +63,23 @@ class UserProgramController < ApplicationController
       end
     end
 
+    @attending = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, @event.id).first
+
   end
 
   def add_event
-
-    @atending_event = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, params[:id])
+    @event_id = params[:id]
+    @atending_event = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, @event_id)
     if @atending_event.any?
       @already_added=true
     else
-      @atending_event = AtendingEvent.new(:person_id => current_registry.person_id, :event_id => params[:id])
+      @atending_event = AtendingEvent.new(:person_id => current_registry.person_id, :event_id => @event_id)
       @atending_event.save
     end
 
+    if params[:internal]
+      @remove_button=true
+    end
     respond_to do |format|
       format.js
     end
@@ -89,8 +89,9 @@ class UserProgramController < ApplicationController
     @atending_event = AtendingEvent.where('person_id = ? AND event_id = ?', current_registry.person_id, params[:id]).first
     if params[:rfc]
       @remove_from_calendar=true
-      @event_id = @atending_event.event_id
     end
+    @event_id = params[:id]
+
     if @atending_event
       RemovedAttendingEvent.create(removed_event: @atending_event.id, person_id: @atending_event.person_id)
       @atending_event.destroy
@@ -98,6 +99,9 @@ class UserProgramController < ApplicationController
       @not_existing=true
     end
 
+    if params[:internal]
+      @remove_button=true
+    end
     respond_to do |format|
       format.js
     end

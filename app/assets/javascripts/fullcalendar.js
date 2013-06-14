@@ -196,6 +196,7 @@
         t.reportEventChange = reportEventChange;
         t.rerenderEvents = rerenderEvents;
         t.changeView = changeView;
+        t.getEventByID = getEventByID;
         t.select = select;
         t.unselect = unselect;
         t.prev = prev;
@@ -319,6 +320,16 @@
 
         /* View Rendering
          -----------------------------------------------------------------------------*/
+
+        function getEventByID(id) {
+            for (var i = 0; i < events.length; i++) {
+                if (events[i].id == id) {
+                    return events[i]
+                }
+            }
+
+            return 0;
+        }
 
         // TODO: improve view switching (still weird transition in IE, and FF has whiteout problem)
 

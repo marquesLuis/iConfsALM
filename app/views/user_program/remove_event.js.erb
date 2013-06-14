@@ -1,8 +1,20 @@
 <% if @not_existing %>
-alert("Event wasn't part of your personal program.")
+//alert("Event wasn't part of your personal program.")
 <% else %>
-alert("Event removed from personal program.")
+//alert("Event removed from personal program.")
 <% end %>
- <% if @remove_from_calendar %>
-    $('#e_<%= @event_id %>').remove()
+<% if @remove_from_calendar %>
+$('#e_<%= @event_id %>').remove()
+<% end %>
+
+<% if @remove_button %>
+
+$("#event_buttons").fadeOut("slow", function () {
+    $(this).empty().append("<p>Removed from personal calendar.</p> <%= escape_javascript( button_to 'Add to personal calendar', {:controller => "user_program", :action => "add_event", :id => @event_id, :internal => true}, :remote => true )%>").fadeIn();
+})
+<% else %>
+a = $('#calendar').fullCalendar('getEventByID', <%= @event_id %>)
+a.attending = false
+$('#' + <%= @event_id %> + 'hov').remove();
+
 <% end %>

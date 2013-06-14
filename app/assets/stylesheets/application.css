@@ -16,10 +16,10 @@
  *=require fullcalendar.print.css
  *
  */
-*
-{
-    font-family:"Georgia",Georgia,Serif;
+* {
+    font-family: "Georgia", Georgia, Serif;
 }
+
 .hover-end {
     padding: 1;
     margin: 1;
@@ -29,6 +29,7 @@
     bottom: 0;
     width: 100%;
 }
+
 #title {
     margin: 15px;
 }
@@ -37,12 +38,6 @@
     font-size: 4em;
     float: left;
 }
-
-
-
-
-
-
 
 .body h1 {
     margin-top: 2px;
@@ -106,7 +101,6 @@ li:hover li {
 hr {
     clear: both;
 }
-
 
 .control {
     float: right;

@@ -74,12 +74,17 @@
   <%= render(:template => 'notes/index_on_event', :event_id => @event.id) %>
 </div>
 <hr>
-<div class='inline centralized'>
-  <%= button_to 'Add to personal calendar', {:controller => "user_program", :action => "add_event", :id => @event.id}, :remote => true %>
-<%= button_to 'Remove from personal calendar', {:controller => "user_program", :action => "remove_event", :id => @event.id }, :remote => true%>
+<div id="event_buttons" class='inline centralized'>
+  <% if @attending %>
+      <%= button_to 'Remove from personal calendar', {:controller => "user_program", :action => "remove_event", :id => @event.id, :internal => true}, :remote => true %>
+  <% else %>
+      <%= button_to 'Add to personal calendar', {:controller => "user_program", :action => "add_event", :id => @event.id, :internal => true}, :remote => true %>
+
+  <% end %>
 </div>
 <hr>
 <div class='centralized'>
-<p><%= link_to "Back to personal program", '/user_program/index/' %></p>
-<p><%= link_to "Back to complete program", '/user_program/show_complete/' %></p>
+  <p><%= link_to "Back to personal program", '/user_program/index/' %></p>
+
+  <p><%= link_to "Back to complete program", '/user_program/show_complete/' %></p>
 </div>
