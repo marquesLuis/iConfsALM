@@ -83,14 +83,14 @@ class UserController < ApplicationController
 
   def show_pending_contacts
     @self = current_registry.person
-    @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
+    @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6)
     pending = PendingContact.where('requester_id = ?', @self.id).pluck(:requested_id)
     rejected = RejectedContact.where('requester_id = ?', @self.id).pluck(:requested_id)
     @sent = Person.where('id in (?) OR id in (?)', pending, rejected).paginate(:page => params[:sent_page], :per_page => 6).order(:last_name)
   end
 
   def show_rejected_contacts
-    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
+    @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show_all_participants
