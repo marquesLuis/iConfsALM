@@ -24,7 +24,7 @@
                       <img src='/user/get_profile_image?name=<%= rejected.requester.photo %>' alt='<%= rejected.requester.photo %>' class='person_thumbnail'>
                   <% end %>
                 </td>
-                <td class="bottom_border"><%= link_to rejected.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
+                <td class="bottom_border"><%= link_to rejected.requester.full_name, {:controller => "user", :action => "show_participant", :id => rejected.requester.id, :remote => true}, :class => "Item-Text" %></td>
               </tr>
           <% end %>
         </table>
