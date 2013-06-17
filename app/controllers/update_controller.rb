@@ -355,6 +355,41 @@ class UpdateController < ApplicationController
 
     end
 
+
+
+    contacts = @update[:contacts]
+    if contacts
+      my_self = Person.find(@person)
+
+      news_contacts = contacts[:news]
+      if news_contacts
+        news_contacts.each do |nc|
+          TradedContact.create(requester_id: nc[:contact][:person_id], requested_id: @person)
+
+          if nc[:contact][:pending_id] != '0'
+            pending = PendingContact.find(nc[:contact][:pending_id])
+            if pending
+              pending.destroy
+            end
+          else
+            rejected = RejectedContact.find(nc[:contact][:rejected_id])
+            if rejected
+              rejected.destroy
+            end
+          end
+          puts nc[:contact][:person_id]
+          puts nc[:contact][:pending_id]
+          puts nc[:contact][:rejected_id]
+        end
+      end
+
+      @traded = my_self.received_traded_contacts
+      @traded2 = my_self.sent_traded_contacts
+      @pending =  my_self.received_pending_requests
+      @asked = my_self.sent_pending_requests
+      @rejected = my_self.received_rejected_requests
+    end
+
     respond_to do |format|
       format.json {render :file => 'update/update', :content_type => 'application/json'}
     end

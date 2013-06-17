@@ -336,6 +336,22 @@
         <% if @notes_deleted %>
         "deleted_local":[<% @notes_deleted.each do |net| %><%= net %>,<% end %>],
         <% end %>
+    },
+    <% end %>
+    <% if @traded.length>0 || @traded2.length>0 || @pending.length>0 || @asked.length>0 || @rejected.length>0%>
+    "contacts":{
+        <%if @traded.length>0 || @traded2.length>0 %>
+        "contacts":[<% @traded.each do |net| %><%= net.requester_id %>,<% end %><% @traded2.each do |net| %><%= net.requested_id %>,<% end %>],
+        <% end %>
+        <% if @pending.length >0 %>
+        "pending":[<% @pending.each do |net| %>"<%= net.id %>_<%= net.requester_id %>",<% end %>],
+        <% end %>
+        <% if @asked.length >0 %>
+        "asked":[<% @asked.each do |net| %><%= net.requested_id %>,<% end %>],
+        <% end %>
+        <% if @rejected.length >0 %>
+        "rejected":[<% @rejected.each do |net| %>"<%= net.id %>_<%= net.requester_id %>",<% end %>]
+        <% end %>
     }
     <% end %>
 }

@@ -4,4 +4,6 @@ class TradedContact < ActiveRecord::Base
   belongs_to :requester, :class_name => 'Person'
   belongs_to :requested, :class_name => 'Person'
 
+  validates_uniqueness_of :requested_id, :scope => [:requester_id]
+
 end

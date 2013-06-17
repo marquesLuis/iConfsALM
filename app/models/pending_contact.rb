@@ -6,4 +6,6 @@ class PendingContact < ActiveRecord::Base
 
   validates_associated :requester
   validates_associated :requested
+
+  validates_uniqueness_of :requested_id, :scope => [:requester_id]
 end
