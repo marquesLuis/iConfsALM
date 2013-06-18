@@ -2,6 +2,34 @@ class UpdateController < ApplicationController
   before_filter :allow_params_authentication!
   before_filter :authenticate_registry!
 
+  def isContact(id, otherID)
+    if TradedContact.where(:requested_id => id, :requester_id => otherID).length != 0
+      return 1
+    else
+      if TradedContact.where(:requester_id => id, :requested_id => otherID).length != 0
+        return 1
+      end
+      return 0
+    end
+    return 0
+  end
+
+  def otherIsPending(id, otherID)
+    pending_contact = PendingContact.where(:requested_id => id, :requester_id => otherID).first
+    if pending_contact
+      return pending_contact
+    end
+    return nil
+  end
+
+  def rejected_him(id, otherID)
+    rejected_contact = RejectedContact.where(:requested_id => id, :requester_id => otherID).first
+    if rejected_contact
+      return rejected_contact
+    end
+    return nil
+  end
+
   def update
 
     @update = params[:update]
@@ -180,7 +208,6 @@ class UpdateController < ApplicationController
       end
     end
 
-
     @areas = @update[:areas]
     if @areas
       @last_areas_id = @areas[:last_id]
@@ -237,7 +264,6 @@ class UpdateController < ApplicationController
         @del_locals = RemovedLocation.where('id > ? AND id <= ?',@last_local_removed, @new_last_local_removed_id)
       end
     end
-
 
     @notes = @update[:notes]
     if @notes
@@ -353,14 +379,10 @@ class UpdateController < ApplicationController
       end
 
 
-    end
-
-
-
+      end
+    my_self = Person.find(@person)
     contacts = @update[:contacts]
     if contacts
-      my_self = Person.find(@person)
-
       news_contacts = contacts[:news]
       if news_contacts
         news_contacts.each do |nc|
@@ -377,19 +399,47 @@ class UpdateController < ApplicationController
               rejected.destroy
             end
           end
-          puts nc[:contact][:person_id]
-          puts nc[:contact][:pending_id]
-          puts nc[:contact][:rejected_id]
         end
       end
 
-      @traded = my_self.received_traded_contacts
-      @traded2 = my_self.sent_traded_contacts
-      @pending =  my_self.received_pending_requests
-      @asked = my_self.sent_pending_requests
-      @rejected = my_self.received_rejected_requests
-    end
+      asked_contacts = contacts[:asked]
+      if asked_contacts
+        asked_contacts.each do |ac|
+          if isContact(ac, @person) == 0
+            pending_contact = otherIsPending(@person, ac)
+            rejected_other = rejected_him(@person, ac)
+            if pending_contact.nil? || rejected_other.nil?
+              rejected_me = rejected_him(ac, @person)
+              if rejected_me.nil?
+                PendingContact.create(requester_id: @person, requested_id: ac)
+              end
+            else
+              pending_contact.destroy
+              rejected_other.destroy
+              TradedContact.create(requester_id: ac, requested_id: @person)
+            end
+          end
+        end
+      end
 
+      rejected_contact = contacts[:rejected]
+      if rejected_contact
+         rejected_contact.each do |rc|
+           ped = PendingContact.find(rc)
+           if ped
+             other_id = ped.requester_id
+             ped.destroy
+             RejectedContact.create(requester_id: other_id, requested_id: @person)
+           end
+         end
+      end
+
+    end
+    @traded = my_self.received_traded_contacts
+    @traded2 = my_self.sent_traded_contacts
+    @pending =  my_self.received_pending_requests
+    @asked = my_self.sent_pending_requests
+    @rejected = my_self.received_rejected_requests
     respond_to do |format|
       format.json {render :file => 'update/update', :content_type => 'application/json'}
     end
