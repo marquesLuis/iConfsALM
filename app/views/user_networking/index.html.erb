@@ -1,21 +1,18 @@
 <h1  class='centralized'>Networking</h1>
 
-<div class='centralized'>
+
+<div class='centralized inline'>
+  <%= button_to 'New', {:controller => "user_networking", :action => "new"}, :method => 'get' %></td>
   <div>
-    <form name='selection' action='/user_networking/show_selection' method='get' data-remote='true'>
-      <select name="selection">
+    <form name='selection' action='/user_networking/show_selection' method='get' data-remote='true' >
+      <select name="selection" onchange="changed_networking_selection(this);">
         <option value="0">All</option>
         <option value="-1">My Preferences</option>
         <% @areas_of_interest.each do |area| %>
             <option value=<%= area.id %>><%= area.name %></option>
         <% end %>
       </select>
-      <input type='submit' value='Show'>
     </form>
-  </div>
-  <div>
-    <%= link_to 'New', {:controller => "user_networking", :action => "new"} %></td>
-
   </div>
 </div>
 <%= render 'list' %>

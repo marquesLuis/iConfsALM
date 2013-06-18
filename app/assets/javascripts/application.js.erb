@@ -19,3 +19,10 @@
 function days_conference_lasts() {
     return <%= EventGroup.last_day.to_date.day - EventGroup.first_day.to_date.day + 1 %>;
 }
+
+function changed_networking_selection(item) {
+    $.get(
+            "/user_networking/show_selection",
+            {selection : item.options[item.selectedIndex].value}
+    );
+}

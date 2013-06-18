@@ -3,20 +3,37 @@
 
 
 
+<% found = false %>
 <ul>
   <% @per_area.each_with_index do |var, i| %>
-      <li>
-        <p><%= @areas_of_interest[i].name %></p>
-
-        <% if var.any? %>
+      <% if var.any? %>
+          <% found = true %>
+          <li>
+            <p><%= @areas_of_interest[i].name %></p>
             <ul>
-        <% end %>
-        <% var.each_with_index do |doc, j| %>
-            <li><b>Download:</b> <%= link_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id} %></li>
-        <% end %>
-        <% if var.any? %>
+              <% var.each_with_index do |doc, j| %>
+                  <li class="inline">
+                    <b><%= doc.title %></b> <%= button_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id} %>
+                  </li>
+              <% end %>
             </ul>
-        <% end %>
-      </li>
+          </li>
+      <% end %>
   <% end %>
+  <% if @no_area.any? %>
+      <% found = true %>
+      <p>Not associated with an area of interest:</p>
+      <ul>
+        <% @no_area.each do |doc| %>
+            <li class="inline">
+              <b><%= doc.title %></b> <%= button_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id} %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+
 </ul>
+
+<% if !found %>
+    <p>The organization hasn't added any documents.</p>
+<% end %>

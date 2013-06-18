@@ -1,7 +1,9 @@
 <div class='centralized'>
-  <%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"} %>
-  <%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"} %>
-<h1>Personalized Calendar</h1>
+  <div class="inline">
+    <%= button_to 'Show Personalized', {:controller => "user_program", :action => "index"}, :method => 'get' %>
+    <%= button_to 'Show Complete', {:controller => "user_program", :action => "show_complete"}, :method => 'get' %>
+  </div>
+  <h1>Personalized Calendar</h1>
 </div>
 <% if @events.any? %>
     <div id='calendar'></div>
@@ -70,5 +72,6 @@
     </script>
 <% else %>
     <p class="centralized">You have not added any events! Try viewing the complete program and add some.</p>
-    <p class="centralized">You can also get started <%= link_to "by clicking here.", {:controller => 'user_program', :action => 'create_suggested'} %></p>
+    <p class="centralized">You can also get
+      started <%= link_to "by clicking here.", {:controller => 'user_program', :action => 'create_suggested'} %></p>
 <% end %>

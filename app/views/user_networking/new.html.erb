@@ -32,7 +32,9 @@
           </tr>
       <% end %>
     </table>
-    <div class="actions">
+    <div class="actions inline">
       <%= f.submit %>
     </div>
 <% end %>
+<%= button_to 'Back', {:controller => 'user_networking', :action => 'index'}, :method => 'get' %>
+

@@ -45,8 +45,10 @@ html =  "<div>"
           html += "<p><%= line %></p>"
       <% end %>
   <% end %>
+  html += "</div>"
 
   html += "<hr>"
+  html += "<div id='contact_div'>"
   <% if @request_accepted %>
       <% if @infos.any? %>
       html += "<div>"
@@ -87,8 +89,8 @@ html =  "<div>"
       <% end %>
          <% end %>
   html += "</div>"
-
   html += "<hr>"
+
 
   <% if @participant.id != current_registry.person_id %>
   html += "<div id='notes'>"

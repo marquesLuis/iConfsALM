@@ -24,11 +24,7 @@
     </tr>
 
   </table>
-  <%= form_tag("/user_search/search", :method => "get", :class => 'search') do %>
-      <%= label_tag(:q, "Search for:") %>
-      <%= text_field_tag(:q) %>
-      <%= submit_tag("Search") %>
-  <% end %>
+
 </div>
 <ul class="control">
   <li><%= current_registry.person.first_name %> <%= current_registry.person.last_name %> <%= image_tag("Config.png", :border => 0, :alt => '', :title => 'Config') %> </a>
@@ -38,4 +34,9 @@
     </ul>
   </li>
 </ul>
+<%= form_tag("/user_search/search", :method => "get", :class => 'search') do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+<% end %>
 <hr>

@@ -1,31 +1,84 @@
+<div>
+  <%= form_tag("/user_search/advanced_search", :method => "get") do %>
+      <p><b>People:</b>
+        <%= label_tag(:q, "Name:") %>
+        <%= check_box_tag('person_name', 1, false) %>
+        <%= label_tag(:q, "Affiliation:") %>
+        <%= check_box_tag('person_affiliation', 1, false) %>
+        <%= label_tag(:q, "email:") %>
+        <%= check_box_tag('person_mail', 1, false) %>
+      </p>
+
+      <p><b>Events:</b>
+        <%= label_tag(:q, "Name:") %>
+        <%= check_box_tag('event_name', 1, false) %>
+        <%= label_tag(:q, "Description:") %>
+        <%= check_box_tag('event_description', 1, false) %>
+      </p>
+
+      <p><b>Networking:</b>
+        <%= label_tag(:q, "Title:") %>
+        <%= check_box_tag('networking_title', 1, false) %>
+        <%= label_tag(:q, "Content:") %>
+        <%= check_box_tag('networking_content', 1, false) %>
+      </p>
+
+      <p><b>Notes:</b>
+        <%= label_tag(:q, "Notes:") %>
+        <%= check_box_tag('notes', 1, false) %>
+      </p>
+
+      <p>
+        <b><%= label_tag(:q, "Advanced Search:") %></b>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      </p>
+  <% end %>
+</div>
+
 <% if @search %>
     <h2>Search for: <%= @search %></h2>
     <% if @found %>
         <table id='search_results'>
           <tr>
             <% if @people.any? %>
-                <th><%= link_to "People ("<<@people.size.to_s<<")", {:controller => "user_search", :action => "people_search", :q => @search}, :remote => true %></th>
+                <% if @advanced %>
+                    <th><%= link_to "People ("<<@people.size.to_s<<")", {:controller => "user_search", :action => "people_search", :q => @search, :advanced => @advanced, :person_name => params[:person_name], :person_affiliation => params[:person_affiliation], :person_mail => params[:person_mail]}, :remote => true %></th>
+                <% else %>
+                    <th><%= link_to "People ("<<@people.size.to_s<<")", {:controller => "user_search", :action => "people_search", :q => @search}, :remote => true %></th>
+                <% end %>
             <% else %>
                 <th><p>No people found.</p></th>
             <% end %>
             <% if @events.any? %>
-                <th><%= link_to "Events ("<<@events.size.to_s<<")", {:controller => "user_search", :action => "events_search", :q => @search}, :remote => true %></th>
+                <% if @advanced %>
+                    <th><%= link_to "Events ("<<@events.size.to_s<<")", {:controller => "user_search", :action => "events_search", :q => @search, :advanced => @advanced, :event_name => params[:event_name], :event_description => params[:event_description]}, :remote => true %></th>
+                <% else %>
+                    <th><%= link_to "Events ("<<@events.size.to_s<<")", {:controller => "user_search", :action => "events_search", :q => @search}, :remote => true %></th>
+                <% end %>
             <% else %>
                 <th><p>No events found.</p></th>
             <% end %>
             <% if @networking.any? %>
-                <th><%= link_to "Networking ("<<@networking.size.to_s<<")", {:controller => "user_search", :action => "networking_search", :q => @search}, :remote => true %></th>
+                <% if @advanced %>
+                    <th><%= link_to "Networking ("<<@networking.size.to_s<<")", {:controller => "user_search", :action => "networking_search", :q => @search, :advanced => @advanced, :networking_title => params[:networking_title], :networking_content => params[:networking_content]}, :remote => true %></th>
+                <% else %>
+                    <th><%= link_to "Networking ("<<@networking.size.to_s<<")", {:controller => "user_search", :action => "networking_search", :q => @search}, :remote => true %></th>
+                <% end %>
             <% else %>
                 <th><p>No networking found.</p></th>
             <% end %>
             <% if @notes.any? %>
-                <th><%= link_to "Notes ("<<@notes.size.to_s<<")", {:controller => "user_search", :action => "notes_search", :q => @search}, :remote => true %></th>
+                <% if @advanced %>
+                    <th><%= link_to "Notes ("<<@notes.size.to_s<<")", {:controller => "user_search", :action => "notes_search", :q => @search, :advanced => @advanced, :notes => params[:notes]}, :remote => true %></th>
+                <% else %>
+                    <th><%= link_to "Notes ("<<@notes.size.to_s<<")", {:controller => "user_search", :action => "notes_search", :q => @search}, :remote => true %></th>
+                <% end %>
             <% else %>
                 <th><p>No notes found.</p></th>
             <% end %>
           </tr>
           <tr class='result'></tr>
-
         </table>
     <% else %>
         <p>Search returned no results! Better luck next time.</p>

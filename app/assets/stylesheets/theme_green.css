@@ -17,13 +17,13 @@
  *
  */
 
-#title a {
-    color: darkgreen;
-}
-
 #title {
     font-size: 4em;
     float: left;
+}
+
+#title a {
+    color: darkgreen;
 }
 
 .menu a {

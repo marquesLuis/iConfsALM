@@ -1,9 +1,12 @@
 <div class="centralized">
   <h1>Contacts</h1>
-  <%= link_to 'Contacts', :controller => 'user', :action => 'show_contacts' %>
-  <%= link_to 'Pending', :controller => 'user', :action => 'show_pending_contacts' %>
-  <%= link_to 'All Participants', :controller => 'user', :action => 'show_all_participants' %>
-  <%= link_to 'Rejected', :controller => 'user', :action => 'show_rejected_contacts' %>
+
+  <div class="inline">
+    <%= button_to 'Contacts', {:controller => 'user', :action => 'show_contacts'}, :method => 'get' %>
+    <%= button_to 'Pending ('<<@pending_amount.to_s<<')', {:controller => 'user', :action => 'show_pending_contacts'}, :method => 'get' %>
+    <%= button_to 'All Participants', {:controller => 'user', :action => 'show_all_participants'}, :method => 'get' %>
+    <%= button_to 'Rejected', {:controller => 'user', :action => 'show_rejected_contacts'}, :method => 'get' %>
+  </div>
 </div>
 
 <% if @contacts.any? %>
@@ -23,7 +26,7 @@
                   <% else %>
                       <img src='/user/get_profile_image?name=<%= contact.photo %>' alt='<%= contact.photo %>' class='person_thumbnail'>
                   <% end %>
-                </td >
+                </td>
                 <td class="bottom_border"><%= link_to contact.full_name, {:controller => "user", :action => "show_participant", :id => contact.id, :remote => true}, :class => "Item-Text" %></td>
 
               </tr>
@@ -33,7 +36,7 @@
       <td id='profile'></td>
     </table>
     <%= will_paginate @contacts %>
-    <%= link_to 'Export', {:controller => "user_contacts", :action => 'export'} %></td>
+    <%= button_to 'Export', {:controller => "user_contacts", :action => 'export'}, :method => 'get' %></td>
 <% else %>
     <p class="centralized">You have no contacts!</p>
 <% end %>

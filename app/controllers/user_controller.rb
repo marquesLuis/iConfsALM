@@ -75,6 +75,9 @@ class UserController < ApplicationController
 
   def show_contacts
     @self = current_registry.person
+
+    @pending_amount = PendingContact.where('requested_id = ?', @self.id).count
+
     contacts1 = @self.received_traded_contacts.pluck(:requester_id)
     contacts2 = @self.sent_traded_contacts.pluck(:requested_id)
 
@@ -83,6 +86,7 @@ class UserController < ApplicationController
 
   def show_pending_contacts
     @self = current_registry.person
+    @pending_amount = PendingContact.where('requested_id = ?', @self.id).count
     @to_accept = PendingContact.where('requested_id = ?', @self.id).paginate(:page => params[:page], :per_page => 6)
     pending = PendingContact.where('requester_id = ?', @self.id).pluck(:requested_id)
     rejected = RejectedContact.where('requester_id = ?', @self.id).pluck(:requested_id)
@@ -90,11 +94,13 @@ class UserController < ApplicationController
   end
 
   def show_rejected_contacts
+    @pending_amount = PendingContact.where('requested_id = ?', current_registry.person_id).count
     @rejected = RejectedContact.where('requested_id = ?', current_registry.person.id).paginate(:page => params[:page], :per_page => 6)
   end
 
   def show_all_participants
     @self = current_registry.person
+    @pending_amount = PendingContact.where('requested_id = ?', @self.id).count
     @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
     if params[:id]
       @participant = Person.find(params[:id]);
@@ -154,6 +160,12 @@ class UserController < ApplicationController
       @per_area.append(area.get_documents)
     end
 
+    indexes = []
+    @per_area.each do |per_area|
+      indexes |= per_area.map { |a| a.id }
+    end
+
+    @no_area = Document.where('id NOT IN (?)', indexes);
   end
 
 
@@ -164,4 +176,5 @@ class UserController < ApplicationController
   def get_location_image
     send_file(Rails.root.join('app', 'assets', 'locations', params[:name]))
   end
+
 end

@@ -21,23 +21,119 @@ class UserSearchController < ApplicationController
 
   def people_search
     @like = '%'+params[:q]+'%'
-    @people = Person.where("affiliation like ? OR email like ? OR first_name like ? OR last_name like ? OR first_name || ' ' || last_name like ?", @like, @like, @like, @like, @like).paginate(:page => params[:page], :per_page => 6)
+    if params[:advanced]
+      @people = []
+      if params[:person_name]=='1'
+        @people |= @people = Person.where("first_name || ' ' || last_name like ?", @like)
+      end
+      if params[:person_affiliation]=='1'
+        @people |= @people = Person.where("affiliation like ?", @like)
+      end
+      if params[:person_mail]=='1'
+        @people |= @people = Person.where("email like ?", @like)
+      end
+      @people = @people.paginate(:page => params[:page], :per_page => 6)
+    else
+      @people = Person.where("affiliation like ? OR email like ? OR first_name like ? OR last_name like ? OR first_name || ' ' || last_name like ?", @like, @like, @like, @like, @like).paginate(:page => params[:page], :per_page => 6)
+    end
   end
 
   def events_search
     @like = '%'+params[:q]+'%'
-    @events = Event.where("title like ?", @like).paginate(:page => params[:page], :per_page => 6)
+    if params[:advanced]
+      @events = []
+      if params[:event_name]=='1'
+        @events |= Event.where("title like ?", @like)
+      end
+      if params[:event_description]=='1'
+        @events |= Event.where("description like ?", @like)
+      end
+      @events = @events.paginate(:page => params[:page], :per_page => 6)
+    else
+      @events = Event.where("title like ?", @like).paginate(:page => params[:page], :per_page => 6)
+    end
   end
 
   def networking_search
     @like = '%'+params[:q]+'%'
-    @networking = Networking.where("title like ?", @like).paginate(:page => params[:page], :per_page => 6)
+    if params[:advanced]
+      @networking = []
+      if params[:networking_title]=='1'
+        @networking |= Networking.where("title like ?", @like)
+      end
+      if params[:networking_content]=='1'
+        @networking |= Networking.where("content like ?", @like)
+      end
+      @networking = @networking.paginate(:page => params[:page], :per_page => 6)
+    else
+      @networking = Networking.where("title like ?", @like).paginate(:page => params[:page], :per_page => 6)
 
+    end
   end
 
   def notes_search
     @like = '%'+params[:q]+'%'
-    @notes = Note.where("content like ?", @like).paginate(:page => params[:page], :per_page => 6)
+    if params[:advanced]
+      @notes = []
+      if params[:notes]=='1'
+        @notes |= Note.where("content like ?", @like)
+      end
+      @notes = @notes.paginate(:page => params[:page], :per_page => 6)
+    else
+      @notes = Note.where("content like ?", @like).paginate(:page => params[:page], :per_page => 6)
 
+    end
+  end
+
+
+  def advanced_search
+    @advanced = true
+    @search = params[:q]
+    if @search.length < 3
+      @search=nil
+    else
+      @like = '%'+params[:q]+'%'
+      @people = []
+
+      @events = []
+
+      @networking = []
+
+      @notes = []
+
+      if params[:person_name]=='1'
+        @people |= @people = Person.where("first_name || ' ' || last_name like ?", @like)
+      end
+      if params[:person_affiliation]=='1'
+        @people |= @people = Person.where("affiliation like ?", @like)
+      end
+      if params[:person_mail]=='1'
+        @people |= @people = Person.where("email like ?", @like)
+      end
+
+      if params[:event_name]=='1'
+        @events |= Event.where("title like ?", @like)
+      end
+      if params[:event_description]=='1'
+        @events |= Event.where("description like ?", @like)
+      end
+
+      if params[:networking_title]=='1'
+        @networking |= Networking.where("title like ?", @like)
+      end
+      if params[:networking_content]=='1'
+        @networking |= Networking.where("content like ?", @like)
+      end
+
+      if params[:notes]=='1'
+        @notes |= Note.where("content like ?", @like)
+      end
+
+      @found = (@notes.any? or @networking.any? or @events.any? or @people.any?)
+    end
+
+    respond_to do |format|
+      format.html { render :search }
+    end
   end
 end

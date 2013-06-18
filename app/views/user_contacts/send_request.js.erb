@@ -1,1 +1,3 @@
-$("#send_request_button").fadeOut()
+$("#send_request_button").fadeOut("slow", function () {
+    $("#contact_div").append('Contact request sent.')
+})

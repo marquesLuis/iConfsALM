@@ -16,19 +16,20 @@
  *=require fullcalendar.print.css
  *
  */
-#title a {
-    color: #A65A00;
-}
 
 #title {
     font-size: 4em;
     float: left;
 }
 
+#title a {
+    color: #A65A00;
+}
 .menu a {
     color: #A65A00;
     margin: 0 auto;
 }
+
 
 .menu h1 {
     color: #A65A00;
@@ -54,14 +55,10 @@ body {
     width: 100px;
 }
 
-.body a {
-    color: #000000;
-}
-
-
 .border {
     border: 1px solid black;
 }
+
 .bottom_border {
     border-bottom: 1px solid goldenrod;
 }

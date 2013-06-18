@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  get "user_search/advanced_search"
+
   get "people/renounce_access"
 
   get "locations/get_location_image"
@@ -48,7 +50,7 @@ IConfs::Application.routes.draw do
 
   get "notes/new_on_event"
 
-  get "user/download_document"
+  post "user/download_document"
 
   get "user_program/show_event"
 
@@ -124,6 +126,7 @@ IConfs::Application.routes.draw do
 
   post "user/feedback"
 
+  post "user/organization"
   get "user/organization"
 
   get "user/maps"
