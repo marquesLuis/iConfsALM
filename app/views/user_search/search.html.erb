@@ -2,30 +2,30 @@
   <%= form_tag("/user_search/advanced_search", :method => "get") do %>
       <p><b>People:</b>
         <%= label_tag(:q, "Name:") %>
-        <%= check_box_tag('person_name', 1, false) %>
+        <%= check_box_tag('person_name', 1, params[:person_name]) %>
         <%= label_tag(:q, "Affiliation:") %>
-        <%= check_box_tag('person_affiliation', 1, false) %>
+        <%= check_box_tag('person_affiliation', 1, params[:person_affiliation]) %>
         <%= label_tag(:q, "email:") %>
-        <%= check_box_tag('person_mail', 1, false) %>
+        <%= check_box_tag('person_mail', 1, params[:person_mail]) %>
       </p>
 
       <p><b>Events:</b>
         <%= label_tag(:q, "Name:") %>
-        <%= check_box_tag('event_name', 1, false) %>
+        <%= check_box_tag('event_name', 1, params[:event_name]) %>
         <%= label_tag(:q, "Description:") %>
-        <%= check_box_tag('event_description', 1, false) %>
+        <%= check_box_tag('event_description', 1, params[:event_description]) %>
       </p>
 
       <p><b>Networking:</b>
         <%= label_tag(:q, "Title:") %>
-        <%= check_box_tag('networking_title', 1, false) %>
+        <%= check_box_tag('networking_title', 1, params[:networking_title]) %>
         <%= label_tag(:q, "Content:") %>
-        <%= check_box_tag('networking_content', 1, false) %>
+        <%= check_box_tag('networking_content', 1, params[:networking_content]) %>
       </p>
 
       <p><b>Notes:</b>
         <%= label_tag(:q, "Notes:") %>
-        <%= check_box_tag('notes', 1, false) %>
+        <%= check_box_tag('notes', 1, params[:notes]) %>
       </p>
 
       <p>

@@ -6,21 +6,21 @@ class UserSearchController < ApplicationController
     if @search.length < 3
       @search=nil
     else
-      @like = '%'+params[:q]+'%'
+      @like = '%'+params[:q].gsub(' ', '%')+'%'
       @people = Person.where("affiliation like ? OR email like ? OR first_name like ? OR last_name like ? OR first_name || ' ' || last_name like ?", @like, @like, @like, @like, @like)
 
       @events = Event.where("title like ?", @like)
 
       @networking = Networking.where("title like ?", @like)
 
-      @notes = Note.where("content like ?", @like)
+      @notes = Note.where("content like ? AND person_id like ?", @like, current_registry.person_id)
 
       @found = (@notes.any? or @networking.any? or @events.any? or @people.any?)
     end
   end
 
   def people_search
-    @like = '%'+params[:q]+'%'
+    @like = '%'+params[:q].gsub(' ', '%')+'%'
     if params[:advanced]
       @people = []
       if params[:person_name]=='1'
@@ -39,7 +39,7 @@ class UserSearchController < ApplicationController
   end
 
   def events_search
-    @like = '%'+params[:q]+'%'
+    @like = '%'+params[:q].gsub(' ', '%')+'%'
     if params[:advanced]
       @events = []
       if params[:event_name]=='1'
@@ -55,7 +55,7 @@ class UserSearchController < ApplicationController
   end
 
   def networking_search
-    @like = '%'+params[:q]+'%'
+    @like = '%'+params[:q].gsub(' ', '%')+'%'
     if params[:advanced]
       @networking = []
       if params[:networking_title]=='1'
@@ -72,7 +72,7 @@ class UserSearchController < ApplicationController
   end
 
   def notes_search
-    @like = '%'+params[:q]+'%'
+    @like = '%'+params[:q].gsub(' ', '%')+'%'
     if params[:advanced]
       @notes = []
       if params[:notes]=='1'
@@ -80,7 +80,7 @@ class UserSearchController < ApplicationController
       end
       @notes = @notes.paginate(:page => params[:page], :per_page => 6)
     else
-      @notes = Note.where("content like ?", @like).paginate(:page => params[:page], :per_page => 6)
+      @notes = Note.where("content like ? AND person_id like ?", @like, current_registry.person_id).paginate(:page => params[:page], :per_page => 6)
 
     end
   end
@@ -92,7 +92,7 @@ class UserSearchController < ApplicationController
     if @search.length < 3
       @search=nil
     else
-      @like = '%'+params[:q]+'%'
+      @like = '%'+params[:q].gsub(' ', '%')+'%'
       @people = []
 
       @events = []
@@ -126,7 +126,7 @@ class UserSearchController < ApplicationController
       end
 
       if params[:notes]=='1'
-        @notes |= Note.where("content like ?", @like)
+        @notes |=  Note.where("content like ? AND person_id like ?", @like, current_registry.person_id)
       end
 
       @found = (@notes.any? or @networking.any? or @events.any? or @people.any?)
