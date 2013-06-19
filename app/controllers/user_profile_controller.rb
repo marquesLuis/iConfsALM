@@ -1,7 +1,9 @@
 class UserProfileController < ApplicationController
   before_filter :authenticate_registry!
+
   def show
     @person=current_registry.person
+    @selected=@person.theme
     @interests = PersonInterest.where(:person_id => current_registry.person_id)
 
     #seguinte é necessario para por checkboxes a true.
@@ -33,13 +35,13 @@ class UserProfileController < ApplicationController
     if params[:upload]
       name = @person.email + params[:upload].original_filename
 
-      directory = Rails.root.join('app','assets','people');
+      directory = Rails.root.join('app', 'assets', 'people');
       path = File.join(directory, name)
 
       File.open(path, 'wb') { |f| f.write(params[:upload].read) }
       @person.update_attribute(:photo, name)
     else
-      directory = Rails.root.join('app','assets','documents');
+      directory = Rails.root.join('app', 'assets', 'people');
       path = File.join(directory, @person.photo)
       File.delete(path)
       @person.update_attribute(:photo, nil)
@@ -51,14 +53,14 @@ class UserProfileController < ApplicationController
   def update_interests
     current_registry.person.touch
     PersonInterest.where(:person_id => current_registry.person.id).destroy_all
-      params[:interests].each do |interest|
-        pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)
-        pi.save
-      end
+    params[:interests].each do |interest|
+      pi = PersonInterest.new(:person_id => current_registry.person.id, :area_of_interest_id => interest)
+      pi.save
+    end
 
-      respond_to do |format|
-        format.js # update_interests.js.erb
-      end
+    respond_to do |format|
+      format.js # update_interests.js.erb
+    end
   end
 
   def update_biography
@@ -73,4 +75,19 @@ class UserProfileController < ApplicationController
     end
   end
 
+  def update
+    p = current_registry.person
+    p.touch
+    PersonInterest.where(:person_id => p.id).destroy_all
+    params[:interests].each do |interest|
+      pi = PersonInterest.new(:person_id => p.id, :area_of_interest_id => interest)
+      pi.save
+    end
+
+    p.update_attribute(:biography, params[:biography])
+
+    respond_to do |format|
+      format.js # update_interests.js.erb
+    end
+  end
 end

@@ -1,8 +1,8 @@
 <div class='centralized '>
   <div class="inline">
 
-    <%= button_to 'Feedback', {:controller => 'user', :action => 'organization'}, :method => 'get' %>
-    <%= button_to 'Message', {:controller => 'user', :action => 'organization', :orgmessage => true}, :method => 'post' %>
+    <%= link_to 'Feedback', {:controller => 'user', :action => 'organization'}, :method => 'get', :class=>'classname' %>
+    <%= link_to 'Message', {:controller => 'user', :action => 'organization', :orgmessage => true}, :method => 'post', :class=>'classname' %>
   </div>
 
   <% if @orgmessage %>

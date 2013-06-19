@@ -1,10 +1,10 @@
 <div class="centralized">
   <h1>Rejected Contacts</h1>
   <div class="inline">
-    <%= button_to 'Contacts', {:controller => 'user', :action => 'show_contacts'}, :method => 'get' %>
-    <%= button_to 'Pending ('<<@pending_amount.to_s<<')', {:controller => 'user', :action => 'show_pending_contacts'}, :method => 'get' %>
-    <%= button_to 'All Participants', {:controller => 'user', :action => 'show_all_participants'}, :method => 'get' %>
-    <%= button_to 'Rejected', {:controller => 'user', :action => 'show_rejected_contacts'}, :method => 'get' %>
+    <%= link_to 'Contacts', {:controller => 'user', :action => 'show_contacts'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'Pending ('<<@pending_amount.to_s<<')', {:controller => 'user', :action => 'show_pending_contacts'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'All Participants', {:controller => 'user', :action => 'show_all_participants'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'Rejected', {:controller => 'user', :action => 'show_rejected_contacts'}, :method => 'get',:class => 'classname' %>
   </div>
 </div>
 
@@ -36,5 +36,5 @@
 
     <%= will_paginate @rejected %>
 <% else %>
-    <p class="centralized">You haven't rejected any contact request!</p>
+    <p class="centralized">You haven't rejected any contact requests!</p>
 <% end %>

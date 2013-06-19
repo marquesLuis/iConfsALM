@@ -1,7 +1,7 @@
 <div class='centralized'>
   <div class="inline">
-    <%= button_to 'Show Personalized', {:controller => "user_program", :action => "index"}, :method => 'get' %>
-    <%= button_to 'Show Complete', {:controller => "user_program", :action => "show_complete"}, :method => 'get' %>
+    <%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"},:class => 'classname', :method => 'get' %>
+    <%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"},:class => 'classname', :method => 'get' %>
   </div>
   <h1>Complete Calendar</h1>
 </div>

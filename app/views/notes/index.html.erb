@@ -30,17 +30,16 @@
                   Nothing.
               <% end %>
             </td>
-            <td class="limited_content limited_content_listed bottom_border right_border"><%= note.content %></td>
-            <td class="bottom_border"><%= link_to 'Show', note %></td>
-            <td class="bottom_border"><%= link_to 'Edit', edit_note_path(note) %></td>
-            <td class="bottom_border"><%= link_to 'Destroy', note, :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+            <td class="limited_content bottom_border right_border"><%= note.content %></td>
+            <td class="bottom_border"><%= link_to 'Edit', edit_note_path(note), :class => 'classname' %></td>
+            <td class="bottom_border"><%= link_to 'Delete', note, :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'classname' %></td>
           </tr>
       <% end %>
     </table>
-    <p class="centralized"><%= link_to 'Export', {:controller => "notes", :action => 'export'} %>  </p>
+    <p class="centralized"><%= link_to 'Export', {:controller => "notes", :action => 'export'}, :class => 'classname' %>  </p>
 
 <% else %>
     <p class="centralized">No notes yet!</p>
 <% end %>
 
-<p class="centralized"><%= link_to 'New Note', new_note_path %> </p>
+<p class="centralized"><%= link_to 'New Note', new_note_path, :class => 'classname' %> </p>

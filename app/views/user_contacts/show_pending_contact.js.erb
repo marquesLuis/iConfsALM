@@ -6,18 +6,18 @@ html += "<img src='/images/defaultPerson150.jpg' alt='No Photo'>"
 html += "<img src='/user/get_profile_image?name=<%= @participant.photo %>' alt='Photo'>"
 <% end %>
 
-html += "<p>Name: <%= @participant.full_name %></p> "
+html += "<p><b>Name:</b> <%= @participant.full_name %></p> "
 
-html += "<p>Affiliation: <%= @participant.affiliation %> </p> "
+html += "<p><b>Affiliation:</b> <%= @participant.affiliation %> </p> "
 
-html += "<p>Email: <%= @participant.email %> </p> "
+html += "<p><b>Email:</b> <%= @participant.email %> </p> "
 
-html += "<div class='border'>"
+html += "<div class=''>"
 <% if @interests.any? %>
 
 <% len = @interests.length %>
 
-html += "<p>Interests: </p>"
+html += "<p><b>Interests:</b> </p>"
 html += "<p>"
 <% @interests.each_with_index do |interest, index| %>
         <% if index+1 == len   %>
@@ -34,11 +34,11 @@ html += "<p><%= @participant.first_name %> has not added any interests yet! </p>
 
 html += "</div>"
 
-html += "<div class='border'>"
+html += "<div class=''>"
 <% if @participant.biography.nil? %>
 html += "<p><%= @participant.first_name %> has not added a personal description yet! </p> "
 <% else %>
-html += "<p>Personal Description:</p>"
+html += "<p><b>Personal Description:</b></p>"
 <% @participant.biography.split(/\r\n/).each do |line| %>
 html += "<p><%= line %></p>"
 <% end %>
@@ -46,13 +46,15 @@ html += "<p><%= line %></p>"
 
 html += "</div>"
 
+html += "<div class='inline'>"
 html += "<form name='input' id = 'send_accept_button' action='/user_contacts/accept_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
-html += "<input type='submit' value='Accept'>"
+html += "<input type='submit' value='Accept' class='classname'>"
 html += "</form>"
 
 html += "<form name='input' id = 'send_reject_button' action='/user_contacts/reject_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
-html += "<input type='submit' value='Reject'>"
+html += "<input type='submit' value='Reject' class='classname'>"
 html += "</form>"
+html += "</div>"
 html += "</div>"
 
 $("#profile_received").fadeOut("slow", function() { $(this).empty().append(html).fadeIn(); })

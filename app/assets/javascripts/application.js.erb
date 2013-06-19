@@ -23,6 +23,26 @@ function days_conference_lasts() {
 function changed_networking_selection(item) {
     $.get(
             "/user_networking/show_selection",
-            {selection : item.options[item.selectedIndex].value}
+            {selection: item.options[item.selectedIndex].value}
     );
+}
+
+function changeTheme() {
+
+
+    var test = document.getElementsByName("theme");
+
+    for (var elem in test) {
+        if (test[elem].checked) {
+            $.ajax({
+                type: 'POST',
+                url: "/user_profile/update_theme",
+                success: function (result) {
+                    window.location.reload(true);
+                },
+                data: {theme: test[elem].value},
+                async: true
+            });
+        }
+    }
 }

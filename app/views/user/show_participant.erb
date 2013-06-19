@@ -12,7 +12,50 @@ html =  "<div>"
 
   html += "<p><b>Email:</b> <%= @participant.email %> </p> "
 
+  html += "<div id='contact_div'>"
+  <% if @request_accepted %>
+      <% if @infos.any? %>
+          html += "<div>"
+  html += "<p>Person's contacts:</p>"
+
+  html += "<table>"
+  html += "<tr>"
+  html += "<th>Type</th>"
+  html += "<th>Value</th>"
+  html += "</tr>"
+
+  <% @infos.each do |info| %>
+      html += "<tr>"
+  html += "<td><%= info.info_type %></td>"
+  html += "<td><%= info.value %></td>"
+  html += "</tr>"
+  <% end %>
+
+  html += "</table>"
+
+  html += "</div>" <% end %>
+  <% else if @request_sent %>
+          html += "<p>Contact request is active!</p>"
+      <% else if @request_rejected %>
+              html += "<p>You rejected this contact!</p>"
+              html += "<form name='input' action='/user_contacts/cancel_rejection?id=<%= @participant.id %>' method='post' data-remote='true'>"
+  html += "<input type='submit' value='Add as contact' class='classname'>"
+  html += "</form> "
+
+          <% else %>
+
+              <% if @participant.id != current_registry.person_id %>
+                  html += "<form name='input' id='send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
+  html += "<input type='submit' value='Add as contact' class='classname'>"
+  html += "</form> "
+              <% end %>
+          <% end %>
+      <% end %>
+  <% end %>
+  html += "</div>"
+
   html += "<div>"
+
   html += "<hr>"
   <% if @interests.any? %>
 
@@ -48,48 +91,8 @@ html =  "<div>"
   html += "</div>"
 
   html += "<hr>"
-  html += "<div id='contact_div'>"
-  <% if @request_accepted %>
-      <% if @infos.any? %>
-      html += "<div>"
-      html += "<p>Person's contacts:</p>"
 
-      html += "<table>"
-      html += "<tr>"
-      html += "<th>Type</th>"
-      html += "<th>Value</th>"
-      html += "</tr>"
 
-        <% @infos.each do |info| %>
-          html += "<tr>"
-          html += "<td><%= info.info_type %></td>"
-          html += "<td><%= info.value %></td>"
-          html += "</tr>"
-        <% end %>
-
-      html += "</table>"
-
-      html += "</div>" <% end %>
-  <% else if @request_sent %>
-      html += "<p>Contact request is active!</p>"
-  <% else if @request_rejected %>
-      html += "<p>You rejected this contact!</p>"
-      html += "<form name='input' action='/user_contacts/cancel_rejection?id=<%= @participant.id %>' method='post' data-remote='true'>"
-      html += "<input type='submit' value='Add as contact'>"
-      html += "</form> "
-
-  <% else %>
-
-              <% if @participant.id != current_registry.person_id %>
-      html += "<form name='input' id='send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>"
-      html += "<input type='submit' value='Add as contact'>"
-      html += "</form> "
-          <% end %>
-      <% end %>
-      <% end %>
-         <% end %>
-  html += "</div>"
-  html += "<hr>"
 
 
   <% if @participant.id != current_registry.person_id %>

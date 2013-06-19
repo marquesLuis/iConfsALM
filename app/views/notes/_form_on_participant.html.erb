@@ -1,12 +1,15 @@
 <%= form_tag({:controller => "notes", :action => "create_on_participant"}, :method => 'post', :class => 'centralized') do %>
     <div class="field">
-      <%= text_area_tag(:content, '', :size => "24x6") %>
+      <%= text_area_tag(:content, '', :size => "128x12") %>
     </div>
     <div class="field">
-      <%= text_field_tag(:participant_id,{}, :value => @participant.id, :type=>'hidden' ) %>
+      <%= text_field_tag(:participant_id, {}, :value => @participant.id, :type => 'hidden') %>
     </div>
-    <div class="actions">
-      <%= submit_tag("Create") %>
+    <div class="inline">
+      <%= submit_tag("Save", :class => 'classname') %>
+      <p class="centralized">
+        <%= link_to 'Back', {:controller => "user", :action => "show_all_participants", :id => @participant.id}, :class => 'classname' %>
+      </p>
     </div>
 
 <% end %>

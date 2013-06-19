@@ -2,5 +2,4 @@
 
 <%= render 'form_on_event' %>
 
-<p class="centralized"><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => @note} %>
-  <%= link_to 'Back', '/user_program/show_event/?id='+@event.id.to_s %></p>
+<p class="centralized"><%= link_to "Show", {:controller => "notes", :action => "show_on_event", :note => @note, :class => 'classname'} %>

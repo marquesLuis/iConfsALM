@@ -23,6 +23,9 @@
 .menu a {
     text-decoration: none;
 }
+a {
+    color: black;
+}
 
 html, body {
     margin: 0;
@@ -131,13 +134,13 @@ hr {
 }
 
 .person_image {
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 300px;  /* TODO */
+    max-height: 300px;  /* TODO  */
 }
 
 .person_thumbnail {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 100px;  /* TODO  */
+    max-height: 100px; /* TODO  */
 }
 
 #location_image {
@@ -145,7 +148,7 @@ hr {
 }
 
 #location_image img {
-    max-height: 1000px;
+    max-height: 1000px;  /* TODO  */
     max-width: 90%;
 }
 
@@ -166,7 +169,9 @@ hr {
     width: 95%;
 }
 
+
 .limited_content {
+    max-width: 200px;
     overflow: hidden;
     white-space: nowrap;
     height: 3em;
@@ -174,28 +179,16 @@ hr {
     text-overflow: ellipsis;
 }
 
+
+.limited_note {
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .inline > * {
     display: inline-block;
-}
-
-.body a:link {
-    color: #000000;
-}
-
-.body a:visited {
-    color: #000000;
-}
-
-.body a:hover {
-    color: #000000;
-}
-
-.body a:hover {
-    color: #000000;
-}
-
-a:active {
-    color: #000000;
 }
 
 .menu a {
@@ -203,6 +196,7 @@ a:active {
 }
 
 .p90 {
+
     width: 90%;
     margin: auto;
 }
@@ -215,3 +209,4 @@ a:active {
 .p100 {
     width: 100%;
 }
+

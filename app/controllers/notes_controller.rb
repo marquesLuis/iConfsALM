@@ -227,7 +227,11 @@ class NotesController < ApplicationController
         format.html { redirect_to '/user/show_all_participants/?id='+params[:participant_id], notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
-        format.html { render action: "new" }
+
+        @note = Note.new
+        @participant = Person.find(params[:participant_id])
+        flash[:notice] = "You can't save empty notes."
+        format.html { render action: "new_on_participant"}
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
@@ -293,7 +297,10 @@ class NotesController < ApplicationController
         format.html { redirect_to '/user_program/show_event?id='+params[:event_id], notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
-        format.html { render action: "new" }
+        @note = Note.new
+        @event = Event.find(params[:event_id])
+        flash[:notice] = "You can't save empty notes."
+        format.html { render action: "new_on_event"}
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end

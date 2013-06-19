@@ -14,8 +14,7 @@ html += "<tr class='result'>"
         <% end %>
     html += '</td>'
     html += '<td  colspan="42">'
-        html += "<p><%= escape_javascript(link_to note.content,  {:controller => "notes", :action => "show", :id => note.id}) %></p>"
-
+        html += "<p class = 'limited_note'><%= escape_javascript(link_to note.content,  {:controller => "notes", :action => "show", :id => note.id}) %></p>"
     html += '</td>'
 
 html += '</tr>'

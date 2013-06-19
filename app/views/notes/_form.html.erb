@@ -14,7 +14,7 @@
     <div class="field">
       <%= f.label :content %>
       <br/>
-      <%= f.text_area :content %>
+      <%= f.text_area( :content, :size => "128x12") %>
     </div>
 
     <div class="field">
@@ -41,7 +41,8 @@
       <% end %>
     </div>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div class="actions inline">
+      <%= f.submit('Save', :class => 'classname')%>
+    <%= link_to 'Back', notes_path, :class => 'classname' %>
     </div>
 <% end %>

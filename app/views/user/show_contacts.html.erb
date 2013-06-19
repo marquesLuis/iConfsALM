@@ -2,10 +2,10 @@
   <h1>Contacts</h1>
 
   <div class="inline">
-    <%= button_to 'Contacts', {:controller => 'user', :action => 'show_contacts'}, :method => 'get' %>
-    <%= button_to 'Pending ('<<@pending_amount.to_s<<')', {:controller => 'user', :action => 'show_pending_contacts'}, :method => 'get' %>
-    <%= button_to 'All Participants', {:controller => 'user', :action => 'show_all_participants'}, :method => 'get' %>
-    <%= button_to 'Rejected', {:controller => 'user', :action => 'show_rejected_contacts'}, :method => 'get' %>
+    <%= link_to 'Contacts', {:controller => 'user', :action => 'show_contacts'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'Pending ('<<@pending_amount.to_s<<')', {:controller => 'user', :action => 'show_pending_contacts'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'All Participants', {:controller => 'user', :action => 'show_all_participants'}, :method => 'get',:class => 'classname' %>
+    <%= link_to 'Rejected', {:controller => 'user', :action => 'show_rejected_contacts'}, :method => 'get',:class => 'classname' %>
   </div>
 </div>
 
@@ -36,7 +36,7 @@
       <td id='profile'></td>
     </table>
     <%= will_paginate @contacts %>
-    <%= button_to 'Export', {:controller => "user_contacts", :action => 'export'}, :method => 'get' %></td>
+    <%= link_to 'Export', {:controller => "user_contacts", :action => 'export'}, :method => 'get',:class => 'classname'  %></td>
 <% else %>
     <p class="centralized">You have no contacts!</p>
 <% end %>

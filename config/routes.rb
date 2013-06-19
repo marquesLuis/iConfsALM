@@ -1,5 +1,7 @@
 IConfs::Application.routes.draw do
 
+  post "user_profile/update"
+
   get "user_search/advanced_search"
 
   get "people/renounce_access"
@@ -50,7 +52,7 @@ IConfs::Application.routes.draw do
 
   get "notes/new_on_event"
 
-  post "user/download_document"
+  get "user/download_document"
 
   get "user_program/show_event"
 

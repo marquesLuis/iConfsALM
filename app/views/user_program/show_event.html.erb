@@ -4,6 +4,14 @@
   <p><b>Begin time:</b> <%= @event.begin.strftime("%I:%M") %></p>
 
   <p><b>End time:</b> <%= @event.end.strftime("%I:%M") %></p>
+
+  <div id="event_buttons" class='inline centralized'>
+    <% if @attending %>
+        <%= link_to 'Remove from personal program', {:controller => "user_program", :action => "remove_event", :id => @event.id, :internal => true}, :method => 'post', :class => 'classname', :remote => true %>
+    <% else %>
+        <%= link_to 'Add to personal program', {:controller => "user_program", :action => "add_event", :id => @event.id, :internal => true}, :method => 'post', :class => 'classname', :remote => true %>
+    <% end %>
+  </div>
 </div>
 
 <h1><%= @event.event_kind %> - <%= @event.title %></h1>
@@ -44,7 +52,7 @@
     <div class='right'>
       <p><b>Documents:</b></p>
       <% @event.documents.each do |doc| %>
-          <%= button_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id} %></p>
+          <%= link_to doc.title, {:controller => "user", :action => "download_document", :document_id => doc.id}, :class => 'classname' %></p>
       <% end %>
     </div>
 <% end %>
@@ -69,22 +77,14 @@
       <p>There are no areas of interest associated with this event.</p>
   <% end %>
 </div>
+
 <hr>
 <div id='notes' class='centralized'>
   <%= render(:template => 'notes/index_on_event', :event_id => @event.id) %>
 </div>
 <hr>
-<div id="event_buttons" class='inline centralized'>
-  <% if @attending %>
-      <%= button_to 'Remove from personal calendar', {:controller => "user_program", :action => "remove_event", :id => @event.id, :internal => true}, :remote => true %>
-  <% else %>
-      <%= button_to 'Add to personal calendar', {:controller => "user_program", :action => "add_event", :id => @event.id, :internal => true}, :remote => true %>
 
-  <% end %>
-</div>
-<hr>
 <div class='centralized'>
-  <p><%= link_to "Back to personal program", '/user_program/index/' %></p>
-
-  <p><%= link_to "Back to complete program", '/user_program/show_complete/' %></p>
+  <p><%= link_to "Back to personal program", '/user_program/index/', :class => 'classname' %>
+    <%= link_to "Back to complete program", '/user_program/show_complete/', :class => 'classname' %></p>
 </div>

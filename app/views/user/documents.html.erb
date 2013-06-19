@@ -13,7 +13,7 @@
             <ul>
               <% var.each_with_index do |doc, j| %>
                   <li class="inline">
-                    <b><%= doc.title %></b> <%= button_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id} %>
+                    <b><%= doc.title %></b> <%= link_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id}, :class=>'classname' %>
                   </li>
               <% end %>
             </ul>
@@ -26,7 +26,7 @@
       <ul>
         <% @no_area.each do |doc| %>
             <li class="inline">
-              <b><%= doc.title %></b> <%= button_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id} %>
+              <b><%= doc.title %></b> <%= link_to 'Download', {:controller => "user", :action => "download_document", :document_id => doc.id}, :class=>'classname' %>
             </li>
         <% end %>
       </ul>

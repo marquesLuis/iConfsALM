@@ -2,7 +2,7 @@
 
 
 <div class='centralized inline'>
-  <%= button_to 'New', {:controller => "user_networking", :action => "new"}, :method => 'get' %></td>
+  <%= link_to 'New', {:controller => "user_networking", :action => "new"}, :method => 'get',:class => 'classname' %></td>
   <div>
     <form name='selection' action='/user_networking/show_selection' method='get' data-remote='true' >
       <select name="selection" onchange="changed_networking_selection(this);">

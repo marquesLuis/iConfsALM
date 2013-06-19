@@ -10,9 +10,8 @@
       <% @notes.each do |note| %>
           <tr>
             <td class="limited_content p90"><%= note.content %></td>
-            <td class="p5"><%= link_to "Show", {:controller => "notes", :action => "show_on_participant", :note => note} %></td>
-            <td class="p5"><%= link_to "Edit", {:controller => "notes", :action => "edit_on_participant", :note => note} %></td>
-            <td class="p5"><%= link_to "Destroy", {:controller => "notes", :action => "destroy_on_participant", :note => note}, :method => 'post' %></td>
+            <td class="p5"><%= link_to "Edit", {:controller => "notes", :action => "edit_on_participant", :note => note}, :class => 'classname' %></td>
+            <td class="p5"><%= link_to "Delete", {:controller => "notes", :action => "destroy_on_participant", :note => note}, :method => 'post', :class => 'classname' %></td>
           </tr>
       <% end %>
 <% else %>
@@ -20,5 +19,5 @@
 <% end %>
 
 </table>
-<p><%= link_to "New Note", {:controller => "notes", :action => "new_on_participant", :participant_id => @participant.id} %></p>
+<p><%= link_to "New Note", {:controller => "notes", :action => "new_on_participant", :participant_id => @participant.id}, :class => 'classname' %></p>
 
