@@ -385,9 +385,10 @@ class UpdateController < ApplicationController
     if contacts
       news_contacts = contacts[:news]
       if news_contacts
+        @contacts_added = Array.new
         news_contacts.each do |nc|
           TradedContact.create(requester_id: nc[:contact][:person_id], requested_id: @person)
-
+          @contacts_added.push(nc[:contact][:person_id])
           if nc[:contact][:pending_id] != '0'
             pending = PendingContact.find(nc[:contact][:pending_id])
             if pending
@@ -404,7 +405,9 @@ class UpdateController < ApplicationController
 
       asked_contacts = contacts[:asked]
       if asked_contacts
+        @contacts_asked = Array.new
         asked_contacts.each do |ac|
+          @contacts_asked.push(ac)
           if isContact(ac, @person) == 0
             pending_contact = otherIsPending(@person, ac)
             rejected_other = rejected_him(@person, ac)
@@ -424,7 +427,9 @@ class UpdateController < ApplicationController
 
       rejected_contact = contacts[:rejected]
       if rejected_contact
+        @rejected_contacts = Array.new
          rejected_contact.each do |rc|
+           @rejected_contacts.push(rc)
            ped = PendingContact.find(rc)
            if ped
              other_id = ped.requester_id

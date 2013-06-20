@@ -340,6 +340,15 @@
     <% end %>
     <% if @traded2 &&(@traded.length>0 || @traded2.length>0 || @pending.length>0 || @asked.length>0 || @rejected.length>0)%>
     "contacts":{
+        <% if @contacts_added %>
+        "added" : [<% @contacts_added.each do |net| %><%= net %>,<% end %>],
+        <% end %>
+        <% if @contacts_asked %>
+        "asked_local" : [<% @contacts_asked.each do |net| %><%= net %>,<% end %>],
+        <% end %>
+        <% if @rejected_contacts %>
+        "rejected_local" : [<% @rejected_contacts.each do |net| %><%= net %>,<% end %>],
+        <% end %>
         <%if @traded.length>0 || @traded2.length>0 %>
         "contacts":[<% @traded.each do |net| %><%= net.requester_id %>,<% end %><% @traded2.each do |net| %><%= net.requested_id %>,<% end %>],
         <% end %>
