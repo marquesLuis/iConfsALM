@@ -61,17 +61,17 @@
             </tr>
             </table>
 
-
-            <hr>
-            <div class="field">
-              <p><b><%= label_tag('biography', 'Biography:') %></b></p>
-              <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
-            </div>
-            <div class="actions">
-              <%= submit_tag("Update", :class => 'classname') %>
-            </div>
-
         <% end %>
+
+        <hr>
+        <div class="field">
+          <p><b><%= label_tag('biography', 'Biography:') %></b></p>
+          <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
+        </div>
+        <div class="actions">
+          <%= submit_tag("Update", :class => 'classname') %>
+        </div>
+
 
         <hr>
         <div>
