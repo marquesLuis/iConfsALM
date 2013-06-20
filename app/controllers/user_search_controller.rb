@@ -3,11 +3,24 @@ class UserSearchController < ApplicationController
 
   def search
     @search = params[:q]
+
+    if params[:person_name].nil?
+      params[:person_name]=''
+      params[:person_affiliation]=''
+      params[:person_mail] =''
+      params[:event_name] =''
+      params[:event_description] =''
+      params[:networking_title] =''
+      params[:networking_content] =''
+      params[:notes] =''
+    end
+
+
     if @search.length < 3
       @search=nil
     else
       @like = '%'+params[:q].gsub(' ', '%')+'%'
-      @people = Person.where("affiliation like ? OR email like ? OR first_name like ? OR last_name like ? OR first_name || ' ' || last_name like ?", @like, @like, @like, @like, @like)
+      @people = Person.where("affiliation like ? OR email like ? OR first_name || last_name like ?", @like, @like, @like)
 
       @events = Event.where("title like ?", @like)
 
@@ -24,7 +37,7 @@ class UserSearchController < ApplicationController
     if params[:advanced]
       @people = []
       if params[:person_name]=='1'
-        @people |= @people = Person.where("first_name || ' ' || last_name like ?", @like)
+        @people |= @people = Person.where("first_name || last_name like ?", @like)
       end
       if params[:person_affiliation]=='1'
         @people |= @people = Person.where("affiliation like ?", @like)
@@ -34,7 +47,7 @@ class UserSearchController < ApplicationController
       end
       @people = @people.paginate(:page => params[:page], :per_page => 6)
     else
-      @people = Person.where("affiliation like ? OR email like ? OR first_name like ? OR last_name like ? OR first_name || ' ' || last_name like ?", @like, @like, @like, @like, @like).paginate(:page => params[:page], :per_page => 6)
+      @people = Person.where("affiliation like ? OR email like ? OR first_name || last_name like ?", @like, @like, @like).paginate(:page => params[:page], :per_page => 6)
     end
   end
 
@@ -102,7 +115,7 @@ class UserSearchController < ApplicationController
       @notes = []
 
       if params[:person_name]=='1'
-        @people |= @people = Person.where("first_name || ' ' || last_name like ?", @like)
+        @people |= @people = Person.where("first_name || last_name like ?", @like)
       end
       if params[:person_affiliation]=='1'
         @people |= @people = Person.where("affiliation like ?", @like)
@@ -126,7 +139,7 @@ class UserSearchController < ApplicationController
       end
 
       if params[:notes]=='1'
-        @notes |=  Note.where("content like ? AND person_id like ?", @like, current_registry.person_id)
+        @notes |= Note.where("content like ? AND person_id like ?", @like, current_registry.person_id)
       end
 
       @found = (@notes.any? or @networking.any? or @events.any? or @people.any?)
@@ -136,4 +149,5 @@ class UserSearchController < ApplicationController
       format.html { render :search }
     end
   end
+
 end

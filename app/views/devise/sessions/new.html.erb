@@ -4,23 +4,32 @@
 
   <div class='right menu'>
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Sign up", new_registration_path(resource_name) %>
-        <br/>
+        <%= link_to "Sign up", new_registration_path(resource_name), :class => 'classname2' %>
+
     <% end -%>
 
+
+    <br/>
+    <br/>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <div><%= f.label :email %>
-          <br/>
-          <%= f.email_field :email, :autofocus => true %></div>
+        <div>
 
-        <div><%= f.label :password %>
-          <br/>
-          <%= f.password_field :password %></div>
+          <%= f.email_field :email, :autofocus => true, :placeholder => ' email' %>
+        </div>
+        <div>
+
+
+          <%= f.password_field :password, :placeholder => ' password'  %>
+        </div>
         <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me, :checked => true %> <%= f.label :remember_me %></div>
+            <div>
+              <%= f.check_box :remember_me, :checked => true %> <%= f.label :remember_me %>
+            </div>
         <% end -%>
-
-        <div><%= f.submit "Sign in" %></div>
+        </br>
+        <div>
+          <%= f.submit("Sign in", :class => 'classname2') %>
+        </div>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
             <%= link_to "Forgot your password?", new_password_path(resource_name) %>
             <br/>

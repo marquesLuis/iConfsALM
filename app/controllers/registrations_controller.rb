@@ -19,6 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
     flash[:notice] = ""
     if params[:signup_code]
       @person = Person.where("signup_code = ?", params[:signup_code]).first
+      params[:registry][:email]=@person.email
       if @person
         build_resource(params[:registry])
         resource.person=@person

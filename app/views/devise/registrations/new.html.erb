@@ -17,14 +17,7 @@
             <br/>
             <%= text_field_tag(:signup_code, @code) %>
           </div>
-          <div><%= f.label :email %>
-            <br/>
-            <% if @mail %>
-                <%= f.email_field(:email, :value => @mail, :readonly => "readonly") %></div>
-            <% else %>
-                <%= f.email_field :email %></div>
 
-            <% end %>
             <div>
               <%= f.label :password %>
               <br/>
@@ -36,11 +29,11 @@
               <%= f.password_field :password_confirmation %>
             </div>
             <div>
-              <%= f.submit "Sign up" %></div>
+              <%= f.submit("Sign up", :class => 'classname2') %></div>
       <% end %>
 
       <%- if controller_name != 'sessions' %>
-          <%= link_to "Sign in", new_session_path(resource_name) %>
+          <%= link_to "Sign in", new_session_path(resource_name), :class => 'classname2' %>
           <br/>
       <% end -%>
 

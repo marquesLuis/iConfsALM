@@ -35,14 +35,14 @@
         <% if person.signup_code %>
             <td>Yes</td>
         <% else %>
-            <td>No <%= link_to 'Send Mail', {:controller => :people, :action => :send_sign_up_mail, :id => person.id} %></td>
+            <td>No <%= link_to 'Send Email', {:controller => :people, :action => :send_sign_up_mail, :id => person.id} %></td>
 
         <% end %>
         <td><%= person.photo %></td>
         <% if person.registry %>
             <td>Yes   <%= link_to 'Revoke Access', {:controller => :people, :action => :renounce_access, :id => person.id} %></td>
         <% else %>
-            <td>No  <%= link_to 'Resend Mail', {:controller => :people, :action => :send_sign_up_mail, :id => person.id} %></td>
+            <td>No  <%= link_to 'Resend Email', {:controller => :people, :action => :send_sign_up_mail, :id => person.id} %></td>
         <% end %>
 
         <td><%= person.theme %></td>

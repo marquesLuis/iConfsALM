@@ -30,7 +30,7 @@
 
       <p>
         <b><%= label_tag(:q, "Advanced Search:") %></b>
-        <%= text_field_tag(:q) %>
+        <%= text_field_tag(:q, '', :autofocus => true) %>
         <%= submit_tag("Search") %>
       </p>
   <% end %>

@@ -103,7 +103,34 @@ class UserController < ApplicationController
     @pending_amount = PendingContact.where('requested_id = ?', @self.id).count
     @participants = Person.where('id <> ?', @self.id).paginate(:page => params[:page], :per_page => 6).order(:last_name)
     if params[:id]
+      @person = current_registry.person
       @participant = Person.find(params[:id]);
+      @rejected = RejectedContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
+
+      @contact1 = TradedContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
+      @contact2 = TradedContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
+
+      @request_sent1 = PendingContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
+      @request_sent2 = PendingContact.where('requester_id = ? AND requested_id = ?', @participant.id, @person.id)
+      @request_sent3 = RejectedContact.where('requested_id = ? AND requester_id = ?', @participant.id, @person.id)
+
+      @request_accepted = ((@contact1.any?) or (@contact2.any?))
+      @request_sent = ((@request_sent1.any?) or (@request_sent2.any?) or (@request_sent3.any?))
+      @request_rejected = @rejected.any?
+
+      @interests = @participant.area_of_interests
+
+      @infos = @participant.infos
+
+      @notes =[]
+      @about = @participant.about_persons
+      @about.each do |a|
+        if a.note.person_id == @person.id
+          @notes <<a.note
+        end
+      end
+
+      @networking = @participant.networkings.paginate(:page => params[:page], :per_page => 6)
     end
 
     respond_to do |format|
