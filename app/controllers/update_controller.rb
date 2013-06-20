@@ -411,7 +411,7 @@ class UpdateController < ApplicationController
           if isContact(ac, @person) == 0
             pending_contact = otherIsPending(@person, ac)
             rejected_other = rejected_him(@person, ac)
-            if pending_contact.nil? || rejected_other.nil?
+            if pending_contact.nil? && rejected_other.nil?
               rejected_me = rejected_him(ac, @person)
               if rejected_me.nil?
                 PendingContact.create(requester_id: @person, requested_id: ac)
