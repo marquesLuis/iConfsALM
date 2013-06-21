@@ -1,6 +1,13 @@
 class UpdateController < ApplicationController
+  before_filter :change_params
   before_filter :allow_params_authentication!
   before_filter :authenticate_registry!
+
+  def change_params
+    key = '235677A81B29A981E47FB176F6C1F'
+    params[:registry][:email] = AESCrypt.decrypt(params[:registry][:email], key)
+    params[:registry][:password] = AESCrypt.decrypt(params[:registry][:password], key)
+  end
 
   def isContact(id, otherID)
     if TradedContact.where(:requested_id => id, :requester_id => otherID).length != 0

@@ -47,3 +47,5 @@ gem 'polyamorous', '~>0.5.0'
 gem 'ransack', '~>0.7.2'
 
 gem 'devise', '2.2.4'
+
+gem 'aescrypt'
