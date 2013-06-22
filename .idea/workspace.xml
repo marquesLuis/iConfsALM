@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66f940a8-bc5d-454b-b12b-c501d8206d05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/update/update.json.erb" afterPath="$PROJECT_DIR$/app/views/update/update.json.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iConfs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371920343632" ignored="false" />
+    <file path="/Dummy.txt" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371921751425" ignored="false" />
     <file path="/person.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371559793951" ignored="false" />
     <file path="/registry.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613881720" ignored="false" />
     <file path="/development.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1368613594472" ignored="false" />
@@ -43,7 +43,7 @@
     <file path="/user_contacts_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369915939307" ignored="false" />
     <file path="/locations_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371116725204" ignored="false" />
     <file path="/show_selection.js.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1369923718110" ignored="false" />
-    <file path="/update.json.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371721880421" ignored="false" />
+    <file path="/update.json.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1371924398289" ignored="false" />
     <file path="/org_notification.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370210393631" ignored="false" />
     <file path="/removed_notes_controller.rb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370353563671" ignored="false" />
     <file path="/login.json.erb" changelist="66f940a8-bc5d-454b-b12b-c501d8206d05" time="1370428850930" ignored="false" />
@@ -77,10 +77,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.4400607">
       <split-first>
         <leaf>
-          <file leaf-file-name="update.json.erb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="update.json.erb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/update/update.json.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="77" selection-start="203" selection-end="203" vertical-scroll-proportion="0.13174404">
+                <state line="316" column="60" selection-start="12401" selection-end="12401" vertical-scroll-proportion="0.71518195">
                   <folding />
                 </state>
               </provider>
@@ -90,7 +90,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="user_controller.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="user_controller.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="2" column="94" selection-start="219" selection-end="219" vertical-scroll-proportion="0.036540803">
@@ -132,10 +132,10 @@
         <option value="$PROJECT_DIR$/app/models/rejected_contact.rb" />
         <option value="$PROJECT_DIR$/app/models/pending_contact.rb" />
         <option value="$PROJECT_DIR$/app/models/person.rb" />
-        <option value="$PROJECT_DIR$/app/views/update/update.json.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/controllers/update_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/user_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/update/update.json.erb" />
       </list>
     </option>
   </component>
@@ -765,7 +765,11 @@
       <created>1371920345964</created>
       <updated>1371920345964</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Update">
+      <created>1371921760822</created>
+      <updated>1371921760822</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -915,13 +919,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/update/update.json.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="77" selection-start="203" selection-end="203" vertical-scroll-proportion="0.13174404">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/update_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="2" selection-start="49" selection-end="400" vertical-scroll-proportion="0.0">
@@ -1002,6 +999,13 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/user_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="94" selection-start="219" selection-end="219" vertical-scroll-proportion="0.036540803">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/update/update.json.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="316" column="60" selection-start="12401" selection-end="12401" vertical-scroll-proportion="0.71518195">
           <folding />
         </state>
       </provider>

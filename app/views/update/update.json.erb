@@ -124,7 +124,7 @@
             <% @new_networks.each do |net| %>
             "net_<%= net.id %>": {
                 "title" : "<%= net.title %>",
-                "content" : "<%= net.content %>",
+                "content" : "<%= net.content.sub(/[\r]/, '') %>",
                 "date" : "<%= net.updated_at.strftime('%Y-%m-%d %H:%M') %>",
                 "person_id": "<%= net.person_id %>",
                 "server_id": "<%= net.id %>",
@@ -157,7 +157,7 @@
                 <%if person.photo%>
                 "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
                 <% end %>
-                "bio": "<%= person.biography %>",
+                "bio": "<%= person.biography.sub(/[\r]/, '') %>",
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
                 <%if person.infos && person.infos.length>0%>
@@ -191,7 +191,7 @@
                 <%if person.photo%>
                 "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
                 <% end %>
-                "bio": "<%= person.biography %>",
+                "bio": "<%= person.biography.sub(/[\r]/, '') %>",
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
                 <%if person.infos && person.infos.length>0%>
@@ -296,7 +296,7 @@
             <% @new_notes.each do |note| %>
             "note_<%= note.id%>":{
                 "server_id": "<%= note.id %>",
-                "content": "<%= note.content %>",
+                "content": "<%= note.content.sub(/[\r]/, '') %>",
                 "person_id": "<%= note.person_id %>",
                 "updated_at": "<%= note.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
                 <% if note.about_person %>
@@ -314,7 +314,7 @@
             <% @updated_notes.each do |note| %>
             "note_<%= note.id%>":{
                 "server_id": "<%= note.id %>",
-                "content": "<%= note.content %>",
+                "content": "<%= note.content.sub(/[\r]/, '') %>",
                 "person_id": "<%= note.person_id %>",
                 "updated_at": "<%= note.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N') %>",
                 <% if note.about_person %>
