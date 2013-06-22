@@ -386,7 +386,7 @@ class UpdateController < ApplicationController
       end
 
 
-      end
+    end
     my_self = Person.find(@person)
     contacts = @update[:contacts]
     if contacts
@@ -424,8 +424,12 @@ class UpdateController < ApplicationController
                 PendingContact.create(requester_id: @person, requested_id: ac)
               end
             else
-              pending_contact.destroy
-              rejected_other.destroy
+              if pending_contact
+                pending_contact.destroy
+              end
+              if rejected_other
+                rejected_other.destroy
+              end
               TradedContact.create(requester_id: ac, requested_id: @person)
             end
           end
@@ -435,15 +439,15 @@ class UpdateController < ApplicationController
       rejected_contact = contacts[:rejected]
       if rejected_contact
         @rejected_contacts = Array.new
-         rejected_contact.each do |rc|
-           @rejected_contacts.push(rc)
-           ped = PendingContact.find(rc)
-           if ped
-             other_id = ped.requester_id
-             ped.destroy
-             RejectedContact.create(requester_id: other_id, requested_id: @person)
-           end
-         end
+        rejected_contact.each do |rc|
+          @rejected_contacts.push(rc)
+          ped = PendingContact.find(rc)
+          if ped
+            other_id = ped.requester_id
+            ped.destroy
+            RejectedContact.create(requester_id: other_id, requested_id: @person)
+          end
+        end
       end
 
     end
