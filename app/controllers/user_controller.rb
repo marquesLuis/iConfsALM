@@ -1,6 +1,15 @@
 class UserController < ApplicationController
-  before_filter :allow_params_authentication!
+  before_filter :change_params, only: [:get_profile_image, :get_location_image]
+  before_filter :allow_params_authentication!, only: [:get_profile_image, :get_location_image]
   before_filter :authenticate_registry!
+
+  def change_params
+    if params[:registry]
+      key = '235677A81B29A981E47FB176F6C1F'
+      params[:registry][:email] = AESCrypt.decrypt(params[:registry][:email], key)
+      params[:registry][:password] = AESCrypt.decrypt(params[:registry][:password], key)
+    end
+  end
 
   def maps
     @locations = Location.all
