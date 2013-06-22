@@ -157,7 +157,9 @@
                 <%if person.photo%>
                 "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
                 <% end %>
+                <%if person.biography %>
                 "bio": "<%= person.biography.sub(/[\r]/, '') %>",
+                <% end %>
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
                 <%if person.infos && person.infos.length>0%>
@@ -191,7 +193,9 @@
                 <%if person.photo%>
                 "photo": "<%=request.protocol + request.host_with_port + '/user/get_profile_image?name=' + person.photo %>",
                 <% end %>
+                <%if person.biography %>
                 "bio": "<%= person.biography.sub(/[\r]/, '') %>",
+                <% end %>
                 "server_id": "<%= person.id %>",
                 "last_date": "<%= person.updated_at %>",
                 <%if person.infos && person.infos.length>0%>
