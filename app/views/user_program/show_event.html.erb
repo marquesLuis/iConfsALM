@@ -1,4 +1,4 @@
-<div class='right'>
+<div class='right margin_left'>
   <p><b>Date:</b> <%= @event_group.date.to_date.to_s %></p>
 
   <p><b>Begin time:</b> <%= @event.begin.strftime("%I:%M") %></p>
@@ -58,7 +58,7 @@
 <% end %>
 
 <div>
-  <p><b>Description:</b> <%= @event.description %></p>
+  <p class="just"><b>Description:</b> <%= @event.description %></p>
 </div>
 
 <div>

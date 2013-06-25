@@ -74,7 +74,6 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    railroady (1.1.0)
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -134,7 +133,6 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   polyamorous (~> 0.5.0)
-  railroady
   rails (= 3.2.13)
   rake (= 10.0.4)
   ransack (~> 0.7.2)

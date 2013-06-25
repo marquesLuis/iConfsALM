@@ -9,7 +9,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
 puts "Adding Administrators"
 # ADMINISTRATORS (1-3)
 Administrator.create(:email => %{marta.lidon@gmail.com}, :password => 'password', :password_confirmation => 'password')
@@ -71,7 +70,7 @@ Event.create(:event_group_id => 2, :title => 'Starting Session', :description =>
 EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
 
-Person.create(first_name: 'Ricardo', last_name: 'Mendes', prefix: 'Dr.', affiliation: 'FCT', email: 'R.Mendes@gmail.com',:biography => 'Ricardo Cavalcante Mendes or simply Ricardinho (born September 4, 1989 in Sao Paulo) is a Brazilian football player who currently plays for Lechia Gdansk.', signup_code: '4')
+Person.create(first_name: 'Ricardo', last_name: 'Mendes', prefix: 'Dr.', affiliation: 'FCT', email: 'R.Mendes@gmail.com', :biography => 'Ricardo Cavalcante Mendes or simply Ricardinho (born September 4, 1989 in Sao Paulo) is a Brazilian football player who currently plays for Lechia Gdansk.', signup_code: '4')
 Registry.create(email: 'R.Mendes@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '4')
 
 PersonInterest.create(:person_id => 4, :area_of_interest_id => 2)
@@ -125,6 +124,23 @@ puts "Adding Day 2"
 EventGroup.create(:end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 14, :title => 'Lorenzo Alvisi', :description => 'UT AUSTIN.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 09:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"));
 
+EventGroup.create(:date => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 18:00", "%d/%m/%Y %H:%M"))
+Event.create(:event_group_id => 15, :title => 'Coffee break', :description => 'See title for more info.', :event_kind => 'Social Event', :begin => DateTime.strptime("7/9/2013 10:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 10:30", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'CPDLA3', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 10:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 12:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'SETR2', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 10:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 12:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'SOFTPT2', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 10:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 12:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'Lunch and Posters', :description => 'See title for more info.', :event_kind => 'Social Event', :begin => DateTime.strptime("7/9/2013 12:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 13:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'José Luiz Fiadeiro (Royal Holloway, University of London)', :description => 'See title for more info.', :event_kind => 'Keynote', :begin => DateTime.strptime("7/9/2013 13:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 14:00", "%d/%m/%Y %H:%M"));
+
+Event.create(:event_group_id => 15, :title => 'GDC2', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 16:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'CMU2', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 16:0", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'IOT', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 16:00", "%d/%m/%Y %H:%M"));
+
+Event.create(:event_group_id => 15, :title => 'Coffee break', :description => 'See title for more info.', :event_kind => 'Social Event', :begin => DateTime.strptime("7/9/2013 16:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 16:30", "%d/%m/%Y %H:%M"));
+
+Event.create(:event_group_id => 15, :title => 'CPDLA4', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 18:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'SOFTPT3', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 18:00", "%d/%m/%Y %H:%M"));
+Event.create(:event_group_id => 15, :title => 'GDC3', :description => 'See title for more info.', :event_kind => 'Paper Session', :begin => DateTime.strptime("7/9/2013 16:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("7/9/2013 18:00", "%d/%m/%Y %H:%M"));
 
 prefixes = ["", "Dr.", "Sr."]
 first_names = ["Bev",
@@ -176,12 +192,13 @@ puts "Adding 100 random people"
     puts "Done 50, almost there"
   end
   r=Random.rand(10);
+  r2=Random.rand(10);
   a =Person.create(
       first_name: first_names[(r+i)%first_names.length],
-      last_name: last_names[(r+i)%last_names.length],
-      prefix: prefixes[(r+i)%prefixes.length],
+      last_name: last_names[(r2+i)%last_names.length],
+      prefix: prefixes[(r+r2+i)%prefixes.length],
       affiliation: affiliations[(r+i)%affiliations.length],
-      email: first_names[(r+i)%first_names.length]+"#{i}"+last_names[(r+i)%last_names.length]+"@"+affiliations[(r+i)%affiliations.length]+"AasdAmail.com",
+      email: first_names[(r+i)%first_names.length]+"#{i}"+last_names[(r2+i)%last_names.length]+"@"+affiliations[(r+i)%affiliations.length]+"AasdAmail.com",
       signup_code: "seeded:#{i}"
   )
   Registry.create(
@@ -191,18 +208,35 @@ puts "Adding 100 random people"
       :person_id => a.id)
 end
 
+Networking.create(:title => 'Scalable Bloom Filters', :content => 'Description.', :person_id => '2');
+Networking.create(:title => 'PastisD', :content => 'Description.', :person_id => '1');
+Networking.create(:title => 'ABD Development', :content => 'Description.', :person_id => '3');
+Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds. Vários sistemas surgiram recentemente com o intuito de facilitar a utilização de serviços de armazenamento nas clouds. Muitos utilizadores das clouds têm a necessidade de manter os seus dados disponíveis e privados, requisitos nem sempre atendidos pelos sistemas de armazenamento em cloud. Recentemente foi demonstrado que é possível atender estes requisitos através do uso de vários provedores de cloud, ao invés de um só, ao que foi dado o nome de cloud-of clouds. Com vista a responder a estas necessidades apresentamos o C2FS, um sistema de ficheiros multi-utilizador para cloud-of-clouds. Este sistema é tolerante a falhas por parte dos provedores de clouds e mantém a privacidade dos dados e metadados armazenados desde que menos de um terço dos provedoresusados sejam faltosos. O C2FS tem uma interface estilo POSIXe satisfaz um modelo de consistência flexível que permite aos seus utilizadores controlarem os custos (em termos monetários e de desempenho)relacionados com o acesso a clouds e as garantias de consistência e durabilidade oferecidas pelo sistema.', :person_id => '4');
+NetworkingInterest.create(:networking_id => 2, :area_of_interest_id => 5)
 
-
-
-
-
-# FOR WS 3!!!
-AtendingEvent.create(:event_id=> 1,  :person_id=>3);
-AtendingEvent.create(:event_id=> 2,  :person_id=>3);
-
-Networking.create(:title => 'Scalable Bloom Filters', :content => 'Scalable Bloom Filters Description.', :person_id => '2');
-Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds.', :person_id => '4');
-
-Note.create(:content => 'Must not forget to bring my IPhone.' ,:person_id=>3);
-Note.create(:content => 'Talked to him in the coffee break' ,:person_id=>3);
+Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 1);
+Note.create(:content => 'Talked to him in the coffee break', :person_id => 1);
+Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 2);
+Note.create(:content => 'Talked to him in the coffee break', :person_id => 2);
+Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 3);
+Note.create(:content => 'Talked to him in the coffee break', :person_id => 3);
 AboutPerson.create(:person_id => 4, :note_id => 2)
+AboutPerson.create(:person_id => 4, :note_id => 4)
+AboutPerson.create(:person_id => 4, :note_id => 6)
+
+PendingContact.create(:requester_id => 8, :requested_id => 1)
+PendingContact.create(:requester_id => 5, :requested_id => 1)
+PendingContact.create(:requester_id => 6, :requested_id => 1)
+PendingContact.create(:requester_id => 7, :requested_id => 1)
+PendingContact.create(:requester_id => 8, :requested_id => 2)
+PendingContact.create(:requester_id => 5, :requested_id => 2)
+PendingContact.create(:requester_id => 6, :requested_id => 2)
+PendingContact.create(:requester_id => 7, :requested_id => 2)
+PendingContact.create(:requester_id => 8, :requested_id => 3)
+PendingContact.create(:requester_id => 5, :requested_id => 3)
+PendingContact.create(:requester_id => 6, :requested_id => 3)
+PendingContact.create(:requester_id => 7, :requested_id => 3)
+
+TradedContact.create(:requester_id => 4, :requested_id => 3)
+TradedContact.create(:requester_id => 4, :requested_id => 2)
+TradedContact.create(:requester_id => 4, :requested_id => 1)

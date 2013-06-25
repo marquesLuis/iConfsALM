@@ -45,9 +45,7 @@
                 <form name='input' action='/user_contacts/cancel_rejection?id=<%= @participant.id %>' method='post' data-remote='true'>
                   <input type='submit' value='Add as contact' class='classname'>
                 </form>
-
             <% else %>
-
                 <% if @participant.id != current_registry.person_id %>
                     <form name='input' id='send_request_button' action='/user_contacts/send_request?id=<%= @participant.id %>' method='post' data-remote='true'>
                       <input type='submit' value='Add as contact' class='classname'>
@@ -59,12 +57,8 @@
   </div>
 
   <div>
-
-    <hr>
     <% if @interests.any? %>
-
         <% len = @interests.length %>
-
         <p><b>Interests: </b></p>
 
         <p>
@@ -76,11 +70,9 @@
               <% end %>
           <% end %>
         </p>
-
     <% else %>
         <p><%= @participant.full_name %> has not added any interests yet! </p>
     <% end %>
-
   </div>
 
 
@@ -95,19 +87,15 @@
     <% end %>
   </div>
 
-  <hr>
-
-
   <% if @participant.id != current_registry.person_id %>
       <div id='notes'>
         <%= render(:template => 'notes/index_on_participant', :participant_id => @participant.id) %>
       </div>
-      <hr>
   <% end %>
 
   <div>
     <% if @networking.any? %>
-        <p>Networking topics:</p>
+        <p><b>Networking topics:</b></p>
         <% @networking.each do |networking| %>
             <p><%= link_to networking.title, {:controller => 'user_networking', :action => 'index', :id => networking.id} %></p>
 
@@ -118,6 +106,4 @@
         <p><%= @participant.first_name %> has not added any networking topics yet! </p>
     <% end %>
   </div>
-
-
 </div>

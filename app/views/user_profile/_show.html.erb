@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<hr>
+
 <div>
   <p><b>Interesses:</b></p>
   <%= form_tag({:controller => "user_profile", :action => "update"}, :method => 'post', :remote => true) do %>
@@ -59,44 +59,42 @@
                 <td><%= check_box_tag('interests[]', interest.id, false) %></td>
               </div>
             </tr>
-            </table>
+        <% end %>
+      </table>
 
+
+      <div class="field">
+        <p><b><%= label_tag('biography', 'Biography:') %></b></p>
+        <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
+      </div>
+      <div class="actions">
+        <%= submit_tag("Update", :class => 'classname') %>
+      </div>
+
+
+      <div>
+        <p><b>Private Contacts</b></p>
+        <% if @person.infos.any? %>
+            <table>
+              <tr>
+                <th>Type</th>
+                <th>Value</th>
+                <th></th>
+              </tr>
+
+              <% @person.infos.each do |info| %>
+                  <tr>
+                    <td><%= info.info_type %></td>
+                    <td><%= info.value %></td>
+                    <td><%= link_to 'Destroy', info, :method => :delete, data: {confirm: 'Are you sure?'}, :class => 'classname' %></td>
+                  </tr>
+              <% end %>
+            </table>
+        <% else %>
+            <p>You have not added any private contacts!</p>
         <% end %>
 
-        <hr>
-        <div class="field">
-          <p><b><%= label_tag('biography', 'Biography:') %></b></p>
-          <%= text_area_tag('biography', @person.biography, :size => "100x6") %>
-        </div>
-        <div class="actions">
-          <%= submit_tag("Update", :class => 'classname') %>
-        </div>
-
-
-        <hr>
-        <div>
-          <p><b>Private Contacts</b></p>
-          <% if @person.infos.any? %>
-              <table>
-                <tr>
-                  <th>Type</th>
-                  <th>Value</th>
-                  <th></th>
-                </tr>
-
-                <% @person.infos.each do |info| %>
-                    <tr>
-                      <td><%= info.info_type %></td>
-                      <td><%= info.value %></td>
-                      <td><%= link_to 'Destroy', info, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'classname' %></td>
-                    </tr>
-                <% end %>
-              </table>
-          <% else %>
-              <p>You have not added any private contacts!</p>
-          <% end %>
-
-          <%= link_to 'New Info', new_info_path, :class => 'classname' %>
-        </div>
+        <%= link_to 'New Info', new_info_path, :class => 'classname' %>
+      </div>
   <% end %>
 </div>

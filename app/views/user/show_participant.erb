@@ -56,7 +56,6 @@ html =  "<div>"
 
   html += "<div>"
 
-  html += "<hr>"
   <% if @interests.any? %>
 
       <% len = @interests.length %>
@@ -90,7 +89,6 @@ html =  "<div>"
   <% end %>
   html += "</div>"
 
-  html += "<hr>"
 
 
 
@@ -99,12 +97,12 @@ html =  "<div>"
   html += "<div id='notes'>"
   html += "<%= escape_javascript(render(:template =>'notes/index_on_participant', :participant_id =>  @participant.id )) %>"
   html += "</div>"
-  html += "<hr>"
+
       <% end %>
 
   html += "<div>"
   <% if @networking.any? %>
-      html += "<p>Networking topics:</p>"
+      html += "<p><b>Networking topics:</b></p>"
       <%  @networking.each do |networking| %>
           html += "<p><%= escape_javascript(link_to networking.title,  {:controller => "user_networking", :action => "index", :id => networking.id}) %></p>"
       <% end %>

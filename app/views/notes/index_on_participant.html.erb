@@ -14,10 +14,10 @@
             <td class="p5"><%= link_to "Delete", {:controller => "notes", :action => "destroy_on_participant", :note => note}, :method => 'post', :class => 'classname' %></td>
           </tr>
       <% end %>
+    </table>
 <% else %>
     <p>You haven't added notes about this person!</p>
 <% end %>
 
-</table>
 <p><%= link_to "New Note", {:controller => "notes", :action => "new_on_participant", :participant_id => @participant.id}, :class => 'classname' %></p>
 
