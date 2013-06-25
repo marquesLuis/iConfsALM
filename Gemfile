@@ -49,3 +49,5 @@ gem 'ransack', '~>0.7.2'
 gem 'devise', '2.2.4'
 
 gem 'aescrypt'
+
+gem 'railroady'
