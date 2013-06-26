@@ -209,7 +209,7 @@ class UpdateController < ApplicationController
           @new_last_removed_attending_id = @last_attending.id.to_s
           @old_last_removed_attending_id = @attending[:last_removed_id]
           if @old_last_removed_attending_id !=  @new_last_removed_attending_id
-            @del_attendings = @all_attending_removed.where('person_id = ? AND id > ? AND id <= ?',@person,@old_last_removed_attending_id, @new_last_removed_attending_id)
+            @del_attendings = RemovedAttendingEvent.where('person_id = ? AND id > ? AND id <= ?',@person,@old_last_removed_attending_id, @new_last_removed_attending_id)
           end
         end
       end
