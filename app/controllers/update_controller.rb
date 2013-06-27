@@ -318,9 +318,6 @@ class UpdateController < ApplicationController
       if removed_notes_from_devise
         @notes_deleted = Array.new
         removed_notes_from_devise.each_with_index do |cod, index|
-          puts 'HERE'
-          puts index
-          puts index % 2
           if (index % 2)==0
             @notes_deleted.push(cod)
           else
@@ -332,7 +329,9 @@ class UpdateController < ApplicationController
               if old_note.about_person
                 old_note.about_person.destroy
               end
+              RemovedNote.create(:sequence_number => old_note.id, :person_id => old_note.person_id)
               old_note.destroy
+
             end
           end
         end
