@@ -20,7 +20,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = current_registry.person.notes
+    @notes = current_registry.person.notes.includes(:about_person => :person).includes(:about_event => :event)
 
     respond_to do |format|
       format.html # index.html.erb

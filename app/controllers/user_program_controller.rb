@@ -13,10 +13,10 @@ class UserProgramController < ApplicationController
     @begin_day = @first_day.day;
     @begin_weekday = @first_day.wday;
 
-    @attending = current_registry.person.attending_events
+    @attending = current_registry.person.attending_events.includes(:event_group)
     attending_ids = current_registry.person.attending_events.pluck(:id)
     attending_ids<<0;
-    @events = Event.where("id NOT IN (?)", attending_ids)
+    @events = Event.where("id NOT IN (?)", attending_ids).includes(:event_group)
   end
 
 
@@ -34,7 +34,7 @@ class UserProgramController < ApplicationController
 
     attending = current_registry.person.attending_events.pluck(:id)
     if attending.any?
-      @events = Event.where('id IN (?)', attending)
+      @events = Event.where('id IN (?)', attending).includes(:event_group)
     else
       @events=[]
     end
