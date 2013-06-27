@@ -4,9 +4,11 @@ class UpdateController < ApplicationController
   before_filter :authenticate_registry!
 
   def change_params
-    key = '235677A81B29A981E47FB176F6C1F'
-    params[:registry][:email] = AESCrypt.decrypt(params[:registry][:email], key)
-    params[:registry][:password] = AESCrypt.decrypt(params[:registry][:password], key)
+    if params[:registry]
+      key = '235677A81B29A981E47FB176F6C1F'
+      params[:registry][:email] = AESCrypt.decrypt(params[:registry][:email], key)
+      params[:registry][:password] = AESCrypt.decrypt(params[:registry][:password], key)
+    end
   end
 
   def isContact(id, otherID)
@@ -461,13 +463,15 @@ class UpdateController < ApplicationController
   end
 
   def login
-    @person = Person.find_all_by_email(params[:registry][:email]).first
-    @first_day = EventGroup.first_day
-    @last_day = EventGroup.last_day
+    if params[:registry]
+      @person = Person.find_all_by_email(params[:registry][:email]).first
+      @first_day = EventGroup.first_day
+      @last_day = EventGroup.last_day
 
 
-    respond_to do |format|
-      format.json {render :file => 'update/login', :content_type => 'application/json'}
+      respond_to do |format|
+        format.json {render :file => 'update/login', :content_type => 'application/json'}
+      end
     end
   end
 end
