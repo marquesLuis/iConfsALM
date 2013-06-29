@@ -1,5 +1,11 @@
 IConfs::Application.routes.draw do
 
+  get "notes/export_evernote"
+
+  get "notes/export_csv"
+
+  get "user_contacts/export_csv"
+
   post "user_profile/update"
 
   get "user_search/advanced_search"

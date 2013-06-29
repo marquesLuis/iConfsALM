@@ -36,8 +36,11 @@
           </tr>
       <% end %>
     </table>
-    <p class="centralized"><%= link_to 'Export', {:controller => "notes", :action => 'export'}, :class => 'classname' %>  </p>
-
+    <div class="inline centralized">
+      <p><%= link_to 'Export to Evernote', {:controller => "notes", :action => 'export_evernote'}, :class => 'classname' %>  </p>
+      <p><%= link_to 'Export to CSV', {:controller => "notes", :action => 'export_csv'}, :class => 'classname' %>  </p>
+    <p><%= link_to 'Export to TXT', {:controller => "notes", :action => 'export'}, :class => 'classname' %>  </p>
+    </div>
 <% else %>
     <p class="centralized">No notes yet!</p>
 <% end %>

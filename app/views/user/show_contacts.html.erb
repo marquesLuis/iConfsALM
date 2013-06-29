@@ -36,7 +36,8 @@
       <td id='profile'></td>
     </table>
     <%= will_paginate @contacts %>
-    <%= link_to 'Export', {:controller => "user_contacts", :action => 'export'}, :method => 'get',:class => 'classname'  %></td>
+    <%= link_to 'Export to CSV', {:controller => "user_contacts", :action => 'export_csv'}, :method => 'get',:class => 'classname'  %>
+    <%= link_to 'Export to txt', {:controller => "user_contacts", :action => 'export'}, :method => 'get',:class => 'classname'  %>
 <% else %>
     <p class="centralized">You have no contacts!</p>
 <% end %>

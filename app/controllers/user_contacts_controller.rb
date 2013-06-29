@@ -95,6 +95,30 @@ class UserContactsController < ApplicationController
     send_data(x, :filename => "contacts.txt")
   end
 
+  def export_csv
+    # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
+    received = current_registry.person.received_traded_contacts
+    sent = current_registry.person.sent_traded_contacts
+    x='"First Name","Last Name","Email Address"'
+    x+= "\r\n"
+    received.each do |r|
+      a = ""
+      a+= '"' + (r.requester.first_name) + '",'
+      a+= '"' + (r.requester.last_name) + '",'
+      a+= '"' + (r.requester.email) + '"'
+      x+=a+"\r\n"
+    end
+    sent.each do |s|
+      a = ""
+      a+= '"' + (r.requested.first_name) + '",'
+      a+= '"' + (r.requested.last_name) + '",'
+      a+= '"' + (r.requested.email) + '"'
+      x+=a+"\r\n"
+
+    end
+    send_data(x, :filename => "contacts.csv")
+  end
+
   def cancel_rejection
     @rejected = RejectedContact.where(:requester_id => params[:id], :requested_id => current_registry.person_id).first;
     if @rejected

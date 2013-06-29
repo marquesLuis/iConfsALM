@@ -334,6 +334,7 @@ class NotesController < ApplicationController
     end
   end
 
+
   def export
     # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
     @person = current_registry.person
@@ -377,6 +378,94 @@ class NotesController < ApplicationController
     end
 
     send_data(x, :filename => "notes.txt")
+  end
+  def export_csv
+    # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
+    @person = current_registry.person
+    @notes = @person.notes
+
+    x="Date,Content\r\n"
+
+    @notes.each do |note|
+
+      a= '"'+note.created_at.to_date.to_s + ":" + note.created_at.strftime("%I:%M %Z") + '",'
+      found = (note.about_person || note.about_event)
+      found2 = (note.about_person && note.about_event)
+      a+='"'
+      if note.about_person
+        a+= "About Person: "
+        a+= note.about_person.person.full_name
+      end
+      if !found2
+        a+= ""
+      else
+        a+= " & "
+
+      end
+
+      if note.about_event
+        a+= "About Event: "
+        a+= note.about_event.event.title + " on "
+        a+= note.about_event.event.event_group.date.to_date.to_s + " at "
+        a+= note.about_event.event.begin.strftime("%I:%M %Z")
+      end
+      a+= note.content
+      a+='"'
+      x+= a+"\r\n";
+    end
+
+    send_data(x, :filename => "notes.txt")
+    end
+  def export_evernote
+    # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
+    @person = current_registry.person
+    @notes = @person.notes
+
+    x='<?xml version="1.0" encoding="UTF-8"?>'
+    x+="\r\n"
+    x+='<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export3.dtd">'
+    x+="\r\n"
+    x+='<en-export export-date="'+Time.now.strftime("%Y%m%dT%H%M%SZ")+'" application="Evernote" version="Evernote Mac 5.1.4 (401297)">'
+    x+="\r\n"
+
+    @notes.each do |note|
+      found2 = (note.about_person && note.about_event)
+      a=''
+      if note.about_person
+        a+= "About Person: "
+        a+= note.about_person.person.full_name
+      end
+      if !found2
+      else
+        a+= " & "
+      end
+      if note.about_event
+        a+= "About Event: "
+        a+= note.about_event.event.title + " on "
+        a+= note.about_event.event.event_group.date.to_date.to_s + " at "
+        a+= note.about_event.event.begin.strftime("%I:%M %Z")
+      end
+      a+= note.content
+
+      x+="<note>"
+        x+="<title>DuoConfs</title>"
+        x+="<content>"
+          x+='<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
+            x+='<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
+            x+='<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">'
+          x+=a
+            x+="</en-note>"
+          x+="]]>"
+        x+="</content>"
+        x+="<created>"+note.created_at.strftime("%Y%m%d")+"T" + note.created_at.strftime("%H%M%S") +"Z</created>"
+      x+="<updated>"+note.updated_at.strftime("%Y%m%d")+"T" + note.updated_at.strftime("%H%M%S") +"Z</updated>"
+        x+="<note-attributes><author>"+@person.first_name+" "+@person.last_name+"</author></note-attributes>"
+      x+="</note>"
+      x+="\r\n";
+    end
+    x+="</en-export>"
+
+    send_data(x, :filename => "notes.enex")
   end
 end
 
