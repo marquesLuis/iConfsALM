@@ -404,9 +404,10 @@ class UpdateController < ApplicationController
           TradedContact.create(requester_id: nc[:contact][:person_id], requested_id: @person)
           @contacts_added.push(nc[:contact][:person_id])
           if nc[:contact][:pending_id] != '0'
+            begin
             pending = PendingContact.find(nc[:contact][:pending_id])
-            if pending
-              pending.destroy
+            pending.destroy
+            rescue
             end
           end
         end
