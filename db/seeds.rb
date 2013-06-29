@@ -187,7 +187,7 @@ affiliations = ["fct", "unl", 'ist', 'random entity']
 
 
 puts "Adding 100 random people"
-1.upto(200) do |i|
+1.upto(100) do |i|
   if i == 50
     puts "Done 50, almost there"
   end
