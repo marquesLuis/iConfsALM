@@ -15,6 +15,9 @@ $("#event_buttons").fadeOut("slow", function () {
 <% else %>
 a = $('#calendar').fullCalendar('getEventByID', <%= @event_id %>)
 a.attending = false
-$('#' + <%= @event_id %> + 'hov').remove();
 
 <% end %>
+
+$('#e_b_' + <%= @event_id %>).remove();
+html = '<div id = "e_b_<%= @event_id %>"> <form action="/user_program/add_event?id=<%= @event_id %>" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="+"></div></form></div>'
+$('#e_S_' + <%= @event_id %>).append(html);

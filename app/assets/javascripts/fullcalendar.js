@@ -4113,9 +4113,21 @@
                     htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
                     "</div>" +
                     "<div class='fc-event-title'>" +
-                    htmlEscape(event.title) +
+                    htmlEscape(event.title)
+            html += '</div>'
 
-                    "</div>" +
+            html += '<div id = "e_S_'+event._id+'">'
+            html += '<div id = "e_b_'+event._id+'">'
+            if (!event.attending)
+                html +=   '<form action="/user_program/add_event?id=' + event._id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="+"></div></form>'
+            if (event.attending)
+                if(event.remove)
+                    html += '<form action="/user_program/remove_event?id=' + event.id + '&rfc=true" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
+
+                else
+                html += '<form action="/user_program/remove_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
+                               html += '</div>'
+            html += "</div>" +
 
                     "</div>" +
                     "<div class='fc-event-bg'></div>";

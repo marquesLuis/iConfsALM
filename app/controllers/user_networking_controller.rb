@@ -8,7 +8,7 @@ class UserNetworkingController < ApplicationController
       @networking=nil
     end
     @areas_of_interest = AreaOfInterest.all
-    @showing = Networking.includes(:person).paginate(:page => params[:page], :per_page => 6)
+    @showing = Networking.includes(:person).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show_selection
@@ -18,16 +18,16 @@ class UserNetworkingController < ApplicationController
 
       @areas = Person.find(current_registry.person_id).area_of_interests
       @rel = NetworkingInterest.where('area_of_interest_id in (?)', @areas).pluck(:networking_id)
-      @showing = Networking.includes(:person).where('id in (?)', @rel).paginate(:page => params[:page], :per_page => 6)
+      @showing = Networking.includes(:person).where('id in (?)', @rel).paginate(:page => params[:page], :per_page => 10)
 
     else
       if num =='0'
         #all
-        @showing = Networking.includes(:person).paginate(:page => params[:page], :per_page => 6)
+        @showing = Networking.includes(:person).paginate(:page => params[:page], :per_page => 10)
       else
         #selected area
         @area = AreaOfInterest.find(num);
-        @showing = @area.networking.paginate(:page => params[:page], :per_page => 6)
+        @showing = @area.networking.paginate(:page => params[:page], :per_page => 10)
       end
     end
   end

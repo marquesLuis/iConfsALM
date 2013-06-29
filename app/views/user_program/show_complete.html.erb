@@ -36,21 +36,6 @@
             date: <%= @begin_day %>,
             firstDay: <%= @begin_weekday %>,
 
-            eventMouseover: function (event, jsEvent, view) {
-
-
-                if (!event.attending)
-                    html = '<form action="/user_program/add_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="+"></div></form>'
-                if (event.attending)
-                    html = '<form action="/user_program/remove_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
-
-                $('.fc-event-inner', this).append('<div id="' + event.id + 'hov" class="hover-end">' + html + '</div>');
-            },
-
-            eventMouseout: function (event, jsEvent, view) {
-                $('#' + event.id + 'hov').remove();
-            },
-
             header: false,
             events: [
                 <% @events.each do |event| %>
