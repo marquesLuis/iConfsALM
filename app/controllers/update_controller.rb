@@ -285,18 +285,24 @@ class UpdateController < ApplicationController
           if note_server_id == '0'
             created_note = Note.create(content: note[:note][:content], person_id: @person)
           else
-            this_note = Note.find(note_server_id)
-            if this_note.updated_at == note[:note][:updated]
-              this_note.update_attributes(content: note[:note][:content])
-              created_note = this_note
-              if created_note.about_event
-                created_note.about_event.destroy
+            begin
+              this_note = Note.find(note_server_id)
+              if this_note.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N') == note[:note][:updated]
+                this_note.update_attributes(content: note[:note][:content])
+                created_note = this_note
+                if created_note.about_event
+                  created_note.about_event.destroy
+                end
+                if created_note.about_person
+                  created_note.about_person.destroy
+                end
+              else
+                created_note = Note.create(content: '(Conflict Copy_From iPhone)'+note[:note][:content], person_id: @person)
               end
-              if created_note.about_person
-                created_note.about_person.destroy
-              end
-            else
-              created_note = Note.create(content: '(Conflict Copy_From Mobile)'+note[:note][:content], person_id: @person)
+            rescue
+              created_note = Note.create(content: note[:note][:content], person_id: @person)
+            ensure
+
             end
           end
           if note[:note][:about_session] != '0'
@@ -323,8 +329,8 @@ class UpdateController < ApplicationController
           if (index % 2)==0
             @notes_deleted.push(cod)
           else
-            old_note = Note.find(cod)
-            if old_note
+            begin
+              old_note = Note.find(cod)
               if old_note.about_event
                 old_note.about_event.destroy
               end
@@ -333,8 +339,12 @@ class UpdateController < ApplicationController
               end
               RemovedNote.create(:sequence_number => old_note.id, :person_id => old_note.person_id)
               old_note.destroy
+            rescue
+
+            ensure
 
             end
+
           end
         end
       end
@@ -354,7 +364,7 @@ class UpdateController < ApplicationController
         end
 
         @last_note_update = @notes[:last_update]
-        @last_note_tmp =Note.where('person_id = ?',@person).last
+        @last_note_tmp =  @all_notes.last
         if @last_note_tmp
           @new_last_note_update =@last_note_tmp.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N')
           if @new_last_note_update
@@ -370,9 +380,6 @@ class UpdateController < ApplicationController
 
       end
 
-
-
-
       @new_last_note_removed_id = '0'
       @last_note_removed = @notes[:last_removed_id]
       @all_notes_removed = RemovedNote.find_all_by_person_id(@person)
@@ -385,9 +392,8 @@ class UpdateController < ApplicationController
           @del_notes = RemovedNote.where('person_id = ? AND id > ? AND id <= ?',@person,@last_note_removed, @new_last_note_removed_id)
         end
       end
-
-
     end
+
     my_self = Person.find(@person)
     contacts = @update[:contacts]
     if contacts
@@ -401,11 +407,6 @@ class UpdateController < ApplicationController
             pending = PendingContact.find(nc[:contact][:pending_id])
             if pending
               pending.destroy
-            end
-          else
-            rejected = RejectedContact.find(nc[:contact][:rejected_id])
-            if rejected
-              rejected.destroy
             end
           end
         end

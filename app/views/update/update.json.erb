@@ -1,19 +1,9 @@
 {
     <% if @feed_response %>
-    "feedbacks" :{
-        "size" : <%= @feed_response.length %>,
-        <% @feed_response.each do |id| %>
-        "feedback_<%= id %>": <%= id %>,
-        <% end %>
-    },
+    "feedbacks" :[<% @feed_response.each do |fed| %><%= fed %>,<% end %>],
     <% end %>
     <% if @mess_response %>
-    "messages" :{
-        "size" : <%= @mess_response.length %>,
-        <% @mess_response.each do |id| %>
-        "message_<%= id %>": <%= id %>,
-        <% end %>
-    },
+    "messages" :[<% @feed_response.each do |message| %><%= message %>,<% end %>],
     <% end %>
     <% if @new_notif || @updated_notif || @del_notif %>
     "notifications" :{
