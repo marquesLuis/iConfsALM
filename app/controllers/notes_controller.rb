@@ -439,18 +439,19 @@ class NotesController < ApplicationController
       found2 = (note.about_person && note.about_event)
       a=''
       if note.about_person
-        a+= "About Person: "
+        a+= "<div>About Person: "
         a+= note.about_person.person.full_name
+        a+= "</div>"
       end
       if !found2
       else
-        a+= " & "
+        a+= "<div> & </div>"
       end
       if note.about_event
-        a+= "About Event: "
+        a+= "<div>About Event: "
         a+= note.about_event.event.title + " on "
         a+= note.about_event.event.event_group.date.to_date.to_s + " at "
-        a+= note.about_event.event.begin.strftime("%I:%M %Z")
+        a+= note.about_event.event.begin.strftime("%I:%M %Z</div>")
       end
       note.content.split(/\r\n/).each do |line|
         a += "<div>" + line +"</div>"
