@@ -231,7 +231,7 @@ class NotesController < ApplicationController
         @note = Note.new
         @participant = Person.find(params[:participant_id])
         flash[:notice] = "You can't save empty notes."
-        format.html { render action: "new_on_participant"}
+        format.html { render action: "new_on_participant" }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
@@ -300,7 +300,7 @@ class NotesController < ApplicationController
         @note = Note.new
         @event = Event.find(params[:event_id])
         flash[:notice] = "You can't save empty notes."
-        format.html { render action: "new_on_event"}
+        format.html { render action: "new_on_event" }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
@@ -379,6 +379,7 @@ class NotesController < ApplicationController
 
     send_data(x, :filename => "notes.txt")
   end
+
   def export_csv
     # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
     @person = current_registry.person
@@ -409,13 +410,19 @@ class NotesController < ApplicationController
         a+= note.about_event.event.event_group.date.to_date.to_s + " at "
         a+= note.about_event.event.begin.strftime("%I:%M %Z")
       end
-      a+= note.content
-      a+='"'
+
+      note.content.split(/\r\n/).each do |line|
+        a += " " + line
+      end
+
+      a+=
+          a+='"'
       x+= a+"\r\n";
     end
 
-    send_data(x, :filename => "notes.txt")
-    end
+    send_data(x, :filename => "notes.csv")
+  end
+
   def export_evernote
     # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
     @person = current_registry.person
@@ -445,21 +452,23 @@ class NotesController < ApplicationController
         a+= note.about_event.event.event_group.date.to_date.to_s + " at "
         a+= note.about_event.event.begin.strftime("%I:%M %Z")
       end
-      a+= note.content
+      note.content.split(/\r\n/).each do |line|
+        a += "<div>" + line +"</div>"
+      end
 
       x+="<note>"
-        x+="<title>DuoConfs</title>"
-        x+="<content>"
-          x+='<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
-            x+='<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
-            x+='<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">'
-          x+=a
-            x+="</en-note>"
-          x+="]]>"
-        x+="</content>"
-        x+="<created>"+note.created_at.strftime("%Y%m%d")+"T" + note.created_at.strftime("%H%M%S") +"Z</created>"
+      x+="<title>DuoConfs</title>"
+      x+="<content>"
+      x+='<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
+      x+='<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
+      x+='<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">'
+      x+=a
+      x+="</en-note>"
+      x+="]]>"
+      x+="</content>"
+      x+="<created>"+note.created_at.strftime("%Y%m%d")+"T" + note.created_at.strftime("%H%M%S") +"Z</created>"
       x+="<updated>"+note.updated_at.strftime("%Y%m%d")+"T" + note.updated_at.strftime("%H%M%S") +"Z</updated>"
-        x+="<note-attributes><author>"+@person.first_name+" "+@person.last_name+"</author></note-attributes>"
+      x+="<note-attributes><author>"+@person.first_name+" "+@person.last_name+"</author></note-attributes>"
       x+="</note>"
       x+="\r\n";
     end
