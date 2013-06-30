@@ -435,29 +435,35 @@ class NotesController < ApplicationController
     x+="\r\n"
 
     @notes.each do |note|
-      found2 = (note.about_person && note.about_event)
       a=''
+      b=''
       if note.about_person
-        a+= "<div>About Person: "
-        a+= note.about_person.person.full_name
-        a+= "</div>"
-      end
-      if !found2
-      else
-        a+= "<div> & </div>"
+        b+= " About Person: "
+        b+= note.about_person.person.full_name
       end
       if note.about_event
-        a+= "<div>About Event: "
-        a+= note.about_event.event.title + " on "
-        a+= note.about_event.event.event_group.date.to_date.to_s + " at "
-        a+= note.about_event.event.begin.strftime("%I:%M %Z</div>")
+        b+= " About Event: "
+        b+= note.about_event.event.title + " on "
+        b+= note.about_event.event.event_group.date.to_date.to_s + " at "
+        b+= note.about_event.event.begin.strftime("%I:%M %Z")
       end
+
+
+      #"   &quot;
+  #<   &lt;
+  #>   &gt;
+  #&   &amp;
+      #'   &apos;
+
       note.content.split(/\r\n/).each do |line|
+        line = line.gsub(/[']/,'&apos;')
+        line = line.gsub(/[<>&]/, '<' => '&lt;', '>' => '&gt;', '&'=> '&amp;')
+        line = line.gsub('"', '&quot;')
         a += "<div>" + line +"</div>"
       end
 
       x+="<note>"
-      x+="<title>DuoConfs</title>"
+      x+="<title>DuoConfs"+b+"</title>"
       x+="<content>"
       x+='<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
       x+='<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
