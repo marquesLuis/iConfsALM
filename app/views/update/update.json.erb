@@ -3,7 +3,7 @@
     "feedbacks" :[<% @feed_response.each do |fed| %><%= fed %>,<% end %>],
     <% end %>
     <% if @mess_response %>
-    "messages" :[<% @feed_response.each do |message| %><%= message %>,<% end %>],
+    "messages" :[<% @mess_response.each do |message| %><%= message %>,<% end %>],
     <% end %>
     <% if @new_notif || @updated_notif || @del_notif %>
     "notifications" :{
