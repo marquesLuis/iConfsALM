@@ -1,7 +1,7 @@
 class Info < ActiveRecord::Base
   attr_accessible :person_id, :info_type, :value
 
-  PREFIX_TYPES = ['', 'Phone', 'Email', 'Address', 'Facebook', 'LinkedIn', 'Twitter', 'Youtube', 'Site']
+  PREFIX_TYPES = ['', 'Phone', 'Email', 'Address', 'Facebook', 'LinkedIn', 'Twitter', 'Youtube', 'Website']
 
   def self.get_types
     return PREFIX_TYPES

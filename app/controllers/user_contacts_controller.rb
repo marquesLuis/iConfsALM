@@ -99,7 +99,7 @@ class UserContactsController < ApplicationController
     # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
     received = current_registry.person.received_traded_contacts
     sent = current_registry.person.sent_traded_contacts
-    x='"First Name","Last Name","Email Address"'
+    x='"First Name","Last Name", "Phone", "Email", "Address", "Facebook", "LinkedIn", "Twitter", "Youtube", "Website","Other"'
     x+= "\r\n"
     received.each do |r|
       a = ""

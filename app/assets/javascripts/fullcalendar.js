@@ -4127,9 +4127,8 @@
                     "</div>" +
                     "<div class='fc-event-title'>" +
                     htmlEscape(event.title)
-            html += '</div>'
 
-            html += '<div id = "e_S_'+event._id+'">'
+            html += '<div id = "e_S_'+event._id+'" class="">'
             html += '<div id = "e_b_'+event._id+'">'
             if (!event.attending)
                 html +=   '<form action="/user_program/add_event?id=' + event._id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="+"></div></form>'
@@ -4140,9 +4139,9 @@
                 else
                 html += '<form action="/user_program/remove_event?id=' + event.id + '" class="button_to" data-remote="true" method="post"><div style="float:left"><input type="submit" value="-"></div></form>'
                                html += '</div>'
-            html += "</div>" +
-
-                    "</div>" +
+            html += "</div>"
+                html +=  "</div>"
+                html +=    "</div>" +
                     "<div class='fc-event-bg'></div>";
             if (seg.isEnd && isEventResizable(event)) {
                 html +=

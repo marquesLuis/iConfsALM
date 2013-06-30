@@ -31,7 +31,7 @@
         <%= radio_button_tag(:theme, 1, 1==@selected, :onchange => 'changeTheme();') %>
         <%= label_tag(:theme, "default") %>
         <%= radio_button_tag(:theme, 2, 2==@selected, :onchange => 'changeTheme();') %>
-        <%= label_tag(:theme, "green") %>
+        <%= label_tag(:theme, "orange") %>
         <%= radio_button_tag(:theme, 3, 3==@selected, :onchange => 'changeTheme();') %>
         <%= label_tag(:theme, "blue") %>
 
@@ -86,7 +86,7 @@
                   <tr>
                     <td><%= info.info_type %></td>
                     <td><%= info.value %></td>
-                    <td><%= link_to 'Destroy', info, :method => :delete, data: {confirm: 'Are you sure?'}, :class => 'classname' %></td>
+                    <td><%= link_to 'Destroy', info, :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'classname' %></td>
                   </tr>
               <% end %>
             </table>
