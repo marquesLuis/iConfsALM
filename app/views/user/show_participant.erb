@@ -23,9 +23,9 @@ html =  "<div>"
 
   <% @infos.each do |info| %>
       html += "<tr>"
-  html += "<td><%= info.info_type %></td>"
-  html += "<td><%= info.value %></td>"
-  html += "</tr>"
+      html += "<td><%= info.info_type %></td>"
+      html += "<td><%= info.value %></td>"
+      html += "</tr>"
   <% end %>
 
   html += "</table>"

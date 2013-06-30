@@ -99,22 +99,108 @@ class UserContactsController < ApplicationController
     # DONT CHANGE TO '' !!!!!!!! \r\n STOPS WORKING!!!!!!!
     received = current_registry.person.received_traded_contacts
     sent = current_registry.person.sent_traded_contacts
-    x='"First Name","Last Name", "Phone", "Email", "Address", "Facebook", "LinkedIn", "Twitter", "Youtube", "Website","Other"'
+    x='"First Name","Last Name","Email","Phone","Address","Facebook","LinkedIn","Twitter","Youtube","Website","Other","Empty Type"'
     x+= "\r\n"
     received.each do |r|
-      a = ""
-      a+= '"' + (r.requester.first_name) + '",'
-      a+= '"' + (r.requester.last_name) + '",'
-      a+= '"' + (r.requester.email) + '"'
-      x+=a+"\r\n"
-    end
-    sent.each do |s|
-      a = ""
-      a+= '"' + (r.requested.first_name) + '",'
-      a+= '"' + (r.requested.last_name) + '",'
-      a+= '"' + (r.requested.email) + '"'
-      x+=a+"\r\n"
+      b=Array.new(12) { Array.new }
+      b[0].append(r.requester.first_name)
+      b[1].append(r.requester.last_name)
+      b[2].append(r.requester.email)
 
+      if r.requester.infos.any?
+        r.requester.infos.each do |i|
+          if (i.info_type == "Email")
+            b[2].append(i.value)
+          end
+          if (i.info_type == "Phone")
+            b[3].append(i.value)
+          end
+          if (i.info_type == "Address")
+            b[4].append(i.value)
+          end
+          if (i.info_type == "Facebook")
+            b[5].append(i.value)
+          end
+          if (i.info_type == "LinkedIn")
+            b[6].append(i.value)
+          end
+          if (i.info_type == "Twitter")
+            b[7].append(i.value)
+          end
+          if (i.info_type == "Youtube")
+            b[8].append(i.value)
+          end
+          if (i.info_type == "Website")
+            b[9].append(i.value)
+          end
+          if (i.info_type == "Other")
+            b[10].append(i.value)
+          end
+          if (i.info_type == "Empty Type")
+            b[11].append(i.value)
+          end
+        end
+      end
+
+      b.each_with_index do |pos, i|
+        x+=''
+        b[i].each do |input|
+          x+=''+input+' '
+        end
+        x+=','
+      end
+
+      x+= "\r\n"
+    end
+    sent.each do |r|
+      b=Array.new(12) { Array.new }
+      b[0].append(r.requested.first_name)
+      b[1].append(r.requested.last_name)
+      b[2].append(r.requested.email)
+
+      if r.requested.infos.any?
+        r.requested.infos.each do |i|
+          if (i.info_type == "Email")
+            b[2].append(i.value)
+          end
+          if (i.info_type == "Phone")
+            b[3].append(i.value)
+          end
+          if (i.info_type == "Address")
+            b[4].append(i.value)
+          end
+          if (i.info_type == "Facebook")
+            b[5].append(i.value)
+          end
+          if (i.info_type == "LinkedIn")
+            b[6].append(i.value)
+          end
+          if (i.info_type == "Twitter")
+            b[7].append(i.value)
+          end
+          if (i.info_type == "Youtube")
+            b[8].append(i.value)
+          end
+          if (i.info_type == "Website")
+            b[9].append(i.value)
+          end
+          if (i.info_type == "Other")
+            b[10].append(i.value)
+          end
+          if (i.info_type == "Empty Type")
+            b[11].append(i.value)
+          end
+        end
+      end
+
+      b.each_with_index do |pos, i|
+        x+=''
+        b[i].each do |input|
+          x+='"'+input+'"'
+        end
+        x+=','
+      end
+      x+= "\r\n"
     end
     send_data(x, :filename => "contacts.csv")
   end
