@@ -214,11 +214,11 @@ Networking.create(:title => 'ABD Development', :content => 'Description.', :pers
 Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds. Vários sistemas surgiram recentemente com o intuito de facilitar a utilização de serviços de armazenamento nas clouds. Muitos utilizadores das clouds têm a necessidade de manter os seus dados disponíveis e privados, requisitos nem sempre atendidos pelos sistemas de armazenamento em cloud. Recentemente foi demonstrado que é possível atender estes requisitos através do uso de vários provedores de cloud, ao invés de um só, ao que foi dado o nome de cloud-of clouds. Com vista a responder a estas necessidades apresentamos o C2FS, um sistema de ficheiros multi-utilizador para cloud-of-clouds. Este sistema é tolerante a falhas por parte dos provedores de clouds e mantém a privacidade dos dados e metadados armazenados desde que menos de um terço dos provedoresusados sejam faltosos. O C2FS tem uma interface estilo POSIXe satisfaz um modelo de consistência flexível que permite aos seus utilizadores controlarem os custos (em termos monetários e de desempenho)relacionados com o acesso a clouds e as garantias de consistência e durabilidade oferecidas pelo sistema.', :person_id => '4');
 NetworkingInterest.create(:networking_id => 2, :area_of_interest_id => 5)
 
-Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 1);
+Note.create(:content => 'Must not forget to bring my IPhone (MARTA).', :person_id => 1);
 Note.create(:content => 'Talked to him in the coffee break', :person_id => 1);
-Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 2);
+Note.create(:content => 'Must not forget to bring my IPhone. (Albert)', :person_id => 2);
 Note.create(:content => 'Talked to him in the coffee break', :person_id => 2);
-Note.create(:content => 'Must not forget to bring my IPhone.', :person_id => 3);
+Note.create(:content => 'Must not forget to bring my IPhone. (Luis)', :person_id => 3);
 Note.create(:content => 'Talked to him in the coffee break', :person_id => 3);
 AboutPerson.create(:person_id => 4, :note_id => 2)
 AboutPerson.create(:person_id => 4, :note_id => 4)
