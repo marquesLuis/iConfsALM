@@ -12,9 +12,8 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :info_type %>
-      <br/>
-      <%= f.text_field :info_type, :placeholder => 'ex: email, website, phone...' %>
+      <%= f.label :info_type %><br />
+      <%= f.select(:info_type, options_for_select(Info.get_types())) %>
     </div>
     <div class="field">
       <%= f.label :value %>
