@@ -9,7 +9,6 @@ class Info < ActiveRecord::Base
 
   belongs_to :person, :inverse_of => :infos
 
-  validates :info_type, :presence => true
   validates :value, :presence => true
 
   validates_associated :person
