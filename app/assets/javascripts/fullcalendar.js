@@ -4106,10 +4106,23 @@
             html +=
                 "class='" + classes.join(' ') + "'" +
                     " style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'" +
-                    ">" +
-                    "<div class='fc-event-inner'>" +
+                    ">"
 
-                    "<div class='fc-event-time'>" +
+
+            var ev_type="event_bg_"
+            if (event.event_kind == "Paper Session")
+                ev_type+="ps"
+            else if (event.event_kind == "Keynote")
+                ev_type+="k"
+            else if (event.event_kind == "Social Event")
+                ev_type+="se"
+            else
+                ev_type+="default"
+
+
+                html +="<div class='fc-event-inner "+ev_type+"'>"
+
+                    html +="<div class='fc-event-time'>" +
                     htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
                     "</div>" +
                     "<div class='fc-event-title'>" +

@@ -42,16 +42,10 @@
                 <% group = event.event_group %>
                 {
                     attending: false,
+                    color:"black",
                     id: '<%= event.id %>',
                     title: '<%= event.event_kind %> - <%= event.title %>',
-                    <% if event.event_kind=='Keynote' %>
-                    color: c1,
-                    <% else if event.event_kind=='Social Event' %>
-                    color: c1,
-                    <% else %>
-                    color: c2,
-                    <% end %>
-                    <% end %>
+                    event_kind: "<%= event.event_kind %>",
                     start: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.begin.hour %>, <%= event.begin.min %>),
                     end: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.end.hour %>, <%= event.end.min %>),
                     allDay: false,
@@ -63,16 +57,10 @@
                 <% group = event.event_group %>
                 {
                     attending: true,
+                    color:"black",
                     id: '<%= event.id%>',
+                    event_kind: "<%= event.event_kind %>",
                     title: '<%= event.event_kind %> - <%= event.title %>',
-                    <% if event.event_kind=='Keynote' %>
-                    color: c1,
-                    <% else if event.event_kind=='Social Event' %>
-                    color: c1,
-                    <% else %>
-                    color: c2,
-                    <% end %>
-                    <% end %>
                     start: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.begin.hour %>, <%= event.begin.min %>),
                     end: new Date(<%= group.date.year %>, <%= ((group.date.month) -1) %>, <%= group.date.day %>, <%= event.end.hour %>, <%= event.end.min %>),
                     allDay: false,
