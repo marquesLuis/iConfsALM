@@ -1,7 +1,7 @@
 class Note < ActiveRecord::Base
   attr_accessible :content, :person_id
 
-  default_scope :order => :updated_at
+  default_scope :order => 'updated_at DESC'
 
   belongs_to :person, :inverse_of => :notes
 

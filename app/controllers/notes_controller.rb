@@ -20,7 +20,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = current_registry.person.notes.includes(:about_person => :person).includes(:about_event => :event)
+    @notes = current_registry.person.notes.includes(:about_person => :person)
+    @notes = @notes.includes(:about_event => :event)
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -97,7 +99,10 @@ class NotesController < ApplicationController
           @aboutPerson.note_id = id
           @aboutPerson.save
         end
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+
+        @notes = current_registry.person.notes.includes(:about_person => :person)
+        @notes = @notes.includes(:about_event => :event)
+        format.html { render action: "index", notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }
@@ -162,7 +167,9 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        @notes = current_registry.person.notes.includes(:about_person => :person)
+        @notes = @notes.includes(:about_event => :event)
+        format.html { render action: "index", notice: 'Note was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
