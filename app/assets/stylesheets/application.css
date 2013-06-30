@@ -16,6 +16,26 @@
  *=require fullcalendar.print.css
  *
  */
+
+.event_bg_default {
+
+    background-color: #CDB38B;
+
+}
+
+.event_bg_ps {
+    background-color: #4876FF;
+}
+
+.event_bg_k {
+    background-color: #FFD700;
+}
+
+.event_bg_se {
+    background-color: #32CD32;
+}
+
+
 * {
     font-family: 'Georgia', Georgia, Serif;
 
@@ -270,6 +290,7 @@ hr {
     position: relative;
     top: 1px;
 }
+
 .just {
     text-align: justify;
     text-justify: inter-word;
