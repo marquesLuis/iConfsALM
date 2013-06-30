@@ -390,7 +390,6 @@ class NotesController < ApplicationController
     @notes.each do |note|
 
       a= '"'+note.created_at.to_date.to_s + ":" + note.created_at.strftime("%I:%M %Z") + '",'
-      found = (note.about_person || note.about_event)
       found2 = (note.about_person && note.about_event)
       a+='"'
       if note.about_person
@@ -415,8 +414,8 @@ class NotesController < ApplicationController
         a += " " + line
       end
 
-      a+=
-          a+='"'
+      a+='"'
+
       x+= a+"\r\n";
     end
 

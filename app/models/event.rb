@@ -29,6 +29,6 @@ class Event < ActiveRecord::Base
   end
 
   def self.max_hour
-    return 22# Event.all(:order => 'end ASC').last.end.hour+1
+    return 24# Event.all(:order => 'end ASC').last.end.hour+1
   end
 end
