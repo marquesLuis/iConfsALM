@@ -350,7 +350,7 @@ class UpdateController < ApplicationController
       end
 
       @last_note_id = @notes[:last_id]
-      @all_notes = Note.find_all_by_person_id(@person)
+      @all_notes = Note.where('person_id = ?',@person)
       if @all_notes
         @new_last_note_id = '0'
         @note_tmp = @all_notes.last
@@ -358,7 +358,7 @@ class UpdateController < ApplicationController
           @new_last_note_id = @note_tmp.id.to_s
         end
         if @new_last_note_id != @last_note_id
-          @new_notes = Note.where('person_id = ? AND id > ? AND id <= ?',@person,@last_note_id, @new_last_note_id)
+          @new_notes = Note.where('person_id = ?',@person).where('id > ? AND id <= ?',@last_note_id, @new_last_note_id)
           @new_notes = @new_notes.includes(:about_person)
           @new_notes = @new_notes.includes(:about_event)
         end
