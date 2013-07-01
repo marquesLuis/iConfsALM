@@ -1,7 +1,7 @@
 <div class='centralized'>
   <div class="inline">
-    <%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"},:class => 'classname', :method => 'get' %>
-    <%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"},:class => 'classname', :method => 'get' %>
+    <%= link_to 'Show Personalized', {:controller => "user_program", :action => "index"}, :class => 'classname', :method => 'get' %>
+    <%= link_to 'Show Complete', {:controller => "user_program", :action => "show_complete"}, :class => 'classname', :method => 'get' %>
   </div>
   <h1>Complete Calendar</h1>
 </div>
@@ -42,7 +42,15 @@
                 <% group = event.event_group %>
                 {
                     attending: false,
-                    color:"black",
+                    <% if event.event_kind == 'Paper Session' %>
+                    textColor : "white",
+                    <% else if event.event_kind == 'Social Event' %>
+                    textColor : "white",
+                    <% else %>
+                    textColor : "black",
+                    <% end %>
+                    <% end %>
+                    borderColor: "black",
                     id: '<%= event.id %>',
                     title: '<%= event.event_kind %> - <%= event.title %>',
                     event_kind: "<%= event.event_kind %>",
@@ -57,7 +65,15 @@
                 <% group = event.event_group %>
                 {
                     attending: true,
-                    color:"black",
+                    <% if event.event_kind == 'Paper Session' %>
+                    textColor : "white",
+                    <% else if event.event_kind == 'Social Event' %>
+                    textColor : "white",
+                    <% else %>
+                    textColor : "black",
+                    <% end %>
+                    <% end %>
+                    borderColor: "black",
                     id: '<%= event.id%>',
                     event_kind: "<%= event.event_kind %>",
                     title: '<%= event.event_kind %> - <%= event.title %>',
@@ -72,4 +88,4 @@
         });
 
     };
-</script>
+      </script>
