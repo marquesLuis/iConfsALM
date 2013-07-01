@@ -44,7 +44,16 @@
 
                         attending: true,
                         remove: true,
-                        color:"black",
+                        <% if event.event_kind == 'Paper Session' %>
+                        <% puts("AAAAAAAA") %>
+                        textColor : "white",
+                        <% else if event.event_kind == 'Social Event' %>
+                        textColor : "white",
+                        <% else %>
+                        textColor : "black",
+                        <% end %>
+                        <% end %>
+                        borderColor: "black",
                         id: '<%= event.id %>',
                         title: '<%= event.event_kind %> - <%= event.title %>',
                         event_kind: "<%= event.event_kind %>",
