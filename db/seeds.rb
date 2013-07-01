@@ -219,7 +219,7 @@ Note.create(:content => 'Talked to him in the coffee break', :person_id => 1);
 Note.create(:content => 'Must not forget to bring my IPhone. (Albert)', :person_id => 2);
 Note.create(:content => 'Talked to him in the coffee break', :person_id => 2);
 Note.create(:content => 'Must not forget to bring my IPhone. (Luis)', :person_id => 3);
-Note.create(:content => 'Talked to him in the coffee break', :person_id => 3);
+Note.create(:content => 'Talked to him in the coffee break (Luis)', :person_id => 3);
 AboutPerson.create(:person_id => 4, :note_id => 2)
 AboutPerson.create(:person_id => 4, :note_id => 4)
 AboutPerson.create(:person_id => 4, :note_id => 6)

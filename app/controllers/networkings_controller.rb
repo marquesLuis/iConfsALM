@@ -12,6 +12,7 @@ class NetworkingsController < ApplicationController
     end
   end
 
+
   # GET /networkings/1
   # GET /networkings/1.json
   def show
