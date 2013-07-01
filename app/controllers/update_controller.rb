@@ -364,7 +364,7 @@ class UpdateController < ApplicationController
         end
 
         @last_note_update = @notes[:last_update]
-        @last_note_tmp =  @all_notes.last
+        @last_note_tmp =  @all_notes.first
         if @last_note_tmp
           @new_last_note_update =@last_note_tmp.updated_at.strftime('%Y-%m-%d %H:%M:%S.%N')
           if @new_last_note_update
