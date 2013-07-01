@@ -351,9 +351,9 @@ class UpdateController < ApplicationController
 
       @last_note_id = @notes[:last_id]
       @all_notes = Note.where('person_id = ?',@person)
-      if @all_notes
+      if @all_notes.any?
         @new_last_note_id = '0'
-        @note_tmp = @all_notes.last
+        @note_tmp = @all_notes.first
         if @note_tmp
           @new_last_note_id = @note_tmp.id.to_s
         end
