@@ -157,8 +157,8 @@ hr {
 }
 
 .person_image {
-    max-width: 300px; /* TODO */
-    max-height: 300px; /* TODO  */
+    max-width: 200px; /* TODO */
+    max-height: 200px; /* TODO  */
 }
 
 .person_thumbnail {
