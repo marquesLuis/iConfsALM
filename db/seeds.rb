@@ -15,11 +15,7 @@ Administrator.create(:email => %{marta.lidon@gmail.com}, :password => 'password'
 Administrator.create(:email => %{lfmarques2@gmail.com}, :password => '123123123', :password_confirmation => '123123123')
 Administrator.create(:email => %{albert@albert.al}, :password => '123123123', :password_confirmation => '123123123')
 
-puts "Adding Feedback"
-# FEEDBACK (1-3)
-Feedback.create(content: "Aplicacao Fantastica parabens aos alunos!!!")
-Feedback.create(content: "Aplicacao Mais ou menos :/")
-Feedback.create(content: "Aplicacao Fraca os alunos deviam chumbar :/")
+
 
 puts "Adding Notifications"
 # NOTIFICATIONS (1-2)
@@ -47,11 +43,11 @@ MapsVersion.create(version: '1')
 
 puts "Adding people: marta, albert, luis"
 #PEOPLE & REGISTRY (1-3)
-Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email: 'marta.lidon@gmail.com', signup_code: '1')
+Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email: 'marta.lidon@gmail.com', signup_code: '1', photo:'Marta.jpg', biography:"Aluna finalista do curso de Engenharia Informática na Faculdade de Ciências e Tecnologias da Universidade Nova de Lisboa.\r\n Natação é o meu principal hobbie")
 Registry.create(email: 'marta.lidon@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '1')
-Person.create(first_name: 'Albert', last_name: 'Linde', prefix: 'Dr.', affiliation: 'FCT', email: 'albert.linde@gmail.com', signup_code: '2')
+Person.create(first_name: 'Albert', last_name: 'Linde', prefix: 'Dr.', affiliation: 'FCT', email: 'albert.linde@gmail.com', signup_code: '2', photo:'Albert.jpg')
 Registry.create(email: 'albert.linde@gmail.com', :password => '123qweasd', :password_confirmation => '123qweasd', person_id: '2')
-Person.create(first_name: 'Luis', last_name: 'Marques', prefix: 'Dr.', affiliation: 'FCT', email: 'lfmarques2@gmail.com', signup_code: '3')
+Person.create(first_name: 'Luis', last_name: 'Marques', prefix: 'Dr.', affiliation: 'FCT', email: 'lfmarques2@gmail.com', signup_code: '3', photo:'Luis.jpg')
 Registry.create(email: 'lfmarques2@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '3')
 
 
@@ -67,8 +63,8 @@ EventGroup.create(:end => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"),
 Event.create(:event_group_id => 2, :title => 'Starting Session', :description => 'Start and the Turing session', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 13:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"));
 
 #3 3
-EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds - Ricardo Mendes, Tiago Oliveira, Alysson Bessani, Marcelo Pasin Benchmarking the EDGI Infrastructure-Serhiy Boychenko, Filipe Araújo Aplicação do Fecho de Programas na Deteção de Anomalias de Concorrência-Diogo G. Sousa, João Lourenço, Eitan Farchi, Itai Segall RATS -- Resource Aware Thread Scheduling for JVM-level Clustering - Navaneeth Rameshan, Luís Veiga', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
+EventGroup.create(:end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"), :date => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), location_id: 2)
+Event.create(:event_group_id => 3, :title => 'CPDLA1', :description => 'Vários sistemas surgiram recentemente com o intuito de fa- cilitar a utilização de serviços de armazenamento nas clouds. Muitos utilizadores das clouds têm a necessidade de manter os seus dados dis- poníveis e privados, requisitos nem sempre atendidos pelos sistemas de armazenamento em cloud. Recentemente foi demonstrado que é possível atender estes requisitos através do uso de vários provedores de cloud, ao invés de um só, ao que foi dado o nome de cloud-of clouds. Com vista a responder a estas necessidades apresentamos o C2FS, um sistema de ficheiros multi-utilizador para cloud-of-clouds. Este sistema é tolerante a falhas por parte dos provedores de clouds e mantém a privacidade dos dados e metadados armazenados desde que menos de um terço dos pro- vedores usados sejam faltosos. O C2FS tem uma interface estilo POSIX e satisfaz um modelo de consistência flexível que permite aos seus utili- zadores controlarem os custos (em termos monetários e de desempenho) relacionados com o acesso a clouds e as garantias de consistência e du- rabilidade oferecidas pelo sistema.', :event_kind => 'Paper Session', :begin => DateTime.strptime("6/9/2013 14:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 16:00", "%d/%m/%Y %H:%M"));
 
 Person.create(first_name: 'Ricardo', last_name: 'Mendes', prefix: 'Dr.', affiliation: 'FCT', email: 'R.Mendes@gmail.com', :biography => 'Ricardo Cavalcante Mendes or simply Ricardinho (born September 4, 1989 in Sao Paulo) is a Brazilian football player who currently plays for Lechia Gdansk.', signup_code: '4')
 Registry.create(email: 'R.Mendes@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '4')
@@ -113,7 +109,7 @@ EventGroup.create(:date => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M")
 Event.create(:event_group_id => 11, :title => 'Reunion', :description => 'Some detail should go here.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 18:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"));
 #12 12
 EventGroup.create(:date => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"))
-Event.create(:event_group_id => 12, :title => 'Leaving for dinner', :description => 'Some detail should go here. Location maybe.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"));
+#Event.create(:event_group_id => 12, :title => 'Leaving for dinner', :description => 'Some detail should go here. Location maybe.', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:00", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 19:15", "%d/%m/%Y %H:%M"));
 #13 13
 EventGroup.create(:date => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 22:00", "%d/%m/%Y %H:%M"))
 Event.create(:event_group_id => 13, :title => 'Dinner', :description => 'Solar dos Zagalos', :event_kind => 'Social Event', :begin => DateTime.strptime("6/9/2013 19:30", "%d/%m/%Y %H:%M"), :end => DateTime.strptime("6/9/2013 23:50", "%d/%m/%Y %H:%M"));
@@ -208,18 +204,18 @@ puts "Adding 100 random people"
       :person_id => a.id)
 end
 
-Networking.create(:title => 'Scalable Bloom Filters', :content => 'Description.', :person_id => '2');
-Networking.create(:title => 'PastisD', :content => 'Description.', :person_id => '1');
-Networking.create(:title => 'ABD Development', :content => 'Description.', :person_id => '3');
+Networking.create(:title => 'Scalable Bloom Filters', :content => 'Bloom ﬁlters provide space-efﬁcient storage of sets at the cost of a probability of false positive on membership queries. Insertion and membership testing in Bloom ﬁlters implies an amount of randomization, since elements are transformed using one-way hash functions. Testing for the presence of elements that have actually been inserted in the ﬁlter will always give a positive result; there are no false negatives. On the contrary, there is always some probability of false positives: elements that have not been inserted into the ﬁlter can erroneously pass the membership test.', :person_id => '1')
+Networking.create(:title => 'PastisD', :content => 'Pastis was first commercialized by Paul Ricard in 1932 and enjoys substantial popularity in France, especially in the southern regions of the country.Pastis emerged some 17 years following the ban on absinthe, during a time when the French nation was still apprehensive of high-proof anise drinks in the wake of the absinthe debacle. ', :person_id => '2')
+Networking.create(:title => 'Distributor', :content => 'A distributor is a device in the ignition system of an internal combustion engine that routes high voltage from the ignition coil to the spark plugs in the correct firing order. The first reliable battery operated ignition was developed by Dayton Engineering Laboratories Co. (Delco) and introduced in the 1910 Cadillac. This ignition was developed by Charles Kettering and was considered a wonder in its day.', :person_id => '3')
 Networking.create(:title => 'C2FS', :content => 'C2FS: um Sistema de Ficheiros Seguro e Fiável para Cloud-of-clouds. Vários sistemas surgiram recentemente com o intuito de facilitar a utilização de serviços de armazenamento nas clouds. Muitos utilizadores das clouds têm a necessidade de manter os seus dados disponíveis e privados, requisitos nem sempre atendidos pelos sistemas de armazenamento em cloud. Recentemente foi demonstrado que é possível atender estes requisitos através do uso de vários provedores de cloud, ao invés de um só, ao que foi dado o nome de cloud-of clouds. Com vista a responder a estas necessidades apresentamos o C2FS, um sistema de ficheiros multi-utilizador para cloud-of-clouds. Este sistema é tolerante a falhas por parte dos provedores de clouds e mantém a privacidade dos dados e metadados armazenados desde que menos de um terço dos provedoresusados sejam faltosos. O C2FS tem uma interface estilo POSIXe satisfaz um modelo de consistência flexível que permite aos seus utilizadores controlarem os custos (em termos monetários e de desempenho)relacionados com o acesso a clouds e as garantias de consistência e durabilidade oferecidas pelo sistema.', :person_id => '4');
 NetworkingInterest.create(:networking_id => 2, :area_of_interest_id => 5)
 
-Note.create(:content => 'Must not forget to bring my IPhone (MARTA).', :person_id => 1);
-Note.create(:content => 'Talked to him in the coffee break', :person_id => 1);
+Note.create(:content => 'Falar ao Rui do Karting', :person_id => 1);
+Note.create(:content => 'Nota com caracteres especiais como enters \r\n e &', :person_id => 1);
 Note.create(:content => 'Must not forget to bring my IPhone. (Albert)', :person_id => 2);
 Note.create(:content => 'Talked to him in the coffee break', :person_id => 2);
-Note.create(:content => 'Must not forget to bring my IPhone. (Luis)', :person_id => 3);
-Note.create(:content => 'Talked to him in the coffee break (Luis)', :person_id => 3);
+Note.create(:content => 'Levar um brinquedo para o Bernardo.', :person_id => 3);
+Note.create(:content => 'Trazer a Margarida ao Karting.', :person_id => 3);
 AboutPerson.create(:person_id => 4, :note_id => 2)
 AboutPerson.create(:person_id => 4, :note_id => 4)
 AboutPerson.create(:person_id => 4, :note_id => 6)
@@ -240,3 +236,12 @@ PendingContact.create(:requester_id => 7, :requested_id => 3)
 TradedContact.create(:requester_id => 4, :requested_id => 3)
 TradedContact.create(:requester_id => 4, :requested_id => 2)
 TradedContact.create(:requester_id => 4, :requested_id => 1)
+
+
+Document.create(title: 'C2FS Paper', description: 'x', link: '20120256.pdf')
+Author.create(name: '', document_id:1 , person_id: 4)
+EventDocument.create(document_id: 1, event_id: 3)
+
+PersonInterest.create(person_id: 1, area_of_interest_id:2)
+PersonInterest.create(person_id: 1, area_of_interest_id:4)
+PersonInterest.create(person_id: 1, area_of_interest_id:1)

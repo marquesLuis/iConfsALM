@@ -10,7 +10,7 @@ $('#e_<%= @event_id %>').remove()
 <% if @remove_button %>
 
 $("#event_buttons").fadeOut("slow", function () {
-    $(this).empty().append("<p>Removed from personal program.</p> <%= escape_javascript( link_to 'Add to personal program', {:controller => "user_program", :action => "add_event", :id => @event_id, :internal => true},:method => 'post', :remote => true,:class => 'classname' )%>").fadeIn();
+    $(this).empty().append(" <%= escape_javascript( link_to 'Add to personal program', {:controller => "user_program", :action => "add_event", :id => @event_id, :internal => true},:method => 'post', :remote => true,:class => 'classname' )%>").fadeIn();
 })
 <% else %>
 a = $('#calendar').fullCalendar('getEventByID', <%= @event_id %>)
