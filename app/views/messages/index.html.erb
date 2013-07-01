@@ -1,7 +1,7 @@
 <h1>Listing messages</h1>
-<p><%= link_to "All", {:controller => "messages", :action => "index"} %>
-<%= link_to "To Read Only", {:controller => "messages", :action => "index", :read=>'false'} %>
-<%= link_to "Read Only", {:controller => "messages", :action => "index", :read=>'true'} %> </p>
+<p><%= link_to "All", {:controller => "messages", :action => "index"}, :class=> 'classname' %>
+<%= link_to "Not Read", {:controller => "messages", :action => "index", :read=>'false'}, :class=> 'classname' %>
+<%= link_to "Read", {:controller => "messages", :action => "index", :read=>'true'}, :class=> 'classname' %> </p>
 <table>
   <tr>
     <th>Content</th>
@@ -18,8 +18,8 @@
     <td><%= message.read %></td>
     <td><%= message.email %></td>
     <td><%= mail_to message.email, 'Send response', :subject => "Response to message"%></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', message , :class=> 'classname'%></td>
+    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' , :class=> 'classname'} %></td>
   </tr>
 <% end %>
 </table>

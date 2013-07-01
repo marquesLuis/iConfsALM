@@ -1,7 +1,7 @@
 <h1>Listing feedbacks</h1>
-<%= link_to "All", {:controller => "feedbacks", :action => "index"} %>
-<%= link_to "To Read Only", {:controller => "feedbacks", :action => "index", :read=>'false'} %>
-<%= link_to "Read Only", {:controller => "feedbacks", :action => "index", :read=>'true'} %></p>
+<%= link_to "All", {:controller => "feedbacks", :action => "index"} , :class=> 'classname'%>
+<%= link_to "Not Read", {:controller => "feedbacks", :action => "index", :read=>'false'}, :class=> 'classname' %>
+<%= link_to "Read", {:controller => "feedbacks", :action => "index", :read=>'true'}, :class=> 'classname' %></p>
 
 <table>
   <tr>
@@ -16,8 +16,8 @@
   <tr>
     <td><%= feedback.content %></td>
     <td><%= feedback.read %></td>
-    <td><%= link_to 'Show', feedback %></td>
-    <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', feedback, :class=> 'classname' %></td>
+    <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' }, :class=> 'classname' %></td>
   </tr>
 <% end %>
 </table>
