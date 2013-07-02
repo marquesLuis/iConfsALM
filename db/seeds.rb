@@ -43,7 +43,7 @@ MapsVersion.create(version: '1')
 
 puts "Adding people: marta, albert, luis"
 #PEOPLE & REGISTRY (1-3)
-Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email: 'marta.lidon@gmail.com', signup_code: '1', photo:'Marta.jpg', biography:"Aluna finalista do curso de Engenharia Informática na Faculdade de Ciências e Tecnologias da Universidade Nova de Lisboa.\r\n Natação é o meu principal hobbie")
+Person.create(first_name: 'Marta', last_name: 'Lidon', prefix: 'Dr.', affiliation: 'FCT', email: 'marta.lidon@gmail.com', signup_code: '1', photo:'Marta.jpg', biography:"Aluna finalista do curso de Engenharia Informática na Faculdade de Ciências e Tecnologias da Universidade Nova de Lisboa.\r\n Natação é o meu principal hobby!")
 Registry.create(email: 'marta.lidon@gmail.com', :password => '123123123', :password_confirmation => '123123123', person_id: '1')
 Person.create(first_name: 'Albert', last_name: 'Linde', prefix: 'Dr.', affiliation: 'FCT', email: 'albert.linde@gmail.com', signup_code: '2', photo:'Albert.jpg')
 Registry.create(email: 'albert.linde@gmail.com', :password => '123qweasd', :password_confirmation => '123qweasd', person_id: '2')
@@ -218,7 +218,6 @@ Note.create(:content => 'Levar um brinquedo para o Bernardo.', :person_id => 3);
 Note.create(:content => 'Trazer a Margarida ao Karting.', :person_id => 3);
 AboutPerson.create(:person_id => 4, :note_id => 2)
 AboutPerson.create(:person_id => 4, :note_id => 4)
-AboutPerson.create(:person_id => 4, :note_id => 6)
 
 PendingContact.create(:requester_id => 8, :requested_id => 1)
 PendingContact.create(:requester_id => 5, :requested_id => 1)
